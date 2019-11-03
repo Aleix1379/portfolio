@@ -16,6 +16,8 @@
     height: 40px;
     line-height: 40px;
     position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
 
     &:not(:first-child) {
       border-left: 1px solid white;
@@ -23,7 +25,7 @@
 
     > a {
       text-decoration: none;
-      color: $color-text;
+      color: $color-white;
     }
   }
 
@@ -39,6 +41,7 @@
 
   > .tab.tab--active {
     position: relative;
+    font-weight: bold;
 
     @keyframes tabActiveAnimation {
       0%   {
