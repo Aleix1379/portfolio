@@ -1,7 +1,7 @@
 import React from 'react';
 import './about.scss';
 import userPicture from '../../assets/images/user-picture.jpg';
-import ExperienceComponent from "../experience";
+import CardComponent from "../experience";
 
 const AboutComponent = () => {
     return (
@@ -35,7 +35,7 @@ const AboutComponent = () => {
                 Experience
             </div>
 
-            <ExperienceComponent
+            <CardComponent
                 title="Full-Stack Developer"
                 company="Ubiquat Technologies"
                 startDate="August 2016"
@@ -53,7 +53,7 @@ const AboutComponent = () => {
                             Publish apps on Google Play and App Store."
             />
 
-            <ExperienceComponent
+            <CardComponent
                 title="Front-end developer"
                 company="Coach4Pro"
                 startDate="March 2018"
@@ -64,7 +64,7 @@ const AboutComponent = () => {
                             Maintenance of their commercial web page."
             />
 
-            <ExperienceComponent
+            <CardComponent
                 title="Web Developer"
                 company="Ubiquat Technologies"
                 startDate="January 2016"
@@ -75,7 +75,7 @@ const AboutComponent = () => {
                             Maintenance an Android app  (Native with Java) and publish the application on google play."
             />
 
-            <ExperienceComponent
+            <CardComponent
                 title="C# Developer"
                 company="Ofimàtica anoia"
                 startDate="October 2014"
@@ -97,7 +97,7 @@ const AboutComponent = () => {
                 Education
             </div>
 
-            <ExperienceComponent
+            <CardComponent
                 title="Web application development"
                 company="IES Milà i Fontanals"
                 startDate="September 2015"
@@ -105,12 +105,49 @@ const AboutComponent = () => {
                 location="Barcelona Area, Spain"
             />
 
-            <ExperienceComponent
+            <CardComponent
                 title="Cross-platform software development"
                 company="IES Milà i Fontanals"
                 startDate="September 2012"
                 endDate="June 2015"
                 location="Barcelona Area, Spain"
+            />
+
+            <div className="about__section-title">
+                Skills
+            </div>
+
+            <CardComponent
+                skills={['Javascript', 'Typescript', 'AngularJS', 'Angular', 'ReactJS', 'React Native', 'CSS', 'SASS', 'NodeJS', 'Express', 'MongoDB']}
+            />
+
+            <div className="about__section-title">
+                Languages
+            </div>
+
+            <CardComponent
+                languages={[
+                    {
+                        name: 'Catalan',
+                        level: 5
+                    },
+                    {
+                        name: 'Spanish',
+                        level: 5
+                    },
+                    {
+                        name: 'English',
+                        level: 3
+                    }
+                ]}
+            />
+
+            <div className="about__section-title">
+                Personal hobbies
+            </div>
+
+            <CardComponent
+                skills={['Hiking', 'Biking', 'Videogames', 'Personal projects']}
             />
 
         </div>

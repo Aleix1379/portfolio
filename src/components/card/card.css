@@ -1,0 +1,45 @@
+.experience {
+  background: #fcfcfc;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  padding: 12px;
+  width: calc(100% - 24px);
+}
+.experience__title {
+  font-weight: 700;
+}
+.experience__location, .experience__description {
+  color: #999999;
+}
+.experience > div {
+  margin-bottom: 8px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skills .skill {
+  background: #999999;
+  margin: 4px 4px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #fcfcfc;
+}
+
+.rating > .rate-enabled {
+  color: #FFD700;
+}
+
+.languages .language {
+  display: flex;
+}
+.languages .language:not(:first-child) {
+  margin-top: 12px;
+}
+.languages .language .rating {
+  margin-left: auto;
+}
+
+/*# sourceMappingURL=card.css.map */
