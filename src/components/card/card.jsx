@@ -1,23 +1,24 @@
 import React from 'react';
-import './experience.scss'
+import './card.scss'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const SkillsComponent = ({skills}) => {
-    if (!skills) {
-        console.log('skill null');
+const
+    TagsComponent = ({tags}) => {
+    if (!tags) {
+        console.log('tag null');
         return null;
     }
 
-    skills = skills.map(skill => {
+    tags = tags.map(tag => {
         return (
-            <div key={skill} className="skill">{skill}</div>
+            <div key={tag} className="tag">{tag}</div>
         );
     });
 
     return (
-        <div className="skills">
-            {skills}
+        <div className="tags">
+            {tags}
         </div>
     );
 };
@@ -74,7 +75,7 @@ const CardComponent = (props) => {
             <div className="experience__location">{props.location}</div>
             <div className="experience__description">{props.description}</div>
 
-            <SkillsComponent skills={props.skills}/>
+            <TagsComponent tags={props.tags}/>
 
             <LanguagesComponent languages={props.languages}/>
 

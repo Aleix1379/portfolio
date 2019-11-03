@@ -16,11 +16,11 @@
   margin-bottom: 8px;
 }
 
-.skills {
+.tags {
   display: flex;
   flex-wrap: wrap;
 }
-.skills .skill {
+.tags .tag {
   background: #999999;
   margin: 4px 4px;
   padding: 4px 10px;

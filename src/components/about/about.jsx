@@ -1,7 +1,7 @@
 import React from 'react';
 import './about.scss';
 import userPicture from '../../assets/images/user-picture.jpg';
-import CardComponent from "../experience";
+import CardComponent from "../card";
 
 const AboutComponent = () => {
     return (
@@ -118,7 +118,7 @@ const AboutComponent = () => {
             </div>
 
             <CardComponent
-                skills={['Javascript', 'Typescript', 'AngularJS', 'Angular', 'ReactJS', 'React Native', 'CSS', 'SASS', 'NodeJS', 'Express', 'MongoDB']}
+                tags={['Javascript', 'Typescript', 'AngularJS', 'Angular', 'ReactJS', 'React Native', 'CSS', 'SASS', 'NodeJS', 'Express', 'MongoDB']}
             />
 
             <div className="about__section-title">
@@ -147,7 +147,7 @@ const AboutComponent = () => {
             </div>
 
             <CardComponent
-                skills={['Hiking', 'Biking', 'Videogames', 'Personal projects']}
+                tags={['Hiking', 'Biking', 'Videogames', 'Personal projects']}
             />
 
         </div>
