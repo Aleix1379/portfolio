@@ -10,28 +10,29 @@ const AboutComponent = () => {
             <div className="about__card">
 
                 <img src={userPicture} alt="user" className="about__picture"/>
-                <div className="personal-detail about__name">Aleix Martínez</div>
+                <div className="about__name">Aleix Martínez</div>
 
-                <div className="personal-detail about__position">Mid-Senior Full-Stack Developer
+                <div className="about__position">Mid-Senior Full-Stack Developer
                     <span role="img" aria-label="smartphone">📱</span>
                     <span role="img" aria-label="face">👨</span>
                     <span role="img" aria-label="laptop">‍💻</span>
                 </div>
 
-                <div className="personal-detail about__location">
+                <div className="about__location">
                     <span>Espoo, Southern Finland, Finland</span>
                     <span role="img" aria-label="Finland flag"> 🇫🇮</span>
                 </div>
 
-            </div>
-
-            <div className="about__card">
                 <div className="about__description">
                     <p>I have been working as a Front End Developer designing and implementing user interfaces.</p>
                     <p>I have used AngularJS, Angular 7, Ionic 4, Node JS, Typescript, MongoDB, React Native and
                         Sass.</p>
                     <p>I am interested on web development (Front End and Back End) and mobile apps.</p>
                 </div>
+            </div>
+
+            <div className="about__section-title">
+                Experience
             </div>
 
             <ExperienceComponent
@@ -90,6 +91,26 @@ const AboutComponent = () => {
                             Make a program that allows to convert documents (office, images, html) to pdf, to be able to print them.
 
                             Use the printer driver to send print documents, with parameters (color, b / w, duplex)"
+            />
+
+            <div className="about__section-title">
+                Education
+            </div>
+
+            <ExperienceComponent
+                title="Web application development"
+                company="IES Milà i Fontanals"
+                startDate="September 2015"
+                endDate="June 2016"
+                location="Barcelona Area, Spain"
+            />
+
+            <ExperienceComponent
+                title="Cross-platform software development"
+                company="IES Milà i Fontanals"
+                startDate="September 2012"
+                endDate="June 2015"
+                location="Barcelona Area, Spain"
             />
 
         </div>

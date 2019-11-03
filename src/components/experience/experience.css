@@ -4,6 +4,7 @@
   border-radius: 6px;
   margin-bottom: 16px;
   padding: 12px;
+  width: calc(100% - 24px);
 }
 .experience__title {
   font-weight: 700;

@@ -30,16 +30,8 @@
     margin-bottom: 12px;
   }
 
-  .personal-detail {
-    margin-top: 8px;
-    margin-bottom: 8px;
-
-    &:first-letter {
-      text-transform: uppercase;
-    }
-  }
-
   &__name {
+    font-weight: 700;
   }
 
   &__position {
@@ -48,6 +40,7 @@
   }
 
   &__location {
+    color: $color-default;
   }
 
   &__description {
@@ -55,11 +48,27 @@
     line-height: 1.2;
     padding-left: 10px;
     padding-right: 10px;
+    border-top: 1px solid $color-default;
+    margin-top: 8px;
 
     > p {
       margin-top: 12px;
       margin-bottom: 12px;
     }
+  }
+
+  &__section-title {
+    height: 40px;
+    background: #6a6783;
+    display: block;
+    width: calc(100% - 10px);
+    margin-bottom: 8px;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    border-radius: 3px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)
   }
 
 }
