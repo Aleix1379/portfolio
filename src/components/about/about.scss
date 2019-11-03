@@ -1,4 +1,5 @@
 @import "../../assets/sass/variables";
+@import "../../assets/sass/mixins";
 
 .about {
   display: flex;
@@ -58,16 +59,27 @@
 
   &__section-title {
     height: 40px;
+    line-height: 40px;
     background: #6a6783;
     display: block;
     width: calc(100% - 10px);
     margin-bottom: 8px;
-    line-height: 30px;
     color: white;
     font-weight: bold;
     padding-left: 10px;
     border-radius: 3px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)
+  }
+
+  &__section {
+    //width: calc(100% - 24px);
+    width: 100%;
+    @include respond(desktop) {
+      width: 800px;
+    }
+    @include respond(big-desktop) {
+      width: 800px;
+    }
   }
 
 }

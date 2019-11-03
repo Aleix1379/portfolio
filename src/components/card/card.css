@@ -1,4 +1,4 @@
-.experience {
+.card {
   background: #fcfcfc;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
@@ -6,13 +6,13 @@
   padding: 12px;
   width: calc(100% - 24px);
 }
-.experience__title {
+.card__title {
   font-weight: 700;
 }
-.experience__location, .experience__description {
+.card__location, .card__description {
   color: #999999;
 }
-.experience > div {
+.card > div {
   margin-bottom: 8px;
 }
 

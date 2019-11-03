@@ -68,12 +68,12 @@ const LanguagesComponent = ({languages}) => {
 
 const CardComponent = (props) => {
     return (
-        <div className="experience">
-            <div className="experience__title">{props.title}</div>
+        <div className="card">
+            <div className="card__title">{props.title}</div>
             <div>{props.company}</div>
             <div>{props.startDate} {props.startDate ? '-' : ''} {props.endDate} {props.diff ? '·' : ''} {props.diff}</div>
-            <div className="experience__location">{props.location}</div>
-            <div className="experience__description">{props.description}</div>
+            <div className="card__location">{props.location}</div>
+            <div className="card__description">{props.description}</div>
 
             <TagsComponent tags={props.tags}/>
 
