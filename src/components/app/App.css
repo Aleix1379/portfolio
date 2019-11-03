@@ -7,6 +7,10 @@
   height: 40px;
   margin: 0;
   padding: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 .tabs > .tab {
   flex: 1;
