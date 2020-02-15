@@ -1,15 +1,29 @@
 @import "../../assets/sass/variables";
 
 .card {
-  background: #fcfcfc;
+  background-color: #fcfcfc;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   margin-bottom: 16px;
-  padding: 12px;
-  width: calc(100% - 24px);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background-position: center;
+  background-size: contain;
+
+  &:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 
   &__title {
     font-weight: 700;
+    background: #00000091;
+    display: inline-block;
+    padding: 2px 8px;
+    color: white;
+    margin-top: 6px;
   }
 
   &__location,
@@ -18,7 +32,7 @@
   }
 
   > div {
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
 
 }
@@ -43,6 +57,7 @@
 }
 
 .languages {
+  width: 100%;
   .language {
     display: flex;
 

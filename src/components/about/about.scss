@@ -17,7 +17,13 @@
     border-radius: 6px;
     margin-bottom: 16px;
     padding: 12px;
-    width: calc(100% - 24px);
+
+    & > div {
+      color: white;
+      background: #070a1594;
+      padding: 4px 10px;
+    }
+
   }
 
   &__picture {
@@ -46,7 +52,6 @@
     line-height: 1.2;
     padding-left: 10px;
     padding-right: 10px;
-    border-top: 1px solid $color-default;
     margin-top: 8px;
 
     > p {

@@ -71,7 +71,7 @@ const CardComponent = (props) => {
 
     const buildLocation = location => {
         if (location && location.startsWith('https')) {
-            return (<LinkComponent location={location} />);
+            return (<LinkComponent location={location}/>);
         } else {
             return (<div className="card__location">{location}</div>);
         }
@@ -80,13 +80,23 @@ const CardComponent = (props) => {
 
     return (
         <div className="card">
-            <div className="card__title">{props.title}</div>
-            <div>{props.company}</div>
-            <div>{props.startDate} {props.startDate ? '-' : ''} {props.endDate} {props.diff ? '·' : ''} {props.diff}</div>
+            {
+                props.title &&
+                <div className="card__title">{props.title}</div>
+            }
 
-            {buildLocation(props.location)}
+            {
+                props.company && <div>{props.company}</div>
+            }
+
+            {
+                props.startDate && props.startDate && props.diff &&
+                <div>{props.startDate} {props.startDate ? '-' : ''} {props.endDate} {props.diff ? '·' : ''} {props.diff}</div>
+            }
 
             <div className="card__description">{props.description}</div>
+
+            {buildLocation(props.location)}
 
             <TagsComponent tags={props.tags}/>
 

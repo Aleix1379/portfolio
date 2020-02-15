@@ -1,8 +1,9 @@
 import React from 'react';
 import './about.scss';
-import userPicture from '../../assets/images/user-picture.jpg';
 import CardComponent from "../card";
 import SectionComponent from "../section";
+import userPicture from '../../assets/images/user-picture.jpg';
+import userBackground from '../../assets/images/user-background.png';
 
 const AboutComponent = () => {
 
@@ -26,7 +27,7 @@ const AboutComponent = () => {
             <SectionComponent
                 title=""
                 items={(
-                    <div className="about__card">
+                    <div className="about__card" style={{backgroundImage: `url(${userBackground})`}}>
                         <img src={userPicture} alt="user" className="about__picture"/>
                         <div className="about__name">Aleix Martínez</div>
 
