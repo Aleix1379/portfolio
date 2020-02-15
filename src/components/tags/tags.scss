@@ -1,0 +1,40 @@
+@import "../../assets/sass/mixins";
+
+.tags-container {
+  background: white;
+  padding: 6px;
+  position: relative;
+  top: 5px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  z-index: 100;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 16px;
+
+  @include respond(desktop) {
+    width: 800px;
+  }
+  @include respond(big-desktop) {
+    width: 800px;
+  }
+
+  .tag {
+    margin-right: 15px;
+    color: white;
+    cursor: pointer;
+    background: mediumaquamarine;
+    padding: 4px 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+  .tag-title {
+    line-height: 26px;
+    margin-right: 8px;
+  }
+
+}

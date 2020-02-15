@@ -1,0 +1,56 @@
+@import "../../assets/sass/mixins";
+
+.search {
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 16px;
+
+  @include respond(desktop) {
+    width: 800px;
+  }
+  @include respond(big-desktop) {
+    width: 800px;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__input {
+    border: none;
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 16px;
+    position: relative;
+    z-index: 100;
+    transition: .5s;
+
+    &:focus {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+  }
+
+  &__remove {
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    transform: translateY(-50%);
+    z-index: 100;
+    font-size: 18px;
+    cursor: pointer;
+    color: #6a6783;
+    transition: .5s;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.5) rotate(90deg);
+    }
+
+  }
+
+}
