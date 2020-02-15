@@ -3,7 +3,9 @@ import './contact.scss';
 
 const ContactComponent = () => {
     return (
-        <h1>Contact</h1>
+        <div className="contact">
+            <h1>On progress...</h1>
+        </div>
     );
 };
 
