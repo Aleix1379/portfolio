@@ -1,9 +1,15 @@
 .container {
   /*padding: 0 2rem;*/
+  background-color: #222;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
-  background-color: #424242;
+  background-color: rgba(178, 34, 34, 0.22);
+  max-width: 1400px;
+  align-self: center;
   /*min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -107,6 +113,11 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.section {
+  background-color: #17324d;
+  /*min-height: 100vh;*/
 }
 
 @media (max-width: 600px) {

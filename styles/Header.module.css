@@ -1,0 +1,46 @@
+.header {
+    padding-top: 50px;
+    padding-bottom: 32px;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: radial-gradient(#333 1px, transparent 0);
+    background-size: 14px 14px;
+    background-position: -10px -10px;
+}
+
+.text {
+    font-size: 4rem;
+    text-shadow: 1px 5px 6px rgba(0, 0, 0, 0.61);
+    font-family: 'Catamaran bold', sans-serif;
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+
+
+.name {
+    margin-bottom: 30px;
+}
+
+
+.job {
+}
+
+.text::selection {
+    color: #38c188;
+    background: #3888c1;
+}
+
+
+@media (min-width: 768px) {
+    .text {
+        margin-left: 0;
+        line-height: 1.35em;
+    }
+    .name {
+        margin-bottom: 0;
+    }
+}
