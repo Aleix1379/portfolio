@@ -135,7 +135,6 @@
 
 .form {
     display: flex;
-    flex: 1;
     flex-direction: column;
     padding: 15px 25px 26px;
     background-color: #252525;
@@ -153,7 +152,7 @@
 }
 
 .button {
-    margin-top: 35px;
+    margin-top: 65px;
 }
 
 @media (min-width: 768px) {

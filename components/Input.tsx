@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import styles from '../styles/Input.module.css'
 
 interface InputProps {
-    label: string
-    value: string
-    placeholder?: string
-    onChange: (value: string) => void
-    type?: string
-    className?: string | undefined;
+	label: string
+	value: string
+	placeholder?: string
+	onChange: (value: string) => void
+	type?: string
+	className?: string | undefined;
 }
 
 const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type = 'text', className }) => {
@@ -36,17 +36,33 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 					)
 				}
 			</div>
-			<div className={styles.wrapper}>
-				<input
-					className={styles.input}
-					type={type}
-					placeholder={isLabelActive ? placeholder : ''}
-					value={value}
-					onChange={e => onChange(e.target.value)}
-					onFocus={() => setIsLabelActive(true)}
-					onBlur={() => setIsLabelActive(value.length > 0)}
-				/>
-			</div>
+			{
+				type !== 'textarea' &&
+				<div className={styles.inputWrapper}>
+					<input
+						className={styles.input}
+						type={type}
+						placeholder={isLabelActive ? placeholder : ''}
+						value={value}
+						onChange={e => onChange(e.target.value)}
+						onFocus={() => setIsLabelActive(true)}
+						onBlur={() => setIsLabelActive(value.length > 0)}
+					/>
+				</div>
+			}
+			{
+				type === 'textarea' &&
+				<div className={styles.textareaWrapper}>
+					<textarea
+						className={styles.input}
+						placeholder={isLabelActive ? placeholder : ''}
+						value={value}
+						onChange={e => onChange(e.target.value)}
+						onFocus={() => setIsLabelActive(true)}
+						onBlur={() => setIsLabelActive(value.length > 0)}
+					/>
+				</div>
+			}
 		</label>
 	)
 }

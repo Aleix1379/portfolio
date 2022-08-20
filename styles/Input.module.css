@@ -18,7 +18,7 @@
     animation: inputFocusAnimation .3s ease-in forwards;
 }
 
-.wrapper {
+.inputWrapper {
     background-color: #505050;
     height: 40px;
     display: flex;
@@ -32,11 +32,25 @@
     color: #fafafa;
     width: 100%;
 }
+
 .input::placeholder {
     color: #000;
 }
+
 .input:focus-visible {
     outline: none;
+}
+
+.textareaWrapper {
+    background-color: #505050;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 80px;
+}
+
+.textareaWrapper > textarea {
+    height: 80px;
+    padding-top: 12px;
 }
 
 @keyframes inputFocusAnimation {

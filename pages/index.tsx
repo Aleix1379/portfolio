@@ -138,7 +138,6 @@ const Home: NextPage = () => {
 							label={'Email'}
 							value={form.email}
 							onChange={text => updateForm('email', text)} type='email'
-							placeholder={'Please introduce your email'}
 						/>
 						<Input
 							className={styles.input}
@@ -151,6 +150,7 @@ const Home: NextPage = () => {
 							label={'Message'}
 							value={form.message}
 							onChange={text => updateForm('message', text)}
+							type={'textarea'}
 						/>
 
 						<Button className={styles.button} label={'Send!'} onClick={sendMessage} />
