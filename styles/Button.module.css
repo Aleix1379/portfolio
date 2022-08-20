@@ -1,0 +1,58 @@
+.button {
+    height: 60px;
+    background-color: transparent;
+    color: #fafafa;
+    border: 1px solid #38c188;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button > span {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button > span:hover {
+
+}
+
+.background {
+    background-color: #38c188;
+    height: 100%;
+    width: 120%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-110%) skew(-35deg);
+    z-index: 10;
+    animation: backgroundAnimationOut .4s linear forwards;
+}
+
+.button:hover > .background {
+    animation: backgroundAnimationIn .4s linear forwards;
+}
+
+@keyframes backgroundAnimationIn {
+    from {
+        transform: translateX(-110%) skew(-35deg);
+    }
+
+    to {
+        transform: translateX(-10%) skew(-35deg);
+    }
+}
+
+@keyframes backgroundAnimationOut {
+    from {
+        transform: translateX(-10%) skew(35deg);
+    }
+
+    to {
+        transform: translateX(-110%) skew(35deg);
+    }
+}
