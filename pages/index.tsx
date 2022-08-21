@@ -4,6 +4,7 @@ import AppLayout from '../components/AppLayout'
 import Input from '../components/Input'
 import React, { useState } from 'react'
 import Button from '../components/Button'
+import { Github, Linkedin } from '@icons-pack/react-simple-icons'
 
 interface HomeState {
 	form: {
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
 					</p>
 				</section>
 
-				<section id='experience' className={styles.section}>
+				{/*				<section id='experience' className={styles.section}>
 					<h2>Experience</h2>
 					<p>
 						experience section | asdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
@@ -83,7 +84,7 @@ const Home: NextPage = () => {
 						alksdjfalksd
 						jfalksdjf laksdjflkasdjflk
 					</p>
-				</section>
+				</section>*/}
 
 				<section id='projects' className={styles.section}>
 					<h2>Projects</h2>
@@ -126,6 +127,14 @@ const Home: NextPage = () => {
 
 				<section id='contact' className={styles.section}>
 					<h2 className={styles.formTitle}>Contact me</h2>
+					<div className={styles.socialNetworks}>
+						<a href='https://www.linkedin.com/in/aleixmp/' target='_blank' rel='noreferrer'>
+							<Linkedin title='Linkedin' color='#0A66C2' size={50} />
+						</a>
+						<a href='https://github.com/Aleix1379' target='_blank' rel='noreferrer'>
+							<Github title='Github' color='#181717' size={50} />
+						</a>
+					</div>
 					<form className={styles.form} onSubmit={sendMessage}>
 						<Input
 							className={styles.input}
@@ -137,7 +146,8 @@ const Home: NextPage = () => {
 							className={styles.input}
 							label={'Email'}
 							value={form.email}
-							onChange={text => updateForm('email', text)} type='email'
+							onChange={text => updateForm('email', text)}
+							type='email'
 						/>
 						<Input
 							className={styles.input}

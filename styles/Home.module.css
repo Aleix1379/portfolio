@@ -123,8 +123,8 @@
 }
 
 .section {
-    margin-top: 150px;
-    margin-bottom: 150px;
+    padding-top: 100px;
+    padding-bottom: 200px;
     display: flex;
     flex-direction: column;
 }
@@ -153,6 +153,25 @@
 
 .button {
     margin-top: 65px;
+}
+
+.socialNetworks {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.socialNetworks > a {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.socialNetworks > a > svg {
+    transition: 1s fill;
+}
+
+.socialNetworks > a:hover > svg {
+    fill: #38c188;
+    filter: drop-shadow(1px 1px 3px rgba(33, 33, 33, 0.75));
 }
 
 @media (min-width: 768px) {

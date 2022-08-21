@@ -10,6 +10,10 @@
     background-position: -10px -10px;
 }
 
+.header > div {
+    min-height: 100px;
+}
+
 .text {
     font-size: 4rem;
     text-shadow: 1px 5px 6px rgba(0, 0, 0, 0.61);
@@ -25,11 +29,34 @@
     margin-bottom: 30px;
 }
 
-
-.job {
+.description {
 }
 
-.text::selection {
+.letter {
+    display: inline-block;
+    transform: translateY(-300px);
+    animation: inputFocusAnimation 1s ease-in forwards;
+
+}
+
+@keyframes inputFocusAnimation {
+    0% {
+        transform: translateY(-300px);
+        color: #3888c1;
+    }
+
+    50% {
+        transform: scale(2) rotate(-25deg);
+        color: #38c188;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+        color: #fafafa;
+    }
+}
+
+.letter::selection {
     color: #38c188;
     background: #3888c1;
 }
@@ -40,6 +67,7 @@
         margin-left: 0;
         line-height: 1.35em;
     }
+
     .name {
         margin-bottom: 0;
     }

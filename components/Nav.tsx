@@ -29,11 +29,11 @@ const Nav = () => {
 						<a>About</a>
 					</Link>
 				</li>
-				<li className={styles.li}>
+				{/*				<li className={styles.li}>
 					<Link href='#experience'>
 						<a>Experience</a>
 					</Link>
-				</li>
+				</li>*/}
 				<li className={styles.li}>
 					<Link href='#projects'>
 						<a>Projects</a>

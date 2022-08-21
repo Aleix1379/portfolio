@@ -6,7 +6,7 @@ interface InputProps {
 	value: string
 	placeholder?: string
 	onChange: (value: string) => void
-	type?: string
+	type?: 'text' | 'textarea' | 'email'
 	className?: string | undefined;
 }
 
