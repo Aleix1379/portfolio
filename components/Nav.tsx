@@ -3,6 +3,7 @@ import styles from '../styles/Nav.module.css'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import MenuButton from './MenuButton'
 
 const Nav = () => {
 	const router = useRouter()
@@ -46,7 +47,7 @@ const Nav = () => {
 				</li>
 			</ul>
 
-			<button className={styles.menu} onClick={() => setIsMenuOpened(!isMenuOpened)}>M</button>
+			<MenuButton isActive={isMenuOpened} onClick={() => setIsMenuOpened(!isMenuOpened)} />
 
 		</nav>
 	</div>

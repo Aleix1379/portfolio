@@ -5,6 +5,8 @@ import Input from '../components/Input'
 import React, { useState } from 'react'
 import Button from '../components/Button'
 import { Github, Linkedin } from '@icons-pack/react-simple-icons'
+import Project from '../components/Project'
+import { Link } from '../types/Link'
 
 interface HomeState {
 	form: {
@@ -12,6 +14,15 @@ interface HomeState {
 		email: string
 		subject: string
 		message: string
+	}
+	project: {
+		id: string
+		name: string
+		platform: 'mobile' | 'backend'
+		description: string
+		image: string
+		links: Array<Link>
+		technologies: Array<Link>
 	}
 }
 
@@ -22,6 +33,153 @@ const Home: NextPage = () => {
 		subject: '',
 		message: ''
 	})
+
+	const [projects] = useState<Array<HomeState['project']>>([
+		{
+			id: '1',
+			name: 'Talk And Play',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'mobile',
+			image: '/images/projects/talkandplay.webp',
+			links: [
+				{
+					url: 'https://play.google.com/store/apps/details?id=app.talkandplay',
+					text: 'Google play',
+					icon: 'googlePlay'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://reactnative.dev/',
+					text: 'React Native',
+					icon: 'react'
+				},
+				{
+					url: 'https://redux.js.org/',
+					text: 'Redux',
+					icon: 'redux'
+				}
+			]
+		},
+		{
+			id: '3',
+			name: 'Enirve',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'mobile',
+			image: '/images/projects/enirve.webp',
+			links: [
+				{
+					url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
+					text: 'Google play',
+					icon: 'googlePlay'
+				},
+				{
+					url: 'https://github.com/Aleix1379/EnirveMobile',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://reactnative.dev/',
+					text: 'React Native',
+					icon: 'react'
+				},
+				{
+					url: 'https://redux.js.org/',
+					text: 'Redux',
+					icon: 'redux'
+				},
+				{
+					url: 'https://graphql.org/',
+					text: 'GraphQL',
+					icon: 'graphql'
+				},
+				{
+					url: 'https://www.apollographql.com/',
+					text: 'Apollo GraphQL',
+					icon: 'apollographql'
+				}
+			]
+		},
+		{
+			id: '4',
+			name: 'Enirve',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'backend',
+			image: '/images/projects/enirve.webp',
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/EnirveBackend',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://nodejs.org/',
+					text: 'Node JS',
+					icon: 'nodejs'
+				},
+				{
+					url: 'https://www.postgresql.org/',
+					text: 'PostgreSQL',
+					icon: 'postgres'
+				},
+				{
+					url: 'https://graphql.org/',
+					text: 'GraphQL',
+					icon: 'graphql'
+				}
+			]
+		},
+		{
+			id: '5',
+			name: 'Travels & Trips',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'mobile',
+			image: '/images/projects/tratrip.webp',
+			links: [
+				{
+					url: 'https://play.google.com/store/apps/details?id=com.aleixmp.tratripmobileapp',
+					text: 'Travels & Trips',
+					icon: 'googlePlay'
+				},
+				{
+					url: 'https://github.com/Aleix1379/TraTripMobileApp',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://reactnative.dev/',
+					text: 'React Native',
+					icon: 'react'
+				}
+			]
+		}
+	])
 
 	const updateForm = (input: string, text: string) => {
 		setForm({ ...form, [input]: text })
@@ -47,82 +205,28 @@ const Home: NextPage = () => {
 					</p>
 				</section>
 
-				{/*				<section id='experience' className={styles.section}>
-					<h2>Experience</h2>
-					<p>
-						experience section | asdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflk
-					</p>
-				</section>*/}
-
 				<section id='projects' className={styles.section}>
 					<h2>Projects</h2>
-					<p>
-						projects section | asdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf
-						laksdjflkasdjflkasdfjasldkfj alksdjfalksd jfalksdjf laksdjflkasdjflkasdfjasldkfj
-						alksdjfalksd
-						jfalksdjf laksdjflkasdjflk
-					</p>
+
+					<div className={styles.projects}>
+
+						{
+							projects.map(project => (
+								<Project
+									key={project.id}
+									name={project.name}
+									description={project.description}
+									platform={project.platform}
+									image={project.image}
+									links={project.links}
+									technologies={project.technologies}
+								/>
+							))
+						}
+
+
+					</div>
+
 				</section>
 
 				<section id='contact' className={styles.section}>

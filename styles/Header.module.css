@@ -1,6 +1,6 @@
 .header {
-    padding-top: 50px;
-    padding-bottom: 32px;
+    padding-top: 45px;
+    padding-bottom: 35px;
     background-color: #222;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,6 @@
     margin-bottom: 0;
     margin-left: 20px;
 }
-
 
 .name {
     margin-bottom: 30px;

@@ -1,0 +1,23 @@
+.menu {
+    margin-left: auto;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu > div {
+    background-color: #111;
+    height: 4px;
+    width: 30px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 4px;
+    transition: .35s;
+}
+
+@media (min-width: 768px) {
+    .menu {
+        display: none;
+    }
+}

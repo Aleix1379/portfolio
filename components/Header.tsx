@@ -1,5 +1,5 @@
-import styles from '../styles/Header.module.css'
 import { useState } from 'react'
+import styles from '../styles/Header.module.css'
 
 const Header = () => {
 	const [name] = useState('I\'m Aleix.')
@@ -29,7 +29,6 @@ const Header = () => {
 				<h2 className={`${styles.name} ${styles.text}`}>
 					{renderAnimatedText(description, name.length * 0.1)}
 				</h2>
-				<h2 className={`${styles.job} ${styles.text}`}></h2>
 			</div>
 		</div>
 	)
