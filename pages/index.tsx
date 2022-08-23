@@ -4,9 +4,10 @@ import AppLayout from '../components/AppLayout'
 import Input from '../components/Input'
 import React, { useState } from 'react'
 import Button from '../components/Button'
-import { Github, Linkedin } from '@icons-pack/react-simple-icons'
 import Project from '../components/Project'
 import { Link } from '../types/Link'
+import Image from 'next/image'
+import IconLink from '../components/IconLink'
 
 interface HomeState {
 	form: {
@@ -63,6 +64,36 @@ const Home: NextPage = () => {
 					url: 'https://redux.js.org/',
 					text: 'Redux',
 					icon: 'redux'
+				}
+			]
+		},
+		{
+			id: '2',
+			name: 'Talk And Play',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'backend',
+			image: '/images/projects/talkandplay.webp',
+			links: [],
+			technologies: [
+				{
+					url: 'https://kotlinlang.org/',
+					text: 'Kotlin',
+					icon: 'kotlin'
+				},
+				{
+					url: 'https://www.mysql.com/',
+					text: 'Spring Boot',
+					icon: 'springBoot'
+				},
+				{
+					url: 'https://spring.io/projects/spring-boot',
+					text: 'MySQL',
+					icon: 'mysql'
+				},
+				{
+					url: 'https://hibernate.org/',
+					text: 'Hibernate',
+					icon: 'hibernate'
 				}
 			]
 		},
@@ -145,6 +176,11 @@ const Home: NextPage = () => {
 					url: 'https://graphql.org/',
 					text: 'GraphQL',
 					icon: 'graphql'
+				},
+				{
+					url: 'https://www.apollographql.com/',
+					text: 'Apollo GraphQL',
+					icon: 'apollographql'
 				}
 			]
 		},
@@ -157,7 +193,7 @@ const Home: NextPage = () => {
 			links: [
 				{
 					url: 'https://play.google.com/store/apps/details?id=com.aleixmp.tratripmobileapp',
-					text: 'Travels & Trips',
+					text: 'Google play',
 					icon: 'googlePlay'
 				},
 				{
@@ -176,6 +212,11 @@ const Home: NextPage = () => {
 					url: 'https://reactnative.dev/',
 					text: 'React Native',
 					icon: 'react'
+				},
+				{
+					url: 'https://jestjs.io/',
+					text: 'Jest',
+					icon: 'jest'
 				}
 			]
 		}
@@ -195,18 +236,29 @@ const Home: NextPage = () => {
 	return (
 		<AppLayout>
 			<main className={styles.main}>
-				<section id='about' className={`${styles.section} ${styles.about}`}>
-					<h2>About</h2>
-					<p>
-						+5 years of experience.
-						I have been working as a Front End Developer designing and implementing user interfaces.
-						I have used AngularJS, Angular 7, Ionic 4, Node JS, Typescript, MongoDB, React Native and Sass.
-						I am interested in web development (Front End and Back End) and mobile applications.
-					</p>
+				<section id='about' className={styles.section}>
+					<h2>About me</h2>
+					<div className={styles.infoAbout}>
+						<p>
+							<span className={styles.important}>+5 years</span> of experience.
+							I have been working as a Front End Developer designing and implementing user interfaces.
+							I have used AngularJS, Angular 7, Ionic 4, Node JS, Typescript, MongoDB, React Native and Sass.
+							I am interested in web development (Front End and Back End) and mobile applications.
+						</p>
+						<Image src={'/images/about.svg'} height={300} width={300} />
+					</div>
 				</section>
 
 				<section id='projects' className={styles.section}>
 					<h2>Projects</h2>
+
+					<div className={styles.infoProjects}>
+						<Image src={'/images/projects.svg'} height={300} width={300} />
+						<p>
+							Integer non fermentum mi. Vivamus tempus elementum tincidunt. Ut venenatis sodales vulputate. Proin sed
+							augue porttitor, convallis metus ut, semper turpis. Proin vel nisl velit.
+						</p>
+					</div>
 
 					<div className={styles.projects}>
 
@@ -231,44 +283,66 @@ const Home: NextPage = () => {
 
 				<section id='contact' className={styles.section}>
 					<h2 className={styles.formTitle}>Contact me</h2>
-					<div className={styles.socialNetworks}>
-						<a href='https://www.linkedin.com/in/aleixmp/' target='_blank' rel='noreferrer'>
-							<Linkedin title='Linkedin' color='#0A66C2' size={50} />
-						</a>
-						<a href='https://github.com/Aleix1379' target='_blank' rel='noreferrer'>
-							<Github title='Github' color='#181717' size={50} />
-						</a>
-					</div>
-					<form className={styles.form} onSubmit={sendMessage}>
-						<Input
-							className={styles.input}
-							label={'Name'}
-							value={form.name}
-							onChange={text => updateForm('name', text)}
-						/>
-						<Input
-							className={styles.input}
-							label={'Email'}
-							value={form.email}
-							onChange={text => updateForm('email', text)}
-							type='email'
-						/>
-						<Input
-							className={styles.input}
-							label={'Subject'}
-							value={form.subject}
-							onChange={text => updateForm('subject', text)}
-						/>
-						<Input
-							className={styles.input}
-							label={'Message'}
-							value={form.message}
-							onChange={text => updateForm('message', text)}
-							type={'textarea'}
-						/>
 
-						<Button className={styles.button} label={'Send!'} onClick={sendMessage} />
-					</form>
+					<div className={styles.infoContact}>
+
+						<div>
+							<div className={styles.socialNetworks}>
+								<IconLink
+									link={{
+										url: 'https://www.linkedin.com/in/aleixmp/',
+										text: 'Linkedin',
+										icon: 'linkedin'
+									}}
+									size={50}
+									color={'#909090'}
+								/>
+								<IconLink
+									link={{
+										url: 'https://github.com/Aleix1379',
+										text: 'Github',
+										icon: 'github'
+									}}
+									size={50}
+									color={'#909090'}
+								/>
+							</div>
+							<form className={styles.form} onSubmit={sendMessage}>
+								<Input
+									className={styles.input}
+									label={'Name'}
+									value={form.name}
+									onChange={text => updateForm('name', text)}
+								/>
+								<Input
+									className={styles.input}
+									label={'Email'}
+									value={form.email}
+									onChange={text => updateForm('email', text)}
+									type='email'
+								/>
+								<Input
+									className={styles.input}
+									label={'Subject'}
+									value={form.subject}
+									onChange={text => updateForm('subject', text)}
+								/>
+								<Input
+									className={styles.input}
+									label={'Message'}
+									value={form.message}
+									onChange={text => updateForm('message', text)}
+									type={'textarea'}
+								/>
+
+								<Button className={styles.button} label={'Send!'} onClick={sendMessage} />
+							</form>
+						</div>
+
+						<Image src={'/images/contact.svg'} height={300} width={300} />
+
+
+					</div>
 				</section>
 
 			</main>

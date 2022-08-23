@@ -53,6 +53,10 @@
     padding-top: 12px;
 }
 
+.borderWrapper {
+    border: 2px solid #38c188;
+}
+
 @keyframes inputFocusAnimation {
     0% {
         transform: translateY(30px) translateX(8px);

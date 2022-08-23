@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 			</div>
 			{
 				type !== 'textarea' &&
-				<div className={styles.inputWrapper}>
+				<div className={`${styles.inputWrapper}  ${isLabelActive ? styles.borderWrapper : ''}`}>
 					<input
 						className={styles.input}
 						type={type}
@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 			}
 			{
 				type === 'textarea' &&
-				<div className={styles.textareaWrapper}>
+				<div className={`${styles.textareaWrapper} ${isLabelActive ? styles.borderWrapper : ''}`}>
 					<textarea
 						className={styles.input}
 						placeholder={isLabelActive ? placeholder : ''}

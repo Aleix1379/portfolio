@@ -10,6 +10,11 @@ export type BrandIcon =
 	| 'graphql'
 	| 'typescript'
 	| 'apollographql'
+	| 'kotlin'
+	| 'mysql'
+	| 'springBoot'
+	| 'hibernate'
+	| 'jest'
 
 export interface Link {
 	url: string
