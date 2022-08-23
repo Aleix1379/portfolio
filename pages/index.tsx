@@ -261,7 +261,6 @@ const Home: NextPage = () => {
 					</div>
 
 					<div className={styles.projects}>
-
 						{
 							projects.map(project => (
 								<Project
@@ -275,8 +274,6 @@ const Home: NextPage = () => {
 								/>
 							))
 						}
-
-
 					</div>
 
 				</section>

@@ -56,16 +56,23 @@ const Project: React.FC<ProjectProps> = ({ name, description, platform, image, l
 				}
 			</div>
 
+			<h2 className={`${styles.subtitle} ${styles.pages}`}>Links</h2>
 			{
 				links.length > 0 &&
 				<>
-					<h2 className={`${styles.subtitle} ${styles.pages}`}>Links</h2>
 					<div className={`${styles.links} ${styles.linksLast}`}>
 						{
 							links.map((link, index) => <IconLink key={index} link={link} size={25} className={styles.link} />)
 						}
 					</div>
 				</>
+			}
+
+			{
+				links.length === 0 &&
+				<div className={styles.noLinksAvailable}>
+					<span>No links available</span>
+				</div>
 			}
 
 		</div>
