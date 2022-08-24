@@ -3,27 +3,28 @@ import Image from 'next/image'
 import styles from '../styles/Project.module.css'
 import { Link } from '../types/Link'
 import IconLink from './IconLink'
+import { Platform } from '../types/Platform'
 
 interface ProjectProps {
 	name: string
 	description: string
-	platform: 'mobile' | 'backend'
+	platform: Platform
 	image: string
 	links: Array<Link>
 	technologies: Array<Link>
 }
 
 const Project: React.FC<ProjectProps> = ({ name, description, platform, image, links, technologies }) => {
-	const getChipStyle = (platform: 'mobile' | 'backend'): CSSProperties => {
-		if (platform === 'mobile') {
-			return {
-				backgroundColor: 'rgb(23,114,25)'
-
-			}
-		}
-		return {
+	const getChipStyle = (platform: Platform): CSSProperties => {
+		const style = {
 			backgroundColor: 'rgb(69,52,123)'
 		}
+		if (platform === 'mobile') {
+			style.backgroundColor = 'rgb(23,114,25)'
+		} else if (platform === 'web') {
+			style.backgroundColor = 'rgb(176,94,45)'
+		}
+		return style
 	}
 
 	return (

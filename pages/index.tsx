@@ -8,6 +8,7 @@ import Project from '../components/Project'
 import { Link } from '../types/Link'
 import Image from 'next/image'
 import IconLink from '../components/IconLink'
+import { Platform } from '../types/Platform'
 
 interface HomeState {
 	form: {
@@ -19,7 +20,7 @@ interface HomeState {
 	project: {
 		id: string
 		name: string
-		platform: 'mobile' | 'backend'
+		platform: Platform
 		description: string
 		image: string
 		links: Array<Link>
@@ -36,6 +37,47 @@ const Home: NextPage = () => {
 	})
 
 	const [projects] = useState<Array<HomeState['project']>>([
+		{
+			id: '5',
+			name: 'Portfolio',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			platform: 'web',
+			image: '/images/projects/talkandplay.webp',
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/portfolio',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://html.spec.whatwg.org/multipage/',
+					text: 'HTML 5',
+					icon: 'html5'
+				},
+				{
+					url: 'https://www.w3.org/Style/CSS/Overview.en.html',
+					text: 'CSS 3',
+					icon: 'css3'
+				},
+				{
+					url: 'https://nextjs.org/',
+					text: 'NextJS',
+					icon: 'nextjs'
+				},
+				{
+					url: 'https://reactjs.org/',
+					text: 'React',
+					icon: 'react'
+				}
+			]
+		},
 		{
 			id: '1',
 			name: 'Talk And Play',
@@ -171,6 +213,11 @@ const Home: NextPage = () => {
 					url: 'https://www.postgresql.org/',
 					text: 'PostgreSQL',
 					icon: 'postgres'
+				},
+				{
+					url: 'https://sequelize.org/',
+					text: 'Sequelize',
+					icon: 'sequelize'
 				},
 				{
 					url: 'https://graphql.org/',

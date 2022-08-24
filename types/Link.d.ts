@@ -15,6 +15,10 @@ export type BrandIcon =
 	| 'springBoot'
 	| 'hibernate'
 	| 'jest'
+	| 'sequelize'
+	| 'nextjs'
+	| 'css3'
+	| 'html5'
 
 export interface Link {
 	url: string
