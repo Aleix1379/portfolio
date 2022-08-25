@@ -47,7 +47,7 @@
 }
 
 .switch:hover::after {
-    animation: borderEnterAnimation 1.5s .25s cubic-bezier(.46, .35, .15, 2.02) forwards;
+    animation: borderEnterAnimation 1.5s cubic-bezier(.46, .35, .15, 2.02) forwards;
 }
 
 .switch > span {
