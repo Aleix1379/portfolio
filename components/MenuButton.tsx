@@ -12,9 +12,9 @@ const MenuButton: React.FC<MenuButtonProps> = ({ onClick, isActive }) => {
 			className={styles.menu}
 			onClick={onClick}
 		>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#111' }}></div>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#111' }}></div>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#111' }}></div>
+			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
+			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
+			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
 		</div>
 	)
 }

@@ -19,7 +19,7 @@
 }
 
 .inputWrapper {
-    background-color: #505050;
+    background-color: var(--bg-input);
     height: 40px;
     display: flex;
     padding-left: 8px;
@@ -42,7 +42,7 @@
 }
 
 .textareaWrapper {
-    background-color: #505050;
+    background-color: var(--bg-input);
     padding-left: 8px;
     padding-right: 8px;
     height: 80px;

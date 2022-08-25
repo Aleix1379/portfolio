@@ -1,9 +1,8 @@
 .menu {
-    margin-left: auto;
-    margin-right: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-right: 25px;
 }
 
 .menu > div {

@@ -5,9 +5,8 @@
 
 .logo > div {
     border-radius: 50%;
-    background-color: #3888c1;
-    height: 50px;
-    width: 50px;
+    height: 65px;
+    width: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,6 +15,12 @@
 
 .logo > div:hover {
     background-color: #38c188;
+    height: 65px;
+    width: 65px;
+}
+
+.logo > h2 {
+    display: none;
 }
 
 .name {
@@ -41,7 +46,9 @@
 
 .nav {
     display: flex;
-    width: 1400px;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .ul {
@@ -96,33 +103,13 @@
     font-weight: bold;
 }
 
+.themeSwitch {
+    margin-left: auto;
+    margin-right: auto;
+}
 
-@media (min-width: 768px) {
-    .ul {
-        display: flex;
-        position: unset;
-        top: unset;
-        left: unset;
-        background: unset;
-        margin-left: auto;
-        margin-right: 50px;
-        padding-left: unset;
-        flex-direction: unset;
-        align-items: unset;
-        width: unset;
-        padding-top: unset;
-        padding-bottom: unset;
-        animation: unset;
-
-    }
-
-    .li > a {
-        font-size: 1.15rem;
-    }
-
-    .li > a:hover::after {
-        bottom: 4px;
-    }
+.avatar {
+    border-radius: 50%;
 }
 
 @keyframes hoverAnimation {
@@ -150,5 +137,41 @@
     to {
         opacity: 0;
         transform: scale(0);
+    }
+}
+
+@media (min-width: 768px) {
+    .logo > h2 {
+        display: block;
+    }
+
+    .nav {
+        flex: unset;
+        width: 1400px;
+    }
+
+    .ul {
+        display: flex;
+        position: unset;
+        top: unset;
+        left: unset;
+        background: unset;
+        margin-right: 50px;
+        padding-left: unset;
+        flex-direction: unset;
+        align-items: unset;
+        width: unset;
+        padding-top: unset;
+        padding-bottom: unset;
+        animation: unset;
+
+    }
+
+    .li > a {
+        font-size: 1.15rem;
+    }
+
+    .li > a:hover::after {
+        bottom: 4px;
     }
 }

@@ -2,25 +2,11 @@
     display: flex;
     flex-direction: column;
     padding: 15px 25px 5px;
-    background-color: #222;
+    background-color: var(--bg-project);
     border-radius: 8px;
     width: 350px;
-    box-shadow: 5px 5px 20px -5px rgb(17, 17, 17);
-
-    /*    background-image: linear-gradient(
-                45deg,
-                hsl(0deg 0% 7%) 0%,
-                hsl(344deg 0% 8%) 10%,
-                hsl(344deg 0% 9%) 20%,
-                hsl(344deg 0% 11%) 30%,
-                hsl(344deg 0% 12%) 40%,
-                hsl(0deg 0% 13%) 50%,
-                hsl(344deg 0% 15%) 60%,
-                hsl(344deg 0% 16%) 70%,
-                hsl(344deg 0% 17%) 80%,
-                hsl(344deg 0% 19%) 90%,
-                hsl(0deg 0% 20%) 100%
-        );*/
+    box-shadow: 5px 5px 20px -5px var(--sh-project);
+    transition: background-color .5s;
 }
 
 .title {
@@ -30,8 +16,6 @@
 }
 
 .title > h2 {
-    color: #909090;
-    text-shadow: 4px 4px 10px #111;
     font-size: 30px;
     margin-top: 0;
     margin-bottom: 0;
@@ -67,8 +51,9 @@
 }
 
 .subtitle {
-    color: #909090;
-    text-shadow: 4px 4px 10px #111;
+    color: var(--tc-project-title);
+    text-shadow: 4px 4px 10px var(--tsh-project);
+    transition: color, text-shadow .5s;
 }
 
 .pages {

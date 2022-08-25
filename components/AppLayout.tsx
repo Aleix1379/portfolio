@@ -5,7 +5,7 @@ import Nav from './Nav'
 import styles from '../styles/Home.module.css'
 
 interface AppLayoutProps {
-  children: JSX.Element
+	children: JSX.Element
 }
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {

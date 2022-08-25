@@ -31,7 +31,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, platform, image, l
 		<div className={styles.project}>
 
 			<div className={styles.title}>
-				<h2>{name}</h2>
+				<h2 className={styles.subtitle}>{name}</h2>
 				<span className={styles.chip} style={getChipStyle(platform)}>{platform}</span>
 			</div>
 

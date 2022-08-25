@@ -1,0 +1,173 @@
+.container {
+
+}
+
+
+.wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding-left: 12px;
+    padding-right: 12px;
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    cursor: pointer;
+    /*box-shadow: 3px 4px 20px 1px black;*/
+    transition: border 1s;
+    border: 4px solid transparent;
+}
+
+.switch:hover {
+    /*border-color: #38c188;*/
+}
+
+.switch::after {
+    content: '';
+    position: absolute;
+    height: calc(100% + 20px);
+    width: calc(100% + 20px);
+    top: -9px;
+    left: calc(-100% - 20px);
+    z-index: -1;
+    border-radius: 50px;
+    background-color: #38c188;
+    /*box-shadow: 3px 4px 20px 1px black;*/
+    animation: borderLeaveAnimation 1.75s cubic-bezier(.46, .35, .15, 2.02) forwards;
+}
+
+.switch:hover::after {
+    animation: borderEnterAnimation 1.5s .25s cubic-bezier(.46, .35, .15, 2.02) forwards;
+}
+
+.switch > span {
+    overflow: visible !important;
+}
+
+.off,
+.on {
+    filter: brightness(.15);
+    transition: .5s;
+    animation: statusOffAnimation .75s forwards;
+}
+
+.statusVisible {
+    animation: statusOnAnimation .75s forwards;
+}
+
+.selector {
+    transform: translateX(100%);
+    transition: .5s;
+    border-radius: 50%;
+    border: 3px solid #666;
+    z-index: 100;
+    position: absolute;
+}
+
+.selectorActive {
+    animation: selectorOffAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
+}
+
+.selectorInActive {
+    animation: selectorOnAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
+}
+
+@keyframes statusOnAnimation {
+    0% {
+        filter: brightness(.15);
+    }
+
+    50% {
+        transform: scale(1.35) rotate(15deg);
+        filter: brightness(1);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@keyframes statusOffAnimation {
+    0% {
+        filter: brightness(1);
+    }
+
+    100% {
+        filter: brightness(.15);
+    }
+}
+
+@keyframes selectorOnAnimation {
+    0% {
+        background-color: #EFEDEE;
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+        background-color: gold;
+    }
+}
+
+@keyframes selectorOffAnimation {
+    0% {
+        transform: translateX(0);
+        background-color: gold;
+    }
+
+    100% {
+        transform: translateX(55px);
+        background-color: #EFEDEE;
+    }
+}
+
+@keyframes borderEnterAnimation {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes borderLeaveAnimation {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: calc(-100% - 20px);
+    }
+}
+
+@keyframes borderEnterAnimation2 {
+    0% {
+        right: calc(-100% - 20px);
+        top: -40px;
+    }
+    100% {
+        right: 0;
+        top: 0;
+    }
+}
+
+@keyframes borderLeaveAnimation2 {
+    0% {
+        right: 0;
+        top: 0;
+    }
+
+    100% {
+        right: calc(100% + 20px);
+    }
+}

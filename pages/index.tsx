@@ -38,7 +38,7 @@ const Home: NextPage = () => {
 
 	const [projects] = useState<Array<HomeState['project']>>([
 		{
-			id: '5',
+			id: '6',
 			name: 'Portfolio',
 			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
 			platform: 'web',
