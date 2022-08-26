@@ -24,11 +24,16 @@
     margin-left: 20px;
 }
 
-.name {
+.name:first-child {
     margin-bottom: 30px;
 }
 
 .description {
+}
+
+.word {
+    display: inline-block;
+    overflow: visible;
 }
 
 .letter {

@@ -6,18 +6,36 @@ const Header = () => {
 	const [description] = useState('A front end developer.')
 
 	const renderAnimatedText = (text: string, animationDelay = .1) => {
-		return text.split('').map((letter, index) => (
-			<span
-				key={index}
-				className={styles.letter}
-				style={{
-					animationDelay: `${(index * 0.075) + animationDelay}s`,
-					marginLeft: letter === ' ' ? 15 : 0
-				}}
-			>
-				{letter}
-			</span>
+		return text.split(/(\s+)/).map((word, key) => (
+			<div key={key} className={styles.word}>
+				{
+					word.split('').map((letter, index) => (
+						<span
+							key={index}
+							className={styles.letter}
+							style={{
+								animationDelay: `${(index * 0.025 * key) + animationDelay}s`,
+								marginLeft: letter === ' ' ? 15 : 0
+							}}
+						>
+							{letter}
+						</span>
+					))
+				}
+			</div>
 		))
+		/*		return text.split('').map((letter, index) => (
+					<span
+						key={index}
+						className={styles.letter}
+						style={{
+							animationDelay: `${(index * 0.075) + animationDelay}s`,
+							marginLeft: letter === ' ' ? 15 : 0
+						}}
+					>
+						{letter}
+					</span>
+				))*/
 	}
 
 	return (
@@ -27,7 +45,7 @@ const Header = () => {
 					{renderAnimatedText(name)}
 				</h2>
 				<h2 className={`${styles.name} ${styles.text}`}>
-					{renderAnimatedText(description, name.length * 0.1)}
+					{renderAnimatedText(description, .5)}
 				</h2>
 			</div>
 		</div>
