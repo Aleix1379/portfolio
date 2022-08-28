@@ -1,5 +1,6 @@
 import styles from '../styles/IconLink.module.css'
 import {
+	Angular,
 	Apollographql,
 	CssThree,
 	Github,
@@ -53,7 +54,8 @@ const IconLink: React.FC<IconLinkProps> = ({ link, className, color = '#454545',
 		sequelize: <Sequelize title={'Sequelize'} color={color} size={size} />,
 		nextjs: <Nextdotjs title={'Next JS'} color={color} size={size} />,
 		css3: <CssThree title={'CSS 3'} color={color} size={size} />,
-		html5: <Html5 title={'HTML 5'} color={color} size={size} />
+		html5: <Html5 title={'HTML 5'} color={color} size={size} />,
+		angular: <Angular title={'Angular'} color={color} size={size} />
 	}
 	const getIcon = (name: BrandIcon) => {
 		return icons[name]

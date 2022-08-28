@@ -40,9 +40,9 @@ const Home: NextPage = () => {
 		{
 			id: '6',
 			name: 'Portfolio',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Web to show my projects and opportunity to learn NextJS.',
 			platform: 'web',
-			image: '/images/projects/talkandplay.webp',
+			image: '/images/projects/portfolio.webp',
 			links: [
 				{
 					url: 'https://github.com/Aleix1379/portfolio',
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
 		{
 			id: '1',
 			name: 'Talk And Play',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Mobile app to talk about video games.',
 			platform: 'mobile',
 			image: '/images/projects/talkandplay.webp',
 			links: [
@@ -112,7 +112,7 @@ const Home: NextPage = () => {
 		{
 			id: '2',
 			name: 'Talk And Play',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Backend for Talk and play.',
 			platform: 'backend',
 			image: '/images/projects/talkandplay.webp',
 			links: [],
@@ -142,7 +142,7 @@ const Home: NextPage = () => {
 		{
 			id: '3',
 			name: 'Enirve',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Mobile app to learn irregular verbs in English',
 			platform: 'mobile',
 			image: '/images/projects/enirve.webp',
 			links: [
@@ -188,7 +188,7 @@ const Home: NextPage = () => {
 		{
 			id: '4',
 			name: 'Enirve',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Backend for Enirve.',
 			platform: 'backend',
 			image: '/images/projects/enirve.webp',
 			links: [
@@ -234,7 +234,7 @@ const Home: NextPage = () => {
 		{
 			id: '5',
 			name: 'Travels & Trips',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer luctus risus ac felis mollis, cursus volutpat purus lobortis.',
+			description: 'Prototype mobile app abouts trips.',
 			platform: 'mobile',
 			image: '/images/projects/tratrip.webp',
 			links: [
@@ -264,6 +264,42 @@ const Home: NextPage = () => {
 					url: 'https://jestjs.io/',
 					text: 'Jest',
 					icon: 'jest'
+				}
+			]
+		},
+		{
+			id: '5',
+			name: 'Spotify player',
+			description: 'Web app to list and play your favourite music from spotify.',
+			platform: 'web',
+			image: '/images/projects/spotify.png',
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/SpotiViewer',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://angular.io/',
+					text: 'Angular',
+					icon: 'angular'
+				},
+				{
+					url: 'https://html.spec.whatwg.org/multipage/',
+					text: 'HTML 5',
+					icon: 'html5'
+				},
+				{
+					url: 'https://www.w3.org/Style/CSS/Overview.en.html',
+					text: 'CSS 3',
+					icon: 'css3'
 				}
 			]
 		}
@@ -305,7 +341,7 @@ const Home: NextPage = () => {
 					<div className={styles.infoProjects}>
 						<Image src={'/images/projects.svg'} height={300} width={300} />
 						<div>
-							I like to work on personal projects to improve and learn new technologies, usually with
+							<span>I like to work on personal projects to improve and learn new technologies, usually with</span>
 							<span className={styles.important}> React</span>,
 							<span className={styles.important}> React Native </span>and
 							<span className={styles.important}> NodeJS</span>
@@ -334,6 +370,9 @@ const Home: NextPage = () => {
 					<h2 className={styles.formTitle}>Contact me</h2>
 
 					<div className={styles.infoContact}>
+
+						<Image src={'/images/contact.svg'} height={300} width={300} />
+
 
 						<div>
 							<div className={styles.socialNetworks}>
@@ -387,9 +426,6 @@ const Home: NextPage = () => {
 								<Button className={styles.button} label={'Send!'} onClick={sendMessage} />
 							</form>
 						</div>
-
-						<Image src={'/images/contact.svg'} height={300} width={300} />
-
 
 					</div>
 				</section>

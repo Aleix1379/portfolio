@@ -19,6 +19,7 @@ export type BrandIcon =
 	| 'nextjs'
 	| 'css3'
 	| 'html5'
+	| 'angular'
 
 export interface Link {
 	url: string
