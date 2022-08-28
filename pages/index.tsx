@@ -286,12 +286,15 @@ const Home: NextPage = () => {
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
-						<p>
-							<span className={styles.important}>+5 years</span> of experience.
-							I have been working as a Front End Developer designing and implementing user interfaces.
-							I have used AngularJS, Angular 7, Ionic 4, Node JS, Typescript, MongoDB, React Native and Sass.
-							I am interested in web development (Front End and Back End) and mobile applications.
-						</p>
+						<div>
+							<span className={styles.important}>+5 years</span> <span>of experience as a front end developer.</span>
+							<p>
+								Working with web and mobile apps.
+							</p>
+							<p>
+								Focused on building user interfaces with web technologies.
+							</p>
+						</div>
 						<Image src={'/images/about.svg'} height={300} width={300} />
 					</div>
 				</section>
@@ -301,10 +304,12 @@ const Home: NextPage = () => {
 
 					<div className={styles.infoProjects}>
 						<Image src={'/images/projects.svg'} height={300} width={300} />
-						<p>
-							Integer non fermentum mi. Vivamus tempus elementum tincidunt. Ut venenatis sodales vulputate. Proin sed
-							augue porttitor, convallis metus ut, semper turpis. Proin vel nisl velit.
-						</p>
+						<div>
+							I like to work on personal projects to improve and learn new technologies, usually with
+							<span className={styles.important}> React</span>,
+							<span className={styles.important}> React Native </span>and
+							<span className={styles.important}> NodeJS</span>
+						</div>
 					</div>
 
 					<div className={styles.projects}>

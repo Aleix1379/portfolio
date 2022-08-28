@@ -1,0 +1,38 @@
+.letter {
+    display: inline-block;
+    transform: translateY(-300px);
+    animation: inputFocusAnimation 1s ease-in forwards;
+    cursor: default;
+}
+
+.letter:nth-child(even):hover {
+    transform: rotate(10deg) scale(1.15) !important;
+    color: #38c188 !important;
+}
+
+.letter:nth-child(odd):hover {
+    transform: rotate(-10deg) scale(1.15) !important;
+    color: #3888c1 !important;
+}
+
+@keyframes inputFocusAnimation {
+    0% {
+        transform: translateY(-300px);
+        color: #3888c1;
+    }
+
+    50% {
+        transform: scale(2) rotate(-25deg);
+        color: #38c188;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+        color: #fafafa;
+    }
+}
+
+.letter::selection {
+    color: #38c188;
+    background: #3888c1;
+}

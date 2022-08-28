@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/Switch.module.css'
+import styles from '../styles/SwitchTheme.module.css'
 import Image from 'next/image'
 
 interface SwitchProps {
@@ -10,6 +10,22 @@ interface SwitchProps {
 }
 
 const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, className }) => {
+
+	const switchOn = () => {
+		const element = document.getElementById('switch')
+		if (element) {
+			element.classList.remove(styles.switchOff)
+			element.classList.add(styles.switchOn)
+		}
+	}
+
+	const switchOff = () => {
+		const element = document.getElementById('switch')
+		if (element) {
+			element.classList.remove(styles.switchOn)
+			element.classList.add(styles.switchOff)
+		}
+	}
 
 	const getStatusStyle = (isActive: boolean, control: 'off' | 'on') => {
 		if (control === 'off' && isActive) {
@@ -51,6 +67,7 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 			width: getWith() + 8,
 			maxWidth: getWith() + 8,
 			height: getHeight() + 8,
+			top: 2,
 			borderRadius: getHeight() * .75
 		}
 	}
@@ -64,32 +81,34 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 	}
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.wrapper} style={getWrapperStyle()}>
+		<div className={styles.switch} style={getWrapperStyle()}>
+			<div
+				id='switch'
+				className={`${styles.wrapper} ${className}`}
+				style={getContainerStyle()}
+				onClick={() => onChange(!value)}
+				onMouseEnter={switchOn}
+				onMouseLeave={switchOff}
+			>
+
+				<Image
+					className={`${styles.off} ${getStatusStyle(value, 'off')}`}
+					src={'/images/moon.png'}
+					width={size}
+					height={size}
+				/>
+
 				<div
-					className={`${styles.switch} ${className}`}
-					style={getContainerStyle()}
-					onClick={() => onChange(!value)}
-				>
+					className={`${styles.selector} ${getSelectorAnimation(value)}`}
+					style={getSelectorStyle()}
+				/>
 
-					<Image
-						className={`${styles.off} ${getStatusStyle(value, 'off')}`}
-						src={'/images/moon.png'}
-						width={size}
-						height={size}
-					/>
-
-					<div
-						className={`${styles.selector} ${getSelectorAnimation(value)}`}
-						style={getSelectorStyle()} />
-
-					<Image
-						className={`${styles.on} ${getStatusStyle(value, 'on')}`}
-						src={'/images/sun.png'}
-						width={size}
-						height={size}
-					/>
-				</div>
+				<Image
+					className={`${styles.on} ${getStatusStyle(value, 'on')}`}
+					src={'/images/sun.png'}
+					width={size}
+					height={size}
+				/>
 			</div>
 		</div>
 	)

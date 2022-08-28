@@ -36,7 +36,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, platform, image, l
 			</div>
 
 			<div className={styles.image}>
-				<Image src={image} width={200} height={200} layout={'intrinsic'} />
+				<Image src={image} width={140} height={140} layout={'intrinsic'} />
 			</div>
 
 			<p>

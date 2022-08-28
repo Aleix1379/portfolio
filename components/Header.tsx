@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from '../styles/Header.module.css'
+import Letter from './Letter'
 
 const Header = () => {
 	const [name] = useState('I\'m Aleix.')
@@ -10,7 +11,16 @@ const Header = () => {
 			<div key={key} className={styles.word}>
 				{
 					word.split('').map((letter, index) => (
-						<span
+						<Letter
+							key={index}
+							value={letter}
+							className={styles.letter}
+							style={{
+								animationDelay: `${(index * 0.025 * key) + animationDelay}s`,
+								marginLeft: letter === ' ' ? 15 : 0
+							}}
+						/>
+						/*<span
 							key={index}
 							className={styles.letter}
 							style={{
@@ -19,7 +29,7 @@ const Header = () => {
 							}}
 						>
 							{letter}
-						</span>
+						</span>*/
 					))
 				}
 			</div>

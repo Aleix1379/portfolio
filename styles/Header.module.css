@@ -1,13 +1,14 @@
 .header {
     padding-top: 45px;
     padding-bottom: 35px;
-    background-color: #222;
+    background-color: var(--bg-header);
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: radial-gradient(rgba(56, 193, 136, 0.15) 1px, transparent 0);
+    background-image: radial-gradient(var(--bgi) 1px, transparent 0);
     background-size: 14px 14px;
     background-position: -10px -10px;
+    transition: background-color .5s;
 }
 
 .header > div {
@@ -25,7 +26,7 @@
 }
 
 .name:first-child {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .description {
@@ -35,46 +36,6 @@
     display: inline-block;
     overflow: visible;
 }
-
-.letter {
-    display: inline-block;
-    transform: translateY(-300px);
-    animation: inputFocusAnimation 1s ease-in forwards;
-    cursor: default;
-}
-
-.letter:nth-child(even):hover {
-    transform: rotate(10deg) scale(1.15) !important;
-    color: #38c188 !important;
-}
-
-.letter:nth-child(odd):hover {
-    transform: rotate(-10deg) scale(1.15) !important;
-    color: #3888c1 !important;
-}
-
-@keyframes inputFocusAnimation {
-    0% {
-        transform: translateY(-300px);
-        color: #3888c1;
-    }
-
-    50% {
-        transform: scale(2) rotate(-25deg);
-        color: #38c188;
-    }
-
-    100% {
-        transform: translateY(0) translateX(0);
-        color: #fafafa;
-    }
-}
-
-.letter::selection {
-    color: #38c188;
-    background: #3888c1;
-}
-
 
 @media (min-width: 768px) {
     .text {

@@ -5,43 +5,57 @@
 
 .logo > div {
     border-radius: 50%;
-    height: 65px;
-    width: 65px;
+    height: 78px;
+    width: 78px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 1s;
 }
 
-.logo > div:hover {
+.logo:hover > div {
     background-color: #38c188;
-    height: 65px;
-    width: 65px;
+    height: 78px;
+    width: 78px;
 }
 
 .logo > h2 {
     display: none;
+    position: relative;
 }
 
 .name {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 15px;
-    color: #fafafa;
+    color: var(--text-color);
+    transition: color .5s;
 }
 
 .navContainer {
     display: flex;
     justify-content: center;
     position: sticky;
-    background-color: #181818;
+    background-color: var(--bg-navbar);
     top: 0;
     width: 100%;
-    box-shadow: 0px 5px 25px -12px rgba(0, 0, 0, .85);
+    box-shadow: 0 5px 25px -12px rgba(0, 0, 0, .85);
     z-index: 10000;
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    height: var(--header-height) !important;
+    align-self: center;
+    transition: background-color .5s;
+    min-width: 100vw;
+}
+
+.navContainerShow {
+    animation: headerShowAnimation .35s ease-in-out forwards;
+}
+
+.navContainerHide {
+    animation: headerHideAnimation .35s ease-in-out forwards;
 }
 
 .nav {
@@ -57,7 +71,6 @@
     position: absolute;
     top: calc(100% - 22px);
     left: 0;
-    background: #424242;
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
@@ -67,6 +80,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
     animation: closeMenuAnimation .5s ease forwards;
+    background-color: var(--bg-navbar);
 }
 
 .menuOpened {
@@ -84,6 +98,7 @@
     font-size: 2rem;
 }
 
+.logo:hover > h2::after,
 .li > a:hover::after {
     content: '';
     position: absolute;
@@ -95,8 +110,12 @@
     animation: hoverAnimation .35s ease forwards;
 }
 
+.logo:hover > h2::after {
+    bottom: -2px;
+}
+
 .navContainer > .nav > ul > li > a {
-    color: #fafafa;
+    color: var(--text-color);
     display: block;
     position: relative;
     transition: 1s all;
@@ -140,6 +159,29 @@
     }
 }
 
+@keyframes headerShowAnimation {
+    from {
+        transform: scale(.7);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes headerHideAnimation {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(.75);
+        opacity: .95;
+        max-width: 1920px;
+    }
+}
+
 @media (min-width: 768px) {
     .logo > h2 {
         display: block;
@@ -147,7 +189,7 @@
 
     .nav {
         flex: unset;
-        width: 1400px;
+        width: var(--content-width);
     }
 
     .ul {
@@ -156,7 +198,6 @@
         top: unset;
         left: unset;
         background: unset;
-        margin-right: 50px;
         padding-left: unset;
         flex-direction: unset;
         align-items: unset;
@@ -173,5 +214,15 @@
 
     .li > a:hover::after {
         bottom: 4px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .navContainer {
+        min-width: 1900px;
+    }
+
+    .navContainerHide > .nav {
+        min-width: 1700px;
     }
 }

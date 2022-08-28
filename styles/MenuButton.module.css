@@ -9,10 +9,16 @@
     background-color: #111;
     height: 4px;
     width: 30px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     border-radius: 4px;
     transition: .35s;
+}
+
+.menu > div:nth-child(2) {
+    width: 130%;
+    position: relative;
+    right: 15%;
 }
 
 @media (min-width: 768px) {
