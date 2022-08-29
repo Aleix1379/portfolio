@@ -20,7 +20,7 @@
 }
 
 .section {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
 }
@@ -38,10 +38,9 @@
     font-family: 'Catamaran bold', sans-serif;
     font-size: 50px;
     margin-top: 0;
-    margin-bottom: 0;
     color: var(--tc-title-main);
     align-self: center;
-
+    margin-bottom: 30px;
 }
 
 .section > h2::selection {
@@ -54,6 +53,15 @@
     flex-direction: column;
     margin-top: 15px;
     margin-bottom: 45px;
+}
+
+.infoExperience > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoAbout {
+    margin-top: -60px;
 }
 
 .infoProjects {
@@ -70,7 +78,7 @@
 .infoContact {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: -60px;
 }
 
 .important {
@@ -160,6 +168,12 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         width: 100%;
+        margin-top: 15px;
+    }
+
+    .infoAbout > div {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     .infoProjects {
@@ -177,6 +191,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 80px;
+        margin-top: 15px;
     }
 
     .infoContact > span > img {

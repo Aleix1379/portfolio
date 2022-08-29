@@ -14,6 +14,9 @@
     --bg-header: #222;
     --bgi: rgba(56, 193, 136, 0.25);
     --bg-switch: black;
+    --bg-technology: #555;
+    --bg-experience-separator: #222;
+    --tsh-experience-separator: 1px 1px 1px 1px rgba(22, 22, 22, .5);
 }
 
 [data-theme="light"] {
@@ -32,4 +35,7 @@
     --bg-header: #dddddd;
     --bgi: rgba(56, 193, 136, 0.95);
     --bg-switch: white;
+    --bg-technology: #e8e8e8;
+    --bg-experience-separator: #b3b3b3;
+    --tsh-experience-separator: 1px 1px 1px 1px rgba(209, 209, 209, 0.75);
 }

@@ -4,9 +4,12 @@
     padding: 15px 25px 5px;
     background-color: var(--bg-project);
     border-radius: 8px;
-    width: 350px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
     transition: background-color .5s;
+    width: calc(100% - 5px);
+    right: 5px;
+    position: relative;
+    max-width: 350px;
 }
 
 .title {
@@ -19,19 +22,6 @@
     font-size: 30px;
     margin-top: 0;
     margin-bottom: 0;
-}
-
-.title > .chip {
-    align-self: flex-start;
-    padding: 1px 8px;
-    margin-top: 5px;
-    font-size: 13px;
-    border-radius: 20px;
-    color: #fafafa;
-}
-
-.title > .chip:first-letter {
-    text-transform: uppercase;
 }
 
 .image {
@@ -72,4 +62,12 @@
 .noLinksAvailable {
     margin-bottom: 28px;
     color: #696969;
+}
+
+@media (min-width: 768px) {
+    .project {
+        width: 350px;
+        right: 0;
+        position: unset;
+    }
 }

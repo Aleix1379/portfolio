@@ -4,6 +4,7 @@ import styles from '../styles/Project.module.css'
 import { Link } from '../types/Link'
 import IconLink from './IconLink'
 import { Platform } from '../types/Platform'
+import Chip from './Chip'
 
 interface ProjectProps {
 	name: string
@@ -32,7 +33,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, platform, image, l
 
 			<div className={styles.title}>
 				<h2 className={styles.subtitle}>{name}</h2>
-				<span className={styles.chip} style={getChipStyle(platform)}>{platform}</span>
+				<Chip style={getChipStyle(platform)}>{platform}</Chip>
 			</div>
 
 			<div className={styles.image}>

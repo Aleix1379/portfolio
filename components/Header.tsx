@@ -6,46 +6,29 @@ const Header = () => {
 	const [name] = useState('I\'m Aleix.')
 	const [description] = useState('A front end developer.')
 
-	const renderAnimatedText = (text: string, animationDelay = .1) => {
+	const renderAnimatedText = (text: string, animationDelay = .25) => {
 		return text.split(/(\s+)/).map((word, key) => (
 			<div key={key} className={styles.word}>
 				{
-					word.split('').map((letter, index) => (
-						<Letter
-							key={index}
-							value={letter}
-							className={styles.letter}
-							style={{
-								animationDelay: `${(index * 0.025 * key) + animationDelay}s`,
-								marginLeft: letter === ' ' ? 15 : 0
-							}}
-						/>
-						/*<span
-							key={index}
-							className={styles.letter}
-							style={{
-								animationDelay: `${(index * 0.025 * key) + animationDelay}s`,
-								marginLeft: letter === ' ' ? 15 : 0
-							}}
-						>
-							{letter}
-						</span>*/
-					))
+					word
+						.split('')
+						.map((letter, index) => {
+							const wordKey = key * 1.5
+							const delay = (((wordKey + index) * .1) + animationDelay).toFixed(2)
+							return (
+								<Letter
+									key={index}
+									value={letter}
+									style={{
+										animationDelay: `${delay}s`,
+										marginLeft: letter === ' ' ? 15 : 0
+									}}
+								/>
+							)
+						})
 				}
 			</div>
 		))
-		/*		return text.split('').map((letter, index) => (
-					<span
-						key={index}
-						className={styles.letter}
-						style={{
-							animationDelay: `${(index * 0.075) + animationDelay}s`,
-							marginLeft: letter === ' ' ? 15 : 0
-						}}
-					>
-						{letter}
-					</span>
-				))*/
 	}
 
 	return (
@@ -55,7 +38,7 @@ const Header = () => {
 					{renderAnimatedText(name)}
 				</h2>
 				<h2 className={`${styles.name} ${styles.text}`}>
-					{renderAnimatedText(description, .5)}
+					{renderAnimatedText(description, .75)}
 				</h2>
 			</div>
 		</div>

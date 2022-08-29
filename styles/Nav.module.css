@@ -161,7 +161,7 @@
 
 @keyframes headerShowAnimation {
     from {
-        transform: scale(.7);
+        transform: scale(var(--nav-scale));
     }
 
     to {
@@ -176,7 +176,7 @@
     }
 
     to {
-        transform: scale(.75);
+        transform: scale(var(--nav-scale));
         opacity: .95;
         max-width: 1920px;
     }

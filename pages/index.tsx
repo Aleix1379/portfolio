@@ -9,6 +9,9 @@ import { Link } from '../types/Link'
 import Image from 'next/image'
 import IconLink from '../components/IconLink'
 import { Platform } from '../types/Platform'
+import { JobExperience } from '../types/JobExperience'
+import Experience from '../components/Experience'
+import ExperienceSeparator from '../components/ExperienceSeparator'
 
 interface HomeState {
 	form: {
@@ -268,7 +271,7 @@ const Home: NextPage = () => {
 			]
 		},
 		{
-			id: '5',
+			id: '7',
 			name: 'Spotify player',
 			description: 'Web app to list and play your favourite music from spotify.',
 			platform: 'web',
@@ -305,6 +308,38 @@ const Home: NextPage = () => {
 		}
 	])
 
+	const [experiences] = useState<Array<JobExperience>>([
+		{
+			id: '1',
+			title: 'Full-stack developer',
+			start: '2021-12-01',
+			end: null,
+			technologies: ['Nuxt.js', 'Vue.js', 'Node JS', 'Strapi'],
+			description: 'Develop an ecommerce'
+		},
+		{
+			id: '2',
+			title: 'Front-end developer',
+			start: '2020-05-01',
+			end: '2021-12-22',
+			technologies: ['React JS'],
+			description: `Front end con React JS.
+Backend con Java`
+		},
+		{
+			id: '3',
+			title: 'Full-stack developer',
+			start: '2016-08-01',
+			end: '2019-09-15',
+			technologies: ['Angular', 'Node JS'],
+			description: `Web apps using the framework Angular JS.
+Mobile apps for Android and iOS using Ionic 4 framework.
+Backend with Node JS and Typescript.
+Develop the prototype of the application using https://www.fluidui.com/
+Publish apps on Google Play and App Store.`
+		}
+	])
+
 	const updateForm = (input: string, text: string) => {
 		setForm({ ...form, [input]: text })
 	}
@@ -322,6 +357,7 @@ const Home: NextPage = () => {
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
+						<Image src={'/images/about.svg'} height={300} width={300} />
 						<div>
 							<span className={styles.important}>+5 years</span> <span>of experience as a front end developer.</span>
 							<p>
@@ -331,7 +367,21 @@ const Home: NextPage = () => {
 								Focused on building user interfaces with web technologies.
 							</p>
 						</div>
-						<Image src={'/images/about.svg'} height={300} width={300} />
+					</div>
+				</section>
+
+				<section id='experience' className={styles.section}>
+					<h2>Experience</h2>
+					<Image src={'/images/experience.svg'} height={300} width={300} />
+					<div className={styles.infoExperience}>
+						{
+							experiences.map((experience, index) =>
+								<div key={index}>
+									<Experience experience={experience} />
+									{index < experiences.length - 1 && <ExperienceSeparator />}
+								</div>
+							)
+						}
 					</div>
 				</section>
 
@@ -342,7 +392,7 @@ const Home: NextPage = () => {
 						<Image src={'/images/projects.svg'} height={300} width={300} />
 						<div>
 							<span>I like to work on personal projects to improve and learn new technologies, usually with</span>
-							<span className={styles.important}> React</span>,
+							<span className={styles.important}> React JS</span>,
 							<span className={styles.important}> React Native </span>and
 							<span className={styles.important}> NodeJS</span>
 						</div>
