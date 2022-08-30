@@ -21,17 +21,6 @@
     font-size: 13px;
 }
 
-.technology {
-    background-color: var(--bg-technology);;
-    color: var(--text-color);
-    font-size: 13px;
-    border-radius: 4px;
-    display: inline-block;
-    box-shadow: var(--tsh-experience-separator);
-    margin-left: 4px;
-    margin-right: 4px;
-}
-
 .technology:first-of-type {
     margin-left: 0;
 }
