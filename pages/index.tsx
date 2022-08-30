@@ -12,11 +12,11 @@ import { Platform } from '../types/Platform'
 import { JobExperience } from '../types/JobExperience'
 import Experience from '../components/Experience'
 import ExperienceSeparator from '../components/ExperienceSeparator'
+import { Validation } from '../types/Validation'
+import Validator from '../services/Validator'
 
 interface HomeState {
 	form: {
-		name: string
-		email: string
 		subject: string
 		message: string
 	}
@@ -28,13 +28,15 @@ interface HomeState {
 		image: string
 		links: Array<Link>
 		technologies: Array<Link>
+	},
+	validations: {
+		subject: Validation,
+		message: Validation
 	}
 }
 
 const Home: NextPage = () => {
 	const [form, setForm] = useState<HomeState['form']>({
-		name: '',
-		email: '',
 		subject: '',
 		message: ''
 	})
@@ -340,15 +342,71 @@ Publish apps on Google Play and App Store.`
 		}
 	])
 
-	const updateForm = (input: string, text: string) => {
-		setForm({ ...form, [input]: text })
+	const buildValidations = (): HomeState['validations'] => {
+		return {
+			subject: {
+				message: 'Subject',
+				touched: false,
+				label: '',
+				constraints: [
+					{
+						key: 'REQUIRED'
+					},
+					{
+						key: 'MAX_LENGTH',
+						value: 60
+					}
+				]
+			},
+			message: {
+				message: '',
+				touched: false,
+				label: 'Message',
+				constraints: [
+					{
+						key: 'REQUIRED'
+					},
+					{
+						key: 'MAX_LENGTH',
+						value: 500
+					}
+				]
+			}
+		}
 	}
+
+	const [validations, setValidations] = useState<HomeState['validations']>(buildValidations)
+
+	const validator = new Validator(validations, setValidations)
+
+	const updateForm = (input: 'subject' | 'message', text: string) => {
+		const data = { ...form, [input]: text }
+		setForm(data)
+		validator.validateForm(data)
+
+		const val: HomeState['validations'] = { ...validations }
+		if (val[input]) {
+			val[input].touched = true
+		}
+		setValidations({ ...validations, ...val })
+		setIsFormValid(
+			validations.subject.message.length === 0 &&
+			validations.message.message.length === 0
+		)
+	}
+
+	const [isFormValid, setIsFormValid] = useState(false)
 
 	const sendMessage = (event?: React.FormEvent<HTMLFormElement>) => {
 		if (event) {
 			event.preventDefault()
+			openEmail()
 		}
 		console.info('form:', form)
+	}
+
+	const openEmail = () => {
+		window.open(`mailto:aleixmp1379@gmail.com?subject=${form.subject}&body=${form.message}`, '_blank')
 	}
 
 	return (
@@ -423,7 +481,6 @@ Publish apps on Google Play and App Store.`
 
 						<Image src={'/images/contact.svg'} height={300} width={300} />
 
-
 						<div>
 							<div className={styles.socialNetworks}>
 								<IconLink
@@ -448,22 +505,10 @@ Publish apps on Google Play and App Store.`
 							<form className={styles.form} onSubmit={sendMessage}>
 								<Input
 									className={styles.input}
-									label={'Name'}
-									value={form.name}
-									onChange={text => updateForm('name', text)}
-								/>
-								<Input
-									className={styles.input}
-									label={'Email'}
-									value={form.email}
-									onChange={text => updateForm('email', text)}
-									type='email'
-								/>
-								<Input
-									className={styles.input}
 									label={'Subject'}
 									value={form.subject}
 									onChange={text => updateForm('subject', text)}
+									validation={validations.subject}
 								/>
 								<Input
 									className={styles.input}
@@ -471,9 +516,15 @@ Publish apps on Google Play and App Store.`
 									value={form.message}
 									onChange={text => updateForm('message', text)}
 									type={'textarea'}
+									validation={validations.message}
 								/>
 
-								<Button className={styles.button} label={'Send!'} onClick={sendMessage} />
+								<Button
+									className={styles.button}
+									label={'Send!'}
+									onClick={sendMessage}
+									disabled={!isFormValid}
+								/>
 							</form>
 						</div>
 

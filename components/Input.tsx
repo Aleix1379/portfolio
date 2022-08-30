@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Input.module.css'
+import { Validation } from '../types/Validation'
 
 interface InputProps {
 	label: string
@@ -7,10 +8,11 @@ interface InputProps {
 	placeholder?: string
 	onChange: (value: string) => void
 	type?: 'text' | 'textarea' | 'email'
-	className?: string | undefined;
+	className?: string | undefined
+	validation?: Validation
 }
 
-const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type = 'text', className }) => {
+const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type = 'text', className, validation }) => {
 	const [isLabelActive, setIsLabelActive] = useState(false)
 
 	const getAnimationDelay = (index: number): string => {
@@ -21,6 +23,10 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 		return (index * time) + 's'
 	}
 
+	const isValid = () => {
+		return !(validation?.touched && validation.message.length > 0)
+	}
+
 	return (
 		<label className={`${styles.container} ${className}`}>
 			<div className={styles.label}>
@@ -29,7 +35,7 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 						<span
 							key={index}
 							className={`${styles.letter} ${isLabelActive ? styles.animated : ''}`}
-							style={{ animationDelay: getAnimationDelay(index) }}
+							style={{ animationDelay: getAnimationDelay(index), color: isValid() ? '#38c188' : '#c0392b' }}
 						>
 							{letter}
 						</span>
@@ -38,29 +44,47 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 			</div>
 			{
 				type !== 'textarea' &&
-				<div className={`${styles.inputWrapper}  ${isLabelActive ? styles.borderWrapper : ''}`}>
-					<input
-						className={styles.input}
-						type={type}
-						placeholder={isLabelActive ? placeholder : ''}
-						value={value}
-						onChange={e => onChange(e.target.value)}
-						onFocus={() => setIsLabelActive(true)}
-						onBlur={() => setIsLabelActive(value.length > 0)}
-					/>
+				<div>
+					<div
+						className={`${styles.inputWrapper}  ${isLabelActive ? styles.borderWrapper : ''}`}
+						style={{ borderColor: isValid() ? '#38c188' : '#c0392b' }}
+					>
+						<input
+							className={styles.input}
+							type={type}
+							placeholder={isLabelActive ? placeholder : ''}
+							value={value}
+							onChange={e => onChange(e.target.value)}
+							onFocus={() => setIsLabelActive(true)}
+							onBlur={() => setIsLabelActive(value.length > 0)}
+						/>
+					</div>
+					{
+						validation?.touched && validation.message.length > 0 &&
+						<div className={styles.error}>{validation.message}</div>
+					}
 				</div>
 			}
 			{
 				type === 'textarea' &&
-				<div className={`${styles.textareaWrapper} ${isLabelActive ? styles.borderWrapper : ''}`}>
-					<textarea
-						className={styles.input}
-						placeholder={isLabelActive ? placeholder : ''}
-						value={value}
-						onChange={e => onChange(e.target.value)}
-						onFocus={() => setIsLabelActive(true)}
-						onBlur={() => setIsLabelActive(value.length > 0)}
-					/>
+				<div>
+					<div
+						className={`${styles.textareaWrapper} ${isLabelActive ? styles.borderWrapper : ''}`}
+						style={{ borderColor: isValid() ? '#38c188' : '#c0392b' }}
+					>
+						<textarea
+							className={styles.input}
+							placeholder={isLabelActive ? placeholder : ''}
+							value={value}
+							onChange={e => onChange(e.target.value)}
+							onFocus={() => setIsLabelActive(true)}
+							onBlur={() => setIsLabelActive(value.length > 0)}
+						/>
+					</div>
+					{
+						validation?.touched && validation.message.length > 0 &&
+						<div className={styles.error}>{validation.message}</div>
+					}
 				</div>
 			}
 		</label>

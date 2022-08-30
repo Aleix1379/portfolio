@@ -1,0 +1,13 @@
+.footer {
+    background-color: lime;
+    align-self: center;
+    min-height: 200px;
+    width: 100%;
+}
+
+@media (min-width: 1400px) {
+    .footer {
+        width: var(--content-width);
+    }
+
+}

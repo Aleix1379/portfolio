@@ -33,8 +33,12 @@
     animation: backgroundAnimationOut .4s linear forwards;
 }
 
-.button:hover > .background {
+.buttonActive:hover > .background {
     animation: backgroundAnimationIn .4s linear forwards;
+}
+
+.buttonDisabled {
+    cursor: not-allowed;
 }
 
 @keyframes backgroundAnimationIn {

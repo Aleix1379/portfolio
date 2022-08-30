@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 60px;
+    /*height: 60px;*/
 }
 
 .label {
@@ -24,6 +24,7 @@
     display: flex;
     padding-left: 8px;
     padding-right: 8px;
+    transition: .5s;
 }
 
 .input {
@@ -31,6 +32,8 @@
     border: none;
     color: #fafafa;
     width: 100%;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 14px;
 }
 
 .input::placeholder {
@@ -54,7 +57,14 @@
 }
 
 .borderWrapper {
-    border: 2px solid #38c188;
+    border: 2px solid;
+}
+
+.error {
+    color: #c0392b;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 14px;
 }
 
 @keyframes inputFocusAnimation {
@@ -69,7 +79,7 @@
 
     100% {
         transform: translateY(0) translateX(0);
-        color: #38c188;
+        /*color: #38c188;*/
     }
 }
 
