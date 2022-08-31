@@ -44,11 +44,15 @@
     outline: none;
 }
 
+.textarea {
+    min-height: 100%;
+}
+
 .textareaWrapper {
     background-color: var(--bg-input);
     padding-left: 8px;
     padding-right: 8px;
-    height: 80px;
+    height: 220px;
 }
 
 .textareaWrapper > textarea {

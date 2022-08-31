@@ -35,14 +35,17 @@
 
 .details {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .company {
     font-weight: bold;
     font-family: 'Catamaran', sans-serif;
-    align-self: flex-end;
+    align-self: flex-start;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .technology {
@@ -50,7 +53,7 @@
 }
 
 .experience > p {
-    margin-top: 30px;
+    margin-top: 18px;
 }
 
 .duration {
@@ -72,4 +75,13 @@
     .experience h2 {
         margin-bottom: 0;
     }
+
+    .details {
+        flex-direction: row;
+    }
+
+    .company {
+        align-self: flex-end;
+    }
+
 }

@@ -73,7 +73,7 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 						style={{ borderColor: isValid() ? '#38c188' : '#c0392b' }}
 					>
 						<textarea
-							className={styles.input}
+							className={`${styles.input} ${styles.textarea}`}
 							placeholder={isLabelActive ? placeholder : ''}
 							value={value}
 							onChange={e => onChange(e.target.value)}
