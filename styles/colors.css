@@ -1,3 +1,9 @@
+:root {
+    --white: #fafafa;
+    ---green: #38c188;
+    --blue: #3888c1;
+}
+
 [data-theme="dark"] {
     --text-color: #fafafa;
     --background: #222;

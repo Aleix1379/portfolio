@@ -2,8 +2,7 @@ import React from 'react'
 import styles from '../styles/Experience.module.css'
 import { JobExperience } from '../types/JobExperience'
 import Chip from './Chip'
-import { getDifference } from '../utils/time'
-import dayjs from 'dayjs'
+import { formatDateWithMonthName, getDifference } from '../utils/time'
 
 interface ExperienceProps {
 	experience: JobExperience
@@ -15,15 +14,23 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 		<div className={styles.header}>
 			<h2>{experience.title}</h2>
 			<div className={styles.time}>
-				<span>{dayjs(experience.start).format('MMM YYYY')}</span>
+				<span className={styles.timeCapitalize}>{formatDateWithMonthName(experience.start, {
+					month: true,
+					year: true,
+					short: true
+				})}</span>
+				<span> -  </span>
 				{
 					experience.end ?
-						<span>{dayjs(experience.end).format(' - MMM YYYY')}</span> :
-						<span> - Present</span>
+						<span
+							className={styles.timeCapitalize}> {formatDateWithMonthName(experience.end, {
+								month: true,
+								year: true,
+								short: true
+							})}</span> :
+						<span className={styles.timeCapitalize}> present</span>
 				}
-				<span> ·
-					<span className={styles.duration}> {getDifference(experience.start, experience.end)}</span>
-				</span>
+				<span className={styles.duration}> {getDifference(experience.start, experience.end)}</span>
 			</div>
 		</div>
 

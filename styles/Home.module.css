@@ -90,7 +90,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     justify-items: center;
-    row-gap: 60px;
+    row-gap: 30px;
     column-gap: 30px;
     width: 100%;
     margin-top: 15px;
@@ -140,7 +140,7 @@
 }
 
 .socialNetworks > a:hover > svg {
-    fill: #38c188;
+    fill: var(---green);
     stroke: rgba(56, 193, 136, 0.75);
     filter: drop-shadow(1px 1px 3px rgba(33, 33, 33, 0.75));
 }
@@ -151,6 +151,10 @@
         padding-left: 50px;
         padding-right: 50px;
         max-width: var(--content-width);
+    }
+
+    .projects {
+        row-gap: 50px;
     }
 
     .section {

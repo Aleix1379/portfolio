@@ -3,17 +3,17 @@
     transform: translateY(-300px);
     animation: inputFocusAnimation 1s ease-in forwards;
     cursor: default;
-    transition: 1s;
+    transition: .5s;
 }
 
 .letter:nth-child(even):hover {
     transform: rotate(10deg) scale(1.15) !important;
-    color: #38c188 !important;
+    color: var(---green);
 }
 
 .letter:nth-child(odd):hover {
     transform: rotate(-10deg) scale(1.15) !important;
-    color: #3888c1 !important;
+    color: var(--blue);
 }
 
 @keyframes inputFocusAnimation {
@@ -24,12 +24,14 @@
 
     50% {
         transform: scale(2) rotate(-25deg);
+    }
+
+    90% {
         color: #38c188;
     }
 
     100% {
         transform: translateY(0) translateX(0);
-        color: #fafafa;
     }
 }
 

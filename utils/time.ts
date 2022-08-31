@@ -1,3 +1,5 @@
+import { TimeOptions } from '../types/Time'
+
 export const milliSecondsToTime = (t: number) => {
 	let year = 0
 	let month = 0
@@ -41,13 +43,46 @@ export const getDifference = (start: string, end: string | null): string => {
 	let months = ''
 
 	if (time.year > 0) {
-		years = `${time.year} years`
+		years = `${time.year} year${time.year > 1 ? 's' : ''}`
 	}
 
 	if (time.month > 0) {
-		months = `${time.month} months`
+		months = `${time.year > 0 ? ' and ' : ''}${time.month} months`
 	}
 
 	return `${years} ${months}`
 }
 
+
+export const formatDateWithMonthName = (value: string, options?: TimeOptions) => {
+	if (!options) {
+		options = {
+			day: true,
+			month: true,
+			year: true,
+			short: false
+		}
+	}
+
+	const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+	const date: Date = new Date(value)
+
+	const monthName = months[date.getMonth()]
+	let monthLimit = monthName.length
+	if (options.short) {
+		monthLimit = 3
+	}
+
+	let result = ''
+	if (options.day) {
+		result += ` ${date.getDate()}`
+	}
+	if (options.month) {
+		result += ` ${monthName.substring(0, monthLimit)}`
+	}
+	if (options.year) {
+		result += ` ${date.getFullYear()}`
+	}
+
+	return result
+}

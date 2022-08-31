@@ -19,6 +19,16 @@
 
 .time {
     font-size: 13px;
+    width: 100%;
+    display: flex;
+}
+
+.time > span:last-child {
+    margin-left: auto;
+}
+
+.timeCapitalize {
+    text-transform: capitalize;
 }
 
 .technology:first-of-type {
@@ -42,10 +52,9 @@
 .company {
     font-weight: bold;
     font-family: 'Catamaran', sans-serif;
-    align-self: flex-start;
     font-size: 18px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 15px;
+    margin-bottom: 12px;
 }
 
 .technology {
@@ -66,6 +75,7 @@
     .header {
         flex-direction: row;
         align-items: center;
+        margin-bottom: 18px;
     }
 
     .experience {
@@ -77,11 +87,37 @@
     }
 
     .details {
+        display: flex;
         flex-direction: row;
+        align-items: center;
+    }
+
+    .details > div {
+        display: flex;
     }
 
     .company {
-        align-self: flex-end;
+        margin: 0;
+    }
+
+    .time {
+        width: unset;
+        display: unset;
+    }
+
+    .time > span:last-child {
+        position: relative;
+        margin-left: 15px;
+    }
+
+    .time > span:last-child::after {
+        content: '·';
+        position: absolute;
+        top: 50%;
+        left: -10px;
+        transform: translateY(-50%);
+        font-size: 30px;
+
     }
 
 }
