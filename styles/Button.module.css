@@ -1,6 +1,5 @@
 .button {
     height: 60px;
-    /*background-color: transparent;*/
     background-color: rgba(56, 193, 136, 0.5);
     color: #fafafa;
     border: 1px solid #38c188;
@@ -18,8 +17,9 @@
     transform: translate(-50%, -50%);
 }
 
-.button > span:hover {
-
+.button:disabled {
+    background-color: grey;
+    border-color: darkgrey;
 }
 
 .background {
