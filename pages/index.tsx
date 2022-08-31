@@ -314,6 +314,7 @@ const Home: NextPage = () => {
 		{
 			id: '1',
 			title: 'Full-stack developer',
+			company: 'TALKUAL',
 			start: '2021-12-01',
 			end: null,
 			technologies: ['Nuxt.js', 'Vue.js', 'Node JS', 'Strapi'],
@@ -322,6 +323,7 @@ const Home: NextPage = () => {
 		{
 			id: '2',
 			title: 'Front-end developer',
+			company: 'Movetia',
 			start: '2020-05-01',
 			end: '2021-12-22',
 			technologies: ['React JS'],
@@ -331,6 +333,7 @@ Backend con Java`
 		{
 			id: '3',
 			title: 'Full-stack developer',
+			company: 'Ubiquat Technologies',
 			start: '2016-08-01',
 			end: '2019-09-15',
 			technologies: ['Angular', 'Node JS'],

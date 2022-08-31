@@ -33,8 +33,29 @@
     margin-bottom: 10px;
 }
 
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.company {
+    font-weight: bold;
+    font-family: 'Catamaran', sans-serif;
+    align-self: flex-end;
+}
+
+.technology {
+    margin-left: 12px;
+}
+
 .experience > p {
     margin-top: 30px;
+}
+
+.duration {
+    font-weight: bold;
+    color: #38c188;
 }
 
 

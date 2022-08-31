@@ -4,9 +4,7 @@ import React from 'react'
 export default function Document() {
 	return (
 		<Html>
-			<Head>
-				<title>Aleix's portfolio</title>
-			</Head>
+			<Head />
 			<body data-theme='dark'>
 				<Main />
 				<NextScript />

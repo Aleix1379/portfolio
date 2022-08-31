@@ -1,15 +1,12 @@
 .chip {
     align-self: flex-start;
     padding: 1px 9px;
-    margin-top: 5px;
     background-color: var(--bg-technology);;
     color: var(--text-color);
     font-size: 13px;
     border-radius: 4px;
     display: inline-block;
     box-shadow: var(--tsh-experience-separator);
-    margin-left: 4px;
-    margin-right: 4px;
     cursor: default;
 }
 

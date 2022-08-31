@@ -21,19 +21,27 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 						<span>{dayjs(experience.end).format(' - MMM YYYY')}</span> :
 						<span> - Present</span>
 				}
-				<span> · {getDifference(experience.start, experience.end)}</span>
+				<span> ·
+					<span className={styles.duration}> {getDifference(experience.start, experience.end)}</span>
+				</span>
 			</div>
 		</div>
-		{
-			experience.technologies.map((technology, index) =>
-				<Chip
-					key={index}
-					className={styles.technology}
-				>
-					{technology}
-				</Chip>
-			)
-		}
+
+		<div className={styles.details}>
+			<span className={styles.company}>{experience.company}</span>
+			<div>
+				{
+					experience.technologies.map((technology, index) =>
+						<Chip
+							key={index}
+							className={styles.technology}
+						>
+							{technology}
+						</Chip>
+					)
+				}
+			</div>
+		</div>
 		<p>
 			{experience.description}
 		</p>
