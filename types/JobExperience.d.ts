@@ -7,3 +7,9 @@ export interface JobExperience {
 	technologies: Array<string>
 	description: string
 }
+
+
+export interface jobDuration {
+	start: Date
+	end: Date
+}

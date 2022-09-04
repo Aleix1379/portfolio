@@ -14,6 +14,7 @@ import Experience from '../components/Experience'
 import ExperienceSeparator from '../components/ExperienceSeparator'
 import { Validation } from '../types/Validation'
 import Validator from '../services/Validator'
+import { getYearsOfExperience } from '../utils/time'
 
 interface HomeState {
 	form: {
@@ -420,7 +421,13 @@ Publish apps on Google Play and App Store.`
 					<div className={styles.infoAbout}>
 						<Image src={'/images/about.svg'} height={300} width={300} />
 						<div>
-							<span className={styles.important}>+5 years</span> <span>of experience as a front end developer.</span>
+							<span className={styles.important}>
+							+{
+									getYearsOfExperience(experiences.map(experience => ({
+										start: new Date(experience.start),
+										end: experience.end ? new Date(experience.end) : new Date()
+									})))
+								} years</span> <span>of experience as a front end developer.</span>
 							<p>
 								Working with web and mobile apps.
 							</p>

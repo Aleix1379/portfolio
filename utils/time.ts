@@ -1,4 +1,5 @@
 import { TimeOptions } from '../types/Time'
+import { jobDuration } from '../types/JobExperience'
 
 export const milliSecondsToTime = (t: number) => {
 	let year = 0
@@ -85,4 +86,23 @@ export const formatDateWithMonthName = (value: string, options?: TimeOptions) =>
 	}
 
 	return result
+}
+
+export const getYearsOfExperience = (jobDurations: Array<jobDuration>): number => {
+	let years = 0
+	let months = 0
+
+	jobDurations.forEach(jobDuration => {
+		let diff: number = jobDuration.end.getTime() - jobDuration.start.getTime()
+		if (jobDuration.end < jobDuration.start) {
+			diff = jobDuration.start.getTime() - jobDuration.end.getTime()
+		}
+		const time = milliSecondsToTime(diff)
+		years += time.year
+		months += time.month
+	})
+
+	years = Math.floor(years + months / 12)
+
+	return years
 }
