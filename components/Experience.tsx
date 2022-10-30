@@ -49,9 +49,9 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 				}
 			</div>
 		</div>
-		<p>
-			{experience.description}
-		</p>
+		<div>
+			{experience.description.split('\n').map((word, index) => <p key={index}>{word}</p>)}
+		</div>
 	</div>
 }
 

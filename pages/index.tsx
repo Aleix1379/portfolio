@@ -83,69 +83,7 @@ const Home: NextPage = () => {
 					icon: 'react'
 				}
 			]
-		},
-		{
-			id: '1',
-			name: 'Talk And Play',
-			description: 'Mobile app to talk about video games.',
-			platform: 'mobile',
-			image: '/images/projects/talkandplay.webp',
-			links: [
-				{
-					url: 'https://play.google.com/store/apps/details?id=app.talkandplay',
-					text: 'Google play',
-					icon: 'googlePlay'
-				}
-			],
-			technologies: [
-				{
-					url: 'https://www.typescriptlang.org/',
-					text: 'TypeScript',
-					icon: 'typescript'
-				},
-				{
-					url: 'https://reactnative.dev/',
-					text: 'React Native',
-					icon: 'react'
-				},
-				{
-					url: 'https://redux.js.org/',
-					text: 'Redux',
-					icon: 'redux'
-				}
-			]
-		},
-		{
-			id: '2',
-			name: 'Talk And Play',
-			description: 'Backend for Talk and play.',
-			platform: 'backend',
-			image: '/images/projects/talkandplay.webp',
-			links: [],
-			technologies: [
-				{
-					url: 'https://kotlinlang.org/',
-					text: 'Kotlin',
-					icon: 'kotlin'
-				},
-				{
-					url: 'https://www.mysql.com/',
-					text: 'Spring Boot',
-					icon: 'springBoot'
-				},
-				{
-					url: 'https://spring.io/projects/spring-boot',
-					text: 'MySQL',
-					icon: 'mysql'
-				},
-				{
-					url: 'https://hibernate.org/',
-					text: 'Hibernate',
-					icon: 'hibernate'
-				}
-			]
-		},
-		{
+		}, {
 			id: '3',
 			name: 'Enirve',
 			description: 'Mobile app to learn irregular verbs in English',
@@ -156,11 +94,6 @@ const Home: NextPage = () => {
 					url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
 					text: 'Google play',
 					icon: 'googlePlay'
-				},
-				{
-					url: 'https://github.com/Aleix1379/EnirveMobile',
-					text: 'Github',
-					icon: 'github'
 				}
 			],
 			technologies: [
@@ -197,13 +130,7 @@ const Home: NextPage = () => {
 			description: 'Backend for Enirve.',
 			platform: 'backend',
 			image: '/images/projects/enirve.webp',
-			links: [
-				{
-					url: 'https://github.com/Aleix1379/EnirveBackend',
-					text: 'Github',
-					icon: 'github'
-				}
-			],
+			links: [],
 			technologies: [
 				{
 					url: 'https://www.typescriptlang.org/',
@@ -270,6 +197,61 @@ const Home: NextPage = () => {
 					url: 'https://jestjs.io/',
 					text: 'Jest',
 					icon: 'jest'
+				}
+			]
+		},
+		{
+			id: '1',
+			name: 'Talk And Play',
+			description: 'Mobile app to talk about video games.',
+			platform: 'mobile',
+			image: '/images/projects/talkandplay.webp',
+			links: [],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://reactnative.dev/',
+					text: 'React Native',
+					icon: 'react'
+				},
+				{
+					url: 'https://redux.js.org/',
+					text: 'Redux',
+					icon: 'redux'
+				}
+			]
+		},
+		{
+			id: '2',
+			name: 'Talk And Play',
+			description: 'Backend for Talk and play.',
+			platform: 'backend',
+			image: '/images/projects/talkandplay.webp',
+			links: [],
+			technologies: [
+				{
+					url: 'https://kotlinlang.org/',
+					text: 'Kotlin',
+					icon: 'kotlin'
+				},
+				{
+					url: 'https://www.mysql.com/',
+					text: 'Spring Boot',
+					icon: 'springBoot'
+				},
+				{
+					url: 'https://spring.io/projects/spring-boot',
+					text: 'MySQL',
+					icon: 'mysql'
+				},
+				{
+					url: 'https://hibernate.org/',
+					text: 'Hibernate',
+					icon: 'hibernate'
 				}
 			]
 		},
@@ -343,6 +325,23 @@ Mobile apps for Android and iOS using Ionic 4 framework.
 Backend with Node JS and Typescript.
 Develop the prototype of the application using https://www.fluidui.com/
 Publish apps on Google Play and App Store.`
+		},
+		{
+			id: '4',
+			title: 'C# Developer',
+			company: 'Ofimàtica anoia',
+			start: '2014-10-01',
+			end: '2015-01-31',
+			technologies: ['C#', 'Entity framework'],
+			description: 'Design of Workflows with OpenKM\n' +
+				'\n' +
+				'Schedule an asp.net webform application with C # using entity framework\n' +
+				'\n' +
+				'With C#: \n' +
+				'\n' +
+				'Make a program that allows to convert documents (office, images, html) to pdf, to be able to print them\n' +
+				'\n' +
+				'Use the printer driver to send print documents, with parameters (color, b / w, duplex)'
 		}
 	])
 
