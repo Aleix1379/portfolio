@@ -62,7 +62,7 @@ const Nav = () => {
 				<Link href={'#'}>
 					<a className={styles.logo}>
 						<div>
-							<Image src={'/images/aleix.jpeg'} height={70} width={70} layout={'fixed'} className={styles.avatar} />
+							<Image src={'/images/aleix.jpg'} height={70} width={70} layout={'fixed'} className={styles.avatar} />
 						</div>
 						<h2 className={styles.name}>Aleix's portfolio</h2>
 					</a>
