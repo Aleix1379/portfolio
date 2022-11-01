@@ -457,7 +457,7 @@ Publish apps on Google Play and App Store.`
 											start: new Date(experience.start),
 											end: experience.end ? new Date(experience.end) : new Date()
 										})))
-								} years</span> <span>of experience as a front end developer </span><span className={styles.jobType}>(full time).</span>
+								} years</span> <span>of experience as a front end developer.</span>
 							<p>
 								Working with web and mobile apps.
 							</p>
