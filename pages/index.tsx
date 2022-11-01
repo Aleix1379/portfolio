@@ -125,6 +125,42 @@ const Home: NextPage = () => {
 			]
 		},
 		{
+			id: '5',
+			name: 'Travels & Trips',
+			description: 'Prototype mobile app abouts trips.',
+			platform: 'mobile',
+			image: '/images/projects/tratrip.webp',
+			links: [
+				{
+					url: 'https://play.google.com/store/apps/details?id=com.aleixmp.tratripmobileapp',
+					text: 'Google play',
+					icon: 'googlePlay'
+				},
+				{
+					url: 'https://github.com/Aleix1379/TraTripMobileApp',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://reactnative.dev/',
+					text: 'React Native',
+					icon: 'react'
+				},
+				{
+					url: 'https://jestjs.io/',
+					text: 'Jest',
+					icon: 'jest'
+				}
+			]
+		},
+		{
 			id: '4',
 			name: 'Enirve',
 			description: 'Backend for Enirve.',
@@ -161,42 +197,6 @@ const Home: NextPage = () => {
 					url: 'https://www.apollographql.com/',
 					text: 'Apollo GraphQL',
 					icon: 'apollographql'
-				}
-			]
-		},
-		{
-			id: '5',
-			name: 'Travels & Trips',
-			description: 'Prototype mobile app abouts trips.',
-			platform: 'mobile',
-			image: '/images/projects/tratrip.webp',
-			links: [
-				{
-					url: 'https://play.google.com/store/apps/details?id=com.aleixmp.tratripmobileapp',
-					text: 'Google play',
-					icon: 'googlePlay'
-				},
-				{
-					url: 'https://github.com/Aleix1379/TraTripMobileApp',
-					text: 'Github',
-					icon: 'github'
-				}
-			],
-			technologies: [
-				{
-					url: 'https://www.typescriptlang.org/',
-					text: 'TypeScript',
-					icon: 'typescript'
-				},
-				{
-					url: 'https://reactnative.dev/',
-					text: 'React Native',
-					icon: 'react'
-				},
-				{
-					url: 'https://jestjs.io/',
-					text: 'Jest',
-					icon: 'jest'
 				}
 			]
 		},
@@ -298,6 +298,8 @@ const Home: NextPage = () => {
 			id: '1',
 			title: 'Full-stack developer',
 			company: 'TALKUAL',
+			type: 'full-time',
+			location: 'Bellpuig, Catalonia, Spain',
 			start: '2021-12-01',
 			end: null,
 			technologies: ['Nuxt.js', 'Vue.js', 'Node JS', 'Strapi'],
@@ -307,6 +309,8 @@ const Home: NextPage = () => {
 			id: '2',
 			title: 'Front-end developer',
 			company: 'Movetia',
+			type: 'full-time',
+			location: 'Barcelona, Catalonia, Spain',
 			start: '2020-05-01',
 			end: '2021-12-22',
 			technologies: ['React JS'],
@@ -317,6 +321,8 @@ Backend con Java`
 			id: '3',
 			title: 'Full-stack developer',
 			company: 'Ubiquat Technologies',
+			type: 'full-time',
+			location: 'Igualada, Catalonia, Spain',
 			start: '2016-08-01',
 			end: '2019-09-15',
 			technologies: ['Angular', 'Node JS'],
@@ -327,9 +333,33 @@ Develop the prototype of the application using https://www.fluidui.com/
 Publish apps on Google Play and App Store.`
 		},
 		{
+			id: '6',
+			title: 'Web developer',
+			company: 'Coach4Pro',
+			location: 'Espoo, Uusimaa, Finland',
+			type: 'freelance',
+			start: '2018-03-01',
+			end: '2019-04-30',
+			technologies: ['HTML5', 'Javascript', 'CSS'],
+			description: 'Maintain the front-end of the company website.'
+		},
+		{
+			id: '5',
+			title: 'Web developer',
+			company: 'Ubiquat Technologies',
+			type: 'internship',
+			location: 'Igualada, Catalonia, Spain',
+			start: '2016-01-01',
+			end: '2016-05-31',
+			technologies: ['Javascript', 'JQuery', 'Less', 'Bootstrap'],
+			description: 'I developed a web app to manage the users and information of a mobile app using bootstrap, less and jquery.\nMaintenance an Android app (Native with Java) and publish the application on google play.'
+		},
+		{
 			id: '4',
 			title: 'C# Developer',
 			company: 'Ofimàtica anoia',
+			type: 'internship',
+			location: 'Igualada, Catalonia, Spain',
 			start: '2014-10-01',
 			end: '2015-01-31',
 			technologies: ['C#', 'Entity framework'],
@@ -422,11 +452,12 @@ Publish apps on Google Play and App Store.`
 						<div>
 							<span className={styles.important}>
 							+{
-									getYearsOfExperience(experiences.map(experience => ({
-										start: new Date(experience.start),
-										end: experience.end ? new Date(experience.end) : new Date()
-									})))
-								} years</span> <span>of experience as a front end developer.</span>
+									getYearsOfExperience(experiences
+										.filter(experience => experience.type === 'full-time' || experience.type === 'internship').map(experience => ({
+											start: new Date(experience.start),
+											end: experience.end ? new Date(experience.end) : new Date()
+										})))
+								} years</span> <span>of experience as a front end developer </span><span className={styles.jobType}>(full time).</span>
 							<p>
 								Working with web and mobile apps.
 							</p>

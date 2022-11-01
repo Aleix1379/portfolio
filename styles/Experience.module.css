@@ -17,6 +17,26 @@
     align-items: flex-start;
 }
 
+.location {
+    font-size: 14px;
+    color: var(--tc-project-title);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.jobType {
+    font-size: 14px;
+    color: var(--tc-project-title);
+    font-style: italic;
+}
+
+.jobType:first-letter {
+    text-transform: uppercase;
+}
+
 .time {
     font-size: 13px;
     width: 100%;

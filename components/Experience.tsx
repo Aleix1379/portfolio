@@ -12,7 +12,12 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 
 	return <div className={styles.experience}>
 		<div className={styles.header}>
-			<h2>{experience.title}</h2>
+			<div className={styles.title}>
+				<h2>{experience.title}</h2>
+				<span className={styles.location}>{experience.location}</span>
+				<span className={styles.jobType}>{experience.type}</span>
+			</div>
+
 			<div className={styles.time}>
 				<span className={styles.timeCapitalize}>{formatDateWithMonthName(experience.start, {
 					month: true,

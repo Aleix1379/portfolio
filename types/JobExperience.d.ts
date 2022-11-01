@@ -6,6 +6,8 @@ export interface JobExperience {
 	end: string | null
 	technologies: Array<string>
 	description: string
+	type: 'full-time' | 'freelance' | 'internship'
+	location: string
 }
 
 
