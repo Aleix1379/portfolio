@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getTheme, setTheme } from '../services/Localstorage'
+import { getTheme, setTheme } from '../services/localstorage'
 import { Theme } from '../types/Theme'
 
 
