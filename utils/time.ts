@@ -1,5 +1,5 @@
 import { TimeOptions } from '../types/Time'
-import { jobDuration } from '../types/JobExperience'
+import { JobExperience, JobOptions, JobType } from '../types/JobExperience'
 
 export const milliSecondsToTime = (t: number) => {
 	let year = 0
@@ -88,14 +88,40 @@ export const formatDateWithMonthName = (value: string, options?: TimeOptions) =>
 	return result
 }
 
-export const getYearsOfExperience = (jobDurations: Array<jobDuration>): number => {
+export const getYearsOfExperience = (jobs: Array<JobExperience>, options?: JobOptions): number => {
 	let years = 0
 	let months = 0
+	let filter = null
 
-	jobDurations.forEach(jobDuration => {
-		let diff: number = jobDuration.end.getTime() - jobDuration.start.getTime()
-		if (jobDuration.end < jobDuration.start) {
-			diff = jobDuration.start.getTime() - jobDuration.end.getTime()
+	if (options) {
+		filter = options.filter
+	}
+
+	const typeFilter: Array<JobType> = []
+
+	if (filter) {
+		if (filter.fullTime) {
+			typeFilter.push('full-time')
+		}
+
+		if (filter.freelance) {
+			typeFilter.push('freelance')
+		}
+
+		if (filter.internship) {
+			typeFilter.push('internship')
+		}
+
+		jobs = jobs.filter(job => typeFilter.includes(job.type))
+	}
+
+	jobs.forEach(job => {
+		const start = new Date(job.start)
+		const end = new Date(job.end ?? new Date())
+
+		let diff: number = end.getTime() - start.getTime()
+		if (end < start) {
+			diff = start.getTime() - end.getTime()
 		}
 		const time = milliSecondsToTime(diff)
 		years += time.year

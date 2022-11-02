@@ -1,3 +1,5 @@
+export type JobType = 'full-time' | 'freelance' | 'internship'
+
 export interface JobExperience {
 	id: string
 	title: string
@@ -6,12 +8,15 @@ export interface JobExperience {
 	end: string | null
 	technologies: Array<string>
 	description: string
-	type: 'full-time' | 'freelance' | 'internship'
+	type: JobType
 	location: string
 }
 
 
-export interface jobDuration {
-	start: Date
-	end: Date
+export interface JobOptions {
+	filter: {
+		fullTime?: boolean
+		freelance?: boolean
+		internship?: boolean
+	}
 }
