@@ -68,6 +68,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .company {
@@ -91,6 +92,11 @@
     color: #38c188;
 }
 
+.description {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 
 @media (min-width: 768px) {
     .header {
@@ -100,7 +106,7 @@
     }
 
     .experience {
-        padding: 8px 25px;
+        padding: 5px 20px 15px;
     }
 
     .experience h2 {
