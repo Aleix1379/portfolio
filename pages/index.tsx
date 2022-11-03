@@ -112,7 +112,7 @@ const Home: NextPage = () => {
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
-						<Image src={'/images/about.svg'} height={300} width={300} />
+						<Image src={'/images/about.svg'} height={300} width={300} alt='About' />
 						<div>
 							<span className={styles.important}>
 							+{
@@ -139,7 +139,7 @@ const Home: NextPage = () => {
 
 				<section id='experience' className={styles.section}>
 					<h2>Experience</h2>
-					<Image src={'/images/experience.svg'} height={300} width={300} />
+					<Image src={'/images/experience.svg'} height={300} width={300} alt='Experience' />
 					<div className={styles.infoExperience}>
 						{
 							experiences.map((experience, index) =>
@@ -156,7 +156,7 @@ const Home: NextPage = () => {
 					<h2>Projects</h2>
 
 					<div className={styles.infoProjects}>
-						<Image src={'/images/projects.svg'} height={300} width={300} />
+						<Image src={'/images/projects.svg'} height={300} width={300} alt='Projects' />
 						<div>
 							<span>I like to work on personal projects to improve and learn new technologies, usually with</span>
 							<span className={styles.important}> React JS</span>,
@@ -188,7 +188,7 @@ const Home: NextPage = () => {
 
 					<div className={styles.infoContact}>
 
-						<Image src={'/images/contact.svg'} height={300} width={300} />
+						<Image src={'/images/contact.svg'} height={300} width={300} alt='Contact' />
 
 						<div>
 							<div className={styles.socialNetworks}>

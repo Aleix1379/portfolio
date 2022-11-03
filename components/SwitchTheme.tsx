@@ -96,6 +96,7 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 					src={'/images/moon.png'}
 					width={size}
 					height={size}
+					alt='moon'
 				/>
 
 				<div
@@ -108,6 +109,7 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 					src={'/images/sun.png'}
 					width={size}
 					height={size}
+					alt='sun'
 				/>
 			</div>
 		</div>
