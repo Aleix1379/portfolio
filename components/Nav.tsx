@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import styles from '../styles/Nav.module.css'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import MenuButton from './MenuButton'
@@ -12,7 +11,6 @@ const Nav = () => {
 	const [isMenuOpened, setIsMenuOpened] = useState(false)
 	const [theme, setTheme] = useTheme()
 	const [animationDuration, setAnimationDuration] = useState('0s')
-	// const [isHide, setIsHide] = useState(false)
 
 	useEffect(() => {
 		document.addEventListener('scroll', onScroll)
@@ -52,6 +50,14 @@ const Nav = () => {
 		}
 	}
 
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
+	const scrollTo = (id: string) => {
+		window.document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+	}
+
 	return (
 		<div
 			id='navContainer'
@@ -59,14 +65,20 @@ const Nav = () => {
 			className={`${styles.navContainer} ${styles.navContainerShow}`}
 		>
 			<nav className={styles.nav}>
-				<Link href={'#'}>
-					<a className={styles.logo}>
+				<div>
+					<div className={styles.logo} onClick={scrollToTop}>
 						<div>
-							<Image src={'/images/aleix.jpg'} height={70} width={70} layout={'fixed'} className={styles.avatar} />
+							<Image
+								src={'/images/aleix.jpg'}
+								height={70}
+								width={70}
+								className={styles.avatar}
+								alt='Avatar'
+							/>
 						</div>
 						<h2 className={styles.name}>Aleix's portfolio</h2>
-					</a>
-				</Link>
+					</div>
+				</div>
 
 				<SwitchTheme
 					className={styles.themeSwitch}
@@ -77,24 +89,24 @@ const Nav = () => {
 
 				<ul className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
 					<li className={styles.li}>
-						<Link href='#about'>
-							<a>About</a>
-						</Link>
+						<div onClick={() => scrollTo('about')}> {/*'#about'*/}
+							About
+						</div>
 					</li>
 					<li className={styles.li}>
-						<Link href='#experience'>
-							<a>Experience</a>
-						</Link>
+						<div onClick={() => scrollTo('experience')}> {/*'#experience'*/}
+							Experience
+						</div>
 					</li>
 					<li className={styles.li}>
-						<Link href='#projects'>
-							<a>Projects</a>
-						</Link>
+						<div onClick={() => scrollTo('projects')}> {/*'#projects'*/}
+							Projects
+						</div>
 					</li>
 					<li className={styles.li}>
-						<Link href='#contact'>
-							<a>Contact</a>
-						</Link>
+						<div onClick={() => scrollTo('contact')}> {/*'#contact'*/}
+							Contact
+						</div>
 					</li>
 				</ul>
 

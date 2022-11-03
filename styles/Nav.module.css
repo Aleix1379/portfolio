@@ -1,6 +1,7 @@
 .logo {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .logo > div {
@@ -92,14 +93,14 @@
     margin-right: 25px;
 }
 
-.li > a {
+.li > div {
     padding-top: 8px;
     padding-bottom: 8px;
     font-size: 2rem;
 }
 
 .logo:hover > h2::after,
-.li > a:hover::after {
+.li > div:hover::after {
     content: '';
     position: absolute;
     bottom: 6px;
@@ -114,7 +115,7 @@
     bottom: -2px;
 }
 
-.navContainer > .nav > ul > li > a {
+.navContainer > .nav > ul > li > div {
     color: var(--text-color);
     display: block;
     position: relative;
@@ -208,11 +209,12 @@
 
     }
 
-    .li > a {
+    .li > div {
         font-size: 1.15rem;
+        cursor: pointer;
     }
 
-    .li > a:hover::after {
+    .li > div:hover::after {
         bottom: 4px;
     }
 }
