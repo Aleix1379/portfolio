@@ -22,7 +22,7 @@
     --bg-switch: black;
     --bg-technology: #555;
     --bg-experience-separator: #222;
-    --tsh-experience-separator: 1px 1px 1px 1px rgba(22, 22, 22, .5);
+    --tsh-experience-separator: 1px 1px 1px 1px rgba(22, 22, 22, .25);
 }
 
 [data-theme="light"] {

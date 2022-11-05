@@ -93,8 +93,10 @@
 }
 
 .description {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: var(--tc-project-title);
+    font-size: 0.9em;
 }
 
 

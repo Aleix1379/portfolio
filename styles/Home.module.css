@@ -9,14 +9,12 @@
 .main {
     transition: background-color .5s;
     background-color: var(--bg-main);
-    max-width: 100%;
     align-self: center;
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 15px -12px var(--sh-main);
     border-radius: 3px;
     padding: 50px 8px 80px;
-    width: var(--content-width);
 }
 
 .section {

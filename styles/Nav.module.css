@@ -221,10 +221,10 @@
 
 @media (min-width: 1400px) {
     .navContainer {
-        min-width: 1000px;
+        /*min-width: 1900px;*/
     }
 
     .navContainerHide > .nav {
-        min-width: 1700px;
+        /*min-width: 1700px;*/
     }
 }
