@@ -18,7 +18,7 @@
 }
 
 .button:disabled {
-    background-color: grey;
+    background-color: #ffffff1c;
     border-color: darkgrey;
 }
 

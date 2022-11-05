@@ -22,11 +22,6 @@ export const getProjects = (): Array<ProjectInfo> => {
 					icon: 'typescript'
 				},
 				{
-					url: 'https://html.spec.whatwg.org/multipage/',
-					text: 'HTML 5',
-					icon: 'html5'
-				},
-				{
 					url: 'https://www.w3.org/Style/CSS/Overview.en.html',
 					text: 'CSS 3',
 					icon: 'css3'

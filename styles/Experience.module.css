@@ -58,7 +58,7 @@
 
 .experience h2 {
     margin-top: 0;
-    color: var(--tc-project-title);
+    color: var(--text-color);
     text-shadow: 4px 4px 10px var(--tsh-project);
     transition: color, text-shadow .5s;
     margin-bottom: 10px;
@@ -77,6 +77,7 @@
     font-size: 18px;
     margin-top: 15px;
     margin-bottom: 12px;
+    color: var(--tc-project-title);
 }
 
 .technology {

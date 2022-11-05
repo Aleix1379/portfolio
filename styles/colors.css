@@ -2,26 +2,26 @@
     --white: #fafafa;
     ---green: #38c188;
     --blue: #3888c1;
+    --bgi: rgba(3, 160, 98, 0.35);
 }
 
 [data-theme="dark"] {
     --text-color: #fafafa;
-    --background: #222;
-    --bg-main: #333;
-    --bg-project: #222;
+    --background: #141414;
+    --bg-main: rgba(35, 35, 35, 0.75);
+    --bg-project: #101010;
     --tc-title-main: #fafafa;
-    --tc-project-title: #909090;
-    --bg-input: #505050;
+    --tc-project-title: #c0c0c0;
+    --bg-input: #ffffff1c;
     --sh-main: rgba(0, 0, 0, 0.75);
     --sh-form: rgba(10, 10, 10, .75);
     --sh-project: rgba(10, 10, 10, .75);
     --tsh-project: #111;
-    --bg-navbar: #121212;
-    --bg-header: #222;
-    --bgi: rgba(56, 193, 136, 0.25);
-    --bg-switch: black;
-    --bg-technology: #555;
-    --bg-experience-separator: #222;
+    --bg-navbar: #050505;
+    --bg-header: #000;
+    --bg-switch: #101010;
+    --bg-technology: #333;
+    --bg-experience-separator: #151515;
     --tsh-experience-separator: 1px 1px 1px 1px rgba(22, 22, 22, .25);
 }
 
@@ -39,7 +39,6 @@
     --tsh-project: rgba(223, 223, 223, 0.75);
     --bg-navbar: #ededed;
     --bg-header: #dddddd;
-    --bgi: rgba(56, 193, 136, 0.95);
     --bg-switch: white;
     --bg-technology: #959595;
     --bg-experience-separator: #b3b3b3;
