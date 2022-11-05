@@ -2,7 +2,7 @@
     --header-height: 92px;
     --content-width: 1400px;
     --nav-scale: 1;
-    --nav-width: calc(100% - 16px);
+    --nav-width: 100%;
 }
 
 

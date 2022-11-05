@@ -48,7 +48,6 @@
     height: var(--header-height) !important;
     align-self: center;
     transition: background-color .5s;
-    border-radius: 4px;
 }
 
 .navContainerShow {
@@ -179,15 +178,10 @@
     to {
         width: var(--nav-width);
         opacity: .95;
-        transform: translateY(12px);
     }
 }
 
 @media (min-width: 768px) {
-    .navContainer {
-        border-radius: 0;
-    }
-
     .logo > h2 {
         display: block;
     }
