@@ -48,7 +48,7 @@
     height: var(--header-height) !important;
     align-self: center;
     transition: background-color .5s;
-    min-width: 100vw;
+    border-radius: 4px;
 }
 
 .navContainerShow {
@@ -89,8 +89,8 @@
 }
 
 .li {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .li > div {
@@ -162,28 +162,32 @@
 
 @keyframes headerShowAnimation {
     from {
-        transform: scale(var(--nav-scale));
+        width: var(--nav-width);
     }
 
     to {
-        transform: scale(1);
+        width: 100%;
     }
 }
 
 
 @keyframes headerHideAnimation {
     from {
-        transform: scale(1);
+        width: 100%
     }
 
     to {
-        transform: scale(var(--nav-scale));
+        width: var(--nav-width);
         opacity: .95;
-        max-width: 1920px;
+        transform: translateY(12px);
     }
 }
 
 @media (min-width: 768px) {
+    .navContainer {
+        border-radius: 0;
+    }
+
     .logo > h2 {
         display: block;
     }
@@ -210,21 +214,67 @@
     }
 
     .li > div {
-        font-size: 1.15rem;
+        font-size: 1rem;
         cursor: pointer;
     }
 
     .li > div:hover::after {
         bottom: 4px;
     }
-}
 
-@media (min-width: 1400px) {
-    .navContainer {
-        /*min-width: 1900px;*/
+
+    @keyframes headerShowAnimation {
+        from {
+            width: 100%;
+        }
+
+        to {
+            width: 100%;
+        }
     }
 
-    .navContainerHide > .nav {
-        /*min-width: 1700px;*/
+
+    @keyframes headerHideAnimation {
+        from {
+            width: 100%
+        }
+
+        to {
+            width: 100%;
+            opacity: 0.95;
+        }
+    }
+
+}
+
+@media (min-width: 900px) {
+    .li {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+}
+
+@media (min-width: 1465px) {
+
+    @keyframes headerShowAnimation {
+        from {
+            width: var(--nav-width);
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+
+    @keyframes headerHideAnimation {
+        from {
+            width: 100%
+        }
+
+        to {
+            width: var(--nav-width);
+            opacity: 0.95;
+        }
     }
 }

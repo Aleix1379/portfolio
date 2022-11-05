@@ -1,12 +1,14 @@
 :root {
     --header-height: 92px;
     --content-width: 1400px;
-    --nav-scale: .9;
+    --nav-scale: 1;
+    --nav-width: calc(100% - 16px);
 }
 
 
 @media (min-width: 768px) {
     :root {
-        --nav-scale: .75;
+        --nav-scale: 1;
+        --nav-width: 1450px;
     }
 }
