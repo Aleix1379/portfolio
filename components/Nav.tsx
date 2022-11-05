@@ -29,6 +29,7 @@ const Nav = () => {
 	}, [router.asPath])
 
 	const onScroll = () => {
+		setIsMenuOpened(false)
 		const limit = window.innerWidth < 500 ? 380 : 330
 		const element = document.getElementById('navContainer')
 
