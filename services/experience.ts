@@ -29,7 +29,7 @@ export const getExperience = (): Array<JobExperience> => {
 			technologies: [
 				'React JS'
 			],
-			description: 'Front end con React JS.\nBackend con Java'
+			description: 'Front end with React JS.'
 		},
 		{
 			id: '3',

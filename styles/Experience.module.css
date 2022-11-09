@@ -27,6 +27,9 @@
     flex-direction: column;
 }
 
+.title > h2 {
+}
+
 .jobType {
     font-size: 14px;
     color: var(--tc-project-title);
@@ -113,7 +116,7 @@
     }
 
     .experience h2 {
-        margin-bottom: 0;
+        margin-bottom: 5px;
     }
 
     .details {
