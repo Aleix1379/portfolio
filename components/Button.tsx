@@ -1,21 +1,16 @@
 import React from 'react'
 import styles from '../styles/Button.module.css'
 
-interface ButtonProps {
-	label: string
+export interface ButtonProps {
+	children: string
 	onClick: () => void
-	className?: string | undefined
-	disabled?: boolean
+	className?: string | undefined;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, className, disabled = false }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
 	return (
-		<button className={`${styles.button} ${!disabled ? styles.buttonActive : styles.buttonDisabled} ${className}`}
-			onClick={onClick}
-			disabled={disabled}
-		>
-			<span>{label}</span>
-			<div className={styles.background}></div>
+		<button onClick={onClick} className={`${styles.button} ${className}`}>
+			{children}
 		</button>
 	)
 }
