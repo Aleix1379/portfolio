@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import AppLayout from '../components/AppLayout'
 import Input from '../components/Input'
 import React, { useState } from 'react'
-import Button from '../components/Button'
+import SubmitForm from '../components/SubmitForm'
 import Project from '../components/Project'
 import Image from 'next/image'
 import IconLink from '../components/IconLink'
@@ -16,6 +16,7 @@ import { getYearsOfExperience } from '../utils/time'
 import { getExperience } from '../services/experience'
 import { getProjects } from '../services/projects'
 import { ProjectInfo } from '../types/Project.Infod'
+import Button from '../components/Button'
 
 interface HomeState {
 	form: {
@@ -106,9 +107,25 @@ const Home: NextPage = () => {
 		window.open(`mailto:aleixmp1379@gmail.com?subject=${form.subject}&body=${form.message}`, '_blank')
 	}
 
+	const downloadCV = async () => {
+		const response = await fetch('/cv.pdf')
+		const blob = await response.blob()
+		const url = window.URL.createObjectURL(blob)
+		const a = document.createElement('a')
+		a.style.display = 'none'
+		a.href = url
+		a.download = 'cv.pdf'
+		document.body.appendChild(a)
+		a.click()
+		a.remove()
+		window.URL.revokeObjectURL(url)
+	}
+
 	return (
 		<AppLayout>
 			<main className={styles.main}>
+				<Button className={styles.downloadCv} onClick={downloadCV}>Download CV</Button>
+
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
@@ -142,7 +159,7 @@ const Home: NextPage = () => {
 					<Image src={'/images/experience.svg'} height={300} width={300} alt='Experience' />
 					<div className={styles.infoExperience}>
 						{
-							experiences.map((experience, index) =>
+							experiences.slice(0, 100).map((experience, index) =>
 								<div key={index}>
 									<Experience experience={experience} />
 									{index < experiences.length - 1 && <ExperienceSeparator />}
@@ -228,7 +245,7 @@ const Home: NextPage = () => {
 									validation={validations.message}
 								/>
 
-								<Button
+								<SubmitForm
 									className={styles.button}
 									label={'Send!'}
 									onClick={sendMessage}

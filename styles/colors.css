@@ -3,6 +3,8 @@
     ---green: #38c188;
     --blue: #3888c1;
     --bgi: rgba(3, 160, 98, 0.35);
+    --bg-button: #fbeee0;
+    --sh-button: #1a1100;
 }
 
 [data-theme="dark"] {
