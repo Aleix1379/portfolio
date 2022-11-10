@@ -17,6 +17,7 @@ import { getExperience } from '../services/experience'
 import { getProjects } from '../services/projects'
 import { ProjectInfo } from '../types/Project.Infod'
 import Button from '../components/Button'
+import Counter from '../components/Counter'
 
 interface HomeState {
 	form: {
@@ -132,7 +133,8 @@ const Home: NextPage = () => {
 						<Image src={'/images/about.svg'} height={300} width={300} alt='About' />
 						<div>
 							<span className={styles.important}>
-							+{
+								<span>+ </span>
+								<Counter>{
 									getYearsOfExperience(
 										experiences,
 										{
@@ -142,7 +144,10 @@ const Home: NextPage = () => {
 											}
 										}
 									)
-								} years </span>
+								}
+								</Counter>
+								<span> years </span>
+							</span>
 							<span>of experience as a front end developer.</span>
 							<p>
 								Working with web and mobile apps.
