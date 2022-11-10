@@ -3,12 +3,11 @@ import { JobExperience, JobOptions, JobType } from '../types/JobExperience'
 import { getExperience } from '../services/experience'
 
 export const milliSecondsToTime = (t: number) => {
-	let year = 0
-	let month = 0
-	let day = 0
-	let hour = 0
-	let minute = 0
-	let second = 0
+	let month
+	let day
+	let hour
+	let minute
+	let second
 
 	second = Math.floor(t / 1000)
 	minute = Math.floor(second / 60)
@@ -19,7 +18,7 @@ export const milliSecondsToTime = (t: number) => {
 	hour = hour % 24
 	month = Math.floor(day / 30)
 	day = day % 30
-	year = Math.floor(month / 12)
+	const year = Math.floor(month / 12)
 	month = month % 12
 
 	return { year, month, day, hour, minute, second }
