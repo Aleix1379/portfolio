@@ -65,6 +65,10 @@
     flex-direction: column;
 }
 
+.infoExperience {
+    margin-bottom: 50px;
+}
+
 .infoAbout > div {
     margin-top: 30px;
 }
@@ -91,6 +95,10 @@
     color: #38c188;
 }
 
+.yearsOfExperience {
+    font-size: 2em;
+}
+
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -99,6 +107,7 @@
     column-gap: 30px;
     width: 100%;
     margin-top: 15px;
+    margin-bottom: 50px;
 }
 
 .form {

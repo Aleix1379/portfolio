@@ -36,9 +36,11 @@ const Home: NextPage = () => {
 		message: ''
 	})
 
-	const [projects] = useState<Array<ProjectInfo>>(getProjects())
+	const [projects, setProjects] = useState<Array<ProjectInfo>>(getProjects(3))
+	const [showAllProjects, setShowAllProjects] = useState<boolean>(false)
 
-	const [experiences] = useState<Array<JobExperience>>(getExperience())
+	const [experiences, setExperiences] = useState<Array<JobExperience>>(getExperience(3))
+	const [showAllExperiences, setShowAllExperiences] = useState<boolean>(false)
 
 
 	const buildValidations = (): HomeState['validations'] => {
@@ -122,6 +124,16 @@ const Home: NextPage = () => {
 		window.URL.revokeObjectURL(url)
 	}
 
+	const fetchAllProjects = () => {
+		setProjects(getProjects())
+		setShowAllProjects(true)
+	}
+
+	const fetchAllExperiences = () => {
+		setExperiences(getExperience())
+		setShowAllExperiences(true)
+	}
+
 	return (
 		<AppLayout>
 			<main className={styles.main}>
@@ -132,11 +144,10 @@ const Home: NextPage = () => {
 					<div className={styles.infoAbout}>
 						<Image src={'/images/about.svg'} height={300} width={300} alt='About' />
 						<div>
-							<span className={styles.important}>
-								<span>+ </span>
+							<span className={`${styles.important} ${styles.yearsOfExperience}`}>
+								<span style={{ position: 'relative', top: 3 }}>+ </span>
 								<Counter>{
 									getYearsOfExperience(
-										experiences,
 										{
 											filter: {
 												fullTime: true,
@@ -164,7 +175,7 @@ const Home: NextPage = () => {
 					<Image src={'/images/experience.svg'} height={300} width={300} alt='Experience' />
 					<div className={styles.infoExperience}>
 						{
-							experiences.slice(0, 100).map((experience, index) =>
+							experiences.map((experience, index) =>
 								<div key={index}>
 									<Experience experience={experience} />
 									{index < experiences.length - 1 && <ExperienceSeparator />}
@@ -172,6 +183,8 @@ const Home: NextPage = () => {
 							)
 						}
 					</div>
+
+					{!showAllExperiences && <Button onClick={fetchAllExperiences}>Show all</Button>}
 				</section>
 
 				<section id='projects' className={styles.section}>
@@ -203,6 +216,7 @@ const Home: NextPage = () => {
 						}
 					</div>
 
+					{!showAllProjects && <Button onClick={fetchAllProjects}>Show All</Button>}
 				</section>
 
 				<section id='contact' className={styles.section}>

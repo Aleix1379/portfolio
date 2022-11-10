@@ -70,7 +70,7 @@ const Nav = () => {
 					<div className={styles.logo} onClick={scrollToTop}>
 						<div>
 							<Image
-								src={'/images/aleix.jpg'}
+								src={'/images/aleix.webp'}
 								height={70}
 								width={70}
 								className={styles.avatar}

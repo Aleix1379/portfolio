@@ -1,7 +1,7 @@
 import { ProjectInfo } from '../types/Project.Infod'
 
-export const getProjects = (): Array<ProjectInfo> => {
-	return [
+export const getProjects = (limit = -1): Array<ProjectInfo> => {
+	const data: Array<ProjectInfo> = [
 		{
 			id: '6',
 			name: 'Portfolio',
@@ -246,4 +246,10 @@ export const getProjects = (): Array<ProjectInfo> => {
 			]
 		}
 	]
+
+	if (limit === -1) {
+		return data
+	}
+
+	return data.slice(0, limit)
 }

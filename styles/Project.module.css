@@ -7,10 +7,22 @@
     box-shadow: 5px 5px 20px -5px var(--sh-project);
     transition: background-color .5s;
     width: calc(100% - 5px);
-    /*right: 5px;*/
-    /*position: relative;*/
     max-width: 350px;
+    animation: projectEnter 1s forwards;
 }
+
+@keyframes projectEnter {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 
 .title {
     margin-bottom: 30px;

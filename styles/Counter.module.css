@@ -1,15 +1,15 @@
 .counter {
     display: inline-block;
-    height: 18px;
+    height: 40px;
     overflow: hidden;
     position: relative;
-    top: 2px;
+    top: 9px;
 }
 
 
 .counter > div {
-    transform: translateY(calc(-100% + 20px));
-    animation: move 2s 5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform: translateY(calc(-100% + 45px));
+    animation: move 2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes move {

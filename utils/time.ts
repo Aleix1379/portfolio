@@ -1,5 +1,6 @@
 import { TimeOptions } from '../types/Time'
 import { JobExperience, JobOptions, JobType } from '../types/JobExperience'
+import { getExperience } from '../services/experience'
 
 export const milliSecondsToTime = (t: number) => {
 	let year = 0
@@ -88,10 +89,11 @@ export const formatDateWithMonthName = (value: string, options?: TimeOptions) =>
 	return result
 }
 
-export const getYearsOfExperience = (jobs: Array<JobExperience>, options?: JobOptions): number => {
+export const getYearsOfExperience = (options?: JobOptions): number => {
 	let years = 0
 	let months = 0
 	let filter = null
+	let jobs: Array<JobExperience> = getExperience()
 
 	if (options) {
 		filter = options.filter

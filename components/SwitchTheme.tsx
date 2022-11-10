@@ -93,7 +93,7 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 
 				<Image
 					className={`${styles.off} ${getStatusStyle(value, 'off')}`}
-					src={'/images/moon.png'}
+					src={'/images/moon.webp'}
 					width={size}
 					height={size}
 					alt='moon'
