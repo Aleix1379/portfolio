@@ -10,8 +10,10 @@ interface SwitchProps {
 }
 
 const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, className }) => {
+	const [isOn, setIsOn] = React.useState<boolean>(false)
 
 	const switchOn = () => {
+		setIsOn(true)
 		const element = document.getElementById('switch')
 		if (element) {
 			element.classList.remove(styles.switchOff)
@@ -76,7 +78,8 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 		return {
 			height: getSelectorSize(),
 			width: getSelectorSize(),
-			minWidth: getSelectorSize()
+			minWidth: getSelectorSize(),
+			animationDuration: !isOn ? '0s' : '0.4s'
 		}
 	}
 
