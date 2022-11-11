@@ -60,6 +60,10 @@
     margin-bottom: 45px;
 }
 
+.infoAbout img {
+    max-height: 140px;
+}
+
 .infoExperience > div {
     display: flex;
     flex-direction: column;
@@ -174,6 +178,10 @@
     .projects {
         row-gap: 50px;
         grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+    }
+
+    .infoAbout img {
+        max-height: unset;
     }
 
     .infoExperience {
