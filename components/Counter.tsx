@@ -11,7 +11,7 @@ const Counter: React.FC<CounterProps> = ({ children, style }) => {
 
 	useEffect(() => {
 		const newValues = []
-		for (let i = children; i >= 0; i--) {
+		for (let i = 0; i <= children; i++) {
 			newValues.push(i)
 		}
 		setValues(newValues)
