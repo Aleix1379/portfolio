@@ -66,6 +66,7 @@
 }
 
 .infoExperience {
+    margin-top: 35px;
     margin-bottom: 50px;
 }
 
@@ -173,6 +174,10 @@
     .projects {
         row-gap: 50px;
         grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+    }
+
+    .infoExperience {
+        margin-top: 0;
     }
 
     .section {
