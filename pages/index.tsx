@@ -142,7 +142,7 @@ const Home: NextPage = () => {
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
-						<Image src={'/images/about.svg'} height={300} width={300} alt='About' />
+						<Image src={'/images/about.svg'} height={300} width={300} alt='About' priority />
 						<div>
 							<span className={`${styles.important} ${styles.yearsOfExperience}`}>
 								<span style={{ position: 'relative', top: 3 }}>+ </span>
