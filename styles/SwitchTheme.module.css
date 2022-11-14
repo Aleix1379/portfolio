@@ -141,27 +141,3 @@
         left: calc(-100% - 25px);
     }
 }
-
-/*
-@keyframes borderEnterAnimation2 {
-    0% {
-        right: calc(-100% - 20px);
-        top: -40px;
-    }
-    100% {
-        right: 0;
-        top: 0;
-    }
-}
-
-@keyframes borderLeaveAnimation2 {
-    0% {
-        right: 0;
-        top: 0;
-    }
-
-    100% {
-        right: calc(100% + 20px);
-    }
-}
-*/
