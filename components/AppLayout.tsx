@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from './Header'
 import Nav from './Nav'
 import styles from '../styles/Home.module.css'
+import Footer from './Footer'
 
 interface AppLayoutProps {
 	children: JSX.Element
@@ -22,6 +23,8 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 		<Nav />
 
 		{children}
+
+		<Footer />
 
 	</div>
 }

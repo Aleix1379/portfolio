@@ -18,7 +18,8 @@
 .text {
     font-size: 4rem;
     text-shadow: 1px 5px 6px rgba(0, 0, 0, 0.61);
-    font-family: 'Catamaran bold', sans-serif;
+    font-family: 'Dancing Script', sans-serif;
+    font-weight: normal;
     line-height: 1em;
     margin-top: 0;
     margin-bottom: 0;

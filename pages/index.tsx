@@ -143,7 +143,7 @@ const Home: NextPage = () => {
 					<div className={styles.infoAbout}>
 						<Image src={'/images/about.svg'} height={300} width={300} alt='About' priority />
 						<div>
-							<span className={`${styles.important} ${styles.yearsOfExperience}`}>
+							<span className={styles.important}>
 								<span>+ </span>
 								<span>{
 									getYearsOfExperience(

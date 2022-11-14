@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    /*height: 60px;*/
 }
 
 .label {
@@ -12,6 +11,7 @@
     display: inline-block;
     transform: translateY(30px) translateX(8px);
     animation: inputBlurAnimation .3s ease-in forwards;
+    color: var(--text-color);
 }
 
 .animated {
@@ -28,16 +28,16 @@
 }
 
 .input {
-    background-color: transparent;
+    background-color: var(--bg-input);
     border: none;
-    color: #fafafa;
+    color: var(--text-color);
     width: 100%;
     font-family: 'Catamaran', sans-serif;
     font-size: 14px;
 }
 
 .input::placeholder {
-    color: #000;
+    color: var(--text-color);
 }
 
 .input:focus-visible {
@@ -74,7 +74,7 @@
 @keyframes inputFocusAnimation {
     0% {
         transform: translateY(30px) translateX(8px);
-        color: #fafafa;
+        color: var(--text-color);
     }
 
     50% {
@@ -83,7 +83,7 @@
 
     100% {
         transform: translateY(0) translateX(0);
-        /*color: #38c188;*/
+        color: #38c188;
     }
 }
 
@@ -99,6 +99,6 @@
 
     100% {
         transform: translateY(30px) translateX(8px);
-        color: #fafafa;
+        color: var(--text-color);
     }
 }

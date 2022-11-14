@@ -1,13 +1,34 @@
 .footer {
-    background-color: lime;
-    align-self: center;
-    min-height: 200px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+    /*height: 500px;*/
+    font-family: 'Dancing Script', serif;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    padding: 10px 10px;
+    height: 600px;
 }
 
-@media (min-width: 1400px) {
+.footer > div {
+    position: relative;
+    top: 45px;
+}
+
+@media (min-width: 768px) {
     .footer {
-        width: var(--content-width);
+        height: unset;
+        margin-top: 80px;
+        background-color: var(--bg-project);
+        flex-direction: row;
+        padding: 50px 100px;
+    }
+
+    .footer > div {
+        margin-top: 0;
     }
 
 }

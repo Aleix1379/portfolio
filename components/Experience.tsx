@@ -12,31 +12,35 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 
 	return <div className={styles.experience}>
 		<div className={styles.header}>
-			<div className={styles.title}>
-				<h2>{experience.title}</h2>
-				<span className={styles.location}>{experience.location}</span>
-				<span className={styles.jobType}>{experience.type}</span>
+			<h2>{experience.title}</h2>
+
+			<div className={styles.info}>
+				<div className={styles.infoDetails}>
+					<span className={styles.location}>{experience.location}</span>
+					<span className={styles.jobType}>{experience.type}</span>
+				</div>
+
+				<div className={styles.time}>
+					<span className={styles.timeCapitalize}>{formatDateWithMonthName(experience.start, {
+						month: true,
+						year: true,
+						short: true
+					})}</span>
+					<span> -  </span>
+					{
+						experience.end ?
+							<span
+								className={styles.timeCapitalize}> {formatDateWithMonthName(experience.end, {
+									month: true,
+									year: true,
+									short: true
+								})}</span> :
+							<span className={styles.timeCapitalize}> present</span>
+					}
+					<span className={styles.duration}> {getDifference(experience.start, experience.end)}</span>
+				</div>
 			</div>
 
-			<div className={styles.time}>
-				<span className={styles.timeCapitalize}>{formatDateWithMonthName(experience.start, {
-					month: true,
-					year: true,
-					short: true
-				})}</span>
-				<span> -  </span>
-				{
-					experience.end ?
-						<span
-							className={styles.timeCapitalize}> {formatDateWithMonthName(experience.end, {
-								month: true,
-								year: true,
-								short: true
-							})}</span> :
-						<span className={styles.timeCapitalize}> present</span>
-				}
-				<span className={styles.duration}> {getDifference(experience.start, experience.end)}</span>
-			</div>
 		</div>
 
 		<div className={styles.details}>

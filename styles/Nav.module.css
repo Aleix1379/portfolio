@@ -15,7 +15,7 @@
 }
 
 .logo:hover > div {
-    background-color: var(---green);
+    background-color: var(--green);
     height: 78px;
     width: 78px;
 }
@@ -105,7 +105,7 @@
     bottom: 6px;
     left: 0;
     width: 100%;
-    background-color: var(---green);
+    background-color: var(--green);
     height: 2px;
     animation: hoverAnimation .35s ease forwards;
 }

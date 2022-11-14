@@ -18,7 +18,7 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = ({ name, description, platform, image, links, technologies }) => {
 	const getChipStyle = (platform: Platform): CSSProperties => {
 		const style = {
-			marginTop: 5,
+			marginTop: 10,
 			backgroundColor: 'rgb(69,52,123)'
 		}
 		if (platform === 'mobile') {

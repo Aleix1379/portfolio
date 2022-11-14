@@ -1,7 +1,7 @@
 import { JobExperience } from '../types/JobExperience'
 
 export const getExperience = (limit = -1): Array<JobExperience> => {
-	const data: Array<JobExperience> = [
+	let data: Array<JobExperience> = [
 		{
 			id: '1',
 			title: 'Full-stack developer',
@@ -91,6 +91,8 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 			description: 'Design of Workflows with OpenKM\n\nSchedule an asp.net webform application with C # using entity framework\n\nWith C#: \n\nMake a program that allows to convert documents (office, images, html) to pdf, to be able to print them\n\nUse the printer driver to send print documents, with parameters (color, b / w, duplex)'
 		}
 	]
+
+	data = data.sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime())
 
 	if (limit === -1) {
 		return data

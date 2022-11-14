@@ -1,6 +1,6 @@
 :root {
     --white: #fafafa;
-    ---green: #38c188;
+    --green: #38c188;
     --blue: #3888c1;
     --bgi: rgba(3, 160, 98, 0.35);
     --bg-button: #fbeee0;
@@ -14,7 +14,7 @@
     --bg-project: #0c0c0c;
     --tc-title-main: #fafafa;
     --tc-project-title: #c0c0c0;
-    --bg-input: #ffffff1c;
+    --bg-input: rgba(0, 0, 0, .25);
     --sh-main: rgba(0, 0, 0, 0.75);
     --sh-form: rgba(10, 10, 10, .75);
     --sh-project: rgba(10, 10, 10, .75);
@@ -25,6 +25,10 @@
     --bg-technology: #333;
     --bg-experience-separator: #151515;
     --tsh-experience-separator: 1px 1px 1px 1px rgba(22, 22, 22, .25);
+    --bg-footer-1: rgba(08, 08, 08, .75);
+    --bg-footer-2: rgba(10, 10, 10, .75);
+    --bg-footer-3: rgba(08, 08, 08, .75);
+    --bg-footer-4: rgba(10, 10, 10, .75);
 }
 
 [data-theme="light"] {
@@ -34,7 +38,7 @@
     --bg-project: #fafafa;
     --tc-title-main: #353535;
     --tc-project-title: #585858;
-    --bg-input: #b2b2b2;
+    --bg-input: rgba(222, 222, 222, .25);
     --sh-main: rgba(202, 202, 202, 0.75);
     --sh-form: rgba(218, 218, 218, .75);
     --sh-project: rgba(195, 195, 195, .75);
@@ -45,4 +49,8 @@
     --bg-technology: #959595;
     --bg-experience-separator: #b3b3b3;
     --tsh-experience-separator: 1px 1px 1px 1px rgba(209, 209, 209, 0.75);
+    --bg-footer-1: #efefef;
+    --bg-footer-2: #dcdcdc;
+    --bg-footer-3: #fff;
+    --bg-footer-4: #ededed;
 }

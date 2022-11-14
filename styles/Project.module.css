@@ -36,7 +36,7 @@
 }
 
 .title > h2 {
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -61,6 +61,7 @@
     color: var(--tc-project-title);
     text-shadow: 4px 4px 10px var(--tsh-project);
     transition: color, text-shadow .5s;
+    font-family: "Dancing Script", sans-serif;
 }
 
 .pages {

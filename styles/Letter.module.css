@@ -8,7 +8,7 @@
 
 .letter:nth-child(even):hover {
     transform: rotate(10deg) scale(1.15) !important;
-    color: var(---green);
+    color: var(--green);
 }
 
 .letter:nth-child(odd):hover {
