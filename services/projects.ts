@@ -3,41 +3,6 @@ import { ProjectInfo } from '../types/Project.Infod'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
 	const data: Array<ProjectInfo> = [
 		{
-			id: '6',
-			name: 'Portfolio',
-			description: 'Web to show my projects and opportunity to learn NextJS.',
-			platform: 'web',
-			image: '/images/projects/portfolio.webp',
-			links: [
-				{
-					url: 'https://github.com/Aleix1379/portfolio',
-					text: 'Github',
-					icon: 'github'
-				}
-			],
-			technologies: [
-				{
-					url: 'https://www.typescriptlang.org/',
-					text: 'TypeScript',
-					icon: 'typescript'
-				},
-				{
-					url: 'https://www.w3.org/Style/CSS/Overview.en.html',
-					text: 'CSS 3',
-					icon: 'css3'
-				},
-				{
-					url: 'https://nextjs.org/',
-					text: 'NextJS',
-					icon: 'nextjs'
-				},
-				{
-					url: 'https://reactjs.org/',
-					text: 'React',
-					icon: 'react'
-				}
-			]
-		}, {
 			id: '3',
 			name: 'Enirve',
 			description: 'Mobile app to learn irregular verbs in English',
@@ -111,6 +76,42 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 					url: 'https://jestjs.io/',
 					text: 'Jest',
 					icon: 'jest'
+				}
+			]
+		},
+		{
+			id: '6',
+			name: 'Portfolio',
+			description: 'Web to show my projects and opportunity to learn NextJS.',
+			platform: 'web',
+			image: '/images/projects/portfolio.webp',
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/portfolio',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
+			technologies: [
+				{
+					url: 'https://www.typescriptlang.org/',
+					text: 'TypeScript',
+					icon: 'typescript'
+				},
+				{
+					url: 'https://www.w3.org/Style/CSS/Overview.en.html',
+					text: 'CSS 3',
+					icon: 'css3'
+				},
+				{
+					url: 'https://nextjs.org/',
+					text: 'NextJS',
+					icon: 'nextjs'
+				},
+				{
+					url: 'https://reactjs.org/',
+					text: 'React',
+					icon: 'react'
 				}
 			]
 		},
