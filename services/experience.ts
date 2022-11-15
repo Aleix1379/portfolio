@@ -58,7 +58,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'Javascript',
 				'CSS'
 			],
-			description: 'Maintain the front-end of the company website.'
+			description: 'I have worked as a freelancer around one year doing tasks of maintaining the front-end of the company website.'
 		},
 		{
 			id: '5',
