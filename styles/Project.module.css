@@ -8,7 +8,7 @@
     transition: background-color .5s;
     width: calc(100% - 5px);
     max-width: 350px;
-    animation: projectEnter 1s forwards;
+    animation: projectEnter 1.5s forwards;
 }
 
 .project > p {
@@ -18,13 +18,13 @@
 
 @keyframes projectEnter {
     0% {
-        transform: scale(0);
+        transform: scale(0) translateX(300%);
     }
     50% {
         transform: scale(1.1);
     }
     100% {
-        transform: scale(1);
+        transform: scale(1) translateX(0);
     }
 }
 
