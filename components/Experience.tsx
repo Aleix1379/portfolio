@@ -12,7 +12,10 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 
 	return <div className={styles.experience}>
 		<div className={styles.header}>
-			<h2>{experience.title}</h2>
+			<div>
+				<h2>{experience.title}</h2>
+				<span className={styles.company}>{experience.company}</span>
+			</div>
 
 			<div className={styles.info}>
 				<div className={styles.infoDetails}>
@@ -44,7 +47,6 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
 		</div>
 
 		<div className={styles.details}>
-			<span className={styles.company}>{experience.company}</span>
 			<div>
 				{
 					experience.technologies.map((technology, index) =>
