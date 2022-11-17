@@ -1,5 +1,5 @@
 .experience {
-    padding: 0 15px 8px;
+    padding: 0 15px 4px;
     position: relative;
     max-width: 600px;
     background-color: var(--bg-project);
@@ -88,6 +88,10 @@
     justify-content: space-between;
     flex-direction: column;
     margin-bottom: 15px;
+}
+
+.responsibilities {
+    padding-left: 20px;
 }
 
 .company {

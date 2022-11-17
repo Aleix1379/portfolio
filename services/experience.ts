@@ -16,7 +16,13 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'Node JS',
 				'Strapi'
 			],
-			description: 'Develop an ecommerce'
+			responsibilities: [
+				'Develop an eCommerce using Nuxt JS for the front-end and Strapi for the back-end.',
+				'Integrate ecommerce with delivery company API',
+				'Solving issues in connection with the company website that exist or appear (Apply discount coupons to, existing orders)',
+				'New functionalities for the website ( coupons for discount, manage subscriptions and orders)',
+				'Working with the designer to implement the new web design'
+			]
 		},
 		{
 			id: '2',
@@ -29,7 +35,11 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 			technologies: [
 				'React JS'
 			],
-			description: 'Front end with React JS.'
+			responsibilities: [
+				'Maintaining a web application using React JS',
+				'Testing the functionality of the web application',
+				'Convert HTML to JSX'
+			]
 		},
 		{
 			id: '3',
@@ -43,7 +53,13 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'Angular',
 				'Node JS'
 			],
-			description: 'Web apps using the framework Angular JS.\nMobile apps for Android and iOS using Ionic 4 framework.\nBackend with Node JS and Typescript.\nDevelop the prototype of the application using https://www.fluidui.com/\nPublish apps on Google Play and App Store.'
+			responsibilities: [
+				'Web apps using the framework Angular JS.',
+				'Mobile apps for Android and iOS using Ionic 4 framework.',
+				'Backend with Node JS and Typescript.',
+				'Develop the prototype of the application using https://www.fluidui.com/',
+				'Publish apps on Google Play and App Store.'
+			]
 		},
 		{
 			id: '6',
@@ -58,7 +74,11 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'Javascript',
 				'CSS'
 			],
-			description: 'I have worked as a freelancer around one year doing tasks of maintaining the front-end of the company website.'
+			responsibilities: [
+				'Updating pages of the company website.',
+				'Creating additional web pages.',
+				'Design integration for website.'
+			]
 		},
 		{
 			id: '5',
@@ -74,7 +94,10 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'Less',
 				'Bootstrap'
 			],
-			description: 'I developed a web app to manage the users and information of a mobile app using bootstrap, less and jquery.\nMaintenance an Android app (Native with Java) and publish the application on google play.'
+			responsibilities: [
+				'I developed a web app to manage the users and information of a mobile app using bootstrap, less and jquery.',
+				'Maintenance an Android app (Native with Java) and publish the application on google play.'
+			]
 		},
 		{
 			id: '4',
@@ -88,7 +111,12 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 				'C#',
 				'Entity framework'
 			],
-			description: 'Design of Workflows with OpenKM\n\nSchedule an asp.net webform application with C # using entity framework\n\nWith C#: \n\nMake a program that allows to convert documents (office, images, html) to pdf, to be able to print them\n\nUse the printer driver to send print documents, with parameters (color, b / w, duplex)'
+			responsibilities: [
+				'Design of Workflows with OpenKM.',
+				'Schedule an asp.net webform application with C # using entity framework.',
+				'With C #: Make a program that allows to convert documents (office, images, html) to pdf, to be able toprint them.',
+				'Use the printer driver to send print documents, with parameters (color, b / w, duplex)'
+			]
 		}
 	]
 
