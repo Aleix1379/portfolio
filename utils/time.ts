@@ -1,5 +1,5 @@
 import { TimeOptions } from '../types/Time'
-import { JobExperience, JobOptions, JobType } from '../types/JobExperience'
+import { JobExperience, JobOptions } from '../types/JobExperience'
 import { getExperience } from '../services/experience'
 
 export const milliSecondsToTime = (t: number) => {
@@ -98,7 +98,7 @@ export const getYearsOfExperience = (options?: JobOptions): number => {
 		filter = options.filter
 	}
 
-	const typeFilter: Array<JobType> = []
+	const typeFilter: Array<string> = []
 
 	if (filter) {
 		if (filter.fullTime) {

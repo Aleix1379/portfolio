@@ -66,7 +66,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 			title: 'Web developer',
 			company: 'Coach4Pro',
 			location: 'Espoo, Uusimaa, Finland (remote)',
-			type: 'freelance',
+			type: 'freelance as needed',
 			start: '2018-03-01',
 			end: '2019-04-30',
 			technologies: [
