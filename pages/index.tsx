@@ -245,8 +245,9 @@ const Home: NextPage = () => {
 									color={'#909090'}
 								/>
 							</div>
-							<form className={styles.form} onSubmit={sendMessage}>
+							<form data-testid='contact-form' className={styles.form} onSubmit={sendMessage}>
 								<Input
+									testID='contact-form-subject'
 									className={styles.input}
 									label={'Subject'}
 									value={form.subject}
@@ -254,6 +255,7 @@ const Home: NextPage = () => {
 									validation={validations.subject}
 								/>
 								<Input
+									data-testid='contact-form-message'
 									className={styles.input}
 									label={'Message'}
 									value={form.message}

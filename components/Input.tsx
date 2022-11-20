@@ -3,6 +3,7 @@ import styles from '../styles/Input.module.css'
 import { Validation } from '../types/Validation'
 
 interface InputProps {
+	testID?: string
 	label: string
 	value: string
 	placeholder?: string
@@ -12,7 +13,16 @@ interface InputProps {
 	validation?: Validation
 }
 
-const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type = 'text', className, validation }) => {
+const Input: React.FC<InputProps> = ({
+	testID = '',
+	label,
+	value,
+	placeholder,
+	onChange,
+	type = 'text',
+	className,
+	validation
+}) => {
 	const [isLabelActive, setIsLabelActive] = useState(false)
 
 	const getAnimationDelay = (index: number): string => {
@@ -50,6 +60,7 @@ const Input: React.FC<InputProps> = ({ label, value, placeholder, onChange, type
 						style={{ borderColor: isValid() ? '#38c188' : '#c0392b' }}
 					>
 						<input
+							data-testid={testID}
 							className={styles.input}
 							type={type}
 							placeholder={isLabelActive ? placeholder : ''}
