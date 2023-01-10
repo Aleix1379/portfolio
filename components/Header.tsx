@@ -4,7 +4,7 @@ import Letter from './Letter'
 
 const Header = () => {
 	const [name] = useState('I\'m Aleix.')
-	const [description] = useState('A front end developer.')
+	const [description] = useState('A full stack developer.')
 
 	const renderAnimatedText = (text: string, animationDelay = .25) => {
 		return text.split(/(\s+)/).map((word, key) => (
