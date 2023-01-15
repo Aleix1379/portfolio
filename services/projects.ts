@@ -13,6 +13,11 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 					url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
 					text: 'Google play',
 					icon: 'googlePlay'
+				},
+				{
+					url: 'https://enirve.com',
+					text: 'Website',
+					icon: 'web'
 				}
 			],
 			technologies: [
