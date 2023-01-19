@@ -3,6 +3,42 @@ import { ProjectInfo } from '../types/Project.Infod'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
 	const data: Array<ProjectInfo> = [
 		{
+			id: '7',
+			name: 'Enirve Landing',
+			description: 'Landing page for Enirve',
+			platform: 'web',
+			image: '/images/projects/enirve.webp',
+			technologies: [
+				{
+					text: 'Astro',
+					url: 'https://astro.build/',
+					icon: 'astro'
+				},
+				{
+					text: 'CSS',
+					url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+					icon: 'css'
+				},
+				{
+					text: 'React JS',
+					url: 'https://reactjs.org/',
+					icon: 'react'
+				},
+				{
+					text: 'TypeScript',
+					url: 'https://www.typescriptlang.org/',
+					icon: 'typescript'
+				}
+			],
+			links: [
+				{
+					url: 'https://enirve.com',
+					text: 'Website',
+					icon: 'web'
+				}
+			]
+		},
+		{
 			id: '3',
 			name: 'Enirve',
 			description: 'Mobile app to learn irregular verbs in English',

@@ -20,6 +20,8 @@ export type BrandIcon =
 	| 'css3'
 	| 'html5'
 	| 'angular'
+	| 'astro'
+	| 'css'
 
 export interface Link {
 	url: string
