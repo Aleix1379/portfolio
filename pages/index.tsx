@@ -157,7 +157,7 @@ const Home: NextPage = () => {
 								}</span>
 								<span> years </span>
 							</span>
-							<span> of experience as a front end developer.</span>
+							<span> of experience as a full stack end developer.</span>
 							<p>
 								Working with web and mobile apps.
 							</p>
