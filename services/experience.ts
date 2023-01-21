@@ -19,7 +19,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 			responsibilities: [
 				'Develop an eCommerce using Nuxt JS for the front-end and Strapi for the back-end',
 				'Integrate ecommerce with delivery company API',
-				'New functionalities for the website ( coupons for discount, manage subscriptions and orders)',
+				'New functionalities for the website (coupons for discount, manage subscriptions and orders)',
 				'Working with the designer to implement the new web design'
 			]
 		},
