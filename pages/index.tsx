@@ -159,10 +159,7 @@ const Home: NextPage = () => {
 							</span>
 							<span> of experience as a full stack end developer.</span>
 							<p>
-								Working with web and mobile apps.
-							</p>
-							<p>
-								Focused on building user interfaces with web technologies.
+								Working with web and mobile apps using web technologies.
 							</p>
 						</div>
 					</div>
