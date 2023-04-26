@@ -149,8 +149,7 @@ const Home: NextPage = () => {
 									getYearsOfExperience(
 										{
 											filter: {
-												fullTime: true,
-												internship: true
+												fullTime: true
 											}
 										}
 									)
