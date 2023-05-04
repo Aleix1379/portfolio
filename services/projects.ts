@@ -3,7 +3,7 @@ import { ProjectInfo } from '../types/Project.Infod'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
 	const data: Array<ProjectInfo> = [
 		{
-			id: '7',
+			id: '8',
 			name: 'Enirve Landing',
 			description: 'Landing page for Enirve',
 			platform: 'web',
