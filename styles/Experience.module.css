@@ -5,19 +5,19 @@
     background-color: var(--bg-project);
     border-radius: 8px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
-    animation: experienceEnter 1.5s forwards;
+    animation: experienceEnter 1s forwards;
 }
 
 
 @keyframes experienceEnter {
     0% {
-        transform: scale(0) translateX(300%);
+        transform: scale(0);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     100% {
-        transform: scale(1) translateX(0);
+        transform: scale(1);
     }
 }
 
