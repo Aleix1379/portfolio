@@ -40,7 +40,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 		},
 		{
 			id: '3',
-			name: 'Enirve',
+			name: 'Enirve App',
 			description: 'Mobile app to learn irregular verbs in English',
 			platform: 'mobile',
 			image: '/images/projects/enirve.webp',
@@ -158,7 +158,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 		},
 		{
 			id: '4',
-			name: 'Enirve',
+			name: 'Enirve Backend',
 			description: 'Backend for Enirve.',
 			platform: 'backend',
 			image: '/images/projects/enirve.webp',
@@ -202,7 +202,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 			description: 'Mobile app to talk about video games.',
 			platform: 'mobile',
 			image: '/images/projects/talkandplay.webp',
-			links: [],
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/TalkAndPlayApp',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
 			technologies: [
 				{
 					url: 'https://www.typescriptlang.org/',
@@ -227,7 +233,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 			description: 'Backend for Talk and play.',
 			platform: 'backend',
 			image: '/images/projects/talkandplay.webp',
-			links: [],
+			links: [
+				{
+					url: 'https://github.com/Aleix1379/TalkAndPlayAPI',
+					text: 'Github',
+					icon: 'github'
+				}
+			],
 			technologies: [
 				{
 					url: 'https://kotlinlang.org/',
