@@ -7,6 +7,7 @@ import {
 	Github,
 	Googlechrome,
 	Googleplay,
+	Appstore,
 	Graphql,
 	Hibernate,
 	Html5,
@@ -37,6 +38,7 @@ interface IconLinkProps {
 const IconLink: React.FC<IconLinkProps> = ({ link, className, color = '#454545', size = 40 }) => {
 	const icons = {
 		googlePlay: <Googleplay title={'GooglePlay'} color={color} size={size} />,
+		appStore: <Appstore title={'AppStore'} color={color} size={size} />,
 		github: <Github title={'Github'} color={color} size={size} />,
 		linkedin: <Linkedin title={'Linkedin'} color={color} size={size} />,
 		web: <Googlechrome title={'Web'} color={color} size={size} />,

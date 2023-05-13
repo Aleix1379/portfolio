@@ -3,6 +3,7 @@ export type BrandIcon =
 	| 'linkedin'
 	| 'web'
 	| 'googlePlay'
+	| 'appStore'
 	| 'react'
 	| 'redux'
 	| 'nodejs'

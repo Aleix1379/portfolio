@@ -46,6 +46,11 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 			image: '/images/projects/enirve.webp',
 			links: [
 				{
+					url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
+					text: 'App store',
+					icon: 'appStore'
+				},
+				{
 					url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
 					text: 'Google play',
 					icon: 'googlePlay'
