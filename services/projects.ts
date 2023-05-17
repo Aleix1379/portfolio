@@ -238,13 +238,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
 			description: 'Backend for Talk and play.',
 			platform: 'backend',
 			image: '/images/projects/talkandplay.webp',
-			links: [
-				{
-					url: 'https://github.com/Aleix1379/TalkAndPlayAPI',
-					text: 'Github',
-					icon: 'github'
-				}
-			],
+			links: [],
 			technologies: [
 				{
 					url: 'https://kotlinlang.org/',
