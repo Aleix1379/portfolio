@@ -3,6 +3,42 @@ import { ProjectInfo } from '../types/Project.Infod'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
 	const data: Array<ProjectInfo> = [
 		{
+			id: '9',
+			name: 'My Setuppi',
+			description: 'Web to share gaming and pc setup.',
+			platform: 'web',
+			image: '/images/projects/my-setuppi.webp',
+			technologies: [
+				{
+					text: 'Vue JS',
+					url: 'https://vuejs.org/',
+					icon: 'vue'
+				},
+				{
+					text: 'Nuxt JS',
+					url: 'https://nuxtjs.org/',
+					icon: 'nuxt'
+				},
+				{
+					text: 'TypeScript',
+					url: 'https://www.typescriptlang.org/',
+					icon: 'typescript'
+				},
+				{
+					text: 'CSS',
+					url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+					icon: 'css'
+				}
+			],
+			links: [
+				{
+					url: 'https://www.mysetuppi.com/',
+					text: 'Website',
+					icon: 'web'
+				}
+			]
+		},
+		{
 			id: '8',
 			name: 'Enirve Landing',
 			description: 'Landing page for Enirve',

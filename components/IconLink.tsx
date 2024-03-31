@@ -22,7 +22,9 @@ import {
 	Redux,
 	Sequelize,
 	Springboot,
-	Typescript
+	Typescript,
+	Vuedotjs,
+	Nuxtdotjs
 } from '@icons-pack/react-simple-icons'
 import React from 'react'
 import { BrandIcon, Link } from '../types/Link'
@@ -60,7 +62,9 @@ const IconLink: React.FC<IconLinkProps> = ({ link, className, color = '#454545',
 		html5: <Html5 title={'HTML 5'} color={color} size={size} />,
 		angular: <Angular title={'Angular'} color={color} size={size} />,
 		astro: <Astro title={'Astro'} color={color} size={size} />,
-		css: <CssThree title={'CSS'} color={color} size={size} />
+		css: <CssThree title={'CSS'} color={color} size={size} />,
+		vue: <Vuedotjs title={'Vue'} color={color} size={size} />,
+		nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />
 	}
 	const getIcon = (name: BrandIcon) => {
 		return icons[name]
