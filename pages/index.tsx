@@ -5,7 +5,6 @@ import Input from '../components/Input'
 import React, { useState } from 'react'
 import SubmitForm from '../components/SubmitForm'
 import Project from '../components/Project'
-import Image from 'next/image'
 import IconLink from '../components/IconLink'
 import { JobExperience } from '../types/JobExperience'
 import Experience from '../components/Experience'
@@ -141,7 +140,7 @@ const Home: NextPage = () => {
 				<section id='about' className={styles.section}>
 					<h2>About me</h2>
 					<div className={styles.infoAbout}>
-						<Image src={'/images/about.svg'} height={300} width={300} alt='About' priority />
+						<img src="/images/about.svg" alt="About" className={styles.image} width={800} height={300} />
 						<div>
 							<span className={styles.important}>
 								<span>+ </span>
@@ -164,9 +163,9 @@ const Home: NextPage = () => {
 					</div>
 				</section>
 
-				<section id='experience' className={styles.section}>
+				<section id="experience" className={styles.section}>
 					<h2>Experience</h2>
-					<Image src={'/images/experience.svg'} height={300} width={300} alt='Experience' />
+					<img src="/images/experience.svg" alt="Experience" className={styles.image} width={300} height={300} />
 					<div className={styles.infoExperience}>
 						{
 							experiences.map((experience, index) =>
@@ -185,7 +184,7 @@ const Home: NextPage = () => {
 					<h2>Projects</h2>
 
 					<div className={styles.infoProjects}>
-						<Image src={'/images/projects.svg'} height={300} width={300} alt='Projects' />
+						<img src="/images/projects.svg" alt="Projects" className={styles.image} width={635} height={300} />
 						<div>
 							<span>I like to work on personal projects to improve and learn new technologies, usually with</span>
 							<span className={styles.important}> React JS</span>,
@@ -218,7 +217,7 @@ const Home: NextPage = () => {
 
 					<div className={styles.infoContact}>
 
-						<Image src={'/images/contact.svg'} height={300} width={300} alt='Contact' />
+						<img src="/images/contact.svg" alt="Contact" className={styles.image} width={500} height={620} />
 
 						<div>
 							<div className={styles.socialNetworks}>
