@@ -4,9 +4,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "test": "jest",
     "test:e2e": "npx playwright test",
     "lint": "next lint",
@@ -45,3 +45,4 @@
   "repository": "git@github.com:Aleix1379/portfolio.git",
   "author": "Aleix <aleixmp1379@gmail.com>"
 }
+
