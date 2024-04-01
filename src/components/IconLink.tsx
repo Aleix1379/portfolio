@@ -65,8 +65,8 @@ const IconLink: React.FC<IconLinkProps> = ({
     graphql: <Graphql title={'Graphql'} color={color} size={size} />,
     // @ts-ignore
     typescript: <Typescript title={'Typescript'} color={color} size={size} />,
-    // @ts-ignore
     apollographql: (
+      // @ts-ignore
       <Apollographql title={'Apollographql'} color={color} size={size} />
     ),
     // @ts-ignore
