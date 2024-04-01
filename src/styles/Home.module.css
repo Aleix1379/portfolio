@@ -1,0 +1,250 @@
+.container {
+    transition: background-color .5s;
+    background-color: var(--background);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    transition: background-color .5s;
+    background-color: var(--bg-main);
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px -12px var(--sh-main);
+    border-radius: 3px;
+    padding: 50px 8px 80px;
+}
+
+.downloadCv {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+}
+
+.section {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section ::selection {
+    color: #38c188;
+    background: #3888c1;
+}
+
+/*.section:last-child {*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+.section > h2 {
+    font-family: 'Dancing Script', sans-serif;
+    text-shadow: 1px 4px 4px rgba(0, 0, 0, .70);
+    font-weight: normal;
+    font-size: 80px;
+    margin-top: 0;
+    color: var(--tc-title-main);
+    align-self: center;
+    margin-bottom: 35px;
+}
+
+.section > h2::selection {
+    color: #38c188;
+    background: #3888c1;
+}
+
+.infoAbout {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 45px;
+}
+
+.infoAbout img {
+    max-height: 140px;
+}
+
+.infoExperience > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoExperience {
+    margin-top: 35px;
+    margin-bottom: 50px;
+}
+
+.infoAbout > div {
+    margin-top: 30px;
+}
+
+.infoProjects {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 45px;
+}
+
+.infoProjects > div {
+    margin-top: 35px;
+}
+
+.infoContact {
+    display: flex;
+    flex-direction: column;
+    margin-top: -60px;
+}
+
+.important {
+    font-weight: bold;
+    color: #38c188;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-items: center;
+    row-gap: 30px;
+    column-gap: 30px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 35px;
+    background-color: var(--bg-project);
+    border: 1px solid var(--bg-project);
+    border-radius: 8px;
+    box-shadow: 5px 5px 20px -5px var(--sh-form);
+    transition: background-color, box-shadow, border .5s;
+}
+
+.formTitle {
+    margin-top: 0;
+}
+
+.input {
+    margin-bottom: 15px;
+}
+
+.button {
+    margin-top: 65px;
+}
+
+.button > span {
+    color: var(--text-color);
+    transition: color .5s;
+}
+
+.socialNetworks {
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.socialNetworks > a {
+    margin: 5px 15px 20px;
+}
+
+.socialNetworks > a > svg {
+    transition: 1s;
+    width: 60px;
+}
+
+.socialNetworks > a:hover > svg {
+    fill: var(--green);
+    stroke: rgba(56, 193, 136, 0.75);
+    filter: drop-shadow(1px 1px 3px rgba(33, 33, 33, 0.75));
+}
+
+@media (min-width: 768px) {
+
+    .main {
+        padding-left: 50px;
+        padding-right: 50px;
+        max-width: var(--content-width);
+    }
+
+    .projects {
+        row-gap: 50px;
+        grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+    }
+
+    .infoAbout img {
+        max-height: unset;
+    }
+
+    .infoExperience {
+        margin-top: 0;
+    }
+
+    .section {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .form {
+        width: 500px;
+    }
+
+    .infoAbout {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        margin-top: 15px;
+        max-width: 100vw;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .infoAbout > div {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .infoProjects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .infoProjects > div {
+        margin-top: 0;
+    }
+
+    .infoContact > span > img {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .infoContact > div {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .section > h2 {
+        font-size: 90px;
+
+    }
+
+}
+
+@media (min-width: 1250px) {
+    .infoContact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 80px;
+        margin-top: 15px;
+    }
+
+    .projects {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}

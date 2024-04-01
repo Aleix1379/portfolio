@@ -1,0 +1,41 @@
+.button {
+    background-color: var(--bg-button);
+    border: 2px solid var(--sh-button);
+    border-radius: 30px;
+    box-shadow: var(--sh-button) 4px 4px 0 0;
+    color: var(--sh-button);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover {
+    background-color: #fff;
+}
+
+.button:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
+
+.downloadCv {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10000;
+}
+
+@media (min-width: 768px) {
+    .button {
+        min-width: 120px;
+        padding: 0 12px;
+    }
+}
