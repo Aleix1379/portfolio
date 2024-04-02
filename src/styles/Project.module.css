@@ -7,7 +7,7 @@
     box-shadow: 5px 5px 20px -5px var(--sh-project);
     transition: background-color .5s;
     width: calc(100% - 5px);
-    max-width: 350px;
+    max-width: calc(100% - 32px);
     animation: projectEnter 1.5s forwards;
 }
 
