@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <img
-        src={'/images/reactjs.png'}
+        src={'/images/reactjs.webp'}
         alt={'nextjs'}
         style={{ width: '337px', height: '249px', objectFit: 'scale-down' }}
       />
@@ -14,7 +14,7 @@ const Footer = () => {
         Pena
       </div>
       <img
-        src={'/images/nextjs.png'}
+        src={'/images/nextjs.webp'}
         alt={'nextjs'}
         className={styles.logoNextJs}
         width={500}
