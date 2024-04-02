@@ -71,6 +71,7 @@
 
 .imageExperience {
     width: calc(100% - 30px);
+    height: auto;
     align-self: center;
 }
 
