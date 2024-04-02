@@ -5,12 +5,10 @@
     align-items: center;
     color: var(--text-color);
     text-align: center;
-    /*height: 500px;*/
     font-family: 'Dancing Script', serif;
     font-size: 2.5rem;
     margin-top: 10px;
     padding: 10px 10px;
-    height: 600px;
 }
 
 .footer > div {
@@ -18,9 +16,14 @@
     top: 45px;
 }
 
+.logoNextJs {
+    width: calc(100% - 20px);
+    height: auto;
+    object-fit: scale-down;
+}
+
 @media (min-width: 768px) {
     .footer {
-        height: unset;
         margin-top: 80px;
         background-color: var(--bg-project);
         flex-direction: row;
@@ -29,6 +32,12 @@
 
     .footer > div {
         margin-top: 0;
+    }
+
+    .logoNextJs {
+        width: 500px;
+        height: 349px;
+        object-fit: scale-down;
     }
 
 }
