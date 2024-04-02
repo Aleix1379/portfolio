@@ -20,6 +20,8 @@ const ExperienceSection = () => {
         src="/images/experience.svg"
         alt="Experience"
         className={styles.imageExperience}
+        width={300}
+        height={300}
       />
       <div className={styles.infoExperience}>
         {experiences.map((experience, index) => (

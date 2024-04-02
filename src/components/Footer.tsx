@@ -17,6 +17,8 @@ const Footer = () => {
         src={'/images/nextjs.png'}
         alt={'nextjs'}
         className={styles.logoNextJs}
+        width={500}
+        height={349}
       />
     </footer>
   )

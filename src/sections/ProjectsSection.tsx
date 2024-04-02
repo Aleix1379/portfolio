@@ -21,6 +21,8 @@ const ProjectsSection = () => {
           src="/images/projects.svg"
           alt="Projects"
           className={styles.imageProjects}
+          width={635}
+          height={300}
         />
         <div>
           <span>
