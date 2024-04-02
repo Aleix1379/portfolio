@@ -64,6 +64,22 @@
 
 .infoAbout img {
     max-height: 140px;
+    width: calc(100% - 30px);
+}
+
+.imageExperience {
+    width: calc(100% - 30px);
+    align-self: center;
+}
+
+.imageProjects {
+    width: calc(100% - 30px);
+}
+
+.imageContact {
+    width: calc(100% - 30px);
+    align-self:  center;
+    height: 300px;
 }
 
 .infoExperience > div {
@@ -83,6 +99,7 @@
 .infoProjects {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 15px;
     margin-bottom: 45px;
 }
@@ -246,5 +263,19 @@
 
     .projects {
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    .infoAbout img {
+        width: 800px;
+    }
+
+    .imageExperience {
+        width: 300px;
+        height: 300px;
+    }
+
+    .imageProjects {
+        width: 635px;
+        height: 300px;
     }
 }

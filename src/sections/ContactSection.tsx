@@ -101,7 +101,7 @@ const ContactSection = () => {
         <img
           src="/images/contact.svg"
           alt="Contact"
-          className={styles.image}
+          className={styles.imageContact}
           width={500}
           height={620}
         />
