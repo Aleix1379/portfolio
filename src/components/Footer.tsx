@@ -14,11 +14,11 @@ const Footer = () => {
         Pena
       </div>
       <img
-        src={'/images/nextjs.webp'}
+        src={'/images/astro.png'}
         alt={'nextjs'}
         className={styles.logoNextJs}
-        width={500}
-        height={349}
+        width={170}
+        height={214}
       />
     </footer>
   )

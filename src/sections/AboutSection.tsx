@@ -35,6 +35,7 @@ const AboutSection = () => {
           className={styles.image}
           width={800}
           height={300}
+          loading={'eager'}
         />
         <div>
           <span className={styles.important}>
