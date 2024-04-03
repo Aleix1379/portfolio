@@ -29,6 +29,7 @@
     --bg-footer-2: rgba(10, 10, 10, .75);
     --bg-footer-3: rgba(08, 08, 08, .75);
     --bg-footer-4: rgba(10, 10, 10, .75);
+    --main-background: linear-gradient(to top, #020c1c, #04132a, #021839, #041b47, #0f1e55, #1b1e5a, #251e5f, #301d63, #371a60, #3e175d, #43145a, #481056);
 }
 
 [data-theme="light"] {
@@ -53,4 +54,5 @@
     --bg-footer-2: #dcdcdc;
     --bg-footer-3: #fff;
     --bg-footer-4: #ededed;
+    --main-background: linear-gradient(to top, #a3d8f4, #b3e2f6, #c3ecf8, #d3f6fa, #e3ffff, #f3ffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff);
 }
