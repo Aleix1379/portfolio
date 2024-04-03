@@ -58,6 +58,10 @@
     animation: headerHideAnimation .35s ease-in-out forwards;
 }
 
+.navContainerHide .logo > div {
+    transform: scale(.75);
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -238,7 +242,7 @@
             width: 100%;
             opacity: 0.9;
             transform: scale(.8) translateY(-5px);
-            border-radius: 10px;
+            border-radius: 15px;
             max-height: 80px;
         }
     }

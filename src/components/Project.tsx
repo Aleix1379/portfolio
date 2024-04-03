@@ -25,7 +25,7 @@ const Project: React.FC<ProjectProps> = ({
   const getChipStyle = (platform: Platform): CSSProperties => {
     const style = {
       marginTop: 10,
-      backgroundColor: 'rgb(69,52,123)'
+      backgroundColor: 'rgb(43,64,157)'
     }
     if (platform === 'mobile') {
       style.backgroundColor = 'rgb(23,114,25)'
