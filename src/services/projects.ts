@@ -68,7 +68,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       ],
       links: [
         {
-          url: 'https://enirve.com',
+          url: 'https://enirve.web.app/',
           text: 'Website',
           icon: 'web'
         }
@@ -92,7 +92,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           icon: 'googlePlay'
         },
         {
-          url: 'https://enirve.com',
+          url: 'https://enirve.web.app/',
           text: 'Website',
           icon: 'web'
         }
