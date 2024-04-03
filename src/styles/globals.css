@@ -4,11 +4,13 @@
 @font-face {
     font-family: 'Catamaran bold';
     src: url('../../public/fonts/Catamaran/Catamaran-VariableFont_wght.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Dancing Script';
     src: url('../../public/fonts/DancingScript/DancingScript-VariableFont_wght.ttf');
+    font-display: swap;
 }
 
 a {
