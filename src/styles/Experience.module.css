@@ -2,7 +2,6 @@
     padding: 0 15px 4px;
     position: relative;
     max-width: 600px;
-    /*background-color: var(--bg-project);*/
     background-image: linear-gradient(to right bottom, #0c0c0c, #121018, #151321, #19152b, #1c1735, #1f183c, #221943, #251a4a, #271b50, #291c56, #2b1c5c, #2d1d62);
     border-radius: 8px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
@@ -80,7 +79,7 @@
     text-shadow: 4px 4px 10px var(--tsh-project);
     transition: color, text-shadow .5s;
     font-family: "Dancing Script", serif;
-    font-size: 40px;
+    font-size: 36px;
     margin-bottom: 12px;
 }
 

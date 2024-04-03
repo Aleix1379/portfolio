@@ -35,10 +35,6 @@
     background: #3888c1;
 }
 
-/*.section:last-child {*/
-/*    margin-bottom: 0;*/
-/*}*/
-
 .section > h2 {
     font-family: 'Dancing Script', sans-serif;
     text-shadow: 1px 4px 4px rgba(0, 0, 0, .70);
