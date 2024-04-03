@@ -239,6 +239,7 @@
             opacity: 0.9;
             transform: scale(.8) translateY(-5px);
             border-radius: 10px;
+            max-height: 80px;
         }
     }
 

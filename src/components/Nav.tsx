@@ -56,8 +56,7 @@ const Nav = () => {
     <div
       id="navContainer"
       style={{ animationDuration: animationDuration }}
-      className={`${styles.navContainer} ${styles.navContainerShow}`}
-    >
+      className={`${styles.navContainer} ${styles.navContainerShow}`}>
       <nav className={styles.nav}>
         <div>
           <div className={styles.logo} onClick={scrollToTop}>
@@ -70,7 +69,7 @@ const Nav = () => {
                 alt="Avatar"
               />
             </div>
-            <h2 className={styles.name}>Aleix's portfolio</h2>
+            <h2 className={styles.name}>Aleix</h2>
           </div>
         </div>
 
@@ -78,38 +77,48 @@ const Nav = () => {
           className={styles.themeSwitch}
           value={theme === 'dark'}
           size={40}
-          onChange={(isDarkTheme => {
-              console.info('isDarkTheme', isDarkTheme)
-              setTheme(isDarkTheme ? 'dark' : 'light')
-            }
-          )}
+          onChange={isDarkTheme => {
+            console.info('isDarkTheme', isDarkTheme)
+            setTheme(isDarkTheme ? 'dark' : 'light')
+          }}
         />
 
-        <ul className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
+        <ul
+          className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('about')}> {/*'#about'*/}
+            <div onClick={() => scrollTo('about')}>
+              {' '}
+              {/*'#about'*/}
               About
             </div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('experience')}> {/*'#experience'*/}
+            <div onClick={() => scrollTo('experience')}>
+              {' '}
+              {/*'#experience'*/}
               Experience
             </div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('projects')}> {/*'#projects'*/}
+            <div onClick={() => scrollTo('projects')}>
+              {' '}
+              {/*'#projects'*/}
               Projects
             </div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('contact')}> {/*'#contact'*/}
+            <div onClick={() => scrollTo('contact')}>
+              {' '}
+              {/*'#contact'*/}
               Contact
             </div>
           </li>
         </ul>
 
-        <MenuButton isActive={isMenuOpened} onClick={() => setIsMenuOpened(!isMenuOpened)} />
-
+        <MenuButton
+          isActive={isMenuOpened}
+          onClick={() => setIsMenuOpened(!isMenuOpened)}
+        />
       </nav>
     </div>
   )
