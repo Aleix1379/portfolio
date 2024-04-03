@@ -14,7 +14,9 @@ const ExperienceSection = () => {
     setShowAllExperiences(true)
   }
   return (
-    <section id="experience" className={styles.section}>
+    <section
+      id="experience"
+      className={`${styles.experience} ${styles.section}`}>
       <h2>Experience</h2>
       <img
         src="/images/experience.svg"

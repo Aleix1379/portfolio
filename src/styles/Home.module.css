@@ -252,9 +252,11 @@
 
     .section > h2 {
         font-size: 90px;
-
     }
 
+    .experience > h2 {
+        margin-bottom: 10px;
+    }
 }
 
 @media (min-width: 1250px) {
