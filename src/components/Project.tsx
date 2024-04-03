@@ -43,7 +43,7 @@ const Project: React.FC<ProjectProps> = ({
       </div>
 
       <div className={styles.image}>
-        <img src={image} width={140} height={140} alt="Project logo" />
+        <img src={image} width={70} height={70} alt="Project logo" />
       </div>
 
       <p>{description}</p>
