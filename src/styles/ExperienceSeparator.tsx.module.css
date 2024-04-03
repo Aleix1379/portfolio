@@ -1,9 +1,15 @@
 .separator {
     background-color: var(--bg-experience-separator);
-    height: 80px;
+    height: 30px;
     width: 2px;
     display: flex;
     align-self: center;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .separator {
+        height: 50px;
+    }
 }
