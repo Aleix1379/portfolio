@@ -1,17 +1,17 @@
-import React, { type CSSProperties } from "react";
-import styles from "../styles/Project.module.css";
-import type { Link } from "../types/Link";
-import IconLink from "./IconLink";
-import type { Platform } from "../types/Platform";
-import Chip from "./Chip";
+import React, { type CSSProperties } from 'react'
+import styles from '../styles/Project.module.css'
+import type { Link } from '../types/Link'
+import IconLink from './IconLink'
+import type { Platform } from '../types/Platform'
+import Chip from './Chip'
 
 interface ProjectProps {
-  name: string;
-  description: string;
-  platform: Platform;
-  image: string;
-  links: Array<Link>;
-  technologies: Array<Link>;
+  name: string
+  description: string
+  platform: Platform
+  image: string
+  links: Array<Link>
+  technologies: Array<Link>
 }
 
 const Project: React.FC<ProjectProps> = ({
@@ -20,20 +20,20 @@ const Project: React.FC<ProjectProps> = ({
   platform,
   image,
   links,
-  technologies,
+  technologies
 }) => {
   const getChipStyle = (platform: Platform): CSSProperties => {
     const style = {
       marginTop: 10,
-      backgroundColor: "rgb(69,52,123)",
-    };
-    if (platform === "mobile") {
-      style.backgroundColor = "rgb(23,114,25)";
-    } else if (platform === "web") {
-      style.backgroundColor = "rgb(176,94,45)";
+      backgroundColor: 'rgb(69,52,123)'
     }
-    return style;
-  };
+    if (platform === 'mobile') {
+      style.backgroundColor = 'rgb(23,114,25)'
+    } else if (platform === 'web') {
+      style.backgroundColor = 'rgb(123,36,123)'
+    }
+    return style
+  }
 
   return (
     <div className={styles.project}>
@@ -82,7 +82,7 @@ const Project: React.FC<ProjectProps> = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Project;
+export default Project
