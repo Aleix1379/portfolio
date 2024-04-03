@@ -22,7 +22,10 @@ const AboutSection = () => {
   }
 
   return (
-    <section id="about" className={styles.section}>
+    <section
+      id="about"
+      className={styles.section}
+      style={{ position: 'relative', top: '10px' }}>
       <Button onClick={downloadCV} className={styles.downloadCv}>
         Download CV
       </Button>

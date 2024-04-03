@@ -86,32 +86,16 @@ const Nav = () => {
         <ul
           className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('about')}>
-              {' '}
-              {/*'#about'*/}
-              About
-            </div>
+            <div onClick={() => scrollTo('about')}>About</div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('experience')}>
-              {' '}
-              {/*'#experience'*/}
-              Experience
-            </div>
+            <div onClick={() => scrollTo('experience')}>Experience</div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('projects')}>
-              {' '}
-              {/*'#projects'*/}
-              Projects
-            </div>
+            <div onClick={() => scrollTo('projects')}>Projects</div>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('contact')}>
-              {' '}
-              {/*'#contact'*/}
-              Contact
-            </div>
+            <div onClick={() => scrollTo('contact')}>Contact</div>
           </li>
         </ul>
 
