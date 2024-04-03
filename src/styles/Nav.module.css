@@ -230,12 +230,15 @@
 
     @keyframes headerHideAnimation {
         from {
-            width: 100%
+            width: 100%;
+            transform: scale(1);
         }
 
         to {
             width: 100%;
-            opacity: 0.95;
+            opacity: 0.9;
+            transform: scale(.8) translateY(-5px);
+            border-radius: 10px;
         }
     }
 
