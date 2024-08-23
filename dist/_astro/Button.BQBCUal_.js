@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime.CRkqtJS5.js";import"./index.B52nOzfP.js";import{e as m}from"./index.95d291e9.F6gnNl7m.js";const p=({children:t,onClick:o,className:s})=>r.jsx("button",{onClick:o,className:`${m.button} ${s}`,children:t});export{p as B};
