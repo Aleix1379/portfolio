@@ -4,7 +4,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 	let data: Array<JobExperience> = [
 		{
 			id: '1',
-			title: 'Full-stack developer',
+			title: 'Web developer developer',
 			company: 'TALKUAL',
 			type: 'full-time',
 			location: 'Bellpuig, Catalonia, Spain',
@@ -42,7 +42,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 		},
 		{
 			id: '3',
-			title: 'Full-stack developer',
+			title: 'Web developer developer',
 			company: 'Ubiquat Technologies',
 			type: 'full-time',
 			location: 'Igualada, Catalonia, Spain',

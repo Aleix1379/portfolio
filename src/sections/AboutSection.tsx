@@ -46,7 +46,7 @@ const AboutSection = () => {
             <span>{yearsOfExperience}</span>
             <span> years </span>
           </span>
-          <span> of experience as a full stack developer.</span>
+          <span> of experience as a web developer.</span>
           <p>Working with web and mobile apps using web technologies.</p>
         </div>
       </div>
