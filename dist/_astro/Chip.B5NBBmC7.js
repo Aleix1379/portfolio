@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime.CRkqtJS5.js";import"./index.B52nOzfP.js";import{d as p}from"./index.95d291e9.F6gnNl7m.js";const e=({children:s,className:r,style:t})=>o.jsx("span",{className:`${p.chip} ${r}`,style:t,children:s});export{e as C};
