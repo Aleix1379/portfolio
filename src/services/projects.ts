@@ -39,42 +39,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       ]
     },
     {
-      id: '8',
-      name: 'Enirve Landing',
-      description: 'Landing page for Enirve',
-      platform: 'web',
-      image: '/images/projects/enirve.webp',
-      technologies: [
-        {
-          text: 'Astro',
-          url: 'https://astro.build/',
-          icon: 'astro'
-        },
-        {
-          text: 'CSS',
-          url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-          icon: 'css'
-        },
-        {
-          text: 'React JS',
-          url: 'https://reactjs.org/',
-          icon: 'react'
-        },
-        {
-          text: 'TypeScript',
-          url: 'https://www.typescriptlang.org/',
-          icon: 'typescript'
-        }
-      ],
-      links: [
-        {
-          url: 'https://enirve.web.app/',
-          text: 'Website',
-          icon: 'web'
-        }
-      ]
-    },
-    {
       id: '3',
       name: 'Enirve App',
       description: 'Mobile app to learn irregular verbs in English',
@@ -122,78 +86,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           url: 'https://www.apollographql.com/',
           text: 'Apollo GraphQL',
           icon: 'apollographql'
-        }
-      ]
-    },
-    {
-      id: '5',
-      name: 'Travels & Trips',
-      description: 'Prototype mobile app abouts trips.',
-      platform: 'mobile',
-      image: '/images/projects/tratrip.webp',
-      links: [
-        {
-          url: 'https://play.google.com/store/apps/details?id=com.aleixmp.tratripmobileapp',
-          text: 'Google play',
-          icon: 'googlePlay'
-        },
-        {
-          url: 'https://github.com/Aleix1379/TraTripMobileApp',
-          text: 'Github',
-          icon: 'github'
-        }
-      ],
-      technologies: [
-        {
-          url: 'https://www.typescriptlang.org/',
-          text: 'TypeScript',
-          icon: 'typescript'
-        },
-        {
-          url: 'https://reactnative.dev/',
-          text: 'React Native',
-          icon: 'react'
-        },
-        {
-          url: 'https://jestjs.io/',
-          text: 'Jest',
-          icon: 'jest'
-        }
-      ]
-    },
-    {
-      id: '6',
-      name: 'Portfolio',
-      description: 'Web to show my projects and opportunity to learn Astro.',
-      platform: 'web',
-      image: '/images/projects/portfolio.webp',
-      links: [
-        {
-          url: 'https://github.com/Aleix1379/portfolio',
-          text: 'Github',
-          icon: 'github'
-        }
-      ],
-      technologies: [
-        {
-          url: 'https://www.typescriptlang.org/',
-          text: 'TypeScript',
-          icon: 'typescript'
-        },
-        {
-          url: 'https://www.w3.org/Style/CSS/Overview.en.html',
-          text: 'CSS 3',
-          icon: 'css3'
-        },
-        {
-          url: 'https://astro.build/',
-          text: 'Astro',
-          icon: 'astro'
-        },
-        {
-          url: 'https://reactjs.org/',
-          text: 'React',
-          icon: 'react'
         }
       ]
     },
@@ -298,43 +190,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
         }
       ]
     },
-    {
-      id: '7',
-      name: 'Spotify player',
-      description:
-        'Web app to list and play your favourite music from spotify.',
-      platform: 'web',
-      image: '/images/projects/spotify.png',
-      links: [
-        {
-          url: 'https://github.com/Aleix1379/SpotiViewer',
-          text: 'Github',
-          icon: 'github'
-        }
-      ],
-      technologies: [
-        {
-          url: 'https://www.typescriptlang.org/',
-          text: 'TypeScript',
-          icon: 'typescript'
-        },
-        {
-          url: 'https://angular.io/',
-          text: 'Angular',
-          icon: 'angular'
-        },
-        {
-          url: 'https://html.spec.whatwg.org/multipage/',
-          text: 'HTML 5',
-          icon: 'html5'
-        },
-        {
-          url: 'https://www.w3.org/Style/CSS/Overview.en.html',
-          text: 'CSS 3',
-          icon: 'css3'
-        }
-      ]
-    }
+
   ]
 
   if (limit === -1) {
