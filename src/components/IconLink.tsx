@@ -25,7 +25,8 @@ import {
   Springboot,
   Typescript,
   Vuedotjs,
-  Nuxtdotjs
+  Nuxtdotjs,
+  Nestjs,
 } from '@icons-pack/react-simple-icons'
 import type { BrandIcon, Link } from '../types/Link'
 
@@ -96,7 +97,9 @@ const IconLink: React.FC<IconLinkProps> = ({
     // @ts-ignore
     vue: <Vuedotjs title={'Vue'} color={color} size={size} />,
     // @ts-ignore
-    nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />
+    nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />,
+    // @ts-ignore
+    nestjs: <Nestjs title={'Nest'} color={color} size={size} />,
   }
   const getIcon = (name: BrandIcon) => {
     return icons[name]

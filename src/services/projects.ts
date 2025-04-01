@@ -3,6 +3,47 @@ import type { ProjectInfo } from '../types/ProjectInfo'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
   const data: Array<ProjectInfo> = [
     {
+      id: '10', // Using the next sequential ID after '9'
+      name: 'Vacation Flow',
+      description: 'Backend service for vacation management application.',
+      platform: 'backend',
+      image: '/images/projects/vacation-flow.png',
+      links: [
+        {
+          url: 'https://github.com/Aleix1379/vacation-flow-backend',
+          text: 'Github',
+          icon: 'github'
+        }
+      ],
+      technologies: [
+        {
+          text: 'TypeScript',
+          url: 'https://www.typescriptlang.org/',
+          icon: 'typescript'
+        },
+        {
+          text: 'NestJS',
+          url: 'https://nestjs.com/',
+          icon: 'nestjs'
+        },
+        {
+          text: 'PostgreSQL',
+          url: 'https://www.postgresql.org/',
+          icon: 'postgres'
+        },
+        {
+          text: 'Jest',
+          url: 'https://jestjs.io/',
+          icon: 'jest'
+        },
+        {
+          text: 'Node.js',
+          url: 'https://nodejs.org/',
+          icon: 'nodejs'
+        }
+      ]
+    },
+    {
       id: '9',
       name: 'My Setuppi',
       description: 'Web to share gaming and pc setup.',

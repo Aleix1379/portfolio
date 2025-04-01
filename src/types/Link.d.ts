@@ -25,6 +25,7 @@ export type BrandIcon =
   | 'css'
   | 'vue'
   | 'nuxt'
+  | 'nestjs'
 
 export interface Link {
   url: string
