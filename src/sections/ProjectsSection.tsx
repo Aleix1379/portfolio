@@ -31,10 +31,11 @@ const ProjectsSection = () => {
           </span>
           <span className={styles.important}> Vue.js</span>,
           <span className={styles.important}> React Native </span>and
-          <span className={styles.important}> NodeJS</span>,
-          <span> - all powered by </span>
-          <span className={styles.important}> TypeScript</span>
-          <span> ✨</span>
+          <span className={styles.important}> NodeJS</span>
+          <p>
+            <span>All powered by </span>
+            <span className={styles.important}> TypeScript ✨</span>
+          </p>
         </div>
       </div>
         <div className={styles.projects}>
