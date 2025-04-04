@@ -19,8 +19,8 @@
     --sh-form: rgba(10, 10, 10, .75);
     --sh-project: rgba(10, 10, 10, .5);
     --tsh-project: #111;
-    --bg-navbar: #1a0428;
-    --bg-header: rgba(12, 12, 12, 0.9);
+    --bg-navbar: #fefefe08;
+    --bg-header: rgb(0, 0, 0);
     --bg-switch: #101010;
     --bg-technology: #333;
     --bg-experience-separator: #151515;
@@ -29,7 +29,7 @@
     --bg-footer-2: rgba(10, 10, 10, .75);
     --bg-footer-3: rgba(08, 08, 08, .75);
     --bg-footer-4: rgba(10, 10, 10, .75);
-    --main-background: linear-gradient(to top, #020c1c, #04132a, #021839, #041b47, #0f1e55, #1b1e5a, #251e5f, #301d63, #371a60, #3e175d, #43145a, #481056);
+    --main-background: linear-gradient(to top, #fefefe08, #fefefe01);
     --project-background: linear-gradient(to top, #0c0c0c, #121018, #151321, #19152b, #1c1735, #1f183c, #221943, #251a4a, #271b50, #291c56, #2b1c5c, #2d1d62);
 }
 

@@ -3,7 +3,6 @@
     flex-direction: column;
     padding: 15px 25px 5px;
     background-color: var(--bg-project);
-    background-image: var(--project-background);
     border-radius: 8px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
     transition: background-color .5s;
