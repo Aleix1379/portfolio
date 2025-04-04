@@ -2,6 +2,7 @@ import React from 'react'
 import { getYearsOfExperience } from '../utils/time'
 import Button from '../components/Button.tsx'
 import styles from '../styles/Home.module.css'
+
 const AboutSection = () => {
   const yearsOfExperience = getYearsOfExperience({
     filter: { fullTime: true }
@@ -41,13 +42,28 @@ const AboutSection = () => {
           loading={'eager'}
         />
         <div>
-          <span className={styles.important}>
-            <span>+ </span>
-            <span>{yearsOfExperience}</span>
-            <span> years </span>
-          </span>
-          <span> of experience as a web developer.</span>
-          <p>Working with web and mobile apps using web technologies.</p>
+          <p>
+            <p>
+              <span className={styles.important}>+ </span>
+              <span className={styles.important}>{yearsOfExperience}</span>
+              <span className={styles.important}> years</span>
+              <span> of experience as a web developer</span>
+            </p>
+
+            <span>
+              Currently at TALKUAL developing eCommerce solutions with{' '}
+            </span>
+            <span className={styles.important}>Vue.js/Nuxt.js</span>
+            <span> and </span>
+            <span className={styles.important}>Strapi/Node.js</span>
+          </p>
+
+          <p>
+            <span>
+              Shipping APIs, subscriptions, discounts. Expertise in Vue/React,
+              Node.js, clean code (SOLID), and DDD architecture
+            </span>
+          </p>
         </div>
       </div>
     </section>
