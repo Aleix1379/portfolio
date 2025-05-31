@@ -60,8 +60,8 @@ const AboutSection = () => {
 
           <p>
             <span>
-              Shipping APIs, subscriptions, discounts. Expertise in Vue/React,
-              Node.js, clean code (SOLID), and DDD architecture
+              Experienced with Vue/React, Node.js, and applying clean code
+              principles and domain-driven approaches
             </span>
           </p>
         </div>
