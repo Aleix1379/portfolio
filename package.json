@@ -7,10 +7,7 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "ci": "pnpm install --frozen-lockfile",
-    "test": "echo \"No tests specified yet\" && exit 0",
-    "test:e2e": "echo \"No e2e tests specified yet\" && exit 0"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",

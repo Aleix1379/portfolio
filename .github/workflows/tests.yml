@@ -13,20 +13,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "22.x"
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
       - name: Install dependencies
-        run: pnpm ci
+        run: npm ci
       - name: Build
-        run: pnpm build
+        run: npm run build
       - name: Install Playwright
-        run: pnpm dlx playwright install --with-deps
+        run: npx playwright install --with-deps
       - name: Run Jest
-        run: pnpm test
+        run: npm run test
       - name: Run Playwright tests
-        run: pnpm test:e2e
+        run: npm run test:e2e
       - name: Vercel Action
         uses: amondnet/vercel-action@v25.1.0
         with:
@@ -34,3 +30,5 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: --prod
+
+
