@@ -60,8 +60,8 @@ const AboutSection = () => {
 
           <p>
             <span>
-              Experienced with Vue/React, Node.js, and applying clean code
-              principles and domain-driven approaches
+              Working with Vue/React, Node.js, and implementing SOLID principles
+              and Domain-Driven Design methodologies
             </span>
           </p>
         </div>
