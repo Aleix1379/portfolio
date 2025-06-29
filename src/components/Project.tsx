@@ -1,4 +1,4 @@
-import React, { type CSSProperties } from 'react'
+import React, { type CSSProperties, useState, useEffect } from 'react'
 import styles from '../styles/Project.module.css'
 import type { Link } from '../types/Link'
 import IconLink from './IconLink'
@@ -19,10 +19,25 @@ const Project: React.FC<ProjectProps> = ({
   image,
   apps
 }) => {
-  const getChipStyle = (platform: Platform): CSSProperties => {
+  const [activeAppIndex, setActiveAppIndex] = useState<number>(0)
+  const [activeApp, setActiveApp] = useState<AppInfo | null>(null)
+
+  useEffect(() => {
+    if (apps && apps.length > 0) {
+      setActiveApp(apps[activeAppIndex])
+    }
+  }, [apps, activeAppIndex])
+
+  const getChipStyle = (
+    platform: Platform,
+    isActive: boolean = false
+  ): CSSProperties => {
     const style = {
       marginTop: 10,
-      backgroundColor: 'rgb(43,64,157)'
+      backgroundColor: 'rgb(43,64,157)',
+      cursor: 'pointer',
+      marginRight: 10,
+      opacity: isActive ? 1 : 0.7
     }
     if (platform === 'mobile') {
       style.backgroundColor = 'rgb(23,114,25)'
@@ -30,6 +45,10 @@ const Project: React.FC<ProjectProps> = ({
       style.backgroundColor = 'rgb(123,36,123)'
     }
     return style
+  }
+
+  const handleTabClick = (index: number) => {
+    setActiveAppIndex(index)
   }
 
   return (
@@ -44,50 +63,63 @@ const Project: React.FC<ProjectProps> = ({
 
       <p>{description}</p>
 
-      {apps && apps.map((app, appIndex) => (
-        <div key={appIndex} className={styles.app}>
-          <div className={styles.title}>
-            <h3 className={styles.subtitle}>{app.name}</h3>
-            <Chip style={getChipStyle(app.platform)}>{app.platform}</Chip>
-          </div>
-
-          <p>{app.description}</p>
-
-          <h3 className={styles.subtitle}>Technologies</h3>
-          <div className={styles.links}>
-            {app.technologies.map((technology, index) => (
-              <IconLink
+      {apps && apps.length > 0 && (
+        <>
+          <div className={styles.tabsContainer}>
+            {apps.map((app, index) => (
+              <div
                 key={index}
-                link={technology}
-                size={25}
-                className={styles.link}
-              />
+                onClick={() => handleTabClick(index)}
+                className={styles.tabItem}>
+                <Chip
+                  style={getChipStyle(app.platform, index === activeAppIndex)}>
+                  {`${app.platform} ${app.name.split(' ')[0]}`}
+                </Chip>
+              </div>
             ))}
           </div>
 
-          <h3 className={`${styles.subtitle} ${styles.pages}`}>Links</h3>
-          {app.links.length > 0 && (
-            <>
-              <div className={`${styles.links} ${styles.linksLast}`}>
-                {app.links.map((link, index) => (
+          {activeApp && (
+            <div className={styles.appContent}>
+              <p>{activeApp.description}</p>
+
+              <h3 className={styles.subtitle}>Technologies</h3>
+              <div className={styles.links}>
+                {activeApp.technologies.map((technology, index) => (
                   <IconLink
                     key={index}
-                    link={link}
+                    link={technology}
                     size={25}
                     className={styles.link}
                   />
                 ))}
               </div>
-            </>
-          )}
 
-          {app.links.length === 0 && (
-            <div className={styles.noLinksAvailable}>
-              <span>No links available</span>
+              <h3 className={`${styles.subtitle} ${styles.pages}`}>Links</h3>
+              {activeApp.links.length > 0 && (
+                <>
+                  <div className={`${styles.links} ${styles.linksLast}`}>
+                    {activeApp.links.map((link, index) => (
+                      <IconLink
+                        key={index}
+                        link={link}
+                        size={25}
+                        className={styles.link}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {activeApp.links.length === 0 && (
+                <div className={styles.noLinksAvailable}>
+                  <span>No links available</span>
+                </div>
+              )}
             </div>
           )}
-        </div>
-      ))}
+        </>
+      )}
     </div>
   )
 }
