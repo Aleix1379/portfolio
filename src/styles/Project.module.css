@@ -26,11 +26,6 @@
 
 .tabItem {
     flex: 0 0 auto;
-    transition: transform 0.2s;
-}
-
-.tabItem:hover {
-    transform: translateY(-2px);
 }
 
 .appContent {

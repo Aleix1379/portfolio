@@ -31,15 +31,12 @@ const Project: React.FC<ProjectProps> = ({
   }, [apps, activeAppIndex])
 
   const getChipStyle = (
-    platform: Platform,
-    isActive: boolean = false
+    platform: Platform
   ): CSSProperties => {
     const style = {
       marginTop: 10,
       backgroundColor: 'rgb(43,64,157)',
-      cursor: 'pointer',
-      marginRight: 10,
-      opacity: isActive ? 1 : 0.7
+      marginRight: 10
     }
     if (platform === 'mobile') {
       style.backgroundColor = 'rgb(23,114,25)'
@@ -96,7 +93,8 @@ const Project: React.FC<ProjectProps> = ({
                 onClick={() => handleTabClick(index)}
                 className={styles.tabItem}>
                 <Chip
-                  style={getChipStyle(app.platform, index === activeAppIndex)}>
+                  style={getChipStyle(app.platform)}
+                  active={index === activeAppIndex}>
                   {`${app.platform} ${app.name.split(' ')[0]}`}
                 </Chip>
               </div>

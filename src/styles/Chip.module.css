@@ -1,13 +1,31 @@
 .chip {
     align-self: flex-start;
-    padding: 1px 9px;
-    background-color: var(--bg-technology);;
+    padding: 4px 10px;
+    background-color: var(--bg-technology);
     color: var(--white);
     font-size: 13px;
+    font-weight: 500;
     border-radius: 4px;
     display: inline-block;
-    box-shadow: var(--tsh-experience-separator);
-    cursor: default;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+    border-bottom: 2px solid transparent;
+}
+
+.chip:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.active {
+    border-color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.inactive {
+    opacity: 0.7;
 }
 
 .chip:first-letter {
