@@ -30,9 +30,7 @@ const Project: React.FC<ProjectProps> = ({
     }
   }, [apps, activeAppIndex])
 
-  const getChipStyle = (
-    platform: Platform
-  ): CSSProperties => {
+  const getChipStyle = (platform: Platform): CSSProperties => {
     const style = {
       marginTop: 10,
       backgroundColor: 'rgb(43,64,157)',
@@ -95,7 +93,7 @@ const Project: React.FC<ProjectProps> = ({
                 <Chip
                   style={getChipStyle(app.platform)}
                   active={index === activeAppIndex}>
-                  {`${app.platform} ${app.name.split(' ')[0]}`}
+                  {app.platform}
                 </Chip>
               </div>
             ))}
