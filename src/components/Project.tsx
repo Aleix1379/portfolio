@@ -4,23 +4,20 @@ import type { Link } from '../types/Link'
 import IconLink from './IconLink'
 import type { Platform } from '../types/Platform'
 import Chip from './Chip'
+import type { AppInfo } from '../types/ProjectInfo'
 
 interface ProjectProps {
   name: string
   description: string
-  platform: Platform
   image: string
-  links: Array<Link>
-  technologies: Array<Link>
+  apps: Array<AppInfo>
 }
 
 const Project: React.FC<ProjectProps> = ({
   name,
   description,
-  platform,
   image,
-  links,
-  technologies
+  apps
 }) => {
   const getChipStyle = (platform: Platform): CSSProperties => {
     const style = {
@@ -39,7 +36,6 @@ const Project: React.FC<ProjectProps> = ({
     <div className={styles.project}>
       <div className={styles.title}>
         <h2 className={styles.subtitle}>{name}</h2>
-        <Chip style={getChipStyle(platform)}>{platform}</Chip>
       </div>
 
       <div className={styles.image}>
@@ -48,39 +44,50 @@ const Project: React.FC<ProjectProps> = ({
 
       <p>{description}</p>
 
-      <h2 className={styles.subtitle}>Technologies</h2>
-      <div className={styles.links}>
-        {technologies.map((technology, index) => (
-          <IconLink
-            key={index}
-            link={technology}
-            size={25}
-            className={styles.link}
-          />
-        ))}
-      </div>
+      {apps && apps.map((app, appIndex) => (
+        <div key={appIndex} className={styles.app}>
+          <div className={styles.title}>
+            <h3 className={styles.subtitle}>{app.name}</h3>
+            <Chip style={getChipStyle(app.platform)}>{app.platform}</Chip>
+          </div>
 
-      <h2 className={`${styles.subtitle} ${styles.pages}`}>Links</h2>
-      {links.length > 0 && (
-        <>
-          <div className={`${styles.links} ${styles.linksLast}`}>
-            {links.map((link, index) => (
+          <p>{app.description}</p>
+
+          <h3 className={styles.subtitle}>Technologies</h3>
+          <div className={styles.links}>
+            {app.technologies.map((technology, index) => (
               <IconLink
                 key={index}
-                link={link}
+                link={technology}
                 size={25}
                 className={styles.link}
               />
             ))}
           </div>
-        </>
-      )}
 
-      {links.length === 0 && (
-        <div className={styles.noLinksAvailable}>
-          <span>No links available</span>
+          <h3 className={`${styles.subtitle} ${styles.pages}`}>Links</h3>
+          {app.links.length > 0 && (
+            <>
+              <div className={`${styles.links} ${styles.linksLast}`}>
+                {app.links.map((link, index) => (
+                  <IconLink
+                    key={index}
+                    link={link}
+                    size={25}
+                    className={styles.link}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+
+          {app.links.length === 0 && (
+            <div className={styles.noLinksAvailable}>
+              <span>No links available</span>
+            </div>
+          )}
         </div>
-      )}
+      ))}
     </div>
   )
 }

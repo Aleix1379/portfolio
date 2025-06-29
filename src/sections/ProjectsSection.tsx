@@ -44,10 +44,8 @@ const ProjectsSection = () => {
               key={project.id}
               name={project.name}
               description={project.description}
-              platform={project.platform}
               image={project.image}
-              links={project.links}
-              technologies={project.technologies}
+              apps={project.apps}
             />
           ))}
         </div>
