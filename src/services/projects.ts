@@ -1,17 +1,19 @@
-import type { ProjectInfo, AppInfo } from '../types/ProjectInfo'
+import type { ProjectInfo } from '../types/ProjectInfo'
 
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
   const data: Array<ProjectInfo> = [
     {
       id: '1',
       name: 'Vacation Flow',
-      description: 'Backend service for vacation management application.',
+      description:
+        'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
       image: '/images/projects/vacation-flow.png',
       apps: [
         {
           id: '10',
           name: 'Vacation Flow',
-          description: 'Backend service for vacation management application.',
+          description:
+            'NestJS backend API for user authentication, leave requests, and calendar integration.',
           platform: 'backend',
           links: [
             {
@@ -53,13 +55,15 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '2',
       name: 'My Setuppi',
-      description: 'Web to share gaming and pc setup.',
+      description:
+        'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
       image: '/images/projects/my-setuppi.webp',
       apps: [
         {
           id: '9',
           name: 'My Setuppi',
-          description: 'Web to share gaming and pc setup.',
+          description:
+            'Vue.js web app for browsing, uploading, and rating PC setups with user profiles and social features.',
           platform: 'web',
           technologies: [
             {
@@ -96,13 +100,15 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '3',
       name: 'Enirve',
-      description: 'App to learn irregular verbs in English',
+      description:
+        'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
       image: '/images/projects/enirve.webp',
       apps: [
         {
           id: '3',
           name: 'Enirve App',
-          description: 'Mobile app to learn irregular verbs in English',
+          description:
+            'React Native mobile app for learning irregular verbs with exercises, quizzes, and offline mode.',
           platform: 'mobile',
           links: [
             {
@@ -152,7 +158,8 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
         {
           id: '4',
           name: 'Enirve Backend',
-          description: 'Backend for Enirve.',
+          description:
+            'Node.js backend with GraphQL API for user data, learning progress, and verb database management.',
           platform: 'backend',
           links: [],
           technologies: [
@@ -193,13 +200,15 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '4',
       name: 'Talk And Play',
-      description: 'Platform to talk about video games',
+      description:
+        'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
       image: '/images/projects/talkandplay.webp',
       apps: [
         {
           id: '1',
           name: 'Talk And Play',
-          description: 'Mobile app to talk about video games.',
+          description:
+            'React Native mobile app for gamers to create profiles, track activity, and participate in discussions about games.',
           platform: 'mobile',
           links: [
             {
@@ -229,7 +238,8 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
         {
           id: '2',
           name: 'Talk And Play',
-          description: 'Backend for Talk and play.',
+          description:
+            'Kotlin and Spring Boot backend for user authentication, game data, and social interactions with RESTful API.',
           platform: 'backend',
           links: [],
           technologies: [
