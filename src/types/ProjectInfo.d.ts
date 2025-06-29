@@ -6,7 +6,6 @@ export interface AppInfo {
   name: string;
   platform: Platform;
   description: string;
-  links: Array<Link>;
   technologies: Array<Link>;
 }
 
@@ -15,5 +14,6 @@ export interface ProjectInfo {
   name: string;
   description: string;
   image: string;
+  links: Array<Link>;
   apps: Array<AppInfo>;
 }

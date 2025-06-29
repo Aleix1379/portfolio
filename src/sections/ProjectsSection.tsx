@@ -45,6 +45,7 @@ const ProjectsSection = () => {
               name={project.name}
               description={project.description}
               image={project.image}
+              links={project.links}
               apps={project.apps}
             />
           ))}

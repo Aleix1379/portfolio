@@ -12,7 +12,7 @@
 
 .project > p {
     min-height: 40px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .tabsContainer {
@@ -20,6 +20,7 @@
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 10px;
+    margin-top: 10px;
     scrollbar-width: thin;
 }
 
@@ -34,6 +35,10 @@
 
 .appContent {
     animation: fadeIn 0.5s ease-in-out;
+}
+
+.appContent > p {
+    margin-bottom: 20px;
 }
 
 @keyframes fadeIn {
@@ -85,7 +90,6 @@
     display: flex;
     align-self: flex-start;
     flex-wrap: wrap;
-    margin-bottom: 10px;
 }
 
 .subtitle {
@@ -93,13 +97,9 @@
     text-shadow: 4px 4px 10px var(--tsh-project);
     transition: color, text-shadow .5s;
     font-family: "Dancing Script", sans-serif;
-    margin-top: 25px;
+    margin-top: 0;
     margin-bottom: 20px;
     font-size: 26px;
-}
-
-.pages {
-    margin-top: auto;
 }
 
 .link {
@@ -112,7 +112,7 @@
 }
 
 .noLinksAvailable {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     color: #696969;
 }
 

@@ -8,6 +8,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
       image: '/images/projects/vacation-flow.png',
+      links: [
+        {
+          url: 'https://github.com/Aleix1379/vacation-flow-backend',
+          text: 'Github',
+          icon: 'github'
+        }
+      ],
       apps: [
         {
           id: '10',
@@ -15,13 +22,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           description:
             'NestJS backend API for user authentication, leave requests, and calendar integration.',
           platform: 'backend',
-          links: [
-            {
-              url: 'https://github.com/Aleix1379/vacation-flow-backend',
-              text: 'Github',
-              icon: 'github'
-            }
-          ],
           technologies: [
             {
               text: 'TypeScript',
@@ -58,6 +58,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
       image: '/images/projects/my-setuppi.webp',
+      links: [
+        {
+          url: 'https://www.mysetuppi.com/',
+          text: 'Website',
+          icon: 'web'
+        }
+      ],
       apps: [
         {
           id: '9',
@@ -86,13 +93,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
               url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
               icon: 'css'
             }
-          ],
-          links: [
-            {
-              url: 'https://www.mysetuppi.com/',
-              text: 'Website',
-              icon: 'web'
-            }
           ]
         }
       ]
@@ -103,6 +103,23 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
       image: '/images/projects/enirve.webp',
+      links: [
+        {
+          url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
+          text: 'App store',
+          icon: 'appStore'
+        },
+        {
+          url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
+          text: 'Google play',
+          icon: 'googlePlay'
+        },
+        {
+          url: 'https://enirve.web.app/',
+          text: 'Website',
+          icon: 'web'
+        }
+      ],
       apps: [
         {
           id: '3',
@@ -110,23 +127,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           description:
             'React Native mobile app for learning irregular verbs with exercises, quizzes, and offline mode.',
           platform: 'mobile',
-          links: [
-            {
-              url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
-              text: 'App store',
-              icon: 'appStore'
-            },
-            {
-              url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
-              text: 'Google play',
-              icon: 'googlePlay'
-            },
-            {
-              url: 'https://enirve.web.app/',
-              text: 'Website',
-              icon: 'web'
-            }
-          ],
           technologies: [
             {
               url: 'https://www.typescriptlang.org/',
@@ -161,7 +161,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           description:
             'Node.js backend with GraphQL API for user data, learning progress, and verb database management.',
           platform: 'backend',
-          links: [],
           technologies: [
             {
               url: 'https://www.typescriptlang.org/',
@@ -203,6 +202,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
       image: '/images/projects/talkandplay.webp',
+      links: [
+        {
+          url: 'https://github.com/Aleix1379/TalkAndPlayApp',
+          text: 'Github',
+          icon: 'github'
+        }
+      ],
       apps: [
         {
           id: '1',
@@ -210,13 +216,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           description:
             'React Native mobile app for gamers to create profiles, track activity, and participate in discussions about games.',
           platform: 'mobile',
-          links: [
-            {
-              url: 'https://github.com/Aleix1379/TalkAndPlayApp',
-              text: 'Github',
-              icon: 'github'
-            }
-          ],
           technologies: [
             {
               url: 'https://www.typescriptlang.org/',
@@ -241,7 +240,6 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           description:
             'Kotlin and Spring Boot backend for user authentication, game data, and social interactions with RESTful API.',
           platform: 'backend',
-          links: [],
           technologies: [
             {
               url: 'https://kotlinlang.org/',

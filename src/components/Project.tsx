@@ -10,6 +10,7 @@ interface ProjectProps {
   name: string
   description: string
   image: string
+  links: Array<Link>
   apps: Array<AppInfo>
 }
 
@@ -17,6 +18,7 @@ const Project: React.FC<ProjectProps> = ({
   name,
   description,
   image,
+  links,
   apps
 }) => {
   const [activeAppIndex, setActiveAppIndex] = useState<number>(0)
@@ -63,6 +65,28 @@ const Project: React.FC<ProjectProps> = ({
 
       <p>{description}</p>
 
+      <h3 className={`${styles.subtitle}`}>Links</h3>
+      {links.length > 0 && (
+        <>
+          <div className={`${styles.links} ${styles.linksLast}`}>
+            {links.map((link, index) => (
+              <IconLink
+                key={index}
+                link={link}
+                size={25}
+                className={styles.link}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
+      {links.length === 0 && (
+        <div className={styles.noLinksAvailable}>
+          <span>No links available</span>
+        </div>
+      )}
+
       {apps && apps.length > 0 && (
         <>
           <div className={styles.tabsContainer}>
@@ -94,28 +118,6 @@ const Project: React.FC<ProjectProps> = ({
                   />
                 ))}
               </div>
-
-              <h3 className={`${styles.subtitle} ${styles.pages}`}>Links</h3>
-              {activeApp.links.length > 0 && (
-                <>
-                  <div className={`${styles.links} ${styles.linksLast}`}>
-                    {activeApp.links.map((link, index) => (
-                      <IconLink
-                        key={index}
-                        link={link}
-                        size={25}
-                        className={styles.link}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {activeApp.links.length === 0 && (
-                <div className={styles.noLinksAvailable}>
-                  <span>No links available</span>
-                </div>
-              )}
             </div>
           )}
         </>
