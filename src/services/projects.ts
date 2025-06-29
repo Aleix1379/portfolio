@@ -94,6 +94,45 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
               icon: 'css'
             }
           ]
+        },
+        {
+          id: '11',
+          name: 'My Setuppi Backend',
+          description:
+            'Node.js backend with GraphQL API for managing user profiles, setup posts, comments, and ratings.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            },
+            {
+              text: 'Node.js',
+              url: 'https://nodejs.org/',
+              icon: 'nodejs'
+            },
+            {
+              text: 'GraphQL',
+              url: 'https://graphql.org/',
+              icon: 'graphql'
+            },
+            {
+              text: 'Apollo',
+              url: 'https://www.apollographql.com/',
+              icon: 'apollographql'
+            },
+            {
+              text: 'PostgreSQL',
+              url: 'https://www.postgresql.org/',
+              icon: 'postgres'
+            },
+            {
+              text: 'Sequelize',
+              url: 'https://sequelize.org/',
+              icon: 'sequelize'
+            }
+          ]
         }
       ]
     },
