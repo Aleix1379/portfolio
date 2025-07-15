@@ -38,21 +38,21 @@ const ProjectsSection = () => {
           </p>
         </div>
       </div>
-        <div className={styles.projects}>
-          {projects.map(project => (
-            <Project
-              key={project.id}
-              name={project.name}
-              description={project.description}
-              image={project.image}
-              links={project.links}
-              apps={project.apps}
-            />
-          ))}
-        </div>
-        {!showAllProjects && <Button onClick={fetchAllProjects}>Show All</Button>}
+      <div className={styles.projects}>
+        {projects.map(project => (
+          <Project
+            key={project.id}
+            name={project.name}
+            description={project.description}
+            image={project.image}
+            links={project.links}
+            apps={project.apps}
+          />
+        ))}
+      </div>
+      {!showAllProjects && <Button onClick={fetchAllProjects}>Show All</Button>}
     </section>
-)
+  )
 }
 
 export default ProjectsSection

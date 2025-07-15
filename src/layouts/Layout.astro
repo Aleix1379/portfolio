@@ -4,20 +4,63 @@ import Nav from '../components/Nav.tsx';
 import Footer from '../components/Footer.tsx';
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	canonicalURL?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Aleix's portfolio - Web developer specializing in Vue.js, React, and Node.js with experience in SOLID principles and Domain-Driven Design",
+	image = "/images/about.svg",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site).href
+} = Astro.props;
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Aleix",
+	"jobTitle": "Web Developer",
+	"url": Astro.site,
+	"sameAs": [
+		"https://github.com/Aleix1379",
+		"https://www.linkedin.com/in/aleixmp"
+	]
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title} | Web Developer Portfolio</title>
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+		<!-- Robots -->
+		<meta name="robots" content="index, follow" />
 	</head>
 	<body>
 	<div class="container">

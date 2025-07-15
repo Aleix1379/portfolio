@@ -42,14 +42,14 @@ const AboutSection = () => {
           loading={'eager'}
         />
         <div>
-          <p>
-            <p>
-              <span className={styles.important}>+ </span>
-              <span className={styles.important}>{yearsOfExperience}</span>
-              <span className={styles.important}> years</span>
-              <span> of experience as a web developer</span>
-            </p>
+          <div className={styles.paragraph}>
+            <span className={styles.important}>+ </span>
+            <span className={styles.important}>{yearsOfExperience}</span>
+            <span className={styles.important}> years</span>
+            <span> of experience as a web developer</span>
+          </div>
 
+          <p>
             <span>
               Currently at TALKUAL developing eCommerce solutions with{' '}
             </span>
