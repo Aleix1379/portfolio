@@ -311,7 +311,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
   ]
 
   if (limit === -1) {
-    return data
+    return data.filter(project => project.active)
   }
 
   return data.filter(project => project.active).slice(0, limit)
