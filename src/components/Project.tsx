@@ -1,4 +1,4 @@
-import React, { type CSSProperties, useState, useEffect } from 'react'
+import React, { type CSSProperties, useState, useEffect, useRef } from 'react'
 import styles from '../styles/Project.module.css'
 import type { Link } from '../types/Link'
 import IconLink from './IconLink'
@@ -23,12 +23,56 @@ const Project: React.FC<ProjectProps> = ({
 }) => {
   const [activeAppIndex, setActiveAppIndex] = useState<number>(0)
   const [activeApp, setActiveApp] = useState<AppInfo | null>(null)
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+  const projectRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (apps && apps.length > 0) {
       setActiveApp(apps[activeAppIndex])
     }
   }, [apps, activeAppIndex])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!projectRef.current) return
+
+    const card = projectRef.current
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    // Calculate tilt values based on mouse position relative to card center
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+
+    // Calculate normalized position (-1 to 1)
+    const normalizedX = (x - centerX) / centerX
+    const normalizedY = (y - centerY) / centerY
+
+    // Calculate distance from center (0 to 1)
+    const distanceFromCenter = Math.min(
+      1,
+      Math.sqrt(normalizedX * normalizedX + normalizedY * normalizedY)
+    )
+
+    // Apply non-linear scaling to enhance corner effect
+    const cornerFactor = 1 + distanceFromCenter * 0.5
+
+    // Calculate tilt (max 15 degrees)
+    const tiltX = -normalizedY * 15 * cornerFactor
+    const tiltY = normalizedX * 15 * cornerFactor
+
+    setTilt({ x: tiltX, y: tiltY })
+  }
+
+  const handleMouseEnter = () => {
+    setIsHovering(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+    setTilt({ x: 0, y: 0 })
+  }
 
   const getChipStyle = (platform: Platform): CSSProperties => {
     const style = {
@@ -48,8 +92,29 @@ const Project: React.FC<ProjectProps> = ({
     setActiveAppIndex(index)
   }
 
+  const getCardStyle = (): CSSProperties => {
+    return {
+      transform: isHovering
+        ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.05, 1.05, 1.05)`
+        : 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)',
+      transition: isHovering
+        ? 'transform 0.25s ease-out'
+        : 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+      boxShadow: isHovering
+        ? '0 10px 15px -8px rgba(0, 0, 0, 0.2)'
+        : '5px 5px 20px -5px var(--sh-project)',
+      border: 'none'
+    }
+  }
+
   return (
-    <div className={styles.project}>
+    <div
+      ref={projectRef}
+      className={styles.project}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={getCardStyle()}>
       <div className={styles.title}>
         <h2 className={styles.subtitle}>{name}</h2>
       </div>

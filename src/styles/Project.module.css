@@ -5,9 +5,16 @@
     background-color: var(--bg-project);
     border-radius: 8px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
-    transition: background-color .5s;
+    transition: background-color .5s, transform .5s ease;
     width: calc(100% - 5px);
     animation: projectEnter 1.5s forwards;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    backface-visibility: hidden;
+    will-change: transform;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .project > p {
@@ -49,13 +56,50 @@
 
 @keyframes projectEnter {
     0% {
-        transform: scale(0);
+        transform: perspective(1000px) scale(0);
     }
     50% {
-        transform: scale(1.05);
+        transform: perspective(1000px) scale(1.05);
     }
     100% {
-        transform: scale(1);
+        transform: perspective(1000px) scale(1);
+    }
+}
+
+.project::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.03) 40%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.03) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.project:hover::after {
+    opacity: 1;
+    animation: shine 1.5s infinite alternate;
+}
+
+
+@keyframes shine {
+    0% {
+        transform: rotate(25deg) translate(-30%, -30%);
+    }
+    100% {
+        transform: rotate(25deg) translate(30%, 30%);
     }
 }
 
