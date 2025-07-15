@@ -8,6 +8,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
       image: '/images/projects/vacation-flow.png',
+      active: false,
       links: [
         {
           url: 'https://github.com/Aleix1379/vacation-flow-backend',
@@ -58,6 +59,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
       image: '/images/projects/my-setuppi.webp',
+      active: true,
       links: [
         {
           url: 'https://www.mysetuppi.com/',
@@ -142,6 +144,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
       image: '/images/projects/enirve.webp',
+      active: true,
       links: [
         {
           url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
@@ -241,6 +244,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
       image: '/images/projects/talkandplay.webp',
+      active: true,
       links: [
         {
           url: 'https://github.com/Aleix1379/TalkAndPlayApp',
@@ -310,5 +314,5 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     return data
   }
 
-  return data.slice(0, limit)
+  return data.filter(project => project.active).slice(0, limit)
 }

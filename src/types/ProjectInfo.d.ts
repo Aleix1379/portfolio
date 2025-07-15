@@ -16,4 +16,5 @@ export interface ProjectInfo {
   image: string;
   links: Array<Link>;
   apps: Array<AppInfo>;
+  active: boolean;
 }
