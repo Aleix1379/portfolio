@@ -64,6 +64,13 @@ const AboutSection = () => {
               and Domain-Driven Design methodologies
             </span>
           </p>
+
+          <p>
+            <span>
+              I am currently learning </span>
+            <span className={styles.important}>Python</span>
+            <span> to expand my programming skills</span>
+          </p>
         </div>
       </div>
     </section>
