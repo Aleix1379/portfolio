@@ -9,7 +9,7 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 			type: 'full-time',
 			location: 'Bellpuig, Catalonia, Spain',
 			start: '2021-12-01',
-			end: null,
+			end: '2026-04-15',
 			technologies: [
 				'Nuxt.js',
 				'Vue.js',
