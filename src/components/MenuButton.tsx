@@ -2,21 +2,25 @@ import React from 'react'
 import styles from '../styles/MenuButton.module.css'
 
 interface MenuButtonProps {
-	onClick: () => void
-	isActive: boolean
+  onClick: () => void
+  isActive: boolean
 }
 
 const MenuButton: React.FC<MenuButtonProps> = ({ onClick, isActive }) => {
-	return (
-		<div
-			className={styles.menu}
-			onClick={onClick}
-		>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
-			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
-		</div>
-	)
+  return (
+    <button
+      type="button"
+      className={`${styles.menu} ${isActive ? styles.menuActive : ''}`}
+      aria-label={isActive ? 'Close navigation menu' : 'Open navigation menu'}
+      aria-expanded={isActive}
+      aria-controls="main-navigation-links"
+      onClick={onClick}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  )
 }
 
 export default MenuButton

@@ -1,51 +1,60 @@
-import React from "react";
-import styles from "../styles/Experience.module.css";
-import type { JobExperience } from "../types/JobExperience";
-import Chip from "./Chip";
-import { formatDateWithMonthName, getDifference } from "../utils/time";
+import React, { type CSSProperties } from 'react'
+import styles from '../styles/Experience.module.css'
+import type { JobExperience } from '../types/JobExperience'
+import Chip from './Chip'
+import { formatDateWithMonthName, getDifference } from '../utils/time'
 
 interface ExperienceProps {
-  experience: JobExperience;
+  experience: JobExperience
+  className?: string
+  style?: CSSProperties
 }
 
-const Experience: React.FC<ExperienceProps> = ({ experience }) => {
+const Experience: React.FC<ExperienceProps> = ({
+  experience,
+  className,
+  style
+}) => {
   return (
-    <div className={styles.experience}>
+    <article
+      className={`${styles.experience} ${className || ''}`}
+      style={style}
+      data-reveal
+    >
       <div className={styles.header}>
-        <div>
-          <h2>{experience.title}</h2>
-          <span className={styles.company}>{experience.company}</span>
+        <div className={styles.roleGroup}>
+          <h3>{experience.title}</h3>
+          <p className={styles.company}>{experience.company}</p>
         </div>
 
-        <div className={styles.info}>
+        <div className={styles.meta}>
           <div className={styles.infoDetails}>
             <span className={styles.location}>{experience.location}</span>
             <span className={styles.jobType}>{experience.type}</span>
           </div>
 
           <div className={styles.time}>
-            <span className={styles.timeCapitalize}>
+            <time className={styles.timeCapitalize} dateTime={experience.start}>
               {formatDateWithMonthName(experience.start, {
                 month: true,
                 year: true,
-                short: true,
+                short: true
               })}
-            </span>
+            </time>
             <span> - </span>
             {experience.end ? (
-              <span className={styles.timeCapitalize}>
-                {" "}
+              <time className={styles.timeCapitalize} dateTime={experience.end}>
                 {formatDateWithMonthName(experience.end, {
                   month: true,
                   year: true,
-                  short: true,
+                  short: true
                 })}
-              </span>
+              </time>
             ) : (
               <span className={styles.timeCapitalize}> present</span>
             )}
             <span className={styles.duration}>
-              {" "}
+              {' '}
               {getDifference(experience.start, experience.end)}
             </span>
           </div>
@@ -53,7 +62,7 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
       </div>
 
       <div className={styles.details}>
-        <div>
+        <div className={styles.technologyList}>
           {experience.technologies.map((technology, index) => (
             <Chip key={index} className={styles.technology}>
               {technology}
@@ -62,14 +71,14 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
         </div>
       </div>
       <ul className={styles.responsibilities}>
-        {experience.responsibilities.map((word, index) => (
+        {experience.responsibilities.map((responsibility, index) => (
           <li key={index}>
-            <p className={styles.description}>{word}</p>
+            <p className={styles.description}>{responsibility}</p>
           </li>
         ))}
       </ul>
-    </div>
-  );
-};
+    </article>
+  )
+}
 
-export default Experience;
+export default Experience

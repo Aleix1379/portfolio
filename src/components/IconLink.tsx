@@ -26,7 +26,7 @@ import {
   Typescript,
   Vuedotjs,
   Nuxtdotjs,
-  Nestjs,
+  Nestjs
 } from '@icons-pack/react-simple-icons'
 import type { BrandIcon, Link } from '../types/Link'
 
@@ -40,7 +40,7 @@ interface IconLinkProps {
 const IconLink: React.FC<IconLinkProps> = ({
   link,
   className,
-  color = '#454545',
+  color = 'currentColor',
   size = 40
 }) => {
   const icons = {
@@ -99,7 +99,7 @@ const IconLink: React.FC<IconLinkProps> = ({
     // @ts-ignore
     nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />,
     // @ts-ignore
-    nestjs: <Nestjs title={'Nest'} color={color} size={size} />,
+    nestjs: <Nestjs title={'Nest'} color={color} size={size} />
   }
   const getIcon = (name: BrandIcon) => {
     return icons[name]
@@ -110,7 +110,9 @@ const IconLink: React.FC<IconLinkProps> = ({
       href={link.url}
       target="_blank"
       rel="noreferrer"
-      className={`${styles.link} ${className}`}>
+      aria-label={link.text}
+      className={`${styles.link} ${className}`}
+    >
       {getIcon(link.icon)}
       <span>{link.text}</span>
     </a>

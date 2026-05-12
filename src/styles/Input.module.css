@@ -1,104 +1,91 @@
 .container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .label {
-    align-self: flex-start;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
-.letter {
-    display: inline-block;
-    transform: translateY(30px) translateX(8px);
-    animation: inputBlurAnimation .3s ease-in forwards;
-    color: var(--text-color);
+.inputWrapper,
+.textareaWrapper {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    var(--bg-input);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
 }
 
-.animated {
-    animation: inputFocusAnimation .3s ease-in forwards;
+.inputWrapper:hover,
+.textareaWrapper:hover {
+  border-color: var(--border-strong);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0)),
+    var(--bg-input);
 }
 
-.inputWrapper {
-    background-color: var(--bg-input);
-    height: 40px;
-    display: flex;
-    padding-left: 8px;
-    padding-right: 8px;
-    transition: .5s;
+.inputWrapper:focus-within,
+.textareaWrapper:focus-within {
+  border-color: var(--accent-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),
+    rgba(255, 255, 255, 0.075);
+  box-shadow: 0 0 0 4px rgba(56, 193, 136, 0.1);
+}
+
+.inputWrapper[data-valid='false'],
+.textareaWrapper[data-valid='false'] {
+  border-color: rgba(255, 107, 107, 0.65);
 }
 
 .input {
-    background-color: var(--bg-input);
-    border: none;
-    color: var(--text-color);
-    width: 100%;
-    font-family: 'Catamaran', sans-serif;
-    font-size: 14px;
+  width: 100%;
+  border: none;
+  color: var(--text-color);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .input::placeholder {
-    color: var(--text-color);
+  color: var(--text-muted);
 }
 
 .input:focus-visible {
-    outline: none;
+  outline: none;
+}
+
+.inputWrapper .input {
+  min-height: 56px;
+  padding: 0 17px;
+}
+
+.textareaWrapper .input {
+  min-height: 220px;
+  padding: 16px 17px 18px;
+  resize: vertical;
 }
 
 .textarea {
-    min-height: 100%;
-}
-
-.textareaWrapper {
-    background-color: var(--bg-input);
-    padding-left: 8px;
-    padding-right: 8px;
-    height: 220px;
-}
-
-.textareaWrapper > textarea {
-    height: 80px;
-    padding-top: 12px;
-}
-
-.borderWrapper {
-    border: 2px solid;
+  display: block;
 }
 
 .error {
-    color: #c0392b;
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 14px;
-}
-
-@keyframes inputFocusAnimation {
-    0% {
-        transform: translateY(30px) translateX(8px);
-        color: var(--text-color);
-    }
-
-    50% {
-        transform: scale(2) rotate(-25deg);
-    }
-
-    100% {
-        transform: translateY(0) translateX(0);
-        color: #38c188;
-    }
-}
-
-@keyframes inputBlurAnimation {
-    0% {
-        transform: translateY(0) translateX(0);
-        color: #38c188;
-    }
-
-    50% {
-        transform: scale(2) rotate(25deg);
-    }
-
-    100% {
-        transform: translateY(30px) translateX(8px);
-        color: var(--text-color);
-    }
+  display: inline-block;
+  margin-top: 8px;
+  color: #ff9f9f;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
 }

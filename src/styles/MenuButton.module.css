@@ -1,28 +1,77 @@
 .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 25px;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text-muted);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 22px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition:
+    transform 220ms var(--ease-premium),
+    color 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 
-.menu > div {
-    background-color: #111;
-    height: 4px;
-    width: 30px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    transition: .35s;
+.menu:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 26px rgba(56, 193, 136, 0.12);
+  transform: translateY(-1px);
 }
 
-.menu > div:nth-child(2) {
-    width: 130%;
-    position: relative;
-    right: 15%;
+.menu > span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.78;
+  transition:
+    transform 220ms var(--ease-premium),
+    opacity 220ms ease,
+    background-color 220ms ease;
 }
 
-@media (min-width: 768px) {
-    .menu {
-        display: none;
-    }
+.menu:hover > span,
+.menuActive > span {
+  opacity: 1;
+}
+
+.menuActive {
+  color: var(--accent-strong);
+  border-color: var(--accent-border);
+  background: rgba(76, 221, 156, 0.1);
+}
+
+.menu[aria-expanded='true'] > span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu[aria-expanded='true'] > span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu[aria-expanded='true'] > span:last-child {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 860px) {
+  .menu {
+    display: none;
+  }
 }

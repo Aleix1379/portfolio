@@ -1,108 +1,141 @@
 import styles from '../styles/Nav.module.css'
 import React, { useEffect, useState } from 'react'
 import MenuButton from './MenuButton'
-import useTheme from '../hooks/useTheme'
-import SwitchTheme from './SwitchTheme'
+
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' }
+]
 
 const Nav = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
-  const [theme, setTheme] = useTheme()
-  const [animationDuration, setAnimationDuration] = useState('0s')
+  const [activeSection, setActiveSection] = useState('about')
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    document.addEventListener('scroll', onScroll)
+    const handleScroll = () => {
+      setIsMenuOpened(false)
+      setIsScrolled(window.scrollY > 24)
 
-    setTimeout(() => {
-      setAnimationDuration('0.35s')
-    }, 1000)
+      if (window.scrollY < 120) {
+        setActiveSection('about')
+      }
+    }
+
+    handleScroll()
+    document.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
-      document.removeEventListener('scroll', onScroll)
+      document.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
-  const onScroll = () => {
-    setIsMenuOpened(false)
-    const limit = window.innerWidth < 500 ? 380 : 330
-    const element = document.getElementById('navContainer')
+  useEffect(() => {
+    const sections = [...navItems.map(item => item.id), 'contact']
+      .map(id => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null)
 
-    if (!element) {
+    if (sections.length === 0) {
       return
     }
 
-    let classToRemove = styles.navContainerHide
-    let classToAdd = styles.navContainerShow
+    const observer = new IntersectionObserver(
+      entries => {
+        const visibleEntries = entries
+          .filter(entry => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              second.intersectionRatio - first.intersectionRatio
+          )
 
-    if (document.documentElement.scrollTop >= limit) {
-      classToRemove = styles.navContainerShow
-      classToAdd = styles.navContainerHide
-    }
+        if (visibleEntries.length === 0) {
+          return
+        }
 
-    if (classToAdd && classToRemove) {
-      element.classList.remove(classToRemove)
-      element.classList.add(classToAdd)
-    }
-  }
+        setActiveSection(visibleEntries[0].target.id)
+      },
+      {
+        rootMargin: '-28% 0px -42% 0px',
+        threshold: [0.18, 0.32, 0.5, 0.7]
+      }
+    )
+
+    sections.forEach(section => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    setIsMenuOpened(false)
+    setActiveSection('about')
   }
 
-  const scrollTo = (id: string) => {
-    window.document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  const closeMenu = (id?: string) => {
+    setIsMenuOpened(false)
+
+    if (id) {
+      setActiveSection(id)
+    }
   }
 
   return (
-    <div
-      id="navContainer"
-      style={{ animationDuration: animationDuration }}
-      className={`${styles.navContainer} ${styles.navContainerShow}`}>
-      <nav className={styles.nav}>
-        <div>
-          <div className={styles.logo} onClick={scrollToTop}>
-            <div>
-              <img
-                src={'/images/aleix.webp'}
-                height={70}
-                width={70}
-                className={styles.avatar}
-                alt="Avatar"
-              />
-            </div>
-            <h2 className={styles.name}>Aleix</h2>
-          </div>
+    <div id="navContainer" className={styles.navContainer}>
+      <nav
+        className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}
+        aria-label="Main navigation"
+      >
+        <button
+          type="button"
+          className={styles.logo}
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          <span className={styles.avatarWrap}>
+            <img
+              src={'/images/aleix.webp'}
+              height={44}
+              width={44}
+              className={styles.avatar}
+              alt="Aleix avatar"
+            />
+          </span>
+          <span className={styles.name}>
+            <strong>Aleix</strong>
+            <small>Web developer</small>
+          </span>
+        </button>
+
+        <div
+          id="main-navigation-links"
+          className={`${styles.links} ${isMenuOpened ? styles.menuOpened : ''}`}
+        >
+          {navItems.map(item => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={`${styles.link} ${activeSection === item.id ? styles.linkActive : ''}`}
+              onClick={() => closeMenu(item.id)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className={`${styles.link} ${styles.contactLink} ${activeSection === 'contact' ? styles.contactLinkActive : ''}`}
+            onClick={() => closeMenu('contact')}
+          >
+            Contact
+          </a>
         </div>
 
-        <SwitchTheme
-          className={styles.themeSwitch}
-          value={theme === 'dark'}
-          size={40}
-          onChange={isDarkTheme => {
-            console.info('isDarkTheme', isDarkTheme)
-            setTheme(isDarkTheme ? 'dark' : 'light')
-          }}
-        />
-
-        <ul
-          className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
-          <li className={styles.li}>
-            <div onClick={() => scrollTo('about')}>About</div>
-          </li>
-          <li className={styles.li}>
-            <div onClick={() => scrollTo('experience')}>Experience</div>
-          </li>
-          <li className={styles.li}>
-            <div onClick={() => scrollTo('projects')}>Projects</div>
-          </li>
-          <li className={styles.li}>
-            <div onClick={() => scrollTo('contact')}>Contact</div>
-          </li>
-        </ul>
-
-        <MenuButton
-          isActive={isMenuOpened}
-          onClick={() => setIsMenuOpened(!isMenuOpened)}
-        />
+        <div className={styles.actions}>
+          <MenuButton
+            isActive={isMenuOpened}
+            onClick={() => setIsMenuOpened(!isMenuOpened)}
+          />
+        </div>
       </nav>
     </div>
   )

@@ -1,143 +1,92 @@
 .switch {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    position: relative;
+  position: relative;
+  display: inline-flex;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),
+    var(--bg-switch);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition:
+    transform 220ms var(--ease-premium),
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-switch);
-    padding-left: 12px;
-    padding-right: 12px;
-    cursor: pointer;
-    transition: border 1s;
-    border: 4px solid transparent;
+.switch:hover {
+  border-color: var(--accent-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),
+    var(--accent-soft);
+  box-shadow: 0 12px 26px rgba(56, 193, 136, 0.12);
+  transform: translateY(-1px);
 }
 
-.wrapper::after {
-    content: '';
-    position: absolute;
-    height: calc(100% + 20px);
-    width: calc(100% + 20px);
-    top: -9px;
-    left: calc(-100% - 30px);
-    z-index: -1;
-    border-radius: 50px;
-    background-color: #38c188;
+.switch:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
-.switchOn::after {
-    animation: borderEnterAnimation 1.5s cubic-bezier(.46, .35, .15, 2.02) forwards;
+.iconWrap {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--selector-size);
+  height: var(--selector-size);
+  color: var(--text-muted);
+  opacity: 0.68;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease,
+    transform 220ms var(--ease-premium);
 }
 
-.switchOff::after {
-    animation: borderLeaveAnimation 1.75s cubic-bezier(.46, .35, .15, 2.02) forwards;
+.icon {
+  display: block;
+  width: 18px;
+  height: 18px;
 }
 
-
-.wrapper > span {
-    overflow: visible !important;
-}
-
-.off,
-.on {
-    filter: brightness(.15);
-    transition: .5s;
-    animation: statusOffAnimation .75s forwards;
-}
-
-.statusVisible {
-    animation: statusOnAnimation .75s forwards;
+.iconActive {
+  color: #06110d;
+  opacity: 1;
+  transform: scale(1.02);
 }
 
 .selector {
-    transform: translateX(100%);
-    transition: .5s;
-    border-radius: 50%;
-    border: 3px solid #666;
-    z-index: 100;
-    position: absolute;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 0;
+  width: var(--selector-size);
+  height: var(--selector-size);
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0)),
+    linear-gradient(135deg, var(--accent-strong), var(--green));
+  box-shadow:
+    0 10px 22px rgba(56, 193, 136, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition:
+    transform 260ms var(--ease-premium),
+    box-shadow 220ms ease;
 }
 
-.selectorActive {
-    animation: selectorOffAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
+.selectorDark {
+  transform: translateX(0);
 }
 
-.selectorInActive {
-    animation: selectorOnAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
-}
-
-@keyframes statusOnAnimation {
-    0% {
-        filter: brightness(.15);
-    }
-
-    50% {
-        transform: scale(1.35) rotate(15deg);
-        filter: brightness(1);
-    }
-
-    100% {
-        filter: brightness(1);
-    }
-}
-
-@keyframes statusOffAnimation {
-    0% {
-        filter: brightness(1);
-    }
-
-    100% {
-        filter: brightness(.15);
-        transform: scale(0);
-    }
-}
-
-@keyframes selectorOnAnimation {
-    0% {
-        background-color: #EFEDEE;
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(0);
-        background-color: gold;
-    }
-}
-
-@keyframes selectorOffAnimation {
-    0% {
-        transform: translateX(0);
-        background-color: gold;
-    }
-
-    100% {
-        transform: translateX(65px);
-        background-color: #EFEDEE;
-    }
-}
-
-@keyframes borderEnterAnimation {
-    0% {
-        left: -100px;
-    }
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes borderLeaveAnimation {
-    0% {
-        left: 0;
-    }
-
-    100% {
-        left: calc(-100% - 25px);
-    }
+.selectorLight {
+  transform: translateX(var(--selector-offset));
 }

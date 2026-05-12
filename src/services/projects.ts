@@ -243,7 +243,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       name: 'Talk And Play',
       description:
         'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
-      image: '/images/projects/talkandplay.webp',
+      image: '/images/projects/talk-and-play.webp',
       active: true,
       links: [
         {

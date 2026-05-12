@@ -1,102 +1,89 @@
-import React, { useState } from "react";
-import styles from "../styles/Input.module.css";
-import type { Validation } from "../types/Validation";
+import React, { useId } from 'react'
+import styles from '../styles/Input.module.css'
+import type { Validation } from '../types/Validation'
 
 interface InputProps {
-  testID?: string;
-  label: string;
-  value: string;
-  placeholder?: string;
-  onChange: (value: string) => void;
-  type?: "text" | "textarea" | "email";
-  className?: string | undefined;
-  validation?: Validation;
+  testID?: string
+  label: string
+  value: string
+  placeholder?: string
+  onChange: (value: string) => void
+  type?: 'text' | 'textarea' | 'email'
+  className?: string | undefined
+  validation?: Validation
 }
 
 const Input: React.FC<InputProps> = ({
-  testID = "",
+  testID = '',
   label,
   value,
   placeholder,
   onChange,
-  type = "text",
+  type = 'text',
   className,
-  validation,
+  validation
 }) => {
-  const [isLabelActive, setIsLabelActive] = useState(false);
-
-  const getAnimationDelay = (index: number): string => {
-    const time = 0.05;
-    if (!isLabelActive) {
-      index = index * -1;
-    }
-    return index * time + "s";
-  };
+  const generatedId = useId()
+  const inputId = `${label.toLowerCase().replace(/\s+/g, '-')}-${generatedId}`
+  const errorId = `${inputId}-error`
 
   const isValid = () => {
-    return !(validation?.touched && validation.message.length > 0);
-  };
+    return !(validation?.touched && validation.message.length > 0)
+  }
 
   return (
-    <label className={`${styles.container} ${className}`}>
-      <div className={styles.label}>
-        {label.split("").map((letter, index) => (
-          <span
-            key={index}
-            className={`${styles.letter} ${isLabelActive ? styles.animated : ""}`}
-            style={{
-              animationDelay: getAnimationDelay(index),
-              color: isValid() ? "#38c188" : "#c0392b",
-            }}
-          >
-            {letter}
-          </span>
-        ))}
-      </div>
-      {type !== "textarea" && (
+    <div className={`${styles.container} ${className || ''}`}>
+      <label className={styles.label} htmlFor={inputId}>
+        {label}
+      </label>
+      {type !== 'textarea' && (
         <div>
-          <div
-            className={`${styles.inputWrapper}  ${isLabelActive ? styles.borderWrapper : ""}`}
-            style={{ borderColor: isValid() ? "#38c188" : "#c0392b" }}
-          >
+          <div className={styles.inputWrapper} data-valid={isValid()}>
             <input
+              id={inputId}
               data-testid={testID}
               className={styles.input}
               type={type}
-              placeholder={isLabelActive ? placeholder : ""}
+              placeholder={placeholder}
               value={value}
-              onChange={(e) => onChange(e.target.value)}
-              onFocus={() => setIsLabelActive(true)}
-              onBlur={() => setIsLabelActive(value.length > 0)}
+              required
+              onChange={e => onChange(e.target.value)}
+              aria-invalid={!isValid()}
+              aria-describedby={!isValid() ? errorId : undefined}
             />
           </div>
           {validation?.touched && validation.message.length > 0 && (
-            <div className={styles.error}>{validation.message}</div>
+            <div id={errorId} className={styles.error}>
+              {validation.message}
+            </div>
           )}
         </div>
       )}
-      {type === "textarea" && (
+      {type === 'textarea' && (
         <div>
-          <div
-            className={`${styles.textareaWrapper} ${isLabelActive ? styles.borderWrapper : ""}`}
-            style={{ borderColor: isValid() ? "#38c188" : "#c0392b" }}
-          >
+          <div className={styles.textareaWrapper} data-valid={isValid()}>
             <textarea
+              id={inputId}
+              data-testid={testID}
               className={`${styles.input} ${styles.textarea}`}
-              placeholder={isLabelActive ? placeholder : ""}
+              placeholder={placeholder}
               value={value}
-              onChange={(e) => onChange(e.target.value)}
-              onFocus={() => setIsLabelActive(true)}
-              onBlur={() => setIsLabelActive(value.length > 0)}
+              required
+              rows={7}
+              onChange={e => onChange(e.target.value)}
+              aria-invalid={!isValid()}
+              aria-describedby={!isValid() ? errorId : undefined}
             />
           </div>
           {validation?.touched && validation.message.length > 0 && (
-            <div className={styles.error}>{validation.message}</div>
+            <div id={errorId} className={styles.error}>
+              {validation.message}
+            </div>
           )}
         </div>
       )}
-    </label>
-  );
-};
+    </div>
+  )
+}
 
-export default Input;
+export default Input

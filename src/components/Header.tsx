@@ -1,42 +1,87 @@
 import React from 'react'
-import { useState } from 'react'
+import { getYearsOfExperience } from '../utils/time'
 import styles from '../styles/Header.module.css'
-import Letter from './Letter'
 
 const Header = () => {
-  const [name] = useState("I'm Aleix.")
-  const [description] = useState('A web developer.')
-
-  const renderAnimatedText = (text: string, animationDelay = 0.25) => {
-    return text.split(/(\s+)/).map((word, key) => (
-      <div key={key} className={styles.word}>
-        {word.split('').map((letter, index) => {
-          const wordKey = key * 1.5
-          const delay = ((wordKey + index) * 0.1 + animationDelay).toFixed(2)
-          return (
-            <Letter
-              key={index}
-              value={letter}
-              style={{
-                animationDelay: `${delay}s`,
-                marginLeft: letter === ' ' ? 15 : 0
-              }}
-            />
-          )
-        })}
-      </div>
-    ))
-  }
+  const yearsOfExperience = getYearsOfExperience({
+    filter: { fullTime: true }
+  })
 
   return (
     <header id="header" className={styles.header}>
-      <div>
-        <h1 className={`${styles.name} ${styles.text}`}>
-          {renderAnimatedText(name)}
-        </h1>
-        <h2 className={`${styles.name} ${styles.text}`}>
-          {renderAnimatedText(description, 0.75)}
-        </h2>
+      <div className={styles.inner}>
+        <div className={styles.content}>
+          <p className={styles.kicker}>Aleix Martínez Pena</p>
+          <h1 className={styles.title}>
+            I&apos;m Aleix.
+            <span>A web developer.</span>
+          </h1>
+          <p className={styles.subtitle}>
+            I build web experiences with Vue.js/Nuxt.js, React Native, Node.js,
+            and TypeScript.
+          </p>
+
+          <div className={styles.actions} aria-label="Hero actions">
+            <a className={styles.primaryAction} href="#projects">
+              View projects
+            </a>
+            <a className={styles.secondaryAction} href="#contact">
+              Contact me
+            </a>
+          </div>
+
+          <div className={styles.stats} aria-label="Portfolio highlights">
+            <div className={styles.stat}>
+              <strong>+{yearsOfExperience}</strong>
+              <span>years of experience</span>
+            </div>
+            <div className={styles.stat}>
+              <strong>Vue / Nuxt</strong>
+              <span>eCommerce frontend</span>
+            </div>
+            <div className={styles.stat}>
+              <strong>Node.js</strong>
+              <span>backend work</span>
+            </div>
+          </div>
+        </div>
+
+        <aside
+          className={styles.visualShell}
+          aria-label="Developer profile preview"
+        >
+          <div className={styles.visual}>
+            <div className={styles.visualHeader}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className={styles.codeCard}>
+              <p className={styles.codeLine}>
+                <span>const</span> developer = {'{'}
+              </p>
+              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
+                name: &apos;Aleix&apos;,
+              </p>
+              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
+                stack: [&apos;Vue.js&apos;, &apos;Nuxt.js&apos;,
+                &apos;Node.js&apos;],
+              </p>
+              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
+                language: &apos;TypeScript&apos;,
+              </p>
+              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
+                focus: &apos;web experiences&apos;
+              </p>
+              <p className={styles.codeLine}>{'}'}</p>
+            </div>
+            <div className={styles.previewPanel}>
+              <span>Recent work</span>
+              <strong>TALKUAL eCommerce solutions</strong>
+              <p>Vue.js/Nuxt.js, Strapi/Node.js</p>
+            </div>
+          </div>
+        </aside>
       </div>
     </header>
   )

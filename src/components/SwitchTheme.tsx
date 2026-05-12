@@ -1,121 +1,87 @@
-import React from 'react'
+import React, { type CSSProperties } from 'react'
 import styles from '../styles/SwitchTheme.module.css'
 
 interface SwitchProps {
-	value: boolean
-	onChange: (value: boolean) => void
-	size?: number
-	className?: string | undefined
+  value: boolean
+  onChange: (value: boolean) => void
+  size?: number
+  className?: string | undefined
 }
 
-const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, className }) => {
-	const [isOn, setIsOn] = React.useState<boolean>(false)
+const SwitchTheme: React.FC<SwitchProps> = ({
+  value,
+  onChange,
+  size = 22,
+  className
+}) => {
+  const controlHeight = Math.max(38, size + 18)
+  const controlWidth = Math.max(70, size * 2 + 32)
+  const selectorSize = controlHeight - 8
+  const selectorOffset = controlWidth - selectorSize - 8
+  const controlStyle = {
+    '--switch-width': `${controlWidth}px`,
+    '--switch-height': `${controlHeight}px`,
+    '--selector-size': `${selectorSize}px`,
+    '--selector-offset': `${selectorOffset}px`
+  } as CSSProperties
 
-	const switchOn = () => {
-		setIsOn(true)
-		const element = document.getElementById('switch')
-		if (element) {
-			element.classList.remove(styles.switchOff)
-			element.classList.add(styles.switchOn)
-		}
-	}
+  return (
+    <button
+      type="button"
+      className={`${styles.switch} ${className || ''}`}
+      style={controlStyle}
+      aria-label={value ? 'Switch to light theme' : 'Switch to dark theme'}
+      aria-pressed={value}
+      onClick={() => onChange(!value)}
+    >
+      <span
+        className={`${styles.iconWrap} ${value ? styles.iconActive : ''}`}
+        aria-hidden="true"
+      >
+        <svg
+          className={styles.icon}
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M20.2 15.7A8.2 8.2 0 0 1 8.3 3.8a8.8 8.8 0 1 0 11.9 11.9Z"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
 
-	const switchOff = () => {
-		const element = document.getElementById('switch')
-		if (element) {
-			element.classList.remove(styles.switchOn)
-			element.classList.add(styles.switchOff)
-		}
-	}
+      <span
+        className={`${styles.selector} ${value ? styles.selectorDark : styles.selectorLight}`}
+        aria-hidden="true"
+      />
 
-	const getStatusStyle = (isActive: boolean, control: 'off' | 'on') => {
-		if (control === 'off' && isActive) {
-			return styles.statusVisible
-		} else if (control === 'on' && !isActive) {
-			return styles.statusVisible
-		}
-	}
-
-	const getSelectorAnimation = (isActive: boolean) => {
-		if (isActive) {
-			return styles.selectorActive
-		}
-		return styles.selectorInActive
-	}
-
-	const getWith = () => {
-		return size * 2 + 50
-	}
-
-	const getHeight = () => {
-		return getWith() * .5
-	}
-
-	const getSelectorSize = () => {
-		return getHeight() * 0.55
-	}
-
-	const getContainerStyle = () => {
-		return {
-			width: getWith(),
-			height: getHeight(),
-			borderRadius: getHeight() * .5
-		}
-	}
-
-	const getWrapperStyle = () => {
-		return {
-			width: getWith() + 8,
-			maxWidth: getWith() + 8,
-			height: getHeight() + 8,
-			top: 2,
-			borderRadius: getHeight() * .75
-		}
-	}
-
-	const getSelectorStyle = () => {
-		return {
-			height: getSelectorSize(),
-			width: getSelectorSize(),
-			minWidth: getSelectorSize(),
-			animationDuration: !isOn ? '0s' : '0.4s'
-		}
-	}
-
-	return (
-		<div className={styles.switch} style={getWrapperStyle()}>
-			<div
-				id='switch'
-				className={`${styles.wrapper} ${className}`}
-				style={getContainerStyle()}
-				onClick={() => onChange(!value)}
-				onMouseEnter={switchOn}
-				onMouseLeave={switchOff}
-			>
-
-				<img
-					className={`${styles.off} ${getStatusStyle(value, 'off')}`}
-					src={'/images/moon.webp'}
-					width={size}
-					height={size}
-					alt='moon'
-				/>
-
-				<div
-					className={`${styles.selector} ${getSelectorAnimation(value)}`}
-					style={getSelectorStyle()}
-				/>
-
-				<img
-					className={`${styles.on} ${getStatusStyle(value, 'on')}`}
-					src={'/images/sun.png'}
-					width={size}
-					height={size}
-					alt='sun'
-				/>
-			</div>
-		</div>
-	)
+      <span
+        className={`${styles.iconWrap} ${!value ? styles.iconActive : ''}`}
+        aria-hidden="true"
+      >
+        <svg
+          className={styles.icon}
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <circle cx="12" cy="12" r="4.4" stroke="currentColor" strokeWidth="1.9" />
+          <path
+            d="M12 2.8v2.1M12 19.1v2.1M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M2.8 12h2.1M19.1 12h2.1M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"
+            stroke="currentColor"
+            strokeWidth="1.9"
+            strokeLinecap="round"
+          />
+        </svg>
+      </span>
+    </button>
+  )
 }
 
 export default SwitchTheme
