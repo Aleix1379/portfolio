@@ -17,7 +17,6 @@
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/react": "^3.6.3",
-    "@astrojs/renderer-react": "^0.5.0",
     "@astrojs/sitemap": "^3.7.2",
     "@icons-pack/react-simple-icons": "^5.11.0",
     "astro": "^6.1.8",
