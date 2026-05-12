@@ -1,5 +1,6 @@
 import React from 'react'
 import { getYearsOfExperience } from '../utils/time'
+import HeroHeadline from './HeroHeadline'
 import styles from '../styles/Header.module.css'
 
 const Header = () => {
@@ -12,13 +13,15 @@ const Header = () => {
       <div className={styles.inner}>
         <div className={styles.content}>
           <p className={styles.kicker}>Aleix Martínez Pena</p>
-          <h1 className={styles.title}>
-            I&apos;m Aleix.
-            <span>A web developer.</span>
-          </h1>
+          <HeroHeadline
+            className={styles.title}
+            lineClassName={styles.titleLine}
+            lines={["I'm Aleix.", 'Full-stack developer.']}
+            secondLineClassName={styles.titleLineMuted}
+          />
           <p className={styles.subtitle}>
-            I build web experiences with Vue.js/Nuxt.js, React Native, Node.js,
-            and TypeScript.
+            I build user interfaces and web/mobile apps with Vue.js/Nuxt.js,
+            React Native, Node.js, and TypeScript.
           </p>
 
           <div className={styles.actions} aria-label="Hero actions">
@@ -37,11 +40,11 @@ const Header = () => {
             </div>
             <div className={styles.stat}>
               <strong>Vue / Nuxt</strong>
-              <span>eCommerce frontend</span>
+              <span>eCommerce interfaces</span>
             </div>
             <div className={styles.stat}>
               <strong>Node.js</strong>
-              <span>backend work</span>
+              <span>API and backend work</span>
             </div>
           </div>
         </div>
@@ -71,7 +74,7 @@ const Header = () => {
                 language: &apos;TypeScript&apos;,
               </p>
               <p className={`${styles.codeIndent} ${styles.codeLine}`}>
-                focus: &apos;web experiences&apos;
+                focus: &apos;user interfaces&apos;
               </p>
               <p className={styles.codeLine}>{'}'}</p>
             </div>

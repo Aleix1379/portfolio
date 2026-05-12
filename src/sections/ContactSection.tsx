@@ -140,7 +140,8 @@ const ContactSection = () => {
           Contact me
         </h2>
         <p className={styles.sectionLead} data-reveal style={revealDelay(180)}>
-          Let&apos;s build something useful.
+          Have a project, product idea, or role where I can help? Let&apos;s
+          talk.
         </p>
       </div>
 
@@ -150,8 +151,8 @@ const ContactSection = () => {
           data-reveal
           style={revealDelay(260)}
         >
-          <h3>Open a conversation.</h3>
-          <p>Send a message by email or connect through LinkedIn and Github.</p>
+          <h3>Start a conversation.</h3>
+          <p>Send a message by email or connect through LinkedIn and GitHub.</p>
           <div className={styles.socialNetworks}>
             <IconLink
               link={{
@@ -174,11 +175,12 @@ const ContactSection = () => {
           </div>
 
           <img
-            src="/images/contact.svg"
-            alt="Contact"
+            src="/images/contact-communication-network.webp"
+            alt="Abstract contact and communication illustration"
             className={styles.imageContact}
-            width={500}
-            height={620}
+            width={1280}
+            height={549}
+            loading="lazy"
           />
         </aside>
 
@@ -192,7 +194,8 @@ const ContactSection = () => {
           <div className={styles.formIntro}>
             <h3>Write a quick message.</h3>
             <p>
-              Use the form to open an email draft with your subject and message.
+              Use the form to open an email draft with the details you want to
+              share.
             </p>
           </div>
           <div className={styles.formFields}>
@@ -200,7 +203,7 @@ const ContactSection = () => {
               testID="contact-form-subject"
               className={styles.input}
               label={'Subject'}
-              placeholder={'Project, role or collaboration'}
+              placeholder={'Project, role, or collaboration'}
               value={form.subject}
               validation={validations.subject}
               onChange={text => updateForm('subject', text)}
@@ -209,7 +212,9 @@ const ContactSection = () => {
               testID="contact-form-message"
               className={styles.input}
               label={'Message'}
-              placeholder={'Share a few details about what you want to build.'}
+              placeholder={
+                'Share a bit about what you need, the context, or the next step.'
+              }
               value={form.message}
               validation={validations.message}
               onChange={text => updateForm('message', text)}

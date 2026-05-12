@@ -262,10 +262,12 @@
 }
 
 .image {
-  width: min(100%, 420px);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 auto;
-  object-fit: contain;
+  aspect-ratio: 1280 / 549;
+  border-radius: 20px;
+  margin: 0;
 }
 
 .aboutStats {
@@ -317,9 +319,11 @@
 
 .imageExperience {
   display: block;
-  width: min(100%, 250px);
+  width: 100%;
   height: auto;
-  margin: 0 auto 24px;
+  aspect-ratio: 1280 / 549;
+  border-radius: 18px;
+  margin: 0 0 24px;
 }
 
 .experienceIntro p {
@@ -472,9 +476,11 @@
 
 .imageContact {
   display: block;
-  width: min(100%, 320px);
+  width: 100%;
   height: auto;
-  margin: 28px auto 0;
+  aspect-ratio: 1280 / 549;
+  border-radius: 20px;
+  margin: 28px 0 0;
 }
 
 .socialNetworks {

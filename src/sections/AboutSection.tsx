@@ -40,8 +40,8 @@ const AboutSection = () => {
           About me
         </h2>
         <p className={styles.sectionLead} data-reveal style={revealDelay(180)}>
-          Web developer focused on eCommerce solutions, personal projects, and
-          practical product experiences.
+          Web developer focused on user interfaces, eCommerce platforms, and
+          practical web/mobile applications.
         </p>
       </div>
 
@@ -49,11 +49,14 @@ const AboutSection = () => {
         <div className={styles.aboutCopy} data-reveal style={revealDelay(260)}>
           <div className={styles.aboutCopyInner}>
             <p className={styles.aboutLead}>
-              <strong>+{yearsOfExperience}</strong> years of experience as a web
-              developer
+              <strong>+{yearsOfExperience}</strong> years building web and
+              mobile applications
             </p>
             <p>
-              <span>Experience includes TALKUAL eCommerce solutions with </span>
+              <span>
+                Recent work includes TALKUAL eCommerce platform development
+                with{' '}
+              </span>
               <span className={styles.important}>Vue.js/Nuxt.js</span>
               <span> and </span>
               <span className={styles.important}>Strapi/Node.js</span>
@@ -84,26 +87,26 @@ const AboutSection = () => {
           style={revealDelay(360)}
         >
           <img
-            src="/images/about.svg"
-            alt="About"
+            src="/images/about-developer-workspace.webp"
+            alt="Dark developer workspace illustration"
             className={styles.image}
-            width={800}
-            height={300}
-            loading={'eager'}
+            width={1280}
+            height={549}
+            loading="lazy"
           />
           <div className={styles.aboutStats}>
             <div className={styles.aboutStat}>
-              <span>Current work</span>
-              <strong>TALKUAL eCommerce solutions</strong>
+              <span>Recent work</span>
+              <strong>TALKUAL eCommerce platform</strong>
             </div>
             <div className={styles.aboutStat}>
               <span>Main stack</span>
               <strong>Vue.js/Nuxt.js, React Native, TypeScript, Node.js</strong>
             </div>
             <div className={styles.aboutStat}>
-              <span>Current focus</span>
+              <span>Focus</span>
               <strong>
-                eCommerce solutions and practical product experience
+                User interfaces, eCommerce flows and practical product features
               </strong>
             </div>
           </div>

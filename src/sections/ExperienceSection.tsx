@@ -18,7 +18,9 @@ const isMainTimelineExperience = (experience: JobExperience) => {
 
 const ExperienceSection = () => {
   const allExperiences = getExperience()
-  const professionalExperiences = allExperiences.filter(isMainTimelineExperience)
+  const professionalExperiences = allExperiences.filter(
+    isMainTimelineExperience
+  )
   const yearsOfExperience = getYearsOfExperience({
     filter: { fullTime: true }
   })
@@ -49,8 +51,8 @@ const ExperienceSection = () => {
           Experience
         </h2>
         <p className={styles.sectionLead} data-reveal style={revealDelay(180)}>
-          A timeline of web development roles across eCommerce, front-end, and
-          application work.
+          A focused timeline of roles across eCommerce, front-end, full-stack,
+          and mobile application work.
         </p>
       </div>
 
@@ -62,28 +64,31 @@ const ExperienceSection = () => {
           style={revealDelay(260)}
         >
           <img
-            src="/images/experience.svg"
-            alt="Experience"
+            src="/images/experience-professional-timeline.webp"
+            alt="Abstract professional experience timeline illustration"
             className={styles.imageExperience}
-            width={300}
-            height={300}
+            width={1280}
+            height={549}
+            loading="lazy"
           />
           <p>
-            Professional experience building eCommerce solutions, front-end
-            interfaces and practical product features.
+            Experience building eCommerce platforms, front-end interfaces, web
+            apps, and mobile apps.
           </p>
           <div className={styles.experienceFacts}>
             <div>
-              <strong>+{yearsOfExperience} years of experience</strong>
+              <strong>
+                +{yearsOfExperience} years building web and mobile apps
+              </strong>
               <span>
-                Working as a web developer across eCommerce, front-end and
-                product-focused projects.
+                Focused on user interfaces, eCommerce flows and practical
+                product features.
               </span>
             </div>
             <div>
-              <strong>Main front-end stack</strong>
+              <strong>Core stack</strong>
               <span>
-                Vue.js, React, Angular and modern JavaScript applications.
+                Vue.js, Nuxt.js, React/React Native, TypeScript and Node.js.
               </span>
             </div>
           </div>

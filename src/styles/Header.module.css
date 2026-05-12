@@ -48,11 +48,9 @@
 }
 
 .kicker,
-.title,
-.subtitle,
-.actions {
+.subtitle {
   opacity: 0;
-  animation: fadeUp 0.72s var(--ease-premium) both;
+  animation: fadeUp 500ms var(--ease-premium) both;
 }
 
 .kicker {
@@ -73,7 +71,9 @@
   line-height: 1;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  animation-delay: 60ms;
+  --hero-enter-y: 8px;
+  animation-duration: 450ms;
+  animation-delay: 70ms;
 }
 
 .title {
@@ -84,11 +84,13 @@
   font-weight: 850;
   line-height: 0.93;
   letter-spacing: -0.03em;
-  animation-delay: 140ms;
 }
 
-.title span {
+.titleLine {
   display: block;
+}
+
+.titleLineMuted {
   color: var(--text-soft);
 }
 
@@ -98,7 +100,8 @@
   color: var(--text-muted);
   font-size: clamp(1.08rem, 2vw, 1.35rem);
   line-height: 1.7;
-  animation-delay: 240ms;
+  --hero-enter-y: 12px;
+  animation-delay: 1840ms;
 }
 
 .actions {
@@ -106,7 +109,6 @@
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
-  animation-delay: 340ms;
 }
 
 .primaryAction,
@@ -122,18 +124,22 @@
   font-weight: 820;
   line-height: 1;
   text-align: center;
+  opacity: 0;
+  animation: fadeUp 500ms var(--ease-premium) both;
   transition:
     transform 220ms var(--ease-premium),
     border-color 220ms ease,
     background 220ms ease,
     box-shadow 220ms ease,
     color 220ms ease;
+  --hero-enter-y: 12px;
 }
 
 .primaryAction {
   color: #06110d;
   background: linear-gradient(135deg, var(--accent-strong), var(--green));
   box-shadow: 0 16px 40px rgba(56, 193, 136, 0.2);
+  animation-delay: 2240ms;
 }
 
 .secondaryAction {
@@ -141,6 +147,7 @@
   border: 1px solid var(--border-strong);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  animation-delay: 2400ms;
 }
 
 .primaryAction:hover,
@@ -181,19 +188,20 @@
     transform 220ms ease,
     border-color 220ms ease,
     background 220ms ease;
-  animation: fadeUp 0.7s var(--ease-premium) both;
+  animation: fadeUp 500ms var(--ease-premium) both;
+  --hero-enter-y: 10px;
 }
 
 .stat:nth-child(1) {
-  animation-delay: 430ms;
+  animation-delay: 2680ms;
 }
 
 .stat:nth-child(2) {
-  animation-delay: 520ms;
+  animation-delay: 2840ms;
 }
 
 .stat:nth-child(3) {
-  animation-delay: 610ms;
+  animation-delay: 3000ms;
 }
 
 .stat:hover {
@@ -219,7 +227,7 @@
 .visualShell {
   position: relative;
   opacity: 0;
-  animation: heroPanelIn 0.82s 240ms var(--ease-premium) both;
+  animation: heroPanelIn 650ms 1840ms var(--ease-premium) both;
 }
 
 .visualShell::before {
@@ -325,31 +333,32 @@
 
 .codeLine {
   opacity: 0;
-  animation: fadeUp 0.56s var(--ease-premium) both;
+  animation: fadeUp 520ms var(--ease-premium) both;
+  --hero-enter-y: 8px;
 }
 
 .codeCard p:nth-child(1) {
-  animation-delay: 500ms;
+  animation-delay: 2440ms;
 }
 
 .codeCard p:nth-child(2) {
-  animation-delay: 580ms;
+  animation-delay: 2580ms;
 }
 
 .codeCard p:nth-child(3) {
-  animation-delay: 660ms;
+  animation-delay: 2720ms;
 }
 
 .codeCard p:nth-child(4) {
-  animation-delay: 740ms;
+  animation-delay: 2860ms;
 }
 
 .codeCard p:nth-child(5) {
-  animation-delay: 820ms;
+  animation-delay: 3000ms;
 }
 
 .codeCard p:nth-child(6) {
-  animation-delay: 900ms;
+  animation-delay: 3140ms;
 }
 
 .codeIndent {
@@ -369,7 +378,8 @@
     var(--surface-strong);
   box-shadow: 0 16px 34px rgba(10, 26, 20, 0.24);
   opacity: 0;
-  animation: fadeUp 0.66s 780ms var(--ease-premium) both;
+  animation: fadeUp 560ms 3080ms var(--ease-premium) both;
+  --hero-enter-y: 10px;
 }
 
 .previewPanel::before {
@@ -408,24 +418,24 @@
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translate3d(0, var(--hero-enter-y, 12px), 0);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes heroPanelIn {
   from {
     opacity: 0;
-    transform: translateY(18px) scale(0.985);
+    transform: translate3d(0, 12px, 0) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
@@ -488,5 +498,32 @@
 
   .previewPanel {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kicker,
+  .subtitle,
+  .primaryAction,
+  .secondaryAction,
+  .stat,
+  .visualShell,
+  .codeLine,
+  .previewPanel {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+    transition: none;
+  }
+
+  .visual {
+    transform: none;
+    animation: none !important;
+  }
+
+  .primaryAction:hover,
+  .secondaryAction:hover,
+  .stat:hover {
+    transform: none;
   }
 }

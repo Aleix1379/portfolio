@@ -37,11 +37,12 @@ const ProjectsSection = () => {
             data-reveal
             style={revealDelay(180)}
           >
-            Personal projects to improve and learn new technologies, usually
-            with
+            Personal projects for practicing product ideas and modern app
+            stacks, often with
             <span className={styles.important}> Vue.js</span>,
             <span className={styles.important}> React Native </span>and
-            <span className={styles.important}> NodeJS</span>, all powered by
+            <span className={styles.important}> Node.js</span>, plus GraphQL,
+            PostgreSQL and
             <span className={styles.important}> TypeScript</span>.
           </p>
         </div>
