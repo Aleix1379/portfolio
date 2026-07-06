@@ -10,9 +10,9 @@
 .letter {
   display: inline-block;
   opacity: 0;
-  transform: translate3d(0, 10px, 0);
-  filter: blur(3px);
-  animation: letterReveal 1360ms var(--ease-premium) forwards;
+  transform: translate3d(0, 6px, 0);
+  filter: blur(2px);
+  animation: letterReveal 480ms var(--ease-premium) forwards;
   animation-delay: var(--letter-delay);
   backface-visibility: hidden;
   will-change: opacity, transform, filter;
@@ -21,8 +21,8 @@
 @keyframes letterReveal {
   from {
     opacity: 0;
-    transform: translate3d(0, 10px, 0);
-    filter: blur(3px);
+    transform: translate3d(0, 6px, 0);
+    filter: blur(2px);
   }
 
   to {

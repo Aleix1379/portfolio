@@ -37,6 +37,35 @@ interface IconLinkProps {
   size?: number
 }
 
+interface GlyphProps {
+  title?: string
+  color?: string
+  size?: number
+}
+
+const MailGlyph: React.FC<GlyphProps> = ({
+  title,
+  color = 'currentColor',
+  size = 24
+}) => (
+  <svg
+    role="img"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeWidth={1.8}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden={title ? undefined : true}
+  >
+    {title ? <title>{title}</title> : null}
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m4 7 8 6 8-6" />
+  </svg>
+)
+
 const IconLink: React.FC<IconLinkProps> = ({
   link,
   className,
@@ -44,6 +73,7 @@ const IconLink: React.FC<IconLinkProps> = ({
   size = 40
 }) => {
   const icons = {
+    email: <MailGlyph title={'Email'} color={color} size={size} />,
     // @ts-ignore
     googlePlay: <Googleplay title={'GooglePlay'} color={color} size={size} />,
     // @ts-ignore

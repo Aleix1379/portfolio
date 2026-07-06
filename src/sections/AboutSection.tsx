@@ -1,6 +1,7 @@
 import React, { type CSSProperties } from 'react'
 import { getYearsOfExperience } from '../utils/time'
 import Button from '../components/Button.tsx'
+import Chip from '../components/Chip.tsx'
 import useReveal from '../hooks/useReveal.ts'
 import styles from '../styles/Home.module.css'
 
@@ -47,28 +48,23 @@ const AboutSection = () => {
 
       <div className={styles.aboutGrid}>
         <div className={styles.aboutCopy} data-reveal style={revealDelay(260)}>
-          <div className={styles.aboutCopyInner}>
-            <p className={styles.aboutLead}>
-              <strong>+{yearsOfExperience}</strong> years building web and
-              mobile applications
-            </p>
-            <p>
-              <span>
-                Recent work includes TALKUAL eCommerce platform development
-                with{' '}
-              </span>
-              <span className={styles.important}>Vue.js/Nuxt.js</span>
-              <span> and </span>
-              <span className={styles.important}>Strapi/Node.js</span>
-            </p>
-          </div>
+          <p className={styles.aboutBio}>
+            I&apos;m Aleix, a full-stack developer with{' '}
+            <span className={styles.important}>
+              +{yearsOfExperience} years
+            </span>{' '}
+            of experience shipping production software — from eCommerce
+            platforms to mobile apps. I care about clean interfaces, sound
+            architecture, and building features that solve real problems for
+            the people using them.
+          </p>
 
           <div className={styles.aboutFooter}>
-            <div className={styles.aboutChips} aria-label="Main technologies">
-              <span>Vue.js/Nuxt.js</span>
-              <span>Strapi/Node.js</span>
-              <span>React Native</span>
-              <span>TypeScript</span>
+            <div className={styles.aboutChips} aria-label="Core technologies">
+              <Chip>Vue.js / Nuxt.js</Chip>
+              <Chip>React Native</Chip>
+              <Chip>Node.js</Chip>
+              <Chip>TypeScript</Chip>
             </div>
 
             <Button
@@ -81,34 +77,23 @@ const AboutSection = () => {
         </div>
 
         <aside
-          className={styles.aboutPanel}
+          className={styles.aboutFacts}
           aria-label="About highlights"
           data-reveal
           style={revealDelay(360)}
         >
-          <img
-            src="/images/about-developer-workspace.webp"
-            alt="Dark developer workspace illustration"
-            className={styles.image}
-            width={1280}
-            height={549}
-            loading="lazy"
-          />
-          <div className={styles.aboutStats}>
-            <div className={styles.aboutStat}>
-              <span>Recent work</span>
-              <strong>TALKUAL eCommerce platform</strong>
-            </div>
-            <div className={styles.aboutStat}>
-              <span>Main stack</span>
-              <strong>Vue.js/Nuxt.js, React Native, TypeScript, Node.js</strong>
-            </div>
-            <div className={styles.aboutStat}>
-              <span>Focus</span>
-              <strong>
-                User interfaces, eCommerce flows and practical product features
-              </strong>
-            </div>
+          <div className={styles.aboutFact}>
+            <span>Focus</span>
+            <strong>
+              Product interfaces, eCommerce platforms, and web/mobile apps
+            </strong>
+          </div>
+          <div className={styles.aboutFact}>
+            <span>Experience</span>
+            <strong>
+              +{yearsOfExperience} years across full-stack, front-end, and
+              mobile roles
+            </strong>
           </div>
         </aside>
       </div>

@@ -12,18 +12,32 @@ import type { AppInfo } from '../types/ProjectInfo'
 
 interface ProjectProps {
   name: string
+  type: string
   description: string
-  image: string
+  problem: string
+  role: string
   links: Array<Link>
   apps: Array<AppInfo>
   className?: string
   style?: CSSProperties
 }
 
+const getInitials = (value: string): string => {
+  const words = value.trim().split(/\s+/)
+
+  if (words.length === 1) {
+    return words[0].slice(0, 2).toUpperCase()
+  }
+
+  return (words[0][0] + words[1][0]).toUpperCase()
+}
+
 const Project: React.FC<ProjectProps> = ({
   name,
+  type,
   description,
-  image,
+  problem,
+  role,
   links,
   apps,
   className,
@@ -34,7 +48,6 @@ const Project: React.FC<ProjectProps> = ({
   const [isSwitchingApp, setIsSwitchingApp] = useState(false)
   const switchTimeoutRef = useRef<number | undefined>(undefined)
   const activeApp = apps[activeAppIndex]
-  const primaryApp = apps[0]
   const tabsId = useId()
 
   const handleTabClick = (index: number) => {
@@ -69,29 +82,29 @@ const Project: React.FC<ProjectProps> = ({
       style={style}
       data-reveal
     >
-      <div className={styles.media}>
-        <img
-          src={image}
-          width={92}
-          height={92}
-          alt={`${name} logo`}
-          loading="lazy"
-        />
-        {primaryApp && (
-          <span className={styles.platform}>
-            <span className={styles.pillLabel}>{primaryApp.platform}</span>
-          </span>
-        )}
-      </div>
-
       <div className={styles.body}>
-        <div className={styles.content}>
-          <div className={styles.title}>
+        <div className={styles.headerRow}>
+          <span className={styles.mark} aria-hidden="true">
+            {getInitials(name)}
+          </span>
+          <div className={styles.titleGroup}>
             <h3>{name}</h3>
+            <span className={styles.type}>{type}</span>
           </div>
-
-          <p className={styles.description}>{description}</p>
         </div>
+
+        <p className={styles.description}>{description}</p>
+
+        <dl className={styles.facts}>
+          <div className={styles.fact}>
+            <dt>Problem</dt>
+            <dd>{problem}</dd>
+          </div>
+          <div className={styles.fact}>
+            <dt>Role</dt>
+            <dd>{role}</dd>
+          </div>
+        </dl>
 
         {links.length > 0 && (
           <div className={styles.links} aria-label={`${name} links`}>

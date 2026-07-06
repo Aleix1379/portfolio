@@ -4,20 +4,12 @@
   height: 100%;
   padding: clamp(24px, 4vw, 30px);
   border: 1px solid var(--border);
-  border-radius: 26px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.07),
-      rgba(255, 255, 255, 0.025)
-    ),
-    var(--surface);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
   box-shadow: var(--shadow-card);
   transition:
-    transform 240ms var(--ease-premium),
-    border-color 240ms ease,
-    box-shadow 240ms ease,
-    background 240ms ease;
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .experience::before {
@@ -25,35 +17,17 @@
   position: absolute;
   top: 34px;
   left: -24px;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border: 3px solid var(--background);
   border-radius: 50%;
   background: var(--accent-strong);
-  box-shadow:
-    0 0 0 1px var(--accent-border),
-    0 0 0 8px rgba(76, 221, 156, 0.08);
-}
-
-.experience::after {
-  content: '';
-  position: absolute;
-  inset: 1px 1px auto;
-  height: 38%;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  opacity: 0.54;
-  pointer-events: none;
+  box-shadow: 0 0 0 1px var(--accent-border);
 }
 
 .experience:hover {
-  transform: translateY(-4px);
-  border-color: rgba(76, 221, 156, 0.28);
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
 .experience:hover .technology {
@@ -108,7 +82,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0 11px;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.04);

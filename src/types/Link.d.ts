@@ -1,6 +1,7 @@
 export type BrandIcon =
   | 'github'
   | 'linkedin'
+  | 'email'
   | 'web'
   | 'googlePlay'
   | 'appStore'

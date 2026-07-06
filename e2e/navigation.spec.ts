@@ -52,7 +52,7 @@ test.describe('Portfolio Website Navigation', () => {
 
     // Check if the years of experience text is visible
     await expect(
-      page.getByText(/of experience as a web developer/i)
+      page.getByText(/years of experience shipping production software/i)
     ).toBeVisible()
   })
 })

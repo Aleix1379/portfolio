@@ -4,142 +4,20 @@
   height: 100%;
   min-height: 100%;
   flex-direction: column;
-  overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 26px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.08),
-      rgba(255, 255, 255, 0.025)
-    ),
-    var(--surface);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
   box-shadow: var(--shadow-card);
   transition:
-    transform 240ms var(--ease-premium),
-    border-color 240ms ease,
-    box-shadow 240ms ease,
-    background 240ms ease;
-}
-
-.project::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(
-      circle at 18% 0,
-      rgba(76, 221, 156, 0.16),
-      transparent 16rem
-    ),
-    radial-gradient(
-      circle at 84% 100%,
-      rgba(56, 136, 193, 0.12),
-      transparent 16rem
-    );
-  opacity: 0;
-  transition: opacity 240ms ease;
-  pointer-events: none;
-}
-
-.project::after {
-  content: '';
-  position: absolute;
-  inset: 1px 1px auto;
-  height: 36%;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0)
-  );
-  opacity: 0.52;
-  pointer-events: none;
+    transform 200ms var(--ease-premium),
+    border-color 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .project:hover {
-  transform: translateY(-6px);
-  border-color: rgba(76, 221, 156, 0.28);
-  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
-}
-
-.project:hover::before {
-  opacity: 1;
-}
-
-.media {
-  position: relative;
-  display: flex;
-  aspect-ratio: 1916 / 821;
-  min-height: 0;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0;
-  border-bottom: 1px solid var(--border);
-  background:
-    radial-gradient(
-      circle at 50% 36%,
-      rgba(76, 221, 156, 0.18),
-      transparent 11rem
-    ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0));
-}
-
-.media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(8, 16, 13, 0), rgba(8, 16, 13, 0.18)),
-    radial-gradient(
-      circle at 50% 48%,
-      rgba(76, 221, 156, 0),
-      rgba(8, 16, 13, 0.16) 78%
-    );
-  pointer-events: none;
-}
-
-.media img {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  border-radius: 0;
-  box-shadow: none;
-  transition:
-    transform 240ms var(--ease-premium),
-    filter 240ms ease,
-    box-shadow 240ms ease;
-}
-
-.project:hover .media img {
-  transform: scale(1.035);
-  filter: brightness(1.14) contrast(1.03) saturate(1.08);
-}
-
-.platform {
-  position: absolute;
-  z-index: 1;
-  right: 18px;
-  bottom: 18px;
-  box-sizing: border-box;
-  display: inline-flex;
-  height: 31px;
-  min-height: 31px;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--accent-border);
-  border-radius: 999px;
-  padding: 0 11px;
-  color: var(--accent-strong);
-  background: var(--surface-strong);
-  font-size: 0.78rem;
-  font-weight: 850;
-  line-height: 1;
-  white-space: nowrap;
-  text-transform: capitalize;
-  backdrop-filter: blur(10px);
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
 }
 
 .pillLabel {
@@ -156,20 +34,51 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding: 22px;
+  padding: clamp(22px, 4vw, 28px);
 }
 
-.content {
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.mark {
+  display: flex;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--accent-strong);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.86rem;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+
+.titleGroup {
   display: grid;
-  gap: 12px;
+  min-width: 0;
+  gap: 4px;
 }
 
-.title h3 {
+.titleGroup h3 {
   margin: 0;
   color: var(--text-color);
-  font-size: 1.42rem;
+  font-size: 1.3rem;
   font-weight: 850;
-  line-height: 1.16;
+  line-height: 1.2;
+}
+
+.type {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
 }
 
 .description {
@@ -177,6 +86,30 @@
   color: var(--text-muted);
   font-size: 0.98rem;
   line-height: 1.68;
+}
+
+.facts {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.fact dt {
+  margin: 0;
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fact dd {
+  margin: 6px 0 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .links,
@@ -194,9 +127,8 @@
 .link,
 .techLink {
   border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.045);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .link {
@@ -239,12 +171,11 @@
   min-height: 35px;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0 12px;
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   font-size: 0.84rem;
   font-weight: 850;
   line-height: 1;
@@ -252,28 +183,9 @@
   text-transform: capitalize;
   cursor: pointer;
   transition:
-    color 220ms ease,
-    border-color 220ms ease,
-    background 220ms ease,
-    transform 220ms var(--ease-premium);
-}
-
-.tabItem::before {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(76, 221, 156, 0.18),
-    rgba(56, 136, 193, 0.12)
-  );
-  opacity: 0;
-  transform: scaleX(0.78);
-  transition:
-    opacity 220ms ease,
-    transform 240ms var(--ease-premium);
-  pointer-events: none;
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
 .tabItem:hover,
@@ -281,15 +193,6 @@
   color: var(--accent-strong);
   border-color: var(--accent-border);
   background: var(--accent-soft);
-}
-
-.tabItem[aria-selected='true']::before {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.tabItem:hover {
-  transform: translateY(-1px);
 }
 
 .appContent {
@@ -378,7 +281,7 @@
 
 @media (max-width: 640px) {
   .project {
-    border-radius: 24px;
+    border-radius: var(--radius-md);
   }
 }
 

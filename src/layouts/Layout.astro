@@ -159,7 +159,7 @@ const personSchema = {
   }
 
   body::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--green), rgba(56, 193, 136, 0.45));
+    background: rgba(219, 255, 238, 0.16);
     border: 3px solid var(--background);
     border-radius: 999px;
   }
@@ -175,47 +175,13 @@ const personSchema = {
     background:
       radial-gradient(
         circle at top left,
-        rgba(56, 193, 136, 0.16),
-        transparent 34rem
+        rgba(56, 193, 136, 0.06),
+        transparent 42rem
       ),
-      radial-gradient(
-        circle at 85% 12%,
-        rgba(56, 136, 193, 0.11),
-        transparent 30rem
-      ),
-      linear-gradient(
-        180deg,
-        var(--background),
-        var(--background-soft) 52%,
-        var(--background)
-      );
+      var(--background);
     transition:
       background-color 0.35s ease,
       color 0.35s ease;
-  }
-
-  .container::before,
-  .container::after {
-    content: '';
-    position: fixed;
-    z-index: 0;
-    width: 34rem;
-    height: 34rem;
-    border-radius: 50%;
-    filter: blur(96px);
-    pointer-events: none;
-  }
-
-  .container::before {
-    top: -14rem;
-    left: -14rem;
-    background: rgba(76, 221, 156, 0.09);
-  }
-
-  .container::after {
-    right: -14rem;
-    bottom: -18rem;
-    background: rgba(56, 136, 193, 0.08);
   }
 
   .container > * {

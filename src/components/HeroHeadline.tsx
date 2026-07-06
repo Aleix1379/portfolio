@@ -9,8 +9,8 @@ interface HeroHeadlineProps {
   secondLineClassName?: string
 }
 
-const LETTER_STAGGER_MS = 80
-const LINE_DELAYS_MS = [680, 1160]
+const LETTER_STAGGER_MS = 18
+const LINE_DELAYS_MS = [120, 320]
 
 const getLetterStyle = (delay: number) =>
   ({

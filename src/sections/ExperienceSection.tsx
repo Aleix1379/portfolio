@@ -63,14 +63,6 @@ const ExperienceSection = () => {
           data-reveal
           style={revealDelay(260)}
         >
-          <img
-            src="/images/experience-professional-timeline.webp"
-            alt="Abstract professional experience timeline illustration"
-            className={styles.imageExperience}
-            width={1280}
-            height={549}
-            loading="lazy"
-          />
           <p>
             Experience building eCommerce platforms, front-end interfaces, web
             apps, and mobile apps.

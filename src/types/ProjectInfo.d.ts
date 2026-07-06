@@ -12,7 +12,10 @@ export interface AppInfo {
 export interface ProjectInfo {
   id: string;
   name: string;
+  type: string;
   description: string;
+  problem: string;
+  role: string;
   image: string;
   links: Array<Link>;
   apps: Array<AppInfo>;

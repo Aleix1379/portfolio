@@ -5,6 +5,10 @@
   --nav-scale: 1;
   --nav-width: min(1200px, calc(100vw - 32px));
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-pill: 999px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
 }
 
 @media (min-width: 768px) {

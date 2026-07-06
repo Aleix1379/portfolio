@@ -53,8 +53,10 @@ const ProjectsSection = () => {
           <Project
             key={project.id}
             name={project.name}
+            type={project.type}
             description={project.description}
-            image={project.image}
+            problem={project.problem}
+            role={project.role}
             links={project.links}
             apps={project.apps}
             style={revealDelay(320 + index * 90)}

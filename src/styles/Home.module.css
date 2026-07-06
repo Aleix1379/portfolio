@@ -5,64 +5,6 @@
   margin: 0 auto clamp(96px, 10vw, 136px);
 }
 
-.section::before {
-  content: '';
-  position: absolute;
-  inset: -5rem -2.5rem auto;
-  z-index: -1;
-  height: 22rem;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.aboutSection::before {
-  opacity: 1;
-  background: radial-gradient(
-    circle at 14% 24%,
-    rgba(76, 221, 156, 0.12),
-    transparent 24rem
-  );
-}
-
-.experienceSection::before {
-  opacity: 1;
-  background: radial-gradient(
-    circle at 86% 12%,
-    rgba(56, 136, 193, 0.1),
-    transparent 24rem
-  );
-}
-
-.projectsSection::before {
-  opacity: 1;
-  background:
-    radial-gradient(
-      circle at 18% 24%,
-      rgba(76, 221, 156, 0.13),
-      transparent 24rem
-    ),
-    radial-gradient(
-      circle at 88% 74%,
-      rgba(56, 136, 193, 0.1),
-      transparent 22rem
-    );
-}
-
-.contactSection::before {
-  opacity: 1;
-  background:
-    radial-gradient(
-      circle at 10% 15%,
-      rgba(76, 221, 156, 0.11),
-      transparent 20rem
-    ),
-    radial-gradient(
-      circle at 92% 80%,
-      rgba(56, 136, 193, 0.08),
-      transparent 22rem
-    );
-}
-
 [data-reveal] {
   transition:
     opacity 620ms var(--ease-premium),
@@ -120,58 +62,18 @@
   font-weight: 850;
 }
 
-.aboutGrid,
-.contactGrid {
+.aboutGrid {
   display: grid;
-  gap: 28px;
+  gap: 40px;
 }
 
 .aboutCopy,
-.aboutPanel,
-.experienceIntro,
-.form,
-.contactIntro {
+.experienceIntro {
   position: relative;
-  overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 28px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.07),
-      rgba(255, 255, 255, 0.02)
-    ),
-    var(--surface);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(20px);
-}
-
-.aboutCopy::before,
-.aboutPanel::before,
-.experienceIntro::before,
-.form::before,
-.contactIntro::before {
-  content: '';
-  position: absolute;
-  inset: 1px 1px auto;
-  height: 42%;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.11),
-    rgba(255, 255, 255, 0)
-  );
-  opacity: 0.62;
-  pointer-events: none;
-}
-
-.aboutCopy > *,
-.aboutPanel > *,
-.experienceIntro > *,
-.form > *,
-.contactIntro > * {
-  position: relative;
-  z-index: 1;
 }
 
 .aboutCopy {
@@ -182,38 +84,17 @@
   padding: clamp(24px, 4vw, 38px);
 }
 
-.aboutCopyInner {
-  display: grid;
-  gap: 18px;
-}
-
 .aboutFooter {
   display: grid;
   gap: 22px;
   margin-top: 30px;
 }
 
-.aboutLead {
-  margin: 0;
-  color: var(--text-soft);
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  font-weight: 750;
-  line-height: 1.22;
-}
-
-.aboutLead strong {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--accent-strong);
-  font-size: clamp(2.8rem, 7vw, 4.35rem);
-  line-height: 0.9;
-}
-
-.aboutCopy p:not(.aboutLead) {
+.aboutBio {
   margin: 0;
   color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.8;
 }
 
 .aboutChips {
@@ -222,67 +103,23 @@
   gap: 10px;
 }
 
-.aboutChips span {
-  display: inline-flex;
-  min-height: 36px;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0 13px;
-  color: var(--text-soft);
-  background: rgba(255, 255, 255, 0.045);
-  font-size: 0.9rem;
-  font-weight: 780;
-  letter-spacing: 0.01em;
-}
-
 .downloadCv {
-  align-self: flex-start;
+  justify-self: start;
 }
 
-.aboutPanel {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px;
-}
-
-.aboutPanel::after {
-  content: '';
-  position: absolute;
-  inset: -16% -20% auto auto;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: rgba(56, 193, 136, 0.16);
-  filter: blur(30px);
-  pointer-events: none;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1280 / 549;
-  border-radius: 20px;
-  margin: 0;
-}
-
-.aboutStats {
+.aboutFacts {
   display: grid;
-  gap: 12px;
+  gap: 26px;
+  align-content: start;
+  padding-top: 4px;
 }
 
-.aboutStat {
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.045);
+.aboutFact {
+  padding-left: 18px;
+  border-left: 2px solid var(--border-strong);
 }
 
-.aboutStat span {
+.aboutFact span {
   display: block;
   color: var(--accent-strong);
   font-size: 0.76rem;
@@ -291,11 +128,12 @@
   text-transform: uppercase;
 }
 
-.aboutStat strong {
+.aboutFact strong {
   display: block;
-  margin-top: 7px;
+  margin-top: 8px;
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 750;
   line-height: 1.5;
 }
 
@@ -317,15 +155,6 @@
   padding: 28px;
 }
 
-.imageExperience {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1280 / 549;
-  border-radius: 18px;
-  margin: 0 0 24px;
-}
-
 .experienceIntro p {
   margin: 0;
   color: var(--text-muted);
@@ -335,15 +164,13 @@
 
 .experienceFacts {
   display: grid;
-  gap: 12px;
+  gap: 20px;
   margin-top: 24px;
 }
 
 .experienceFacts div {
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.045);
+  padding-left: 16px;
+  border-left: 2px solid var(--border-strong);
 }
 
 .experienceFacts strong,
@@ -437,101 +264,36 @@
   height: 100%;
 }
 
-.contactGrid {
-  align-items: stretch;
-}
-
-.contactGrid > * {
-  min-width: 0;
-}
-
-.contactIntro,
-.form {
-  height: 100%;
-  min-height: 100%;
-}
-
-.contactIntro {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(24px, 4vw, 34px);
-}
-
-.contactIntro h3,
-.formIntro h3 {
-  margin: 0;
-  color: var(--text-color);
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
-  line-height: 1.1;
-}
-
-.contactIntro p,
-.formIntro p {
-  margin: 16px 0 0;
-  color: var(--text-muted);
-  font-size: 1.03rem;
-  line-height: 1.75;
-}
-
-.imageContact {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1280 / 549;
-  border-radius: 20px;
-  margin: 28px 0 0;
-}
-
-.socialNetworks {
-  display: grid;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.socialLink {
-  min-height: 58px;
-  justify-content: flex-start;
+.contactPanel {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(22px, 4vw, 30px);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 0 16px;
-  background: rgba(255, 255, 255, 0.045);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  padding: clamp(24px, 4vw, 34px);
+.contactMethods {
+  display: grid;
+  gap: 8px;
 }
 
-.formIntro {
-  max-width: 33rem;
+.contactMethod {
+  justify-content: flex-start;
+  gap: 14px;
+  min-height: 60px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-color);
+  font-size: 1rem;
 }
 
-.formFields {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 18px;
-  align-content: start;
-}
-
-.formFields > :last-child {
-  flex: 1;
-}
-
-.input {
-  width: 100%;
-}
-
-.button {
-  margin-top: auto;
-}
-
-.submitButton {
-  width: 100%;
+.contactMethod:hover {
+  border-color: var(--border);
+  background: var(--surface-soft);
 }
 
 @media (min-width: 720px) {
@@ -540,17 +302,13 @@
   }
 
   .aboutGrid {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
-    align-items: stretch;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.5fr);
+    align-items: start;
   }
 
   .experienceLayout {
     grid-template-columns: minmax(280px, 0.44fr) minmax(0, 1fr);
     align-items: start;
-  }
-
-  .contactGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .projects {
@@ -596,10 +354,13 @@
     width: 100%;
   }
 
-  .aboutPanel,
-  .contactIntro,
-  .form {
-    border-radius: 24px;
+  .contactPanel {
+    padding: 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .contactMethod {
+    min-height: 54px;
   }
 }
 

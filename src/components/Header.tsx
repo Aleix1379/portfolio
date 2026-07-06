@@ -16,12 +16,13 @@ const Header = () => {
           <HeroHeadline
             className={styles.title}
             lineClassName={styles.titleLine}
-            lines={["I'm Aleix.", 'Full-stack developer.']}
+            lines={['Full-stack developer,', 'product-focused.']}
             secondLineClassName={styles.titleLineMuted}
           />
           <p className={styles.subtitle}>
-            I build user interfaces and web/mobile apps with Vue.js/Nuxt.js,
-            React Native, Node.js, and TypeScript.
+            I build clean product interfaces, eCommerce platforms, and
+            practical web/mobile applications with Vue, React Native,
+            Node.js and TypeScript.
           </p>
 
           <div className={styles.actions} aria-label="Hero actions">
@@ -43,8 +44,8 @@ const Header = () => {
               <span>eCommerce interfaces</span>
             </div>
             <div className={styles.stat}>
-              <strong>Node.js</strong>
-              <span>API and backend work</span>
+              <strong>React Native</strong>
+              <span>mobile apps</span>
             </div>
           </div>
         </div>
@@ -60,28 +61,21 @@ const Header = () => {
               <span></span>
             </div>
             <div className={styles.codeCard}>
-              <p className={styles.codeLine}>
+              <p>
                 <span>const</span> developer = {'{'}
               </p>
-              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
-                name: &apos;Aleix&apos;,
-              </p>
-              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
-                stack: [&apos;Vue.js&apos;, &apos;Nuxt.js&apos;,
+              <p className={styles.codeIndent}>name: &apos;Aleix&apos;,</p>
+              <p className={styles.codeIndent}>
+                stack: [&apos;Vue.js&apos;, &apos;React Native&apos;,
                 &apos;Node.js&apos;],
               </p>
-              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
+              <p className={styles.codeIndent}>
                 language: &apos;TypeScript&apos;,
               </p>
-              <p className={`${styles.codeIndent} ${styles.codeLine}`}>
-                focus: &apos;user interfaces&apos;
+              <p className={styles.codeIndent}>
+                focus: &apos;product interfaces&apos;
               </p>
-              <p className={styles.codeLine}>{'}'}</p>
-            </div>
-            <div className={styles.previewPanel}>
-              <span>Recent work</span>
-              <strong>TALKUAL eCommerce solutions</strong>
-              <p>Vue.js/Nuxt.js, Strapi/Node.js</p>
+              <p>{'}'}</p>
             </div>
           </div>
         </aside>

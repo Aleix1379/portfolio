@@ -5,8 +5,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '1',
       name: 'Vacation Flow',
+      type: 'Backend · Internal tool',
       description:
         'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
+      problem:
+        'Manual vacation and time-off approval processes are slow, hard to track, and error-prone.',
+      role: 'Backend developer — built the NestJS API.',
       image: '/images/projects/vacation-flow.png',
       active: false,
       links: [
@@ -56,8 +60,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '2',
       name: 'My Setuppi',
+      type: 'Web · Social platform',
       description:
         'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
+      problem:
+        'No dedicated place for gamers to share and discover real PC setups with specs, ratings, and community feedback.',
+      role: 'Solo developer — built the Vue.js/Nuxt web app and the Node.js/GraphQL backend.',
       image: '/images/projects/my-setuppi.webp',
       active: true,
       links: [
@@ -141,8 +149,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '3',
       name: 'Enirve',
+      type: 'Mobile · EdTech',
       description:
         'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
+      problem:
+        'Learners struggle to memorize English irregular verbs without short, consistent practice.',
+      role: 'Solo developer — built the React Native app and the Node.js/GraphQL backend.',
       image: '/images/projects/enirve.webp',
       active: true,
       links: [
@@ -241,8 +253,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '4',
       name: 'Talk And Play',
+      type: 'Mobile · Community',
       description:
         'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
+      problem:
+        'Gamers lack a focused space to discuss games and get recommendations outside noisy general social apps.',
+      role: 'Solo developer — built the React Native app and the Kotlin/Spring Boot backend.',
       image: '/images/projects/talk-and-play.webp',
       active: true,
       links: [

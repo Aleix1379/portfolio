@@ -1,6 +1,9 @@
 import React, { type CSSProperties } from 'react'
 import styles from '../styles/Footer.module.css'
 import useReveal from '../hooks/useReveal'
+import IconLink from './IconLink'
+
+const EMAIL = 'aleixmp1379@gmail.com'
 
 const Footer = () => {
   const footerRef = useReveal<HTMLElement>({ rootMargin: '0px 0px -8% 0px' })
@@ -12,13 +15,38 @@ const Footer = () => {
       <div className={styles.inner}>
         <div className={styles.brand} data-reveal style={revealDelay(0)}>
           <p className={styles.title}>Aleix Martínez Pena</p>
-          <p className={styles.role}>Web Developer</p>
+          <p className={styles.role}>Full-stack Developer</p>
         </div>
 
-        <div className={styles.meta} data-reveal style={revealDelay(90)}>
-          <span>Designed & built by Aleix Martínez Pena</span>
-          <span>© {new Date().getFullYear()}</span>
+        <div className={styles.links} data-reveal style={revealDelay(90)}>
+          <IconLink
+            link={{ url: `mailto:${EMAIL}`, text: 'Email', icon: 'email' }}
+            size={18}
+            className={styles.link}
+          />
+          <IconLink
+            link={{
+              url: 'https://www.linkedin.com/in/aleixmp/',
+              text: 'LinkedIn',
+              icon: 'linkedin'
+            }}
+            size={18}
+            className={styles.link}
+          />
+          <IconLink
+            link={{
+              url: 'https://github.com/Aleix1379',
+              text: 'GitHub',
+              icon: 'github'
+            }}
+            size={18}
+            className={styles.link}
+          />
         </div>
+
+        <p className={styles.copyright} data-reveal style={revealDelay(150)}>
+          © {new Date().getFullYear()} Aleix Martínez Pena
+        </p>
       </div>
     </footer>
   )
