@@ -11,8 +11,8 @@ test.describe('Portfolio Website Navigation', () => {
   test('should navigate to About section', async ({ page }) => {
     await page.goto('/')
 
-    // Find and click the About button in the navigation menu
-    await page.getByRole('button', { name: 'About' }).click()
+    // Find and click the About link in the navigation menu
+    await page.getByRole('link', { name: 'About' }).click()
 
     // Check if the About section is visible
     await expect(page.getByRole('heading', { name: 'About me' })).toBeVisible()
@@ -25,7 +25,7 @@ test.describe('Portfolio Website Navigation', () => {
 
     // Navigate to About section if needed
     if (!(await page.getByText('About me').isVisible())) {
-      await page.getByRole('button', { name: 'About' }).click()
+      await page.getByRole('link', { name: 'About' }).click()
     }
 
     // Wait for the About section to be fully visible
@@ -44,7 +44,7 @@ test.describe('Portfolio Website Navigation', () => {
 
     // Navigate to About section if needed
     if (!(await page.getByText('About me').isVisible())) {
-      await page.getByRole('button', { name: 'About' }).click()
+      await page.getByRole('link', { name: 'About' }).click()
     }
 
     // Wait for the About section to be fully visible
