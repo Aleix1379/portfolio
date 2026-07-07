@@ -100,7 +100,7 @@ for (const row of results) {
   summary[row.group].push(row)
 }
 
-console.log('=== Optical centering (|textSkew| ≤ 0.75px, icon↔text ≤ 0.75px) ===\n')
+console.log('=== Optical centering (|textSkew| ≤ 2px, icon↔text ≤ 0.75px) ===\n')
 for (const [group, rows] of Object.entries(summary)) {
   const maxSkew = Math.max(...rows.map((r) => Math.abs(r.textSkew)))
   const iconRows = rows.filter((r) => r.iconTextDelta !== null)
