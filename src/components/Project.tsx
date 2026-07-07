@@ -6,9 +6,9 @@ import React, {
   type CSSProperties
 } from 'react'
 import styles from '../styles/Project.module.css'
-import badgeStyles from '../styles/Badge.module.css'
 import type { Link } from '../types/Link'
 import IconLink from './IconLink'
+import Segments from './Segments'
 import type { AppInfo } from '../types/ProjectInfo'
 
 interface ProjectProps {
@@ -115,28 +115,16 @@ const Project: React.FC<ProjectProps> = ({
 
     return (
       <div className={styles.platformSection}>
-        <div
-          className={styles.tabsContainer}
-          role="tablist"
-          aria-label={`${name} platforms`}
-        >
-          {apps.map((app, index) => (
-            <button
-              key={index}
-              id={`${tabsId}-tab-${app.id}`}
-              type="button"
-              role="tab"
-              aria-selected={index === selectedAppIndex}
-              aria-controls={`${tabsId}-panel-${app.id}`}
-              onClick={() => handleTabClick(index)}
-              className={styles.tabItem}
-            >
-              <span className={badgeStyles.badgeTrack}>
-                <span className={styles.pillLabel}>{app.platform}</span>
-              </span>
-            </button>
-          ))}
-        </div>
+        <Segments
+          options={apps.map((app) => ({
+            id: app.id,
+            label: app.platform
+          }))}
+          selectedIndex={selectedAppIndex}
+          onChange={handleTabClick}
+          ariaLabel={`${name} platforms`}
+          idPrefix={tabsId}
+        />
 
         {activeApp && (
           <div

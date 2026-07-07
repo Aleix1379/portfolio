@@ -18,10 +18,6 @@
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
 }
 
-.pillLabel {
-  composes: badgeLabel from './Badge.module.css';
-}
-
 .body {
   position: relative;
   z-index: 1;
@@ -171,40 +167,6 @@
   margin-top: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--border);
-}
-
-.tabsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--chip-list-gap);
-  align-items: center;
-  margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
-}
-
-.tabItem {
-  composes: badgeSm from './Badge.module.css';
-  --badge-optical-shift: 0.05em;
-  font: inherit;
-  line-height: 1;
-  margin: 0;
-  position: relative;
-  color: var(--text-faint);
-  background: rgba(255, 255, 255, 0.03);
-  text-transform: capitalize;
-  cursor: pointer;
-  transition:
-    color 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
-}
-
-.tabItem:hover,
-.tabItem[aria-selected='true'] {
-  color: var(--accent-strong);
-  border-color: var(--accent-border);
-  background: var(--accent-soft);
 }
 
 .appContent {
