@@ -16,13 +16,18 @@
   content: '';
   position: absolute;
   top: 34px;
-  left: -24px;
+  left: calc(
+    var(--timeline-axis, 10.5px) - var(--timeline-gutter, 28px) +
+      var(--timeline-dot-offset, -1.5px)
+  );
   width: 10px;
   height: 10px;
-  border: 3px solid var(--background);
+  border: 2px solid var(--background);
   border-radius: 50%;
   background: var(--accent-strong);
   box-shadow: 0 0 0 1px var(--accent-border);
+  transform: translateX(-50%);
+  box-sizing: border-box;
 }
 
 .experience:hover {
@@ -95,6 +100,15 @@
   color: var(--accent-strong);
 }
 
+.summary {
+  position: relative;
+  z-index: 1;
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  font-size: 0.98rem;
+  line-height: 1.66;
+}
+
 .details {
   position: relative;
   z-index: 1;
@@ -110,32 +124,6 @@
 
 .technology {
   margin: 0;
-}
-
-.responsibilities {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 10px;
-  margin: 22px 0 0;
-  padding-left: 20px;
-}
-
-.responsibilities li::marker {
-  color: var(--accent-strong);
-}
-
-.responsibilities li {
-  color: var(--text-muted);
-  font-size: 0.96rem;
-  line-height: 1.6;
-}
-
-.description {
-  margin: 0;
-  color: var(--text-soft);
-  font-size: 0.98rem;
-  line-height: 1.66;
 }
 
 @media (min-width: 820px) {
@@ -167,16 +155,8 @@
     gap: 14px;
   }
 
-  .responsibilities {
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  .responsibilities li {
-    line-height: 1.68;
-  }
-
-  .description {
+  .summary {
+    margin-top: 16px;
     line-height: 1.7;
   }
 
@@ -196,10 +176,6 @@
   }
 
   .technologyList > *:nth-child(n + 4) {
-    display: none;
-  }
-
-  .responsibilities li:nth-child(n + 4) {
     display: none;
   }
 }

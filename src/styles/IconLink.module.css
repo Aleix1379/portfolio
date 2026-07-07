@@ -52,7 +52,7 @@
     border-color 200ms ease-out,
     background-color 200ms ease-out,
     box-shadow 200ms ease-out,
-    transform 320ms var(--ease-premium);
+    transform 400ms var(--ease-premium);
 }
 
 .actionTrack {
@@ -63,9 +63,11 @@
 .actionIcon {
   composes: badgeIcon from './Badge.module.css';
   color: var(--text-muted);
+  transform: rotate(0deg) scale(1);
+  transform-origin: center;
   transition:
     color 200ms ease-out,
-    transform 320ms var(--ease-premium);
+    transform 520ms cubic-bezier(0.22, 1.2, 0.36, 1);
 }
 
 .actionLabel {
@@ -106,7 +108,7 @@
 .linkAction:hover .actionIcon,
 .linkAction:focus-visible .actionIcon {
   color: var(--on-accent);
-  transform: rotate(-6deg) scale(1.08);
+  transform: rotate(var(--action-icon-rotate, -8deg)) scale(1.1);
 }
 
 .linkAction:active {

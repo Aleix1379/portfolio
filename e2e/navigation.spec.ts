@@ -55,4 +55,21 @@ test.describe('Portfolio Website Navigation', () => {
       page.getByText(/Vue\/Nuxt applications/i)
     ).toBeVisible()
   })
+
+  test('should mark the active desktop nav link with aria-current', async ({
+    page
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/')
+
+    const aboutLink = page.getByRole('link', { name: 'About' })
+    const experienceLink = page.getByRole('link', { name: 'Experience' })
+
+    await expect(aboutLink).toHaveAttribute('aria-current', 'location')
+    await expect(experienceLink).not.toHaveAttribute('aria-current', 'location')
+
+    await experienceLink.click()
+    await expect(experienceLink).toHaveAttribute('aria-current', 'location')
+    await expect(aboutLink).not.toHaveAttribute('aria-current', 'location')
+  })
 })

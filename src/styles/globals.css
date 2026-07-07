@@ -33,7 +33,7 @@ body {
 
 html {
     scroll-behavior: smooth;
-    scroll-padding: 80px;
+    scroll-padding: var(--scroll-anchor-offset);
 }
 
 body::-webkit-scrollbar {

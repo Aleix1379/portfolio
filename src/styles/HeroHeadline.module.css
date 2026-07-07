@@ -12,7 +12,7 @@
   opacity: 0;
   transform: translate3d(0, 6px, 0);
   filter: blur(2px);
-  animation: letterReveal 480ms var(--ease-premium) forwards;
+  animation: letterReveal 1240ms var(--ease-premium) forwards;
   animation-delay: var(--letter-delay);
   backface-visibility: hidden;
   will-change: opacity, transform, filter;

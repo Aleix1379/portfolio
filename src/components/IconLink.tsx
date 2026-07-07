@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type CSSProperties } from 'react'
 import useMagneticHover from '../hooks/useMagneticHover'
 import styles from '../styles/IconLink.module.css'
 import badgeStyles from '../styles/Badge.module.css'
@@ -38,6 +38,7 @@ interface IconLinkProps {
   color?: string
   size?: number
   variant?: 'chip' | 'action' | 'plain'
+  onClick?: () => void
 }
 
 interface GlyphProps {
@@ -67,12 +68,27 @@ const MailGlyph: React.FC<GlyphProps> = ({
   </svg>
 )
 
+const getActionIconRotate = (url: string, icon: string): number => {
+  const seed = `${url}:${icon}`
+  let hash = 0
+
+  for (let index = 0; index < seed.length; index++) {
+    hash = (hash * 33 + seed.charCodeAt(index)) >>> 0
+  }
+
+  const sign = hash % 2 === 0 ? -1 : 1
+  const magnitude = 8 + (hash % 3)
+
+  return sign * magnitude
+}
+
 const IconLink: React.FC<IconLinkProps> = ({
   link,
   className,
   color = 'currentColor',
   size,
-  variant = 'chip'
+  variant = 'chip',
+  onClick
 }) => {
   const actionRef = useMagneticHover<HTMLAnchorElement>()
   const glyphSize = size ?? (variant === 'chip' ? 14 : undefined)
@@ -161,6 +177,13 @@ const IconLink: React.FC<IconLinkProps> = ({
         ? styles.actionLabel
         : styles.label
 
+  const actionStyle =
+    variant === 'action'
+      ? ({
+          '--action-icon-rotate': `${getActionIconRotate(link.url, link.icon)}deg`
+        } as CSSProperties)
+      : undefined
+
   return (
     <a
       ref={variant === 'action' ? actionRef : undefined}
@@ -169,6 +192,8 @@ const IconLink: React.FC<IconLinkProps> = ({
       rel="noreferrer"
       aria-label={link.text}
       className={`${baseClass} ${className || ''}`}
+      style={actionStyle}
+      onClick={onClick}
     >
       {variant === 'plain' ? (
         <>

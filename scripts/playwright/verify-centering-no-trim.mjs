@@ -57,7 +57,7 @@ for (const row of data) {
   console.log(
     `${row.group.padEnd(8)} ${row.text.padEnd(28)} skew=${row.textSkew}${ok ? '' : ' ⚠'}`
   )
-})
+}
 
 await browser.close()
 

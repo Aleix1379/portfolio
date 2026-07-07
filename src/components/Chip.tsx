@@ -9,6 +9,9 @@ interface ChipProps {
   active?: boolean
   variant?: 'tech' | 'neutral' | 'stat' | 'note' | 'kicker'
   capitalize?: boolean
+  icon?: React.ReactNode
+  href?: string
+  ariaLabel?: string
 }
 
 const Chip: React.FC<ChipProps> = ({
@@ -17,7 +20,10 @@ const Chip: React.FC<ChipProps> = ({
   style,
   active,
   variant = 'tech',
-  capitalize = false
+  capitalize = false,
+  icon,
+  href,
+  ariaLabel
 }) => {
   const isNote = variant === 'note'
   const isKicker = variant === 'kicker'
@@ -30,17 +36,40 @@ const Chip: React.FC<ChipProps> = ({
         : ''
   const activeClass =
     isNote || isKicker ? '' : active ? styles.active : styles.inactive
+  const classNames = `${baseClass} ${variantClass} ${capitalize ? styles.capitalize : ''} ${activeClass} ${href ? styles.chipLink : ''} ${className || ''}`
+
+  const content =
+    isKicker ? (
+      <span className={styles.kickerLabel}>{children}</span>
+    ) : icon ? (
+      <span className={badgeStyles.badgeTrack}>
+        <span className={styles.chipIcon} aria-hidden="true">
+          {icon}
+        </span>
+        <span className={badgeStyles.badgeLabel}>{children}</span>
+      </span>
+    ) : (
+      <span className={badgeStyles.badgeLabel}>{children}</span>
+    )
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label={ariaLabel}
+        className={classNames}
+        style={style}
+      >
+        {content}
+      </a>
+    )
+  }
 
   return (
-    <span
-      className={`${baseClass} ${variantClass} ${capitalize ? styles.capitalize : ''} ${activeClass} ${className || ''}`}
-      style={style}
-    >
-      {isKicker ? (
-        <span className={styles.kickerLabel}>{children}</span>
-      ) : (
-        <span className={badgeStyles.badgeLabel}>{children}</span>
-      )}
+    <span className={classNames} style={style}>
+      {content}
     </span>
   )
 }

@@ -2,6 +2,7 @@
   composes: badgeSm from './Badge.module.css';
   color: var(--text-soft);
   background: var(--bg-technology);
+  --badge-optical-shift: 0.04em;
   transition:
     color 0.22s ease,
     border-color 0.22s ease,
@@ -25,6 +26,23 @@
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.04);
   font-weight: 700;
+  --badge-optical-shift: 0.035em;
+}
+
+.chipIcon {
+  composes: badgeIcon from './Badge.module.css';
+  color: currentColor;
+  opacity: 0.88;
+}
+
+.chipLink {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.chipLink:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .neutral:hover {

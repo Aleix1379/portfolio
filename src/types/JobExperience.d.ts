@@ -5,7 +5,7 @@ export interface JobExperience {
 	start: string
 	end: string | null
 	technologies: Array<string>
-	responsibilities: Array<string>
+	summary: string
 	type: string
 	location: string
 }

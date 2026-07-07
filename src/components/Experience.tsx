@@ -2,7 +2,14 @@ import React, { type CSSProperties } from 'react'
 import styles from '../styles/Experience.module.css'
 import type { JobExperience } from '../types/JobExperience'
 import Chip from './Chip'
+import ExperienceMetaIcon from './ExperienceMetaIcon'
 import { formatDateWithMonthName, getDifference } from '../utils/time'
+import {
+  getJobTypeIcon,
+  getJobTypeLabel,
+  getLocationIcon,
+  getLocationMapsUrl
+} from '../utils/experienceMeta'
 
 interface ExperienceProps {
   experience: JobExperience
@@ -29,9 +36,23 @@ const Experience: React.FC<ExperienceProps> = ({
 
         <div className={styles.meta}>
           <div className={styles.infoDetails}>
-            <Chip variant="neutral">{experience.location}</Chip>
-            <Chip variant="neutral" capitalize>
-              {experience.type}
+            <Chip
+              variant="neutral"
+              href={getLocationMapsUrl(experience.location)}
+              ariaLabel={`Open ${experience.location} in Google Maps`}
+              icon={
+                <ExperienceMetaIcon name={getLocationIcon(experience.location)} />
+              }
+            >
+              {experience.location}
+            </Chip>
+            <Chip
+              variant="neutral"
+              icon={
+                <ExperienceMetaIcon name={getJobTypeIcon(experience.type)} />
+              }
+            >
+              {getJobTypeLabel(experience.type)}
             </Chip>
           </div>
 
@@ -63,6 +84,8 @@ const Experience: React.FC<ExperienceProps> = ({
         </div>
       </div>
 
+      <p className={styles.summary}>{experience.summary}</p>
+
       <div className={styles.details}>
         <div className={styles.technologyList}>
           {experience.technologies.map((technology, index) => (
@@ -72,13 +95,6 @@ const Experience: React.FC<ExperienceProps> = ({
           ))}
         </div>
       </div>
-      <ul className={styles.responsibilities}>
-        {experience.responsibilities.map((responsibility, index) => (
-          <li key={index}>
-            <p className={styles.description}>{responsibility}</p>
-          </li>
-        ))}
-      </ul>
     </article>
   )
 }

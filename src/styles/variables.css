@@ -1,5 +1,14 @@
 :root {
+  --bp-mobile: 640px;
+  --bp-nav-desktop: 860px;
+  --bp-content-desktop: 900px;
   --header-height: 72px;
+  --nav-offset-top: 16px;
+  --nav-bar-height: var(--header-height);
+  --scroll-anchor-gap: 8px;
+  --scroll-anchor-offset: calc(
+    var(--nav-offset-top) + var(--nav-bar-height) + var(--scroll-anchor-gap)
+  );
   --header-dot-size: 18px;
   --content-width: 1280px;
   --nav-scale: 1;
@@ -51,6 +60,8 @@
 
 @media (max-width: 640px) {
   :root {
+    --nav-offset-top: 12px;
+    --nav-bar-height: 64px;
     --space-section: 88px;
     --space-card: 28px;
     --space-gap: 24px;
@@ -76,5 +87,11 @@
   :root {
     --nav-scale: 1;
     --nav-width: min(1280px, calc(100vw - 48px));
+  }
+}
+
+@media (min-width: 860px) {
+  :root {
+    --nav-offset-top: 20px;
   }
 }

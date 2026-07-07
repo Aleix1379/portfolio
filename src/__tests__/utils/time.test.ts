@@ -106,7 +106,7 @@ describe('Time Utility Functions', () => {
           start: '2018-01-01',
           end: '2020-01-01', // 2 years
           technologies: ['Tech A'],
-          responsibilities: ['Resp A']
+          summary: 'Summary A'
         },
         {
           id: '2',
@@ -117,7 +117,7 @@ describe('Time Utility Functions', () => {
           start: '2020-02-01',
           end: '2021-08-01', // 1 year 6 months
           technologies: ['Tech B'],
-          responsibilities: ['Resp B']
+          summary: 'Summary B'
         }
       ];
 
@@ -141,7 +141,7 @@ describe('Time Utility Functions', () => {
           start: '2018-01-01',
           end: '2020-01-01', // 2 years
           technologies: ['Tech A'],
-          responsibilities: ['Resp A']
+          summary: 'Summary A'
         },
         {
           id: '2',
@@ -152,7 +152,7 @@ describe('Time Utility Functions', () => {
           start: '2020-02-01',
           end: '2021-08-01', // 1 year 6 months
           technologies: ['Tech B'],
-          responsibilities: ['Resp B']
+          summary: 'Summary B'
         }
       ];
 

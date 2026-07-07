@@ -5,12 +5,6 @@
   margin: 0 auto var(--space-section);
 }
 
-.aboutSection,
-.experienceSection,
-.projectsSection {
-  scroll-margin-top: 104px;
-}
-
 .card {
   position: relative;
   border: 1px solid var(--border);
@@ -195,6 +189,9 @@
   align-items: stretch;
   gap: 26px;
   padding-left: 28px;
+  --timeline-axis: 10.5px;
+  --timeline-gutter: 28px;
+  --timeline-dot-offset: -1.5px;
 }
 
 .infoExperience::before {
@@ -202,7 +199,7 @@
   position: absolute;
   top: 12px;
   bottom: 12px;
-  left: 10px;
+  left: calc(var(--timeline-axis) - 0.5px);
   width: 1px;
   background: linear-gradient(
     180deg,
@@ -291,11 +288,9 @@
   }
 
   .infoExperience {
+    --timeline-axis: 8.5px;
+    --timeline-dot-offset: -1.5px;
     padding-left: 28px;
-  }
-
-  .infoExperience::before {
-    left: 8px;
   }
 }
 

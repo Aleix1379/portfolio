@@ -41,9 +41,14 @@ const Header = () => {
           </Chip>
 
           <div className={styles.stats} aria-label="Portfolio highlights">
-            <div className={styles.stat}>
-              <Chip variant="stat">+{yearsOfExperience}</Chip>
-              <span className={styles.statCaption}>years of experience</span>
+            <div className={`${styles.stat} ${styles.statFeatured}`}>
+              <div className={styles.statValue}>
+                <span className={styles.statNumber}>+{yearsOfExperience}</span>
+              </div>
+              <p className={styles.statCaptionSplit}>
+                <span>years of</span>
+                <span>experience</span>
+              </p>
             </div>
             <div className={styles.stat}>
               <Chip variant="stat">Vue / Nuxt</Chip>
