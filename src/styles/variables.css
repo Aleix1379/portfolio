@@ -1,19 +1,80 @@
 :root {
   --header-height: 72px;
   --header-dot-size: 18px;
-  --content-width: 1200px;
+  --content-width: 1280px;
   --nav-scale: 1;
-  --nav-width: min(1200px, calc(100vw - 32px));
+  --nav-width: min(1280px, calc(100vw - 32px));
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
   --radius-pill: 999px;
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
+  --space-section: clamp(96px, 10vw, 136px);
+  --space-card: clamp(26px, 3vw, 34px);
+  --space-gap: 28px;
+  --text-body: 1rem;
+  --text-lead: clamp(1.06rem, 1.7vw, 1.16rem);
+  --line-height-tight: 1.08;
+  --line-height-body: 1.65;
+  --chip-height: 26px;
+  --chip-padding-inline: 11px;
+  --chip-gap: 7px;
+  --chip-font-size: 12.5px;
+  --chip-font-weight: 700;
+  --chip-icon-size: 14px;
+  --chip-list-gap: 10px;
+  --chip-padding-block: max(0px, calc((var(--chip-height) - 1em) / 2));
+  --badge-optical-shift: 0.075em;
+  --badge-md-height: 32px;
+  --badge-md-font-size: 0.78rem;
+  --badge-md-line-height: 1.35;
+  --badge-md-padding-block: 7px;
+  --badge-md-padding-inline: 12px;
+  --badge-row-gap: 10px;
+  --badge-row-padding-inline: 15px;
+  --link-badge-height: 38px;
+  --link-badge-icon-size: 16px;
+  --link-badge-font-size: 12.5px;
+  --link-badge-padding-block: max(0px, calc((var(--link-badge-height) - 1em) / 2));
+  --plain-link-icon-size: 24px;
+  --project-tabs-tech-gap: 16px;
+  --store-button-height: 40px;
+  --store-button-font-size: 13px;
+  --store-button-icon-size: 17px;
+  --store-button-padding-inline: 16px;
+  --btn-height: 52px;
+  --btn-padding-block: max(0px, calc((var(--btn-height) - 1em) / 2));
+  --btn-padding-inline: 22px;
+  --btn-font-size: 0.98rem;
+  --btn-font-weight: 820;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-section: 88px;
+    --space-card: 28px;
+    --space-gap: 24px;
+    --line-height-body: 1.72;
+    --chip-height: 28px;
+    --chip-padding-inline: 12px;
+    --chip-font-size: 13px;
+    --chip-icon-size: 15px;
+    --chip-list-gap: 12px;
+    --link-badge-height: 40px;
+    --link-badge-icon-size: 17px;
+    --link-badge-font-size: 13px;
+    --plain-link-icon-size: 26px;
+    --btn-height: 48px;
+    --badge-md-padding-block: 8px;
+    --text-muted: #dce4e0;
+    --text-soft: #edf2f0;
+    --text-faint: #b3bdb8;
+  }
 }
 
 @media (min-width: 768px) {
   :root {
     --nav-scale: 1;
-    --nav-width: min(1200px, calc(100vw - 48px));
+    --nav-width: min(1280px, calc(100vw - 48px));
   }
 }

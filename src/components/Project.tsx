@@ -6,6 +6,7 @@ import React, {
   type CSSProperties
 } from 'react'
 import styles from '../styles/Project.module.css'
+import badgeStyles from '../styles/Badge.module.css'
 import type { Link } from '../types/Link'
 import IconLink from './IconLink'
 import type { AppInfo } from '../types/ProjectInfo'
@@ -18,6 +19,7 @@ interface ProjectProps {
   role: string
   links: Array<Link>
   apps: Array<AppInfo>
+  featured?: boolean
   className?: string
   style?: CSSProperties
 }
@@ -32,6 +34,8 @@ const getInitials = (value: string): string => {
   return (words[0][0] + words[1][0]).toUpperCase()
 }
 
+const isSecondaryLink = (link: Link): boolean => link.icon === 'github'
+
 const Project: React.FC<ProjectProps> = ({
   name,
   type,
@@ -40,6 +44,7 @@ const Project: React.FC<ProjectProps> = ({
   role,
   links,
   apps,
+  featured = false,
   className,
   style
 }) => {
@@ -76,105 +81,169 @@ const Project: React.FC<ProjectProps> = ({
     return () => window.clearTimeout(switchTimeoutRef.current)
   }, [])
 
+  const renderLinks = () => {
+    if (links.length === 0) {
+      return (
+        <div className={styles.noLinksAvailable}>
+          <span>No public links available</span>
+        </div>
+      )
+    }
+
+    return (
+      <div className={styles.links} aria-label={`${name} links`}>
+        {links.map((link, index) => (
+          <IconLink
+            key={index}
+            link={link}
+            variant="action"
+            className={`${styles.link} ${
+              isSecondaryLink(link)
+                ? styles.linkSecondary
+                : styles.linkPrimary
+            }`}
+          />
+        ))}
+      </div>
+    )
+  }
+
+  const renderPlatformTabs = () => {
+    if (!apps || apps.length === 0) {
+      return null
+    }
+
+    return (
+      <div className={styles.platformSection}>
+        <div
+          className={styles.tabsContainer}
+          role="tablist"
+          aria-label={`${name} platforms`}
+        >
+          {apps.map((app, index) => (
+            <button
+              key={index}
+              id={`${tabsId}-tab-${app.id}`}
+              type="button"
+              role="tab"
+              aria-selected={index === selectedAppIndex}
+              aria-controls={`${tabsId}-panel-${app.id}`}
+              onClick={() => handleTabClick(index)}
+              className={styles.tabItem}
+            >
+              <span className={badgeStyles.badgeTrack}>
+                <span className={styles.pillLabel}>{app.platform}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {activeApp && (
+          <div
+            id={`${tabsId}-panel-${activeApp.id}`}
+            role="tabpanel"
+            aria-labelledby={`${tabsId}-tab-${activeApp.id}`}
+            key={activeApp.id}
+            className={`${styles.appContent} ${
+              isSwitchingApp ? styles.appContentExit : styles.appContentEnter
+            }`}
+          >
+            <div
+              className={styles.technologies}
+              aria-label={`${activeApp.name} technologies`}
+            >
+              {activeApp.technologies.map((technology, index) => (
+                <IconLink
+                  key={index}
+                  link={technology}
+                  variant="chip"
+                  className={styles.techLink}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
     <article
-      className={`${styles.project} ${className || ''}`}
+      className={`${styles.project} ${featured ? styles.projectFeatured : ''} ${className || ''}`}
       style={style}
       data-reveal
     >
       <div className={styles.body}>
-        <div className={styles.headerRow}>
-          <span className={styles.mark} aria-hidden="true">
-            {getInitials(name)}
-          </span>
-          <div className={styles.titleGroup}>
-            <h3>{name}</h3>
-            <span className={styles.type}>{type}</span>
-          </div>
-        </div>
-
-        <p className={styles.description}>{description}</p>
-
-        <dl className={styles.facts}>
-          <div className={styles.fact}>
-            <dt>Problem</dt>
-            <dd>{problem}</dd>
-          </div>
-          <div className={styles.fact}>
-            <dt>Role</dt>
-            <dd>{role}</dd>
-          </div>
-        </dl>
-
-        {links.length > 0 && (
-          <div className={styles.links} aria-label={`${name} links`}>
-            {links.map((link, index) => (
-              <IconLink
-                key={index}
-                link={link}
-                size={18}
-                className={styles.link}
-              />
-            ))}
-          </div>
-        )}
-
-        {links.length === 0 && (
-          <div className={styles.noLinksAvailable}>
-            <span>No public links available</span>
-          </div>
-        )}
-
-        {apps && apps.length > 0 && (
-          <>
-            <div
-              className={styles.tabsContainer}
-              role="tablist"
-              aria-label={`${name} platforms`}
-            >
-              {apps.map((app, index) => (
-                <button
-                  key={index}
-                  id={`${tabsId}-tab-${app.id}`}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === selectedAppIndex}
-                  aria-controls={`${tabsId}-panel-${app.id}`}
-                  onClick={() => handleTabClick(index)}
-                  className={styles.tabItem}
-                >
-                  <span className={styles.pillLabel}>{app.platform}</span>
-                </button>
-              ))}
-            </div>
-
-            {activeApp && (
-              <div
-                id={`${tabsId}-panel-${activeApp.id}`}
-                role="tabpanel"
-                aria-labelledby={`${tabsId}-tab-${activeApp.id}`}
-                key={activeApp.id}
-                className={`${styles.appContent} ${
-                  isSwitchingApp ? styles.appContentExit : styles.appContentEnter
-                }`}
-              >
-                <p>{activeApp.description}</p>
-
-                <div
-                  className={styles.technologies}
-                  aria-label={`${activeApp.name} technologies`}
-                >
-                  {activeApp.technologies.map((technology, index) => (
-                    <IconLink
-                      key={index}
-                      link={technology}
-                      size={16}
-                      className={styles.techLink}
-                    />
-                  ))}
+        {featured ? (
+          <div className={styles.featuredLayout}>
+            <div className={styles.featuredMain}>
+              <div className={styles.headerRow}>
+                <span className={styles.mark} aria-hidden="true">
+                  <span className={styles.markLabel}>{getInitials(name)}</span>
+                </span>
+                <div className={styles.titleGroup}>
+                  <h3>{name}</h3>
+                  <span className={styles.type}>{type}</span>
                 </div>
               </div>
-            )}
+
+              <p className={styles.description}>{description}</p>
+
+              <dl className={styles.facts}>
+                <div className={styles.fact}>
+                  <dt>Problem</dt>
+                  <dd>{problem}</dd>
+                </div>
+                <div className={styles.fact}>
+                  <dt>My role</dt>
+                  <dd>{role}</dd>
+                </div>
+                {activeApp && (
+                  <div className={styles.fact}>
+                    <dt>Solution</dt>
+                    <dd>{activeApp.description}</dd>
+                  </div>
+                )}
+              </dl>
+
+              {renderLinks()}
+            </div>
+
+            <div className={styles.featuredAside}>{renderPlatformTabs()}</div>
+          </div>
+        ) : (
+          <>
+            <div className={styles.headerRow}>
+              <span className={styles.mark} aria-hidden="true">
+                <span className={styles.markLabel}>{getInitials(name)}</span>
+              </span>
+              <div className={styles.titleGroup}>
+                <h3>{name}</h3>
+                <span className={styles.type}>{type}</span>
+              </div>
+            </div>
+
+            <p className={styles.description}>{description}</p>
+
+            <dl className={styles.facts}>
+              <div className={styles.fact}>
+                <dt>Problem</dt>
+                <dd>{problem}</dd>
+              </div>
+              <div className={styles.fact}>
+                <dt>My role</dt>
+                <dd>{role}</dd>
+              </div>
+              {activeApp && (
+                <div className={styles.fact}>
+                  <dt>Solution</dt>
+                  <dd>{activeApp.description}</dd>
+                </div>
+              )}
+            </dl>
+
+            {renderLinks()}
+            {renderPlatformTabs()}
           </>
         )}
       </div>

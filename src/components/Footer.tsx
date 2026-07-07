@@ -15,13 +15,15 @@ const Footer = () => {
       <div className={styles.inner}>
         <div className={styles.brand} data-reveal style={revealDelay(0)}>
           <p className={styles.title}>Aleix Martínez Pena</p>
-          <p className={styles.role}>Full-stack Developer</p>
+          <p className={styles.role}>
+            Full-stack web developer · product applications
+          </p>
         </div>
 
         <div className={styles.links} data-reveal style={revealDelay(90)}>
           <IconLink
             link={{ url: `mailto:${EMAIL}`, text: 'Email', icon: 'email' }}
-            size={18}
+            variant="action"
             className={styles.link}
           />
           <IconLink
@@ -30,7 +32,7 @@ const Footer = () => {
               text: 'LinkedIn',
               icon: 'linkedin'
             }}
-            size={18}
+            variant="action"
             className={styles.link}
           />
           <IconLink
@@ -39,7 +41,7 @@ const Footer = () => {
               text: 'GitHub',
               icon: 'github'
             }}
-            size={18}
+            variant="action"
             className={styles.link}
           />
         </div>

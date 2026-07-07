@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../styles/IconLink.module.css'
+import badgeStyles from '../styles/Badge.module.css'
 import {
   Angular,
   Apollographql,
@@ -35,34 +36,33 @@ interface IconLinkProps {
   className?: string | undefined
   color?: string
   size?: number
+  variant?: 'chip' | 'action' | 'plain'
 }
 
 interface GlyphProps {
   title?: string
   color?: string
-  size?: number
+  size?: number | undefined
 }
 
 const MailGlyph: React.FC<GlyphProps> = ({
   title,
   color = 'currentColor',
-  size = 24
+  size
 }) => (
   <svg
     role="img"
     viewBox="0 0 24 24"
     width={size}
     height={size}
-    fill="none"
-    stroke={color}
-    strokeWidth={1.8}
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    fill={color}
     aria-hidden={title ? undefined : true}
   >
     {title ? <title>{title}</title> : null}
-    <rect x="3" y="5" width="18" height="14" rx="2" />
-    <path d="m4 7 8 6 8-6" />
+    {/* Optical match to simple-icons brand glyphs (same ink area in 24×24) */}
+    <g transform="translate(12 12) scale(1.2 1.5) translate(-12 -12)">
+      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+    </g>
   </svg>
 )
 
@@ -70,70 +70,94 @@ const IconLink: React.FC<IconLinkProps> = ({
   link,
   className,
   color = 'currentColor',
-  size = 40
+  size,
+  variant = 'chip'
 }) => {
+  const glyphSize = size ?? (variant === 'chip' ? 14 : undefined)
+
   const icons = {
-    email: <MailGlyph title={'Email'} color={color} size={size} />,
+    email: <MailGlyph title={'Email'} color={color} size={glyphSize} />,
     // @ts-ignore
-    googlePlay: <Googleplay title={'GooglePlay'} color={color} size={size} />,
+    googlePlay: <Googleplay title={'GooglePlay'} color={color} size={glyphSize} />,
     // @ts-ignore
-    appStore: <Appstore title={'AppStore'} color={color} size={size} />,
+    appStore: <Appstore title={'AppStore'} color={color} size={glyphSize} />,
     // @ts-ignore
-    github: <Github title={'Github'} color={color} size={size} />,
+    github: <Github title={'Github'} color={color} size={glyphSize} />,
     // @ts-ignore
-    linkedin: <Linkedin title={'Linkedin'} color={color} size={size} />,
+    linkedin: <Linkedin title={'Linkedin'} color={color} size={glyphSize} />,
     // @ts-ignore
-    web: <Googlechrome title={'Web'} color={color} size={size} />,
+    web: <Googlechrome title={'Web'} color={color} size={glyphSize} />,
     // @ts-ignore
-    react: <ReactJs title={'React'} color={color} size={size} />,
+    react: <ReactJs title={'React'} color={color} size={glyphSize} />,
     // @ts-ignore
-    redux: <Redux title={'Redux'} color={color} size={size} />,
+    redux: <Redux title={'Redux'} color={color} size={glyphSize} />,
     // @ts-ignore
-    nodejs: <Nodedotjs title={'Nodejs'} color={color} size={size} />,
+    nodejs: <Nodedotjs title={'Nodejs'} color={color} size={glyphSize} />,
     // @ts-ignore
-    postgres: <Postgresql title={'Postgres'} color={color} size={size} />,
+    postgres: <Postgresql title={'Postgres'} color={color} size={glyphSize} />,
     // @ts-ignore
-    graphql: <Graphql title={'Graphql'} color={color} size={size} />,
+    graphql: <Graphql title={'Graphql'} color={color} size={glyphSize} />,
     // @ts-ignore
-    typescript: <Typescript title={'Typescript'} color={color} size={size} />,
+    typescript: <Typescript title={'Typescript'} color={color} size={glyphSize} />,
     apollographql: (
       // @ts-ignore
-      <Apollographql title={'Apollographql'} color={color} size={size} />
+      <Apollographql title={'Apollographql'} color={color} size={glyphSize} />
     ),
     // @ts-ignore
-    kotlin: <Kotlin title={'Kotlin'} color={color} size={size} />,
+    kotlin: <Kotlin title={'Kotlin'} color={color} size={glyphSize} />,
     // @ts-ignore
-    mysql: <Mysql title={'Mysql'} color={color} size={size} />,
+    mysql: <Mysql title={'Mysql'} color={color} size={glyphSize} />,
     // @ts-ignore
-    springBoot: <Springboot title={'SpringBoot'} color={color} size={size} />,
+    springBoot: <Springboot title={'SpringBoot'} color={color} size={glyphSize} />,
     // @ts-ignore
-    hibernate: <Hibernate title={'Hibernate'} color={color} size={size} />,
+    hibernate: <Hibernate title={'Hibernate'} color={color} size={glyphSize} />,
     // @ts-ignore
-    jest: <Jest title={'Jest'} color={color} size={size} />,
+    jest: <Jest title={'Jest'} color={color} size={glyphSize} />,
     // @ts-ignore
-    sequelize: <Sequelize title={'Sequelize'} color={color} size={size} />,
+    sequelize: <Sequelize title={'Sequelize'} color={color} size={glyphSize} />,
     // @ts-ignore
-    nextjs: <Nextdotjs title={'Next JS'} color={color} size={size} />,
+    nextjs: <Nextdotjs title={'Next JS'} color={color} size={glyphSize} />,
     // @ts-ignore
-    css3: <CssThree title={'CSS 3'} color={color} size={size} />,
+    css3: <CssThree title={'CSS 3'} color={color} size={glyphSize} />,
     // @ts-ignore
-    html5: <Html5 title={'HTML 5'} color={color} size={size} />,
+    html5: <Html5 title={'HTML 5'} color={color} size={glyphSize} />,
     // @ts-ignore
-    angular: <Angular title={'Angular'} color={color} size={size} />,
+    angular: <Angular title={'Angular'} color={color} size={glyphSize} />,
     // @ts-ignore
-    astro: <Astro title={'Astro'} color={color} size={size} />,
+    astro: <Astro title={'Astro'} color={color} size={glyphSize} />,
     // @ts-ignore
-    css: <CssThree title={'CSS'} color={color} size={size} />,
+    css: <CssThree title={'CSS'} color={color} size={glyphSize} />,
     // @ts-ignore
-    vue: <Vuedotjs title={'Vue'} color={color} size={size} />,
+    vue: <Vuedotjs title={'Vue'} color={color} size={glyphSize} />,
     // @ts-ignore
-    nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />,
+    nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={glyphSize} />,
     // @ts-ignore
-    nestjs: <Nestjs title={'Nest'} color={color} size={size} />
+    nestjs: <Nestjs title={'Nest'} color={color} size={glyphSize} />
   }
   const getIcon = (name: BrandIcon) => {
     return icons[name]
   }
+
+  const baseClass =
+    variant === 'plain'
+      ? styles.linkPlain
+      : variant === 'action'
+        ? styles.linkAction
+        : styles.link
+
+  const iconClass =
+    variant === 'plain'
+      ? styles.plainIcon
+      : variant === 'action'
+        ? styles.actionIcon
+        : styles.icon
+
+  const labelClass =
+    variant === 'plain'
+      ? styles.plainLabel
+      : variant === 'action'
+        ? styles.actionLabel
+        : styles.label
 
   return (
     <a
@@ -141,10 +165,23 @@ const IconLink: React.FC<IconLinkProps> = ({
       target="_blank"
       rel="noreferrer"
       aria-label={link.text}
-      className={`${styles.link} ${className}`}
+      className={`${baseClass} ${className || ''}`}
     >
-      {getIcon(link.icon)}
-      <span>{link.text}</span>
+      {variant === 'plain' ? (
+        <>
+          <span className={iconClass} aria-hidden="true">
+            {getIcon(link.icon)}
+          </span>
+          <span className={labelClass}>{link.text}</span>
+        </>
+      ) : (
+        <span className={badgeStyles.badgeTrack}>
+          <span className={iconClass} aria-hidden="true">
+            {getIcon(link.icon)}
+          </span>
+          <span className={labelClass}>{link.text}</span>
+        </span>
+      )}
     </a>
   )
 }

@@ -60,12 +60,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '2',
       name: 'My Setuppi',
-      type: 'Web · Social platform',
+      type: 'Personal project · Web platform',
       description:
-        'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
+        'Social platform for gamers to showcase and discover PC setups with specs and community feedback.',
       problem:
-        'No dedicated place for gamers to share and discover real PC setups with specs, ratings, and community feedback.',
-      role: 'Solo developer — built the Vue.js/Nuxt web app and the Node.js/GraphQL backend.',
+        'No dedicated place for gamers to share and discover real PC setups.',
+      role: 'Solo developer — Vue/Nuxt frontend and Node.js/GraphQL backend.',
       image: '/images/projects/my-setuppi.webp',
       active: true,
       links: [
@@ -80,7 +80,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '9',
           name: 'My Setuppi',
           description:
-            'Vue.js web app for browsing, uploading, and rating PC setups with user profiles and social features.',
+            'Nuxt web app for browsing, uploading and rating PC setups with user profiles.',
           platform: 'web',
           technologies: [
             {
@@ -109,7 +109,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '11',
           name: 'My Setuppi Backend',
           description:
-            'Node.js backend with GraphQL API for managing user profiles, setup posts, comments, and ratings.',
+            'Node.js GraphQL API for user profiles, setup posts, comments and ratings.',
           platform: 'backend',
           technologies: [
             {
@@ -149,12 +149,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '3',
       name: 'Enirve',
-      type: 'Mobile · EdTech',
+      type: 'Personal project · Mobile app',
       description:
-        'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
+        'Mobile app for learning English irregular verbs through exercises and progress tracking.',
       problem:
-        'Learners struggle to memorize English irregular verbs without short, consistent practice.',
-      role: 'Solo developer — built the React Native app and the Node.js/GraphQL backend.',
+        'Learners struggle to memorize irregular verbs without short, consistent practice.',
+      role: 'Solo developer — React Native app and Node.js/GraphQL backend, published on App Store and Google Play.',
       image: '/images/projects/enirve.webp',
       active: true,
       links: [
@@ -179,7 +179,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '3',
           name: 'Enirve App',
           description:
-            'React Native mobile app for learning irregular verbs with exercises, quizzes, and offline mode.',
+            'React Native app for learning irregular verbs with exercises, quizzes and offline mode.',
           platform: 'mobile',
           technologies: [
             {
@@ -213,7 +213,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '4',
           name: 'Enirve Backend',
           description:
-            'Node.js backend with GraphQL API for user data, learning progress, and verb database management.',
+            'Node.js GraphQL API for user data, learning progress and verb database management.',
           platform: 'backend',
           technologies: [
             {
@@ -253,12 +253,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     {
       id: '4',
       name: 'Talk And Play',
-      type: 'Mobile · Community',
+      type: 'Product experiment · Mobile app',
       description:
-        'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
+        'Community app for gamers to discuss, review and discover games.',
       problem:
-        'Gamers lack a focused space to discuss games and get recommendations outside noisy general social apps.',
-      role: 'Solo developer — built the React Native app and the Kotlin/Spring Boot backend.',
+        'Gamers lack a focused space to discuss games outside noisy general social apps.',
+      role: 'Solo developer — React Native app and Kotlin/Spring Boot backend.',
       image: '/images/projects/talk-and-play.webp',
       active: true,
       links: [
@@ -273,7 +273,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '1',
           name: 'Talk And Play',
           description:
-            'React Native mobile app for gamers to create profiles, track activity, and participate in discussions about games.',
+            'React Native app for gamers to create profiles, track activity and discuss games.',
           platform: 'mobile',
           technologies: [
             {
@@ -297,7 +297,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
           id: '2',
           name: 'Talk And Play',
           description:
-            'Kotlin and Spring Boot backend for user authentication, game data, and social interactions with RESTful API.',
+            'Kotlin and Spring Boot backend for user authentication, game data and social interactions.',
           platform: 'backend',
           technologies: [
             {

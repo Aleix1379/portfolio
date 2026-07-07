@@ -37,13 +37,8 @@ const ProjectsSection = () => {
             data-reveal
             style={revealDelay(180)}
           >
-            Personal projects for practicing product ideas and modern app
-            stacks, often with
-            <span className={styles.important}> Vue.js</span>,
-            <span className={styles.important}> React Native </span>and
-            <span className={styles.important}> Node.js</span>, plus GraphQL,
-            PostgreSQL and
-            <span className={styles.important}> TypeScript</span>.
+            Personal projects that demonstrate end-to-end ownership — from
+            frontend and mobile interfaces to backend APIs and deployment.
           </p>
         </div>
       </div>
@@ -59,6 +54,8 @@ const ProjectsSection = () => {
             role={project.role}
             links={project.links}
             apps={project.apps}
+            featured={index === 0}
+            className={index === 0 ? styles.projectFeatured : undefined}
             style={revealDelay(320 + index * 90)}
           />
         ))}

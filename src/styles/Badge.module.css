@@ -1,0 +1,150 @@
+/*
+ * Unified badge / button centering system.
+ * text-box-trim when supported; translateY fallback for optical Catamaran centering.
+ */
+
+.badgeTrack {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+  line-height: 1;
+}
+
+.badgeLabel {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: 1;
+}
+
+@supports (text-box-trim: trim-both) {
+  .badgeLabel {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
+}
+
+.badgeSm > .badgeLabel,
+.badgeMd > .badgeLabel,
+.badgeTrack:not(:has(.badgeIcon)) > :last-child {
+  transform: translateY(var(--badge-optical-shift, 0.055em));
+}
+
+.badgeTrack:has(.badgeIcon) {
+  transform: translateY(var(--badge-optical-shift, 0.05em));
+}
+
+.badgeIcon {
+  display: grid;
+  place-items: center;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  color: currentColor;
+}
+
+.badgeIcon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chips, tabs, tech badges */
+.badgeSm {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--chip-gap);
+  min-height: var(--chip-height);
+  margin: 0;
+  padding-block: var(--chip-padding-block);
+  padding-inline: var(--chip-padding-inline);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--chip-font-size);
+  font-weight: var(--chip-font-weight);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Wide note / availability pills */
+.badgeMd {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: var(--badge-md-height);
+  padding: var(--badge-md-padding-block) var(--badge-md-padding-inline);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--badge-md-font-size);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Icon + text row links (footer, project actions) */
+.badgeRow {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--badge-row-gap);
+  min-height: var(--link-badge-height);
+  margin: 0;
+  padding-block: var(--link-badge-padding-block);
+  padding-inline: var(--badge-row-padding-inline);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--link-badge-font-size, var(--chip-font-size));
+  font-weight: var(--chip-font-weight);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* CTA buttons (hero, nav) */
+.badgeBtn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--btn-height);
+  margin: 0;
+  padding-block: var(--btn-padding-block);
+  padding-inline: var(--btn-padding-inline);
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  appearance: none;
+  -webkit-appearance: none;
+  --badge-optical-shift: 0.035em;
+}
+
+/* Back-compat aliases used by existing composes */
+.badge {
+  composes: badgeSm;
+}
+
+.badgeWide {
+  composes: badgeMd;
+}
+
+.badgeFlex {
+  composes: badgeSm;
+}

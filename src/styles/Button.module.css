@@ -1,21 +1,18 @@
 .button {
+  composes: badgeBtn from './Badge.module.css';
   position: relative;
-  display: inline-flex;
-  min-height: 46px;
-  align-items: center;
-  justify-content: center;
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-pill);
-  padding: 0 20px;
   color: var(--text-color);
   background: rgba(255, 255, 255, 0.04);
-  font-size: 0.98rem;
-  font-weight: 850;
   cursor: pointer;
   transition:
     transform 180ms var(--ease-premium),
     border-color 180ms ease,
     background 180ms ease;
+}
+
+.buttonLabel {
+  composes: badgeLabel from './Badge.module.css';
 }
 
 .button:hover {

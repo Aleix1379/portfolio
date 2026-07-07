@@ -177,6 +177,11 @@
     transform 220ms var(--ease-premium);
 }
 
+.link:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
 .link:hover {
   color: var(--text-color);
   border-color: rgba(255, 255, 255, 0.06);
@@ -192,27 +197,8 @@
 
 .linkActive {
   color: var(--text-color);
-  border-color: rgba(76, 221, 156, 0.24);
-  background: rgba(76, 221, 156, 0.1);
-}
-
-.contactLink {
-  color: #06110d;
-  border-color: transparent;
-  background: linear-gradient(135deg, var(--accent-strong), var(--green));
-  box-shadow: 0 12px 28px rgba(56, 193, 136, 0.18);
-}
-
-.contactLink::after {
-  display: none;
-}
-
-.contactLink:hover,
-.contactLinkActive {
-  color: #06110d;
-  border-color: transparent;
-  background: linear-gradient(135deg, var(--accent-strong), var(--green));
-  box-shadow: 0 16px 34px rgba(56, 193, 136, 0.24);
+  border-color: rgba(76, 221, 156, 0.32);
+  background: rgba(76, 221, 156, 0.14);
 }
 
 .actions {
@@ -235,6 +221,34 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .navContainer {
+    top: 12px;
+    padding: 0 12px;
+  }
+
+  .nav {
+    min-height: 64px;
+    padding: 8px 10px;
+  }
+
+  .links {
+    left: 12px;
+    right: 12px;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .link {
+    min-height: 48px;
   }
 }
 
@@ -283,9 +297,5 @@
   .link {
     min-height: 42px;
     padding: 0 18px;
-  }
-
-  .contactLink {
-    margin-left: 4px;
   }
 }

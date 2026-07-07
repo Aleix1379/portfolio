@@ -45,7 +45,7 @@
   width: var(--selector-size);
   height: var(--selector-size);
   color: var(--text-muted);
-  opacity: 0.68;
+  opacity: 0.82;
   transition:
     color 220ms ease,
     opacity 220ms ease,
@@ -59,7 +59,7 @@
 }
 
 .iconActive {
-  color: #06110d;
+  color: var(--on-accent);
   opacity: 1;
   transform: scale(1.02);
 }
@@ -74,7 +74,7 @@
   border-radius: 50%;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0)),
-    linear-gradient(135deg, var(--accent-strong), var(--green));
+    linear-gradient(135deg, var(--accent-button), var(--accent-button-hover));
   box-shadow:
     0 10px 22px rgba(56, 193, 136, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);

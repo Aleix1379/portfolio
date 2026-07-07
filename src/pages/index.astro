@@ -3,31 +3,29 @@ import Layout from '../layouts/Layout.astro'
 import AboutSection from '../sections/AboutSection.tsx'
 import ExperienceSection from '../sections/ExperienceSection.tsx'
 import ProjectsSection from '../sections/ProjectsSection.tsx'
-import ContactSection from '../sections/ContactSection.tsx'
 ---
 
 <Layout
-  title="Aleix - Web Developer Portfolio"
-  description="Aleix's portfolio - Web developer focused on user interfaces, eCommerce platforms, and web/mobile applications with Vue.js, React Native, Node.js, and TypeScript."
+  title="Aleix - Full-stack Developer Portfolio"
+  description="Aleix Martínez Peña — Full-stack web developer for product applications. Vue/Nuxt, Node.js, TypeScript and PostgreSQL. Open to frontend and full-stack roles in product teams."
   image="/images/about-developer-workspace.webp"
 >
   <main class="main">
     <AboutSection client:visible />
     <ExperienceSection client:visible />
     <ProjectsSection client:visible />
-    <ContactSection client:visible />
   </main>
 
   <style>
     .main {
       width: 100%;
       align-self: center;
-      padding: 36px 20px 0;
+      padding: 24px 20px 0;
     }
 
     @media (min-width: 768px) {
       .main {
-        padding: 64px 24px 0;
+        padding: 48px 24px 0;
       }
     }
   </style>

@@ -1,8 +1,6 @@
 .project {
   position: relative;
   display: flex;
-  height: 100%;
-  min-height: 100%;
   flex-direction: column;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -21,36 +19,31 @@
 }
 
 .pillLabel {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
+  composes: badgeLabel from './Badge.module.css';
 }
 
 .body {
   position: relative;
   z-index: 1;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  padding: clamp(22px, 4vw, 28px);
+  padding: clamp(22px, 4vw, 28px) clamp(22px, 4vw, 28px) clamp(10px, 2vw, 12px);
 }
 
 .headerRow {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: stretch;
   gap: 14px;
   margin-bottom: 16px;
 }
 
 .mark {
-  display: flex;
-  flex: 0 0 auto;
-  width: 44px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  aspect-ratio: 1;
+  min-height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   color: var(--accent-strong);
@@ -58,6 +51,15 @@
   font-size: 0.86rem;
   font-weight: 850;
   letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.markLabel {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: 1;
 }
 
 .titleGroup {
@@ -75,10 +77,11 @@
 }
 
 .type {
-  color: var(--text-muted);
+  color: var(--text-faint);
   font-size: 0.82rem;
   font-weight: 750;
   letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
 .description {
@@ -98,7 +101,7 @@
 
 .fact dt {
   margin: 0;
-  color: var(--accent-strong);
+  color: var(--text-faint);
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0.12em;
@@ -108,8 +111,8 @@
 .fact dd {
   margin: 6px 0 0;
   color: var(--text-soft);
-  font-size: 0.92rem;
-  line-height: 1.6;
+  font-size: 0.94rem;
+  line-height: 1.62;
 }
 
 .links,
@@ -117,7 +120,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: var(--chip-list-gap);
 }
 
 .links {
@@ -126,26 +129,33 @@
 
 .link,
 .techLink {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.03);
 }
 
-.link {
-  --chip-icon-size: 18px;
-
-  height: 38px;
-  min-height: 38px;
-  padding: 0 13px;
+.linkPrimary {
+  --link-badge-height: var(--store-button-height);
+  --link-badge-font-size: var(--store-button-font-size);
+  --badge-row-padding-inline: var(--store-button-padding-inline);
+  --link-badge-padding-block: max(
+    0px,
+    calc((var(--store-button-height) - 1em) / 2)
+  );
+  --badge-optical-shift: 0.03em;
+  color: var(--on-accent);
+  border-color: transparent;
+  background: var(--accent-button);
+  font-weight: 800;
 }
 
-.techLink {
-  --chip-icon-size: 16px;
+.linkPrimary:hover {
+  color: var(--on-accent);
+  border-color: transparent;
+  background: var(--accent-button-hover);
+}
 
-  height: 33px;
-  min-height: 33px;
-  padding: 0 12px;
-  font-size: 0.82rem;
+.linkSecondary {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .noLinksAvailable {
@@ -154,32 +164,34 @@
   font-size: 0.92rem;
 }
 
-.tabsContainer {
+.platformSection {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: var(--project-tabs-tech-gap);
   margin-top: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
 
-.tabItem {
-  position: relative;
-  box-sizing: border-box;
-  display: inline-flex;
-  height: 35px;
-  min-height: 35px;
+.tabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--chip-list-gap);
   align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  padding: 0 12px;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 0.84rem;
-  font-weight: 850;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.tabItem {
+  composes: badgeSm from './Badge.module.css';
+  --badge-optical-shift: 0.05em;
+  font: inherit;
   line-height: 1;
-  white-space: nowrap;
+  margin: 0;
+  position: relative;
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, 0.03);
   text-transform: capitalize;
   cursor: pointer;
   transition:
@@ -197,12 +209,9 @@
 
 .appContent {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  min-height: 224px;
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  min-height: auto;
+  margin-top: 0;
   transform-origin: top center;
   transition:
     opacity 140ms ease,
@@ -227,8 +236,8 @@
 }
 
 .technologies {
-  margin-top: auto;
-  padding-top: 18px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .technologies > * {
@@ -279,9 +288,83 @@
   }
 }
 
+.projectFeatured .body {
+  padding: clamp(26px, 4vw, 34px);
+}
+
+.projectFeatured .titleGroup h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+}
+
+.featuredLayout {
+  display: grid;
+  gap: 28px;
+}
+
+.featuredMain {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.featuredAside {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.featuredAside .platformSection {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.featuredAside .appContent {
+  margin-top: 0;
+  padding-top: var(--project-tabs-tech-gap);
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 900px) {
+  .featuredLayout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 36px;
+    align-items: start;
+  }
+
+  .featuredAside {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
 @media (max-width: 640px) {
   .project {
     border-radius: var(--radius-md);
+  }
+
+  .facts {
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+
+  .fact dd {
+    line-height: 1.68;
+  }
+
+  .body {
+    padding: 24px 24px 12px;
+  }
+
+  .technologies > *:nth-child(n + 5) {
+    display: none;
+  }
+
+  .links {
+    gap: 8px;
   }
 }
 

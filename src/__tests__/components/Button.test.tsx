@@ -21,14 +21,14 @@ describe('Button Component', () => {
   });
   
   it('applies the provided className', () => {
-    const customClass = 'custom-class';
+    const customClass = 'custom-class'
     render(
       <Button onClick={() => {}} className={customClass}>
         Click Me
       </Button>
-    );
-    
-    const buttonElement = screen.getByText('Click Me');
-    expect(buttonElement).toHaveClass(customClass);
-  });
+    )
+
+    const buttonElement = screen.getByRole('button', { name: 'Click Me' })
+    expect(buttonElement).toHaveClass(customClass)
+  })
 });

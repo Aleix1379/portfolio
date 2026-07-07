@@ -29,8 +29,10 @@ const Experience: React.FC<ExperienceProps> = ({
 
         <div className={styles.meta}>
           <div className={styles.infoDetails}>
-            <span className={styles.location}>{experience.location}</span>
-            <span className={styles.jobType}>{experience.type}</span>
+            <Chip variant="neutral">{experience.location}</Chip>
+            <Chip variant="neutral" capitalize>
+              {experience.type}
+            </Chip>
           </div>
 
           <div className={styles.time}>

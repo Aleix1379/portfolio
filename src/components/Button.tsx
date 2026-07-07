@@ -1,4 +1,5 @@
 import React from 'react'
+import badgeStyles from '../styles/Badge.module.css'
 import styles from '../styles/Button.module.css'
 
 export interface ButtonProps {
@@ -14,7 +15,9 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
       onClick={onClick}
       className={`${styles.button} ${className || ''}`}
     >
-      {children}
+      <span className={badgeStyles.badgeTrack}>
+        <span className={badgeStyles.badgeLabel}>{children}</span>
+      </span>
     </button>
   )
 }

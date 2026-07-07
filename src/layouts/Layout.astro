@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = "Aleix's portfolio - Web developer focused on user interfaces, eCommerce platforms, and web/mobile applications with Vue.js, React Native, Node.js, and TypeScript.",
+  description = "Aleix Martínez Peña — Product-focused full-stack developer. Vue/Nuxt, Node.js, TypeScript and PostgreSQL. Open to frontend and full-stack roles in product teams.",
   image = '/images/about-developer-workspace.webp',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props
@@ -19,8 +19,8 @@ const {
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Aleix',
-  jobTitle: 'Web Developer',
+  name: 'Aleix Martínez Peña',
+  jobTitle: 'Full-stack Developer',
   url: Astro.site,
   sameAs: [
     'https://github.com/Aleix1379',
@@ -37,7 +37,7 @@ const personSchema = {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Web Developer Portfolio</title>
+    <title>{title} | Full-stack Developer Portfolio</title>
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -84,12 +84,6 @@ const personSchema = {
     font-display: swap;
   }
 
-  @font-face {
-    font-family: 'Dancing Script';
-    src: url('/fonts/DancingScript/DancingScript-VariableFont_wght.ttf');
-    font-display: swap;
-  }
-
   a {
     color: inherit;
     text-decoration: none;
@@ -100,7 +94,7 @@ const personSchema = {
   }
 
   *::selection {
-    color: #06110d;
+    color: var(--on-accent);
     background: rgba(76, 221, 156, 0.85);
   }
 

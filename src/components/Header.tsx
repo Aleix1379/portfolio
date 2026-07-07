@@ -1,6 +1,8 @@
 import React from 'react'
 import { getYearsOfExperience } from '../utils/time'
+import Chip from './Chip'
 import HeroHeadline from './HeroHeadline'
+import badgeStyles from '../styles/Badge.module.css'
 import styles from '../styles/Header.module.css'
 
 const Header = () => {
@@ -12,40 +14,44 @@ const Header = () => {
     <header id="header" className={styles.header}>
       <div className={styles.inner}>
         <div className={styles.content}>
-          <p className={styles.kicker}>Aleix Martínez Pena</p>
+          <Chip variant="kicker" className={styles.kicker}>
+            Aleix Martínez Pena
+          </Chip>
           <HeroHeadline
             className={styles.title}
             lineClassName={styles.titleLine}
-            lines={['Full-stack developer,', 'product-focused.']}
+            lines={['Product-focused', 'full-stack developer.']}
             secondLineClassName={styles.titleLineMuted}
           />
           <p className={styles.subtitle}>
-            I build clean product interfaces, eCommerce platforms, and
-            practical web/mobile applications with Vue, React Native,
-            Node.js and TypeScript.
+            I build maintainable web apps, backend services and mobile products
+            with Vue/Nuxt, Node.js, TypeScript and PostgreSQL.
           </p>
 
           <div className={styles.actions} aria-label="Hero actions">
             <a className={styles.primaryAction} href="#projects">
-              View projects
-            </a>
-            <a className={styles.secondaryAction} href="#contact">
-              Contact me
+              <span className={badgeStyles.badgeTrack}>
+                <span className={badgeStyles.badgeLabel}>View projects</span>
+              </span>
             </a>
           </div>
 
+          <Chip variant="note" className={styles.availabilityBadge}>
+            Open to product-focused frontend/full-stack roles.
+          </Chip>
+
           <div className={styles.stats} aria-label="Portfolio highlights">
             <div className={styles.stat}>
-              <strong>+{yearsOfExperience}</strong>
-              <span>years of experience</span>
+              <Chip variant="stat">+{yearsOfExperience}</Chip>
+              <span className={styles.statCaption}>years of experience</span>
             </div>
             <div className={styles.stat}>
-              <strong>Vue / Nuxt</strong>
-              <span>eCommerce interfaces</span>
+              <Chip variant="stat">Vue / Nuxt</Chip>
+              <span className={styles.statCaption}>product web apps</span>
             </div>
             <div className={styles.stat}>
-              <strong>React Native</strong>
-              <span>mobile apps</span>
+              <Chip variant="stat">Node.js</Chip>
+              <span className={styles.statCaption}>backend services</span>
             </div>
           </div>
         </div>
@@ -66,14 +72,14 @@ const Header = () => {
               </p>
               <p className={styles.codeIndent}>name: &apos;Aleix&apos;,</p>
               <p className={styles.codeIndent}>
-                stack: [&apos;Vue.js&apos;, &apos;React Native&apos;,
-                &apos;Node.js&apos;],
+                stack: [&apos;Vue/Nuxt&apos;, &apos;Node.js&apos;,
+                &apos;TypeScript&apos;],
               </p>
               <p className={styles.codeIndent}>
-                language: &apos;TypeScript&apos;,
+                database: &apos;PostgreSQL&apos;,
               </p>
               <p className={styles.codeIndent}>
-                focus: &apos;product interfaces&apos;
+                focus: &apos;product apps&apos;
               </p>
               <p>{'}'}</p>
             </div>

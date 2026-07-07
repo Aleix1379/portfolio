@@ -1,31 +1,48 @@
 import React, { type CSSProperties } from 'react'
+import badgeStyles from '../styles/Badge.module.css'
 import styles from '../styles/Chip.module.css'
 
 interface ChipProps {
-	children: React.ReactNode
-	style?: CSSProperties
-	className?: string | undefined
-	active?: boolean
+  children: React.ReactNode
+  style?: CSSProperties
+  className?: string | undefined
+  active?: boolean
+  variant?: 'tech' | 'neutral' | 'stat' | 'note' | 'kicker'
+  capitalize?: boolean
 }
 
-const Chip: React.FC<ChipProps> = ({ children, className, style, active }) => {
-	const activeClass = active ? styles.active : styles.inactive
-	const content = React.Children.map(children, child => {
-		if (typeof child === 'string' || typeof child === 'number') {
-			return <span className={styles.label}>{child}</span>
-		}
+const Chip: React.FC<ChipProps> = ({
+  children,
+  className,
+  style,
+  active,
+  variant = 'tech',
+  capitalize = false
+}) => {
+  const isNote = variant === 'note'
+  const isKicker = variant === 'kicker'
+  const baseClass = isNote ? styles.note : isKicker ? styles.kicker : styles.chip
+  const variantClass =
+    variant === 'neutral'
+      ? styles.neutral
+      : variant === 'stat'
+        ? styles.stat
+        : ''
+  const activeClass =
+    isNote || isKicker ? '' : active ? styles.active : styles.inactive
 
-		return child
-	})
-
-	return (
-		<span 
-			className={`${styles.chip} ${activeClass} ${className || ''}`} 
-			style={style}
-		>
-			{content}
-		</span>
-	)
+  return (
+    <span
+      className={`${baseClass} ${variantClass} ${capitalize ? styles.capitalize : ''} ${activeClass} ${className || ''}`}
+      style={style}
+    >
+      {isKicker ? (
+        <span className={styles.kickerLabel}>{children}</span>
+      ) : (
+        <span className={badgeStyles.badgeLabel}>{children}</span>
+      )}
+    </span>
+  )
 }
 
 export default Chip

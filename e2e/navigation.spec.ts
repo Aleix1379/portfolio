@@ -31,9 +31,9 @@ test.describe('Portfolio Website Navigation', () => {
     // Wait for the About section to be fully visible
     await page.waitForSelector('#about')
 
-    // Check if the Download CV button exists
+    // Check if the Download CV button exists in About
     await expect(
-      page.getByRole('button', { name: 'Download CV' })
+      page.locator('#about').getByRole('button', { name: 'Download CV' })
     ).toBeVisible()
   })
 
@@ -52,7 +52,7 @@ test.describe('Portfolio Website Navigation', () => {
 
     // Check if the years of experience text is visible
     await expect(
-      page.getByText(/years of experience shipping production software/i)
+      page.getByText(/Vue\/Nuxt applications/i)
     ).toBeVisible()
   })
 })

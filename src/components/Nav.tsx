@@ -32,8 +32,8 @@ const Nav = () => {
   }, [])
 
   useEffect(() => {
-    const sections = [...navItems.map(item => item.id), 'contact']
-      .map(id => document.getElementById(id))
+    const sections = navItems
+      .map(item => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null)
 
     if (sections.length === 0) {
@@ -103,7 +103,7 @@ const Nav = () => {
           </span>
           <span className={styles.name}>
             <strong>Aleix</strong>
-            <small>Web developer</small>
+            <small>Full-stack web developer</small>
           </span>
         </button>
 
@@ -121,13 +121,6 @@ const Nav = () => {
               {item.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className={`${styles.link} ${styles.contactLink} ${activeSection === 'contact' ? styles.contactLinkActive : ''}`}
-            onClick={() => closeMenu('contact')}
-          >
-            Contact
-          </a>
         </div>
 
         <div className={styles.actions}>

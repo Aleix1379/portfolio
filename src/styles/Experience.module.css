@@ -72,27 +72,8 @@
 .infoDetails {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-}
-
-.location,
-.jobType {
-  display: inline-flex;
-  min-height: 31px;
+  gap: var(--chip-list-gap);
   align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  padding: 0 11px;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
-  font-size: 0.84rem;
-  font-weight: 760;
-  line-height: 1;
-}
-
-.jobType {
-  text-transform: capitalize;
 }
 
 .time {
@@ -123,13 +104,12 @@
 .technologyList {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: var(--chip-list-gap);
   align-items: center;
 }
 
 .technology {
   margin: 0;
-  min-height: 34px;
 }
 
 .responsibilities {
@@ -145,9 +125,15 @@
   color: var(--accent-strong);
 }
 
+.responsibilities li {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
 .description {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--text-soft);
   font-size: 0.98rem;
   line-height: 1.66;
 }
@@ -168,8 +154,63 @@
   }
 }
 
-@media (max-width: 719px) {
+@media (max-width: 767px) {
   .experience::before {
-    left: -20px;
+    display: none;
+  }
+
+  .experience {
+    padding: 24px;
+  }
+
+  .header {
+    gap: 14px;
+  }
+
+  .responsibilities {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .responsibilities li {
+    line-height: 1.68;
+  }
+
+  .description {
+    line-height: 1.7;
+  }
+
+  .infoDetails {
+    display: none;
+  }
+
+  .time {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .duration {
+    margin-left: 6px;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  .technologyList > *:nth-child(n + 4) {
+    display: none;
+  }
+
+  .responsibilities li:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .infoExperience::before {
+    display: none;
+  }
+
+  .infoExperience {
+    gap: 20px;
+    padding-left: 0;
   }
 }

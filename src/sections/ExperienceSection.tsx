@@ -51,8 +51,8 @@ const ExperienceSection = () => {
           Experience
         </h2>
         <p className={styles.sectionLead} data-reveal style={revealDelay(180)}>
-          A focused timeline of roles across eCommerce, front-end, full-stack,
-          and mobile application work.
+          A focused timeline across product web, eCommerce and full-stack
+          development roles.
         </p>
       </div>
 
@@ -63,26 +63,12 @@ const ExperienceSection = () => {
           data-reveal
           style={revealDelay(260)}
         >
-          <p>
-            Experience building eCommerce platforms, front-end interfaces, web
-            apps, and mobile apps.
-          </p>
-          <div className={styles.experienceFacts}>
-            <div>
-              <strong>
-                +{yearsOfExperience} years building web and mobile apps
-              </strong>
-              <span>
-                Focused on user interfaces, eCommerce flows and practical
-                product features.
-              </span>
-            </div>
-            <div>
-              <strong>Core stack</strong>
-              <span>
-                Vue.js, Nuxt.js, React/React Native, TypeScript and Node.js.
-              </span>
-            </div>
+          <div className={`${styles.factCard} ${styles.experienceIntroFact}`}>
+            <strong>
+              +{yearsOfExperience} years across product web, eCommerce and
+              full-stack
+            </strong>
+            <span>Vue/Nuxt · Node.js · TypeScript · PostgreSQL</span>
           </div>
         </aside>
 
@@ -103,7 +89,7 @@ const ExperienceSection = () => {
                 onClick={toggleExperiences}
                 className={`${styles.sectionButton} ${styles.experienceActionButton}`}
               >
-                {showAllExperiences ? 'Show less' : 'Show all'}
+                {showAllExperiences ? 'Show less' : 'View full experience'}
               </Button>
             </div>
           )}

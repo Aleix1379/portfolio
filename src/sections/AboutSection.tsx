@@ -1,5 +1,6 @@
 import React, { type CSSProperties } from 'react'
 import { getYearsOfExperience } from '../utils/time'
+import { downloadCv } from '../utils/downloadCv.ts'
 import Button from '../components/Button.tsx'
 import Chip from '../components/Chip.tsx'
 import useReveal from '../hooks/useReveal.ts'
@@ -12,20 +13,6 @@ const AboutSection = () => {
   const sectionRef = useReveal<HTMLElement>()
   const revealDelay = (delay: number): CSSProperties =>
     ({ '--reveal-delay': `${delay}ms` }) as CSSProperties
-
-  const downloadCV = async () => {
-    const response = await fetch('/cv.pdf')
-    const blob = await response.blob()
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.style.display = 'none'
-    a.href = url
-    a.download = 'cv.pdf'
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    window.URL.revokeObjectURL(url)
-  }
 
   return (
     <section
@@ -41,34 +28,40 @@ const AboutSection = () => {
           About me
         </h2>
         <p className={styles.sectionLead} data-reveal style={revealDelay(180)}>
-          Web developer focused on user interfaces, eCommerce platforms, and
-          practical web/mobile applications.
+          Full-stack development for product teams — from frontend
+          implementation to backend services and data layers.
         </p>
       </div>
 
       <div className={styles.aboutGrid}>
-        <div className={styles.aboutCopy} data-reveal style={revealDelay(260)}>
+        <div
+          className={`${styles.card} ${styles.aboutCopy}`}
+          data-reveal
+          style={revealDelay(260)}
+        >
           <p className={styles.aboutBio}>
-            I&apos;m Aleix, a full-stack developer with{' '}
-            <span className={styles.important}>
-              +{yearsOfExperience} years
-            </span>{' '}
-            of experience shipping production software — from eCommerce
-            platforms to mobile apps. I care about clean interfaces, sound
-            architecture, and building features that solve real problems for
-            the people using them.
+            I&apos;m a full-stack web developer with recent professional
+            experience building Vue/Nuxt applications, Node.js services and
+            PostgreSQL-backed platforms.
+          </p>
+          <p className={styles.aboutBio}>
+            Alongside my professional work, I build my own web and mobile
+            products to explore backend architecture, deployment, product
+            decisions and end-to-end development.
           </p>
 
           <div className={styles.aboutFooter}>
             <div className={styles.aboutChips} aria-label="Core technologies">
               <Chip>Vue.js / Nuxt.js</Chip>
-              <Chip>React Native</Chip>
               <Chip>Node.js</Chip>
               <Chip>TypeScript</Chip>
+              <Chip>PostgreSQL</Chip>
             </div>
 
             <Button
-              onClick={downloadCV}
+              onClick={() => {
+                void downloadCv()
+              }}
               className={`${styles.downloadCv} ${styles.sectionButton}`}
             >
               Download CV
@@ -82,17 +75,18 @@ const AboutSection = () => {
           data-reveal
           style={revealDelay(360)}
         >
-          <div className={styles.aboutFact}>
-            <span>Focus</span>
-            <strong>
-              Product interfaces, eCommerce platforms, and web/mobile apps
+          <div className={styles.factCard}>
+            <span className={styles.factCardLabel}>Focus</span>
+            <strong className={styles.factCardValue}>
+              Product applications, web platforms, frontend/full-stack
+              development.
             </strong>
           </div>
-          <div className={styles.aboutFact}>
-            <span>Experience</span>
-            <strong>
-              +{yearsOfExperience} years across full-stack, front-end, and
-              mobile roles
+          <div className={styles.factCard}>
+            <span className={styles.factCardLabel}>Experience</span>
+            <strong className={styles.factCardValue}>
+              +{yearsOfExperience} years across web, frontend and full-stack
+              roles.
             </strong>
           </div>
         </aside>

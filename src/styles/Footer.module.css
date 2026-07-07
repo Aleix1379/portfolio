@@ -24,7 +24,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 24px;
   width: min(100%, var(--content-width));
   margin: 0 auto;
   padding: clamp(26px, 4vw, 36px) clamp(20px, 4vw, 36px);
@@ -46,19 +46,25 @@
 .role {
   margin: 4px 0 0;
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
+  gap: 12px;
+  align-items: center;
 }
 
 .link {
-  padding: 10px 0;
   color: var(--text-muted);
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--accent-strong);
+  outline: none;
 }
 
 .copyright {
@@ -66,7 +72,7 @@
   padding-top: 18px;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 0.84rem;
+  font-size: 0.9rem;
 }
 
 @media (min-width: 760px) {
