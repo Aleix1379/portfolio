@@ -123,12 +123,11 @@
   margin-top: 20px;
 }
 
-.link,
 .techLink {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.linkPrimary {
+.link {
   --link-badge-height: var(--store-button-height);
   --link-badge-font-size: var(--store-button-font-size);
   --badge-row-padding-inline: var(--store-button-padding-inline);
@@ -137,21 +136,7 @@
     calc((var(--store-button-height) - 1em) / 2)
   );
   --badge-optical-shift: 0.03em;
-  color: var(--on-accent);
-  border-color: transparent;
-  background: var(--accent-button);
-  font-weight: 800;
-}
-
-.linkPrimary:hover {
-  color: var(--on-accent);
-  border-color: transparent;
-  background: var(--accent-button-hover);
-}
-
-.linkSecondary {
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.045);
+  font-weight: 700;
 }
 
 .noLinksAvailable {

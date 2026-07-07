@@ -1,4 +1,5 @@
 import React from 'react'
+import useMagneticHover from '../hooks/useMagneticHover'
 import styles from '../styles/IconLink.module.css'
 import badgeStyles from '../styles/Badge.module.css'
 import {
@@ -73,6 +74,7 @@ const IconLink: React.FC<IconLinkProps> = ({
   size,
   variant = 'chip'
 }) => {
+  const actionRef = useMagneticHover<HTMLAnchorElement>()
   const glyphSize = size ?? (variant === 'chip' ? 14 : undefined)
 
   const icons = {
@@ -161,6 +163,7 @@ const IconLink: React.FC<IconLinkProps> = ({
 
   return (
     <a
+      ref={variant === 'action' ? actionRef : undefined}
       href={link.url}
       target="_blank"
       rel="noreferrer"
@@ -173,6 +176,16 @@ const IconLink: React.FC<IconLinkProps> = ({
             {getIcon(link.icon)}
           </span>
           <span className={labelClass}>{link.text}</span>
+        </>
+      ) : variant === 'action' ? (
+        <>
+          <span className={`${badgeStyles.badgeTrack} ${styles.actionTrack}`}>
+            <span className={iconClass} aria-hidden="true">
+              {getIcon(link.icon)}
+            </span>
+            <span className={labelClass}>{link.text}</span>
+          </span>
+          <span className={styles.actionShine} aria-hidden="true" />
         </>
       ) : (
         <span className={badgeStyles.badgeTrack}>

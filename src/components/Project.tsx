@@ -34,8 +34,6 @@ const getInitials = (value: string): string => {
   return (words[0][0] + words[1][0]).toUpperCase()
 }
 
-const isSecondaryLink = (link: Link): boolean => link.icon === 'github'
-
 const Project: React.FC<ProjectProps> = ({
   name,
   type,
@@ -97,11 +95,7 @@ const Project: React.FC<ProjectProps> = ({
             key={index}
             link={link}
             variant="action"
-            className={`${styles.link} ${
-              isSecondaryLink(link)
-                ? styles.linkSecondary
-                : styles.linkPrimary
-            }`}
+            className={styles.link}
           />
         ))}
       </div>

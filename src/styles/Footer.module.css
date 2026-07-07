@@ -61,12 +61,6 @@
   color: var(--text-muted);
 }
 
-.link:hover,
-.link:focus-visible {
-  color: var(--accent-strong);
-  outline: none;
-}
-
 .copyright {
   margin: 0;
   padding-top: 18px;
