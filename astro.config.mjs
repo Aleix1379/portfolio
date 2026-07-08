@@ -4,10 +4,7 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   site: 'https://aleixmp.dev',
-  integrations: [
-    react(),
-    sitemap()
-  ],
+  integrations: [react(), sitemap()],
   vite: {
     build: {
       brotliSize: false

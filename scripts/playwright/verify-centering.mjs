@@ -8,7 +8,7 @@ const browser = await chromium.launch()
 const page = await browser.newPage({ viewport: { width: 1400, height: 1200 } })
 await page.goto(url, { waitUntil: 'networkidle' })
 
-const measureEl = (el) => {
+const measureEl = el => {
   const box = el.getBoundingClientRect()
   const track = el.querySelector(':scope > [class*="badgeTrack"]')
   const content = track
@@ -30,10 +30,9 @@ const measureEl = (el) => {
   const textOffset = textCenter - innerCenter
 
   let iconTextDelta = null
-  const icon =
-    track?.querySelector(':scope > span:first-child svg')
-      ? track.querySelector(':scope > span:first-child')
-      : null
+  const icon = track?.querySelector(':scope > span:first-child svg')
+    ? track.querySelector(':scope > span:first-child')
+    : null
   if (icon) {
     const iconBox = icon.getBoundingClientRect()
     const iconCenter = iconBox.top + iconBox.height / 2
@@ -50,7 +49,7 @@ const measureEl = (el) => {
   }
 }
 
-const results = await page.evaluate((measureSource) => {
+const results = await page.evaluate(measureSource => {
   const measure = new Function('el', `return (${measureSource})(el)`)
 
   const targets = []
@@ -63,21 +62,19 @@ const results = await page.evaluate((measureSource) => {
 
   document
     .querySelectorAll('[aria-label="Portfolio highlights"] [class*="chip"]')
-    .forEach((el) => targets.push({ group: 'stat-chip', el }))
+    .forEach(el => targets.push({ group: 'stat-chip', el }))
 
   document
     .querySelectorAll('#header [class*="primaryAction"]')
-    .forEach((el) => targets.push({ group: 'hero-btn', el }))
+    .forEach(el => targets.push({ group: 'hero-btn', el }))
 
   document
     .querySelectorAll('footer a[class*="linkAction"], footer a[class*="link"]')
-    .forEach((el) => targets.push({ group: 'footer-link', el }))
+    .forEach(el => targets.push({ group: 'footer-link', el }))
 
-  document
-    .querySelectorAll('[class*="tabItem"]')
-    .forEach((el, i) => {
-      if (i < 4) targets.push({ group: 'tab', el })
-    })
+  document.querySelectorAll('[class*="tabItem"]').forEach((el, i) => {
+    if (i < 4) targets.push({ group: 'tab', el })
+  })
 
   document
     .querySelectorAll('[class*="technologies"] a[class*="link"]')
@@ -85,11 +82,9 @@ const results = await page.evaluate((measureSource) => {
       if (i < 6) targets.push({ group: 'tech-chip', el })
     })
 
-  document
-    .querySelectorAll('[class*="linkPrimary"]')
-    .forEach((el, i) => {
-      if (i < 3) targets.push({ group: 'store-btn', el })
-    })
+  document.querySelectorAll('[class*="linkPrimary"]').forEach((el, i) => {
+    if (i < 3) targets.push({ group: 'store-btn', el })
+  })
 
   return targets.map(({ group, el }) => ({ group, ...measure(el) }))
 }, measureEl.toString())
@@ -100,12 +95,14 @@ for (const row of results) {
   summary[row.group].push(row)
 }
 
-console.log('=== Optical centering (|textSkew| ≤ 2px, icon↔text ≤ 0.75px) ===\n')
+console.log(
+  '=== Optical centering (|textSkew| ≤ 2px, icon↔text ≤ 0.75px) ===\n'
+)
 for (const [group, rows] of Object.entries(summary)) {
-  const maxSkew = Math.max(...rows.map((r) => Math.abs(r.textSkew)))
-  const iconRows = rows.filter((r) => r.iconTextDelta !== null)
+  const maxSkew = Math.max(...rows.map(r => Math.abs(r.textSkew)))
+  const iconRows = rows.filter(r => r.iconTextDelta !== null)
   const maxIconText = iconRows.length
-    ? Math.max(...iconRows.map((r) => r.iconTextDelta))
+    ? Math.max(...iconRows.map(r => r.iconTextDelta))
     : 0
   console.log(
     `## ${group} (max|skew|=${maxSkew.toFixed(2)}, max|icon↔text|=${maxIconText.toFixed(2)})`
@@ -145,10 +142,10 @@ await page.screenshot({
 
 await browser.close()
 
-const allMaxSkew = Math.max(...results.map((r) => Math.abs(r.textSkew)))
-const iconResults = results.filter((r) => r.iconTextDelta !== null)
+const allMaxSkew = Math.max(...results.map(r => Math.abs(r.textSkew)))
+const iconResults = results.filter(r => r.iconTextDelta !== null)
 const allMaxIconText = iconResults.length
-  ? Math.max(...iconResults.map((r) => r.iconTextDelta))
+  ? Math.max(...iconResults.map(r => r.iconTextDelta))
   : 0
 
 console.log(`Overall max |textSkew|: ${allMaxSkew.toFixed(2)}px`)

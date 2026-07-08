@@ -14,7 +14,7 @@ await page.addStyleTag({
 })
 
 const data = await page.evaluate(() => {
-  const measure = (el) => {
+  const measure = el => {
     const box = el.getBoundingClientRect()
     const borderTop = parseFloat(getComputedStyle(el).borderTopWidth) || 0
     const borderBottom = parseFloat(getComputedStyle(el).borderBottomWidth) || 0
@@ -40,7 +40,7 @@ const data = await page.evaluate(() => {
   const pick = (sel, group, limit = 6) =>
     [...document.querySelectorAll(sel)]
       .slice(0, limit)
-      .map((el) => ({ group, ...measure(el) }))
+      .map(el => ({ group, ...measure(el) }))
 
   return [
     ...pick('[aria-label="Portfolio highlights"] [class*="chip"]', 'stat', 3),
@@ -51,7 +51,9 @@ const data = await page.evaluate(() => {
   ]
 })
 
-console.log('No-trim fallback (target skew in [-2px, 0px] — slightly low = optically centered)\n')
+console.log(
+  'No-trim fallback (target skew in [-2px, 0px] — slightly low = optically centered)\n'
+)
 for (const row of data) {
   const ok = row.textSkew <= 0 && row.textSkew >= -2
   console.log(
@@ -61,5 +63,5 @@ for (const row of data) {
 
 await browser.close()
 
-const bad = data.filter((r) => r.textSkew > 0 || r.textSkew < -2.15)
+const bad = data.filter(r => r.textSkew > 0 || r.textSkew < -2.15)
 process.exit(bad.length > 0 ? 1 : 0)

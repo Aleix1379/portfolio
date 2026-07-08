@@ -35,9 +35,7 @@ test.describe('Mobile navigation drawer', () => {
     const drawer = page.getByRole('dialog', { name: 'Navigation menu' })
     await expect(drawer).toBeVisible()
 
-    await drawer
-      .getByRole('button', { name: 'Close navigation menu' })
-      .click()
+    await drawer.getByRole('button', { name: 'Close navigation menu' }).click()
     await expect(drawer).toBeHidden()
     await expect(menuButton).toHaveAttribute('aria-expanded', 'false')
   })
@@ -84,9 +82,7 @@ test.describe('Mobile navigation drawer', () => {
   }) => {
     await page.goto('/')
 
-    await page
-      .getByRole('button', { name: 'Open navigation menu' })
-      .click()
+    await page.getByRole('button', { name: 'Open navigation menu' }).click()
 
     const drawer = page.getByRole('dialog', { name: 'Navigation menu' })
     await expect(drawer).toBeVisible()
@@ -132,16 +128,16 @@ test.describe('Mobile navigation drawer', () => {
     await expect(drawer.getByRole('link', { name: 'GitHub' })).toBeVisible()
   })
 
-  test('matches fullscreen mobile menu screenshot', async ({ page }, testInfo) => {
+  test('matches fullscreen mobile menu screenshot', async ({
+    page
+  }, testInfo) => {
     test.skip(
       testInfo.project.name !== 'mobile-chrome',
       'visual regression runs on mobile-chrome only'
     )
 
     await page.goto('/')
-    await page
-      .getByRole('button', { name: 'Open navigation menu' })
-      .click()
+    await page.getByRole('button', { name: 'Open navigation menu' }).click()
 
     const drawer = page.getByRole('dialog', { name: 'Navigation menu' })
     await expect(drawer).toBeVisible()

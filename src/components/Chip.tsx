@@ -27,7 +27,11 @@ const Chip: React.FC<ChipProps> = ({
 }) => {
   const isNote = variant === 'note'
   const isKicker = variant === 'kicker'
-  const baseClass = isNote ? styles.note : isKicker ? styles.kicker : styles.chip
+  const baseClass = isNote
+    ? styles.note
+    : isKicker
+      ? styles.kicker
+      : styles.chip
   const variantClass =
     variant === 'neutral'
       ? styles.neutral
@@ -38,19 +42,18 @@ const Chip: React.FC<ChipProps> = ({
     isNote || isKicker ? '' : active ? styles.active : styles.inactive
   const classNames = `${baseClass} ${variantClass} ${capitalize ? styles.capitalize : ''} ${activeClass} ${href ? styles.chipLink : ''} ${className || ''}`
 
-  const content =
-    isKicker ? (
-      <span className={styles.kickerLabel}>{children}</span>
-    ) : icon ? (
-      <span className={badgeStyles.badgeTrack}>
-        <span className={styles.chipIcon} aria-hidden="true">
-          {icon}
-        </span>
-        <span className={badgeStyles.badgeLabel}>{children}</span>
+  const content = isKicker ? (
+    <span className={styles.kickerLabel}>{children}</span>
+  ) : icon ? (
+    <span className={badgeStyles.badgeTrack}>
+      <span className={styles.chipIcon} aria-hidden="true">
+        {icon}
       </span>
-    ) : (
       <span className={badgeStyles.badgeLabel}>{children}</span>
-    )
+    </span>
+  ) : (
+    <span className={badgeStyles.badgeLabel}>{children}</span>
+  )
 
   if (href) {
     return (

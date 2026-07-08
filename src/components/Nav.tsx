@@ -291,7 +291,9 @@ const Nav = () => {
           className={`${styles.link} ${variant === 'drawer' ? styles.drawerLink : ''} ${isActive ? styles.linkActive : ''}`}
           style={
             variant === 'drawer'
-              ? ({ '--stagger-delay': `${index * 30}ms` } as React.CSSProperties)
+              ? ({
+                  '--stagger-delay': `${index * 30}ms`
+                } as React.CSSProperties)
               : undefined
           }
           aria-label={variant === 'desktop' ? item.label : undefined}

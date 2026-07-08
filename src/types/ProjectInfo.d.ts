@@ -1,23 +1,23 @@
-import type { Link } from "./Link";
-import type { Platform } from "./Platform";
+import type { Link } from './Link'
+import type { Platform } from './Platform'
 
 export interface AppInfo {
-  id: string;
-  name: string;
-  platform: Platform;
-  description: string;
-  technologies: Array<Link>;
+  id: string
+  name: string
+  platform: Platform
+  description: string
+  technologies: Array<Link>
 }
 
 export interface ProjectInfo {
-  id: string;
-  name: string;
-  type: string;
-  description: string;
-  problem: string;
-  role: string;
-  image: string;
-  links: Array<Link>;
-  apps: Array<AppInfo>;
-  active: boolean;
+  id: string
+  name: string
+  type: string
+  description: string
+  problem: string
+  role: string
+  image: string
+  links: Array<Link>
+  apps: Array<AppInfo>
+  active: boolean
 }

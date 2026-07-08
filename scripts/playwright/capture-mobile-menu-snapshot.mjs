@@ -5,10 +5,7 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '../..')
-const snapshotDir = path.join(
-  rootDir,
-  'e2e/mobile-nav.spec.ts-snapshots'
-)
+const snapshotDir = path.join(rootDir, 'e2e/mobile-nav.spec.ts-snapshots')
 const snapshotPath = path.join(
   snapshotDir,
   'mobile-menu-open-mobile-chrome-linux.png'

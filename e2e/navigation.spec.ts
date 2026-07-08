@@ -51,9 +51,7 @@ test.describe('Portfolio Website Navigation', () => {
     await page.waitForSelector('#about')
 
     // Check if the years of experience text is visible
-    await expect(
-      page.getByText(/Vue\/Nuxt applications/i)
-    ).toBeVisible()
+    await expect(page.getByText(/Vue\/Nuxt applications/i)).toBeVisible()
   })
 
   test('should mark the active desktop nav link with aria-current', async ({

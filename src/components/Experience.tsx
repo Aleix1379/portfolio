@@ -41,7 +41,9 @@ const Experience: React.FC<ExperienceProps> = ({
               href={getLocationMapsUrl(experience.location)}
               ariaLabel={`Open ${experience.location} in Google Maps`}
               icon={
-                <ExperienceMetaIcon name={getLocationIcon(experience.location)} />
+                <ExperienceMetaIcon
+                  name={getLocationIcon(experience.location)}
+                />
               }
             >
               {experience.location}

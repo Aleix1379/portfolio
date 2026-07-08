@@ -5,9 +5,7 @@ import HeroHeadline from '../../components/HeroHeadline'
 describe('HeroHeadline Component', () => {
   it('keeps the animated headline semantic and accessible', () => {
     render(
-      <HeroHeadline
-        lines={['Product-focused', 'full-stack developer.']}
-      />
+      <HeroHeadline lines={['Product-focused', 'full-stack developer.']} />
     )
 
     const heading = screen.getByRole('heading', {
@@ -17,8 +15,6 @@ describe('HeroHeadline Component', () => {
 
     expect(heading).toBeInTheDocument()
     expect(heading.querySelector('[aria-hidden="true"]')).toBeInTheDocument()
-    expect(heading).toHaveTextContent(
-      'Product-focused full-stack developer.'
-    )
+    expect(heading).toHaveTextContent('Product-focused full-stack developer.')
   })
 })

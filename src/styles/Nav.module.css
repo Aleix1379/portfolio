@@ -126,10 +126,8 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding:
-    max(12px, env(safe-area-inset-top))
-    max(20px, env(safe-area-inset-right))
-    max(24px, env(safe-area-inset-bottom))
+  padding: max(12px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
     max(20px, env(safe-area-inset-left));
   background: var(--background);
   pointer-events: none;
@@ -413,8 +411,7 @@
   }
 
   .drawer {
-    padding:
-      max(12px, env(safe-area-inset-top))
+    padding: max(12px, env(safe-area-inset-top))
       max(16px, env(safe-area-inset-right))
       max(20px, env(safe-area-inset-bottom))
       max(16px, env(safe-area-inset-left));

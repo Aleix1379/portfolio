@@ -110,7 +110,7 @@ const Project: React.FC<ProjectProps> = ({
     return (
       <div className={styles.platformSection}>
         <Segments
-          options={apps.map((app) => ({
+          options={apps.map(app => ({
             id: app.id,
             label: app.platform
           }))}

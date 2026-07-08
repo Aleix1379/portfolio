@@ -22,9 +22,7 @@
   bottom: var(--segment-padding);
   left: var(--segment-padding);
   z-index: 0;
-  width: calc(
-    (100% - (var(--segment-padding) * 2)) / var(--segment-count)
-  );
+  width: calc((100% - (var(--segment-padding) * 2)) / var(--segment-count));
   border-radius: var(--radius-pill);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)),

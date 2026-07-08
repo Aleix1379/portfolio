@@ -41,9 +41,7 @@ await expect(menuButton()).toHaveAttribute('aria-expanded', 'false')
 
 await menuButton().click()
 await expect(drawer()).toBeVisible()
-await drawer()
-  .getByRole('button', { name: 'Close navigation menu' })
-  .click()
+await drawer().getByRole('button', { name: 'Close navigation menu' }).click()
 await expect(drawer()).toBeHidden()
 await expect(menuButton()).toHaveAttribute('aria-expanded', 'false')
 

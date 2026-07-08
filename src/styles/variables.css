@@ -44,7 +44,10 @@
   --link-badge-height: 38px;
   --link-badge-icon-size: 16px;
   --link-badge-font-size: 12.5px;
-  --link-badge-padding-block: max(0px, calc((var(--link-badge-height) - 1em) / 2));
+  --link-badge-padding-block: max(
+    0px,
+    calc((var(--link-badge-height) - 1em) / 2)
+  );
   --plain-link-icon-size: 24px;
   --project-tabs-tech-gap: 16px;
   --store-button-height: 40px;

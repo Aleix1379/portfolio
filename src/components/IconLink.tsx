@@ -95,8 +95,10 @@ const IconLink: React.FC<IconLinkProps> = ({
 
   const icons = {
     email: <MailGlyph title={'Email'} color={color} size={glyphSize} />,
-    // @ts-ignore
-    googlePlay: <Googleplay title={'GooglePlay'} color={color} size={glyphSize} />,
+    googlePlay: (
+      // @ts-ignore
+      <Googleplay title={'GooglePlay'} color={color} size={glyphSize} />
+    ),
     // @ts-ignore
     appStore: <Appstore title={'AppStore'} color={color} size={glyphSize} />,
     // @ts-ignore
@@ -115,8 +117,10 @@ const IconLink: React.FC<IconLinkProps> = ({
     postgres: <Postgresql title={'Postgres'} color={color} size={glyphSize} />,
     // @ts-ignore
     graphql: <Graphql title={'Graphql'} color={color} size={glyphSize} />,
-    // @ts-ignore
-    typescript: <Typescript title={'Typescript'} color={color} size={glyphSize} />,
+    typescript: (
+      // @ts-ignore
+      <Typescript title={'Typescript'} color={color} size={glyphSize} />
+    ),
     apollographql: (
       // @ts-ignore
       <Apollographql title={'Apollographql'} color={color} size={glyphSize} />
@@ -125,8 +129,10 @@ const IconLink: React.FC<IconLinkProps> = ({
     kotlin: <Kotlin title={'Kotlin'} color={color} size={glyphSize} />,
     // @ts-ignore
     mysql: <Mysql title={'Mysql'} color={color} size={glyphSize} />,
-    // @ts-ignore
-    springBoot: <Springboot title={'SpringBoot'} color={color} size={glyphSize} />,
+    springBoot: (
+      // @ts-ignore
+      <Springboot title={'SpringBoot'} color={color} size={glyphSize} />
+    ),
     // @ts-ignore
     hibernate: <Hibernate title={'Hibernate'} color={color} size={glyphSize} />,
     // @ts-ignore
