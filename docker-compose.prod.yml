@@ -1,0 +1,14 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    expose:
+      - '80'
+    networks:
+      - wishfetch_default
+
+networks:
+  wishfetch_default:
+    external: true
