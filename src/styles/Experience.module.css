@@ -179,14 +179,3 @@
     display: none;
   }
 }
-
-@media (max-width: 640px) {
-  .infoExperience::before {
-    display: none;
-  }
-
-  .infoExperience {
-    gap: 20px;
-    padding-left: 0;
-  }
-}

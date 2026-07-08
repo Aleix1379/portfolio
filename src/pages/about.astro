@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import AboutSection from '../sections/AboutSection.tsx'
+---
+
+<Layout
+  title="About — Aleix Martínez Peña, Full-stack Web Developer"
+  description="Learn more about Aleix Martínez Peña, a full-stack web developer focused on product teams, Vue/Nuxt, Node.js, TypeScript and PostgreSQL."
+>
+  <main class="main">
+    <AboutSection client:visible />
+  </main>
+
+  <style>
+    .main {
+      width: 100%;
+      align-self: center;
+      padding: 24px 20px 0;
+    }
+
+    @media (min-width: 768px) {
+      .main {
+        padding: 48px 24px 0;
+      }
+    }
+  </style>
+</Layout>
+

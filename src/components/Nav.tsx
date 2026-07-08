@@ -320,7 +320,7 @@ const Nav = () => {
           >
             <span className={styles.avatarWrap}>
               <img
-                src={'/images/aleix.webp'}
+                src={'/favicon.svg'}
                 height={44}
                 width={44}
                 className={styles.avatar}
@@ -363,7 +363,7 @@ const Nav = () => {
           >
             <span className={styles.avatarWrap}>
               <img
-                src={'/images/aleix.webp'}
+                src={'/favicon.svg'}
                 height={44}
                 width={44}
                 className={styles.avatar}

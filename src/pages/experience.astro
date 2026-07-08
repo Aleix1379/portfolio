@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ExperienceSection from '../sections/ExperienceSection.tsx'
+---
+
+<Layout
+  title="Experience — Aleix Martínez Peña, Full-stack Web Developer"
+  description="Explore the professional experience of Aleix Martínez Peña across product web, eCommerce and full-stack development roles."
+>
+  <main class="main">
+    <ExperienceSection client:visible />
+  </main>
+
+  <style>
+    .main {
+      width: 100%;
+      align-self: center;
+      padding: 24px 20px 0;
+    }
+
+    @media (min-width: 768px) {
+      .main {
+        padding: 48px 24px 0;
+      }
+    }
+  </style>
+</Layout>
+

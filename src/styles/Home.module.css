@@ -288,9 +288,12 @@
   }
 
   .infoExperience {
-    --timeline-axis: 8.5px;
-    --timeline-dot-offset: -1.5px;
-    padding-left: 28px;
+    gap: 20px;
+    padding-left: 0;
+  }
+
+  .infoExperience::before {
+    display: none;
   }
 }
 

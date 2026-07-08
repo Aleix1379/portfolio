@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://aleixmp.dev/sitemap.xml
+Sitemap: https://aleixmp.dev/sitemap-index.xml

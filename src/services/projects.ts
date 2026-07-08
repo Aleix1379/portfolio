@@ -11,7 +11,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       problem:
         'Manual vacation and time-off approval processes are slow, hard to track, and error-prone.',
       role: 'Backend developer — built the NestJS API.',
-      image: '/images/projects/vacation-flow.png',
+      image: '/favicon.svg',
       active: false,
       links: [
         {
@@ -66,7 +66,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       problem:
         'No dedicated place for gamers to share and discover real PC setups.',
       role: 'Solo developer — Vue/Nuxt frontend and Node.js/GraphQL backend.',
-      image: '/images/projects/my-setuppi.webp',
+      image: '/favicon.svg',
       active: true,
       links: [
         {
@@ -155,7 +155,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       problem:
         'Learners struggle to memorize irregular verbs without short, consistent practice.',
       role: 'Solo developer — React Native app and Node.js/GraphQL backend, published on App Store and Google Play.',
-      image: '/images/projects/enirve.webp',
+      image: '/favicon.svg',
       active: true,
       links: [
         {
@@ -259,7 +259,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       problem:
         'Gamers lack a focused space to discuss games outside noisy general social apps.',
       role: 'Solo developer — React Native app and Kotlin/Spring Boot backend.',
-      image: '/images/projects/talk-and-play.webp',
+      image: '/favicon.svg',
       active: true,
       links: [
         {

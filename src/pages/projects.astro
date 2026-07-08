@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ProjectsSection from '../sections/ProjectsSection.tsx'
+---
+
+<Layout
+  title="Projects — Aleix Martínez Peña, Full-stack Web Developer"
+  description="Selected projects by Aleix Martínez Peña showcasing end-to-end ownership from frontend and mobile interfaces to backend APIs and deployment."
+>
+  <main class="main">
+    <ProjectsSection client:visible />
+  </main>
+
+  <style>
+    .main {
+      width: 100%;
+      align-self: center;
+      padding: 24px 20px 0;
+    }
+
+    @media (min-width: 768px) {
+      .main {
+        padding: 48px 24px 0;
+      }
+    }
+  </style>
+</Layout>
+

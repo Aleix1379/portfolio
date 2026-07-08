@@ -12,7 +12,7 @@ interface Props {
 const {
   title,
   description = "Aleix Martínez Peña — Product-focused full-stack developer. Vue/Nuxt, Node.js, TypeScript and PostgreSQL. Open to frontend and full-stack roles in product teams.",
-  image = '/images/about-developer-workspace.webp',
+  image = '/favicon.svg',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props
 
@@ -35,26 +35,29 @@ const personSchema = {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Full-stack Developer Portfolio</title>
+    <title>{title}</title>
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={Astro.url.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta property="og:site_name" content="Aleix Martínez Peña — Full-stack Developer" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={Astro.url.href} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <meta property="twitter:image" content={new URL(image, Astro.site).href} />
 
     <!-- Structured Data -->
     <script
