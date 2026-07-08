@@ -6,13 +6,16 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "typecheck": "astro check",
+    "format:check": "prettier --check .",
     "preview": "astro preview",
     "astro": "astro",
     "test": "jest --config=jest.config.cjs",
     "test:watch": "jest --watch --config=jest.config.cjs",
     "test:coverage": "jest --coverage --config=jest.config.cjs",
     "test:e2e": "playwright install && playwright test",
-    "playwright:install": "playwright install"
+    "playwright:install": "playwright install",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -35,6 +38,7 @@
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
     "babel-jest": "^29.7.0",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.5.3",
