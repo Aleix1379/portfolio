@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = "Aleix Martínez Peña — Product-focused full-stack developer. Vue/Nuxt, Node.js, TypeScript and PostgreSQL. Open to frontend and full-stack roles in product teams.",
+  description = 'Aleix Martínez Pena — Product-focused full-stack developer. Vue/Nuxt, Node.js, TypeScript and PostgreSQL. Open to frontend and full-stack roles in product teams.',
   image = '/favicon.svg',
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props
@@ -23,7 +23,7 @@ const umamiEnabled = Boolean(umamiHost && umamiWebsiteId)
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Aleix Martínez Peña',
+  name: 'Aleix Martínez Pena',
   jobTitle: 'Full-stack Developer',
   url: Astro.site,
   sameAs: [
@@ -53,7 +53,10 @@ const personSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.site).href} />
-    <meta property="og:site_name" content="Aleix Martínez Peña — Full-stack Developer" />
+    <meta
+      property="og:site_name"
+      content="Aleix Martínez Pena — Full-stack Developer"
+    />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
