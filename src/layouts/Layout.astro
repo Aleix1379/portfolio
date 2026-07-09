@@ -16,6 +16,10 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props
 
+const umamiHost = import.meta.env.PUBLIC_UMAMI_HOST?.replace(/\/$/, '')
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID?.trim()
+const umamiEnabled = Boolean(umamiHost && umamiWebsiteId)
+
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -67,6 +71,17 @@ const personSchema = {
 
     <!-- Robots -->
     <meta name="robots" content="index, follow" />
+
+    {
+      umamiEnabled && (
+        <script
+          defer
+          src={`${umamiHost}/script.js`}
+          data-website-id={umamiWebsiteId}
+          data-domains="aleixmp.dev,www.aleixmp.dev"
+        />
+      )
+    }
   </head>
   <body data-theme="dark">
     <div class="container">

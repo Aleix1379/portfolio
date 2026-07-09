@@ -6,6 +6,12 @@ COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 COPY . .
+
+ARG PUBLIC_UMAMI_HOST=
+ARG PUBLIC_UMAMI_WEBSITE_ID=
+ENV PUBLIC_UMAMI_HOST=$PUBLIC_UMAMI_HOST
+ENV PUBLIC_UMAMI_WEBSITE_ID=$PUBLIC_UMAMI_WEBSITE_ID
+
 RUN bun run build
 
 FROM caddy:2-alpine
