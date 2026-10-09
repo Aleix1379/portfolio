@@ -1,0 +1,92 @@
+{
+  "preparedOn": "2026-10-09",
+  "composition": "Original unaltered application screenshots arranged using containment on a 1600 by 1000 canvas. No generated application UI.",
+  "responsiveVariants": "Original composition resized and encoded as WebP. No screenshot text, interface, or content altered.",
+  "projects": [
+    {
+      "product": "Arcblink",
+      "productUrl": "https://arcblink.com/",
+      "source": "Android tablet gameplay screenshot, English, store asset refresh October 2026",
+      "screen": "gameplay-cpu.png",
+      "slug": "arcblink",
+      "originalCompositionSha256": "6e1cea3a520b9f85e0c94cd6a6cddfc567745bcef51a2a885b610e6d94728e8a",
+      "variants": [
+        {
+          "src": "/images/projects/previews/arcblink-480.webp",
+          "width": 480,
+          "height": 300,
+          "bytes": 33382
+        },
+        {
+          "src": "/images/projects/previews/arcblink-800.webp",
+          "width": 800,
+          "height": 500,
+          "bytes": 76630
+        },
+        {
+          "src": "/images/projects/previews/arcblink-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "bytes": 191630
+        }
+      ]
+    },
+    {
+      "product": "Race Tracker",
+      "productUrl": "https://motorsport.aleixmp.dev/marketing",
+      "source": "Genuine Android Google Play screenshots, English",
+      "screens": ["02-calendar.png", "04-results.png"],
+      "slug": "race-tracker",
+      "originalCompositionSha256": "0e1ec01455789958e69d6b7de9ceb615dbdd65b1e6ab3a33f37a8ef60e233812",
+      "variants": [
+        {
+          "src": "/images/projects/previews/race-tracker-480.webp",
+          "width": 480,
+          "height": 300,
+          "bytes": 9280
+        },
+        {
+          "src": "/images/projects/previews/race-tracker-800.webp",
+          "width": 800,
+          "height": 500,
+          "bytes": 20632
+        },
+        {
+          "src": "/images/projects/previews/race-tracker-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "bytes": 57816
+        }
+      ]
+    },
+    {
+      "product": "WishFetch",
+      "productUrl": "https://wishfetch.com/",
+      "source": "Genuine Android end-to-end QA shared-list and reservation screenshots, June 2026",
+      "screens": ["11-collab-shared-list.png", "13-collab-reserved-detail.png"],
+      "limitation": "Earlier UI and technical QA list and gift names are preserved. These are June 2026 QA screens, not current production screenshots.",
+      "slug": "wishfetch",
+      "originalCompositionSha256": "4253ac96f57bc6da3b53e74f9889e7519cfd59e77083bc34059fd158d930772e",
+      "variants": [
+        {
+          "src": "/images/projects/previews/wishfetch-480.webp",
+          "width": 480,
+          "height": 300,
+          "bytes": 7386
+        },
+        {
+          "src": "/images/projects/previews/wishfetch-800.webp",
+          "width": 800,
+          "height": 500,
+          "bytes": 15372
+        },
+        {
+          "src": "/images/projects/previews/wishfetch-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "bytes": 42270
+        }
+      ]
+    }
+  ]
+}
