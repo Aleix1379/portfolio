@@ -89,29 +89,13 @@ describe('AboutIllustration', () => {
     expect(sprites).toHaveLength(1)
   })
 
-  it('lets the visitor pause and resume without replacing the loaded sprite', () => {
+  it('shows the illustration without animation controls before and after loading', () => {
     render(<AboutIllustration />)
-    const illustration = screen.getByRole('img').parentElement!
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
     setInViewport(true)
     fireEvent.load(sprites[0])
-    const sprite = illustration.querySelector('[aria-hidden="true"]')
-    const pause = screen.getByRole('button', { name: 'Pause animation' })
-    pause.focus()
-    fireEvent.click(pause)
-    expect(illustration).toHaveAttribute('data-paused', 'true')
-    expect(screen.getByRole('button', { name: 'Resume animation' })).toHaveFocus()
-    setInViewport(false)
-    setInViewport(true)
-    visibility = 'hidden'
-    fireEvent(document, new Event('visibilitychange'))
-    visibility = 'visible'
-    fireEvent(document, new Event('visibilitychange'))
-    expect(illustration).toHaveAttribute('data-paused', 'true')
-    fireEvent.click(screen.getByRole('button', { name: 'Resume animation' }))
-    expect(illustration).toHaveAttribute('data-paused', 'false')
-    expect(illustration.querySelector('[aria-hidden="true"]')).toBe(sprite)
-    expect(sprites).toHaveLength(1)
+    expect(screen.getByRole('img').parentElement).toHaveAttribute('data-animating', 'true')
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
   it('respects reduced motion initially and when the preference changes', () => {

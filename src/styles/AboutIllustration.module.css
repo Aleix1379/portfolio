@@ -2,33 +2,6 @@
   display: block;
 }
 
-.controls {
-  display: flex;
-  justify-content: center;
-  min-height: 44px;
-}
-
-.controls button {
-  min-height: 44px;
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.75rem;
-  cursor: pointer;
-}
-
-.controls button:hover {
-  background: var(--surface);
-  color: var(--text);
-}
-
-.controls button:disabled {
-  cursor: default;
-}
-
 .illustration {
   position: relative;
   display: block;
@@ -63,7 +36,7 @@
   visibility: visible;
 }
 
-.illustration[data-animating='true'][data-paused='false'] .activity {
+.illustration[data-animating='true'] .activity {
   animation-play-state: running;
 }
 

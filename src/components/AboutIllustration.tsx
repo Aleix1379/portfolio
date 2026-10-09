@@ -12,7 +12,6 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
   const ref = useRef<HTMLSpanElement>(null)
   const [isReady, setIsReady] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     if (!ref.current || !('IntersectionObserver' in window)) return
@@ -77,7 +76,6 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
         ref={ref}
         className={styles.illustration}
         data-animating={isAnimating}
-        data-paused={isPaused}
       >
         <img
           src="/images/about-aleix.webp"
@@ -91,16 +89,6 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
           }}
         />
         {isReady && <span className={styles.activity} aria-hidden="true" />}
-      </span>
-      <span className={styles.controls}>
-        <button
-          type="button"
-          hidden={!isReady}
-          disabled={!isAnimating}
-          onClick={() => setIsPaused(paused => !paused)}
-        >
-          {isPaused ? 'Resume animation' : 'Pause animation'}
-        </button>
       </span>
     </span>
   )
