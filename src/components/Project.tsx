@@ -1,10 +1,16 @@
-import React, { type KeyboardEvent, useId, useRef, useState } from 'react'
+import React, {
+  type KeyboardEvent,
+  useEffect,
+  useId,
+  useRef,
+  useState
+} from 'react'
+import { Appstore, Googleplay } from '@icons-pack/react-simple-icons'
 import styles from '../styles/Project.module.css'
 import type { Link } from '../types/Link'
+import type { AppInfo, ProjectPreview } from '../types/ProjectInfo'
+import ActionLink from './ActionLink'
 import IconLink from './IconLink'
-import type { AppInfo } from '../types/ProjectInfo'
-import { useCardTilt } from '../hooks/useCardTilt'
-import tiltStyles from '../styles/CardTilt.module.css'
 
 interface ProjectProps {
   name: string
@@ -12,6 +18,9 @@ interface ProjectProps {
   image: string
   links: Array<Link>
   apps: Array<AppInfo>
+  preview?: ProjectPreview
+  contribution?: string
+  featuredTechnologies?: Array<string>
 }
 
 const Project: React.FC<ProjectProps> = ({
@@ -19,13 +28,20 @@ const Project: React.FC<ProjectProps> = ({
   description,
   image,
   links,
-  apps
+  apps,
+  preview,
+  contribution,
+  featuredTechnologies = []
 }) => {
-  const [activeAppIndex, setActiveAppIndex] = useState<number>(0)
+  const [hydrated, setHydrated] = useState(false)
+  const [activeAppIndex, setActiveAppIndex] = useState(0)
   const selectedIndex = activeAppIndex < apps.length ? activeAppIndex : 0
-  const tabsId = useId()
+  const projectId = useId()
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
-  const tiltProps = useCardTilt()
+
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
 
   const handleTabKeyDown = (
     event: KeyboardEvent<HTMLButtonElement>,
@@ -54,95 +70,150 @@ const Project: React.FC<ProjectProps> = ({
   }
 
   return (
-    <div {...tiltProps} className={`${styles.project} ${tiltStyles.card}`}>
-      <div className={styles.title}>
-        <h2 className={styles.subtitle}>{name}</h2>
-      </div>
-
-      <div className={styles.image}>
-        <img src={image} width={70} height={70} alt="Project logo" />
-      </div>
-
-      <p>{description}</p>
-
-      <h3 className={`${styles.subtitle}`}>Links</h3>
-      {links.length > 0 && (
-        <>
-          <div className={`${styles.links} ${styles.linksLast}`}>
-            {links.map((link, index) => (
-              <IconLink
-                key={index}
-                link={link}
-                size={25}
-                className={styles.link}
-              />
-            ))}
-          </div>
-        </>
+    <article className={styles.project} aria-labelledby={`${projectId}-title`}>
+      {preview ? (
+        <img
+          className={styles.preview}
+          src={preview.src}
+          srcSet={preview.srcSet}
+          sizes="(min-width: 1248px) 350px, (min-width: 1200px) calc((100vw - 96px) / 3 - 34px), (min-width: 768px) calc((100vw - 72px) / 2 - 34px), calc(100vw - 74px)"
+          width={preview.width}
+          height={preview.height}
+          alt={preview.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <img
+          className={styles.logo}
+          src={image}
+          width={70}
+          height={70}
+          alt={`${name} logo`}
+          loading="lazy"
+        />
       )}
 
-      {links.length === 0 && (
-        <div className={styles.noLinksAvailable}>
-          <span>No links available</span>
-        </div>
-      )}
+      <div className={styles.content}>
+        <h3 id={`${projectId}-title`} className={styles.title}>
+          {name}
+        </h3>
+        <p className={styles.description}>{description}</p>
+        {contribution && <p className={styles.contribution}>{contribution}</p>}
 
-      {apps && apps.length > 0 && (
-        <>
-          <div
-            className={styles.tabsContainer}
-            role="tablist"
-            aria-label={`${name} platforms`}
+        {featuredTechnologies.length > 0 && (
+          <ul
+            className={styles.featuredTechnologies}
+            aria-label={`${name} main technologies`}
           >
-            {apps.map((app, index) => (
-              <button
-                type="button"
-                key={app.id}
-                ref={element => {
-                  tabRefs.current[index] = element
-                }}
-                id={`${tabsId}-tab-${app.id}`}
-                role="tab"
-                aria-selected={index === selectedIndex}
-                aria-controls={`${tabsId}-panel-${app.id}`}
-                tabIndex={index === selectedIndex ? 0 : -1}
-                onClick={() => setActiveAppIndex(index)}
-                onKeyDown={event => handleTabKeyDown(event, index)}
-                className={styles.tabItem}
+            {featuredTechnologies.map(technology => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+        )}
+
+        {links.length > 0 ? (
+          <div className={styles.actions}>
+            {links.map((link, index) => (
+              <ActionLink
+                key={link.url}
+                href={link.url}
+                variant={index === 0 ? 'primary' : 'secondary'}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${link.text} — ${name} (opens in a new tab)`}
               >
-                {app.platform.charAt(0).toUpperCase() + app.platform.slice(1)}
-              </button>
+                {link.icon === 'appStore' && (
+                  <Appstore
+                    aria-hidden="true"
+                    focusable="false"
+                    size={16}
+                    color="currentColor"
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  />
+                )}
+                {link.icon === 'googlePlay' && (
+                  <Googleplay
+                    aria-hidden="true"
+                    focusable="false"
+                    size={16}
+                    color="currentColor"
+                    onPointerEnterCapture={undefined}
+                    onPointerLeaveCapture={undefined}
+                  />
+                )}
+                {link.text}
+              </ActionLink>
             ))}
           </div>
+        ) : (
+          <p className={styles.contribution}>No public links available.</p>
+        )}
 
-          {apps.map((app, index) => (
+        {apps.length > 0 && (
+          <details className={styles.details}>
+            <summary>Technical details</summary>
             <div
-              key={app.id}
-              className={styles.appContent}
-              id={`${tabsId}-panel-${app.id}`}
-              role="tabpanel"
-              aria-labelledby={`${tabsId}-tab-${app.id}`}
-              hidden={index !== selectedIndex}
-              tabIndex={0}
+              className={styles.tabsContainer}
+              role="tablist"
+              aria-label={`${name} platforms`}
+              hidden={!hydrated}
             >
-              <p>{app.description}</p>
-
-              <h3 className={styles.subtitle}>Technologies</h3>
-              <div className={styles.links}>
-                {app.technologies.map((technology, index) => (
-                  <IconLink
-                    key={index}
-                    link={technology}
-                    size={25}
-                    className={styles.link}
-                  />
-                ))}
-              </div>
+              {apps.map((app, index) => (
+                <button
+                  type="button"
+                  key={app.id}
+                  ref={element => {
+                    tabRefs.current[index] = element
+                  }}
+                  id={`${projectId}-tab-${app.id}`}
+                  role="tab"
+                  aria-selected={index === selectedIndex}
+                  aria-controls={`${projectId}-panel-${app.id}`}
+                  tabIndex={index === selectedIndex ? 0 : -1}
+                  onClick={() => setActiveAppIndex(index)}
+                  onKeyDown={event => handleTabKeyDown(event, index)}
+                  className={styles.tabItem}
+                >
+                  {app.platform.charAt(0).toUpperCase() + app.platform.slice(1)}
+                </button>
+              ))}
             </div>
-          ))}
-        </>
-      )}
-    </div>
+
+            {apps.map((app, index) => (
+              <section
+                key={app.id}
+                className={styles.appContent}
+                id={`${projectId}-panel-${app.id}`}
+                role={hydrated ? 'tabpanel' : undefined}
+                aria-labelledby={
+                  hydrated
+                    ? `${projectId}-tab-${app.id}`
+                    : `${projectId}-heading-${app.id}`
+                }
+                hidden={hydrated && index !== selectedIndex}
+                tabIndex={hydrated ? 0 : undefined}
+              >
+                <h4 id={`${projectId}-heading-${app.id}`}>{app.name}</h4>
+                <p>{app.description}</p>
+                <div className={styles.technologyLinks}>
+                  {app.technologies.map(technology => (
+                    <IconLink
+                      key={`${technology.text}-${technology.url}`}
+                      link={technology}
+                      size={18}
+                      color="currentColor"
+                      className={styles.technologyLink}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </details>
+        )}
+      </div>
+    </article>
   )
 }
 

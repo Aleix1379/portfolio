@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import Header from '../components/Header.tsx'
 import AboutSection from '../sections/AboutSection.tsx'
 import ExperienceSection from '../sections/ExperienceSection.tsx'
 import ProjectsSection from '../sections/ProjectsSection.tsx'
@@ -7,32 +8,16 @@ import ContactSection from '../sections/ContactSection.tsx'
 ---
 
 <Layout
-  title="Aleix - Web Developer Portfolio"
-  description="Aleix's portfolio - Web developer specializing in Vue.js, React, Node.js, and TypeScript"
+  title="Aleix Martínez Pena — Full-stack developer"
+  description="Full-stack developer building web and mobile products. Explore Arcblink, Race Tracker and WishFetch, my experience, and how to get in touch."
   image="/images/about-aleix.webp"
 >
-  <main class="main">
-    <AboutSection client:visible />
-    <ExperienceSection client:visible />
+  <main id="main-content" tabindex="-1">
+    <Header client:load />
     <ProjectsSection client:visible />
+    <ExperienceSection client:visible />
+    <AboutSection />
     <ContactSection client:visible />
   </main>
 
-  <style>
-      .main {
-          transition: background-color 0.5s;
-          align-self: center;
-          box-shadow: 0 0 15px -12px var(--sh-main);
-          border-radius: 3px;
-          padding: 50px 15px 0;
-      }
-
-      @media (min-width: 768px) {
-          .main {
-              padding-left: 50px;
-              padding-right: 50px;
-              max-width: var(--content-width);
-          }
-      }
-  </style>
 </Layout>

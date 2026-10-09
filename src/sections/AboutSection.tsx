@@ -1,64 +1,36 @@
 import React from 'react'
-import { getYearsOfExperience } from '../utils/time'
-import Button from '../components/Button.tsx'
-import AboutIllustration from '../components/AboutIllustration.tsx'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/AboutSection.module.css'
 
-const AboutSection = () => {
-  const yearsOfExperience = getYearsOfExperience({
-    filter: { fullTime: true }
-  })
-
-  const downloadCV = async () => {
-    const response = await fetch('/cv.pdf')
-    const blob = await response.blob()
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.style.display = 'none'
-    a.href = url
-    a.download = 'cv.pdf'
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    window.URL.revokeObjectURL(url)
-  }
-
-  return (
-    <section
-      id="about"
-      className={styles.section}
-      style={{ position: 'relative', top: '10px' }}>
-      <Button onClick={downloadCV} className={styles.downloadCv}>
-        Download CV
-      </Button>
-
-      <h2>About me</h2>
-      <div className={styles.infoAbout}>
-        <AboutIllustration className={styles.aboutIllustration} />
-        <div>
-          <div className={styles.paragraph}>
-            <span>Full-stack developer with </span>
-            <span className={styles.important}>{yearsOfExperience}+ years</span>
-            <span> of experience</span>
-          </div>
-
-          <p>
-            <span>I build web applications and backend services with </span>
-            <span className={styles.important}>
-              Vue.js, Nuxt.js, Node.js, TypeScript and PostgreSQL
-            </span>
-            <span>.</span>
-          </p>
-
-          <p>
-            <span>I also build my own </span>
-            <span className={styles.important}>web and mobile products</span>
-            <span>, from development to deployment.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
+const AboutSection = () => (
+  <section
+    id="about"
+    tabIndex={-1}
+    aria-labelledby="about-heading"
+    className={`portfolio-section content-container ${styles.section}`}
+  >
+    <div className={styles.heading}>
+      <p className={styles.eyebrow}>A LITTLE ABOUT ME</p>
+      <h2 id="about-heading">
+        From an idea
+        <br />
+        to a working product.
+      </h2>
+    </div>
+    <div className={styles.copy}>
+      <p>
+        I enjoy connecting the different parts of a product: the interface
+        people use, the data it depends on and the services that keep it
+        running. My work has included commerce, subscriptions, logistics
+        integrations and mobile applications.
+      </p>
+      <p>
+        Building my own products gives me room to explore ideas and work through
+        the whole process, from development to deployment. I bring that
+        practical perspective to teams, collaborating on design and turning
+        requirements into working software.
+      </p>
+    </div>
+  </section>
+)
 
 export default AboutSection

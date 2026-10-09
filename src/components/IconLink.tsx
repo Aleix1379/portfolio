@@ -28,7 +28,7 @@ import {
   Nuxtdotjs,
   Nestjs,
   Flutter,
-  Dart,
+  Dart
 } from '@icons-pack/react-simple-icons'
 import type { BrandIcon, Link } from '../types/Link'
 
@@ -42,7 +42,7 @@ interface IconLinkProps {
 const IconLink: React.FC<IconLinkProps> = ({
   link,
   className,
-  color = '#454545',
+  color = 'currentColor',
   size = 40
 }) => {
   const icons = {
@@ -105,7 +105,7 @@ const IconLink: React.FC<IconLinkProps> = ({
     // @ts-ignore
     flutter: <Flutter title={'Flutter'} color={color} size={size} />,
     // @ts-ignore
-    dart: <Dart title={'Dart'} color={color} size={size} />,
+    dart: <Dart title={'Dart'} color={color} size={size} />
   }
   const getIcon = (name: BrandIcon) => {
     return icons[name]
@@ -115,9 +115,14 @@ const IconLink: React.FC<IconLinkProps> = ({
     <a
       href={link.url}
       target="_blank"
-      rel="noreferrer"
-      className={`${styles.link} ${className}`}>
-      {getIcon(link.icon)}
+      rel="noopener noreferrer"
+      className={`${styles.link} ${className}`}
+    >
+      {link.icon !== 'web' && (
+        <span className={styles.icon} aria-hidden="true">
+          {getIcon(link.icon)}
+        </span>
+      )}
       <span>{link.text}</span>
     </a>
   )

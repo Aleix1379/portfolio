@@ -1,143 +1,25 @@
 .switch {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-control);
+  transition: background-color 180ms;
 }
-
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-switch);
-    padding-left: 12px;
-    padding-right: 12px;
-    transition: border 1s;
-    border: 4px solid transparent;
-    color: inherit;
+.switch:hover {
+  background: var(--surface-hover);
 }
-
-.wrapper::after {
-    content: '';
-    position: absolute;
-    height: calc(100% + 20px);
-    width: calc(100% + 20px);
-    top: -9px;
-    left: calc(-100% - 30px);
-    z-index: -1;
-    border-radius: 50px;
-    background-color: #38c188;
+.switch img {
+  object-fit: contain;
 }
-
-.switchOn::after {
-    animation: borderEnterAnimation 1.5s cubic-bezier(.46, .35, .15, 2.02) forwards;
-}
-
-.switchOff::after {
-    animation: borderLeaveAnimation 1.75s cubic-bezier(.46, .35, .15, 2.02) forwards;
-}
-
-
-.wrapper > span {
-    overflow: visible !important;
-}
-
-.off,
-.on {
-    filter: brightness(.15);
-    transition: .5s;
-    animation: statusOffAnimation .75s forwards;
-}
-
-.statusVisible {
-    animation: statusOnAnimation .75s forwards;
-}
-
-.selector {
-    transform: translateX(100%);
-    transition: .5s;
-    border-radius: 50%;
-    border: 3px solid #666;
-    z-index: 100;
-    position: absolute;
-}
-
-.selectorActive {
-    animation: selectorOffAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
-}
-
-.selectorInActive {
-    animation: selectorOnAnimation .4s cubic-bezier(.46, .35, .15, 2.02) forwards;
-}
-
-@keyframes statusOnAnimation {
-    0% {
-        filter: brightness(.15);
-    }
-
-    50% {
-        transform: scale(1.35) rotate(15deg);
-        filter: brightness(1);
-    }
-
-    100% {
-        filter: brightness(1);
-    }
-}
-
-@keyframes statusOffAnimation {
-    0% {
-        filter: brightness(1);
-    }
-
-    100% {
-        filter: brightness(.15);
-        transform: scale(0);
-    }
-}
-
-@keyframes selectorOnAnimation {
-    0% {
-        background-color: #EFEDEE;
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(0);
-        background-color: gold;
-    }
-}
-
-@keyframes selectorOffAnimation {
-    0% {
-        transform: translateX(0);
-        background-color: gold;
-    }
-
-    100% {
-        transform: translateX(65px);
-        background-color: #EFEDEE;
-    }
-}
-
-@keyframes borderEnterAnimation {
-    0% {
-        left: -100px;
-    }
-    100% {
-        left: 0;
-    }
-}
-
-@keyframes borderLeaveAnimation {
-    0% {
-        left: 0;
-    }
-
-    100% {
-        left: calc(-100% - 25px);
-    }
+@media (max-width: 259px) {
+  .switch {
+    width: 32px;
+    height: 36px;
+    padding: 4px;
+  }
 }

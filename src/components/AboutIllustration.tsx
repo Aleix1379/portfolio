@@ -12,6 +12,7 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
   const ref = useRef<HTMLSpanElement>(null)
   const [isReady, setIsReady] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
     if (!ref.current || !('IntersectionObserver' in window)) return
@@ -25,7 +26,8 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
 
     const sync = () => {
       if (disposed) return
-      const allowed = visible && !motion.matches && document.visibilityState === 'visible'
+      const allowed =
+        visible && !motion.matches && document.visibilityState === 'visible'
 
       if (allowed && !requested) {
         requested = true
@@ -37,7 +39,9 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
     }
 
     sprite.onload = () => {
-      loaded = sprite.naturalWidth === spriteSize && sprite.naturalHeight === spriteSize
+      loaded =
+        sprite.naturalWidth === spriteSize &&
+        sprite.naturalHeight === spriteSize
       sync()
     }
     sprite.onerror = () => {
@@ -45,10 +49,13 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
       sync()
     }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting && entry.intersectionRatio >= 0.15
-      sync()
-    }, { threshold: [0, 0.15] })
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting && entry.intersectionRatio >= 0.15
+        sync()
+      },
+      { threshold: [0, 0.15] }
+    )
 
     observer.observe(ref.current)
     motion.addEventListener('change', sync)
@@ -65,18 +72,36 @@ const AboutIllustration = ({ className }: AboutIllustrationProps) => {
   }, [])
 
   return (
-    <span
-      ref={ref}
-      className={`${styles.illustration} ${className ?? ''}`}
-      data-animating={isAnimating}>
-      <img
-        src="/images/about-aleix.webp"
-        alt="Illustration of Aleix sitting with a laptop"
-        width={1254}
-        height={1254}
-        loading="eager"
-      />
-      {isReady && <span className={styles.activity} aria-hidden="true" />}
+    <span className={`${styles.wrapper} ${className ?? ''}`}>
+      <span
+        ref={ref}
+        className={styles.illustration}
+        data-animating={isAnimating}
+        data-paused={isPaused}
+      >
+        <img
+          src="/images/about-aleix.webp"
+          alt="Illustration of Aleix sitting with a laptop"
+          width={1254}
+          height={1254}
+          loading="eager"
+          {...{
+            // React 18 forwards this browser hint as a lowercase attribute.
+            fetchpriority: 'high'
+          }}
+        />
+        {isReady && <span className={styles.activity} aria-hidden="true" />}
+      </span>
+      <span className={styles.controls}>
+        <button
+          type="button"
+          hidden={!isReady}
+          disabled={!isAnimating}
+          onClick={() => setIsPaused(paused => !paused)}
+        >
+          {isPaused ? 'Resume animation' : 'Pause animation'}
+        </button>
+      </span>
     </span>
   )
 }

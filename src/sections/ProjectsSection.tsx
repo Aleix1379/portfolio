@@ -1,48 +1,41 @@
 import React from 'react'
 import Project from '../components/Project'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/ProjectsSection.module.css'
 import { getProjects } from '../services/projects'
 
 const ProjectsSection = () => {
   const projects = getProjects()
 
   return (
-    <section id="projects" className={styles.section}>
-      <h2>Projects</h2>
-      <div className={styles.infoProjects}>
-        <img
-          src="/images/projects-aleix.webp"
-          alt="Illustration of Aleix assembling cards representing his apps"
-          className={styles.imageProjects}
-          width={1536}
-          height={1024}
-          loading="lazy"
-        />
-        <div>
-          <span>
-            I like to work on personal projects to improve and learn new
-            technologies, usually with
-          </span>
-          <span className={styles.important}> Vue.js</span>,
-          <span className={styles.important}> React Native </span>and
-          <span className={styles.important}> NodeJS</span>
+    <section
+      id="projects"
+      className="portfolio-section"
+      aria-labelledby="projects-title"
+      tabIndex={-1}
+    >
+      <div className="content-container">
+        <div className={styles.heading}>
+          <h2 id="projects-title">Selected projects</h2>
           <p>
-            <span>All powered by </span>
-            <span className={styles.important}> TypeScript ✨</span>
+            Web and mobile products I've built, connecting interfaces, backend
+            services and deployment.
           </p>
         </div>
-      </div>
-      <div className={styles.projects}>
-        {projects.map(project => (
-          <Project
-            key={project.id}
-            name={project.name}
-            description={project.description}
-            image={project.image}
-            links={project.links}
-            apps={project.apps}
-          />
-        ))}
+        <div className={styles.projects}>
+          {projects.map(project => (
+            <Project
+              key={project.id}
+              name={project.name}
+              description={project.description}
+              image={project.image}
+              links={project.links}
+              apps={project.apps}
+              preview={project.preview}
+              contribution={project.contribution}
+              featuredTechnologies={project.featuredTechnologies}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

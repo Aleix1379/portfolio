@@ -1,0 +1,57 @@
+.section {
+  max-width: 1200px;
+}
+.heading {
+  margin-bottom: 40px;
+}
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.heading h2 {
+  margin: 0 0 16px;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+.introduction {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--muted);
+}
+.timeline {
+  max-width: 1040px;
+}
+.history {
+  border-top: 1px solid var(--border);
+}
+.summary {
+  display: list-item;
+  width: fit-content;
+  min-height: 48px;
+  padding-block: 12px;
+  margin-top: 16px;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  list-style-position: inside;
+  cursor: pointer;
+}
+.summary:hover {
+  color: var(--accent);
+}
+.previous {
+  padding-top: 16px;
+}
+@media (min-width: 768px) {
+  .heading h2 {
+    font-size: 3rem;
+  }
+  .heading {
+    margin-bottom: 48px;
+  }
+}

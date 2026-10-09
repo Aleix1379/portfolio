@@ -1,21 +1,30 @@
 import React from 'react'
 import styles from '../styles/Header.module.css'
-
-const Header = () => {
-  return (
-    <header id="header" className={styles.header}>
-      <div className={styles.content}>
+import AboutIllustration from './AboutIllustration'
+import ActionLink from './ActionLink'
+import { getYearsOfExperience } from '../utils/time'
+const Header = () => (
+  <header id="header" className={styles.header} tabIndex={-1}>
+    <div className={`${styles.content} content-container`}>
+      <div className={styles.introduction}>
         <h1 className={styles.name}>I'm Aleix.</h1>
-        <p className={styles.profession}>Full-stack developer</p>
-        <p className={styles.description}>
-          I build web applications and backend services.
+        <p className={styles.profession}>
+          Full-stack developer building web and mobile products.
         </p>
-        <a className={styles.cta} href="#projects">
-          View projects
-        </a>
+        <p className={styles.description}>
+          {getYearsOfExperience({ filter: { fullTime: true } })}+ years of
+          experience in web development. I build applications, backend services
+          and my own products—from development to deployment.
+        </p>
+        <div className={styles.actions}>
+          <ActionLink href="#projects">View projects</ActionLink>
+          <ActionLink href="#contact" variant="secondary">
+            Get in touch
+          </ActionLink>
+        </div>
       </div>
-    </header>
-  )
-}
-
+      <AboutIllustration className={styles.illustration} />
+    </div>
+  </header>
+)
 export default Header

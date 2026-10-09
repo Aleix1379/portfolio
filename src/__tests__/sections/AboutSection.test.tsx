@@ -1,20 +1,22 @@
-import React from 'react';
-import { getYearsOfExperience } from '../../utils/time';
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import AboutSection from '../../sections/AboutSection'
 
-// Mock the utility functions
-jest.mock('../../utils/time', () => ({
-  getYearsOfExperience: jest.fn(() => 5)
-}));
-
-// Skip tests for now due to issues with React Testing Library and React 18
-describe.skip('AboutSection Component', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  // Test that getYearsOfExperience is called with the correct parameters
-  it('calls getYearsOfExperience with the correct parameters', () => {
-    // This test is skipped for now
-    expect(true).toBe(true);
-  });
-});
+describe('AboutSection', () => {
+  it('has a labelled section and describes the work without a floating CV control', () => {
+    const { container } = render(<AboutSection />)
+    const heading = screen.getByRole('heading', { level: 2 })
+    expect(container.querySelector('#about')).toHaveAttribute(
+      'aria-labelledby',
+      heading.id
+    )
+    expect(
+      screen.getByText(
+        /commerce, subscriptions, logistics integrations and mobile applications/
+      )
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: /Download CV/ })
+    ).not.toBeInTheDocument()
+  })
+})

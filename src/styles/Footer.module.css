@@ -1,125 +1,59 @@
 .footer {
-    display: grid;
-    grid-template-columns: minmax(0, 11fr) minmax(0, 7fr);
-    gap: 24px;
-    align-items: center;
-    justify-items: center;
-    color: var(--text-color);
-    background-color: var(--bg-project);
-    text-align: center;
-    font-family: 'Dancing Script', serif;
-    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
-    margin-top: 10px;
-    /* Leave room for the existing floating Download CV button. */
-    padding: 32px 24px 96px;
+  margin-top: 64px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }
-
-.reactIllustration,
-.astroIllustration {
-    position: relative;
-    display: block;
-    max-width: 100%;
-    min-width: 0;
-    grid-row: 1;
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
-
-.reactIllustration {
-    grid-column: 1;
-    width: 220px;
-    aspect-ratio: 4 / 3;
+.name {
+  color: var(--text);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
 }
-
-.astroIllustration {
-    grid-column: 2;
-    width: 140px;
-    aspect-ratio: 4 / 5;
-}
-
 .credit {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    min-width: 0;
-    line-height: 1.35;
-    text-wrap: balance;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.8;
 }
-
-.base {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+.signature {
+  margin-left: 4px;
+  color: var(--text);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.375rem;
 }
-
-.layers {
-    position: absolute;
-    inset: 0;
-    visibility: hidden;
-    pointer-events: none;
+.backToTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 0.8125rem;
 }
-
-.layers > img,
-.orbits {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.backToTop:hover {
+  color: var(--accent);
 }
-
-.orbitMotion {
-    transform-box: view-box;
-    animation: orbit 24s linear infinite;
-    animation-play-state: paused;
-}
-
-.flame {
-    /* Top of the isolated flame in its complete 540x675 canvas. */
-    transform-origin: 50% 63.7%;
-    animation: flame 3s ease-in-out infinite;
-    animation-play-state: paused;
-}
-
-.footer[data-animating='true'] .base {
-    opacity: 0;
-}
-
-.footer[data-animating='true'] .layers {
-    visibility: visible;
-}
-
-.footer[data-animating='true'] .orbitMotion,
-.footer[data-animating='true'] .flame {
-    animation-play-state: running;
-}
-
-@keyframes orbit {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes flame {
-    0%, 100% { transform: translateY(0) scaleY(1); }
-    50% { transform: translateY(2px) scaleY(1.06); }
-}
-
 @media (min-width: 768px) {
-    .footer { margin-top: 80px; }
+  .footer {
+    margin-top: 96px;
+  }
+  .content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
-
-@media (min-width: 1024px) {
-    .footer {
-        grid-template-columns: 300px minmax(0, 1fr) 180px;
-        gap: 32px;
-        padding: 48px clamp(24px, 4vw, 64px) 96px;
-    }
-    .reactIllustration { width: 300px; }
-    .astroIllustration { grid-column: 3; width: 180px; }
-    .credit { grid-column: 2; grid-row: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .footer[data-animating] .base { opacity: 1; }
-    .footer[data-animating] .layers { visibility: hidden; }
-    .footer[data-animating] .orbitMotion,
-    .footer[data-animating] .flame { animation-play-state: paused; }
+@media (max-width: 767px) {
+  .content {
+    gap: 16px;
+  }
+  .credit {
+    flex-basis: 100%;
+    order: 3;
+  }
 }

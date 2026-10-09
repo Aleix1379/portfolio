@@ -1,161 +1,127 @@
-import React, { useState } from 'react'
-import IconLink from '../components/IconLink'
-import Input from '../components/Input'
-import SubmitForm from '../components/SubmitForm'
-import styles from '../styles/Home.module.css'
-import type { Validation } from '../types/Validation.ts'
-import Validator from '../services/Validator.ts'
+import React, { useEffect, useState } from 'react'
+import ActionLink from '../components/ActionLink'
+import actions from '../styles/Action.module.css'
+import styles from '../styles/ContactSection.module.css'
 
-interface Form {
-  subject: string
-  message: string
-}
-
-interface Validations {
-  subject: Validation
-  message: Validation
-}
-
-const initialFormState: Form = {
-  subject: '',
-  message: ''
-}
+const email = 'aleixmp1379@gmail.com'
 
 const ContactSection = () => {
-  const [form, setForm] = useState(initialFormState)
-  const [isFormValid, setIsFormValid] = useState(false)
+  const [hydrated, setHydrated] = useState(false)
+  const [copying, setCopying] = useState(false)
+  const [status, setStatus] = useState('')
 
-  const buildValidations = (): Validations => {
-    return {
-      subject: {
-        message: 'Subject',
-        touched: false,
-        label: '',
-        constraints: [
-          {
-            key: 'REQUIRED'
-          },
-          {
-            key: 'MAX_LENGTH',
-            value: 60
-          }
-        ]
-      },
-      message: {
-        message: '',
-        touched: false,
-        label: 'Message',
-        constraints: [
-          {
-            key: 'REQUIRED'
-          },
-          {
-            key: 'MAX_LENGTH',
-            value: 500
-          }
-        ]
-      }
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
+
+  const copyEmail = async () => {
+    setCopying(true)
+    setStatus('Copying email…')
+    try {
+      if (!navigator.clipboard?.writeText)
+        throw new Error('Clipboard unavailable')
+      await navigator.clipboard.writeText(email)
+      setStatus('Email copied')
+    } catch {
+      setStatus("Couldn't copy. Select and copy the email address.")
+    } finally {
+      setCopying(false)
     }
-  }
-
-  // const [validations, setValidations] = useState<HomeState['validations']>(buildValidations)
-  const [validations, setValidations] = useState<Validations>(buildValidations)
-
-  const validator = new Validator(validations, setValidations)
-
-  const updateForm = (input: 'subject' | 'message', text: string) => {
-    const data = { ...form, [input]: text }
-    setForm(data)
-    validator.validateForm(data)
-
-    // const val: HomeState["validations"] = { ...validations };
-    const val: Validations = { ...validations }
-    if (val[input]) {
-      val[input].touched = true
-    }
-    setValidations({ ...validations, ...val })
-    setIsFormValid(
-      validations.subject.message.length === 0 &&
-        validations.message.message.length === 0
-    )
-  }
-
-  const sendMessage = (event?: React.FormEvent<HTMLFormElement>) => {
-    if (event) {
-      event.preventDefault()
-      openEmail()
-    }
-  }
-
-  const openEmail = () => {
-    window.open(
-      `mailto:aleixmp1379@gmail.com?subject=${form.subject}&body=${form.message}`,
-      '_blank'
-    )
   }
 
   return (
-    <section id="contact" className={styles.section}>
-      <h2 className={styles.formTitle}>Contact me</h2>
-      <div className={styles.infoContact}>
+    <section
+      id="contact"
+      tabIndex={-1}
+      aria-labelledby="contact-heading"
+      className={`portfolio-section content-container ${styles.section}`}
+    >
+      <div className={styles.content}>
+        <p className={styles.eyebrow}>GET IN TOUCH</p>
+        <h2 id="contact-heading">Let's build something useful.</h2>
+        <p className={styles.introduction}>
+          Have a product in mind or a team looking for a full-stack developer?
+          I'd be glad to hear from you.
+        </p>
+        <a href={`mailto:${email}`} className={styles.email}>
+          {email}
+        </a>
+        <div className={styles.actions}>
+          <ActionLink href={`mailto:${email}`} variant="primary">
+            Email me
+          </ActionLink>
+          {hydrated && (
+            <button
+              type="button"
+              onClick={copyEmail}
+              disabled={copying}
+              aria-busy={copying}
+              className={`${actions.action} ${actions.secondary}`}
+            >
+              {copying ? 'Copying…' : 'Copy email'}
+            </button>
+          )}
+        </div>
+        <p
+          className={styles.status}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {status}
+        </p>
+        <div className={styles.socialLinks}>
+          <ActionLink
+            href="https://www.linkedin.com/in/aleixmp/"
+            variant="text"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.socialLink} ${styles.linkedin}`}
+          >
+            <img
+              className={styles.socialIcon}
+              src="/images/social/linkedin-low-poly-v1-128.webp"
+              srcSet="/images/social/linkedin-low-poly-v1-256.webp 2x"
+              width={80}
+              height={80}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            />
+            LinkedIn
+          </ActionLink>
+          <ActionLink
+            href="https://github.com/Aleix1379"
+            variant="text"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.socialLink} ${styles.github}`}
+          >
+            <img
+              className={styles.socialIcon}
+              src="/images/social/github-low-poly-v1-128.webp"
+              srcSet="/images/social/github-low-poly-v1-256.webp 2x"
+              width={80}
+              height={80}
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async"
+            />
+            GitHub
+          </ActionLink>
+        </div>
+      </div>
+      <div className={styles.illustration}>
         <img
           src="/images/contact-aleix.webp"
           alt="Illustration of Aleix waving and holding an open envelope"
-          className={styles.imageContact}
           width={1122}
           height={1402}
           loading="lazy"
+          decoding="async"
         />
-        <div>
-          <div className={styles.socialNetworks}>
-            <IconLink
-              link={{
-                url: 'https://www.linkedin.com/in/aleixmp/',
-                text: 'Linkedin',
-                icon: 'linkedin'
-              }}
-              size={50}
-              color={'#909090'}
-            />
-            <IconLink
-              link={{
-                url: 'https://github.com/Aleix1379',
-                text: 'Github',
-                icon: 'github'
-              }}
-              size={50}
-              color={'#909090'}
-            />
-          </div>
-          <form
-            data-testid="contact-form"
-            className={styles.form}
-            onSubmit={sendMessage}>
-            <Input
-              testID="contact-form-subject"
-              className={styles.input}
-              label={'Subject'}
-              value={form.subject}
-              onChange={text => updateForm('subject', text)}
-              // Add your validation logic here
-            />
-            <Input
-              data-testid="contact-form-message"
-              className={styles.input}
-              label={'Message'}
-              value={form.message}
-              onChange={text => updateForm('message', text)}
-              type={'textarea'}
-              // Add your validation logic here
-            />
-            <SubmitForm
-              className={styles.button}
-              label={'Send!'}
-              onClick={sendMessage}
-              disabled={!isFormValid}
-            />
-          </form>
-        </div>
       </div>
     </section>
   )

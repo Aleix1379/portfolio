@@ -1,0 +1,46 @@
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: center;
+  transition:
+    background-color 180ms,
+    border-color 180ms;
+}
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.primary:hover {
+  filter: brightness(1.08);
+}
+.secondary {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--text);
+}
+.text {
+  background: transparent;
+  color: var(--accent);
+  padding-inline: 0;
+}
+.text:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.action:disabled {
+  opacity: 0.65;
+}

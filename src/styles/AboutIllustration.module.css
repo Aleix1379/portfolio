@@ -1,90 +1,206 @@
+.wrapper {
+  display: block;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.controls button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.controls button:disabled {
+  cursor: default;
+}
+
 .illustration {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 }
 
 .illustration > img {
-    display: block;
-    width: 100%;
-    height: auto;
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .activity {
-    /* Nine complete 720x720 frames in a 3x3 grid, including head silhouettes. */
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    visibility: hidden;
-    background-image: url('/images/about-activity-sprite.webp');
-    background-repeat: no-repeat;
-    background-size: 300% 300%;
-    background-position: 0% 0%;
-    animation: activity 6s steps(1, end) infinite;
-    animation-play-state: paused;
+  /* Nine complete 720x720 frames in a 3x3 grid, including head silhouettes. */
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  visibility: hidden;
+  background-image: url('/images/about-activity-sprite.webp');
+  background-repeat: no-repeat;
+  background-size: 300% 300%;
+  background-position: 0% 0%;
+  animation: activity 4.5s steps(1, end) infinite;
+  animation-play-state: paused;
 }
 
 .illustration[data-animating='true'] > img {
-    /* Keep the original image's layout and accessible description. */
-    opacity: 0;
+  /* Keep the original image's layout and accessible description. */
+  opacity: 0;
 }
 
 .illustration[data-animating='true'] .activity {
-    visibility: visible;
-    animation-play-state: running;
+  visibility: visible;
+}
+
+.illustration[data-animating='true'][data-paused='false'] .activity {
+  animation-play-state: running;
 }
 
 @keyframes activity {
-    /* 0-2s: visitor. 2-2.5s: turn. 2.5-5.5s: type. 5.5-6s: return. */
-    0% { background-position: 0% 0%; }
-    35% { background-position: 50% 0%; }
-    36.666667% { background-position: 100% 0%; }
-    38.333333% { background-position: 0% 50%; }
-    40% { background-position: 50% 50%; }
-    41.666667% { background-position: 100% 50%; }
-    43.333333% { background-position: 0% 100%; }
-    45% { background-position: 50% 100%; }
-    46.666667% { background-position: 100% 100%; }
-    48.333333% { background-position: 50% 100%; }
-    50% { background-position: 0% 100%; }
-    51.666667% { background-position: 100% 50%; }
-    53.333333% { background-position: 0% 100%; }
-    55% { background-position: 50% 100%; }
-    56.666667% { background-position: 100% 100%; }
-    58.333333% { background-position: 50% 100%; }
-    60% { background-position: 0% 100%; }
-    61.666667% { background-position: 100% 50%; }
-    63.333333% { background-position: 0% 100%; }
-    65% { background-position: 50% 100%; }
-    66.666667% { background-position: 100% 100%; }
-    68.333333% { background-position: 50% 100%; }
-    70% { background-position: 0% 100%; }
-    71.666667% { background-position: 100% 50%; }
-    73.333333% { background-position: 0% 100%; }
-    75% { background-position: 50% 100%; }
-    76.666667% { background-position: 100% 100%; }
-    78.333333% { background-position: 50% 100%; }
-    80% { background-position: 0% 100%; }
-    81.666667% { background-position: 100% 50%; }
-    83.333333% { background-position: 0% 100%; }
-    85% { background-position: 50% 100%; }
-    86.666667% { background-position: 100% 100%; }
-    88.333333% { background-position: 50% 100%; }
-    90% { background-position: 0% 100%; }
-    91.666667% { background-position: 100% 50%; }
-    93.333333% { background-position: 50% 50%; }
-    95% { background-position: 0% 50%; }
-    96.666667% { background-position: 100% 0%; }
-    98.333333% { background-position: 50% 0%; }
-    100% { background-position: 0% 0%; }
+  /* Look at the visitor, turn to type, then return to the first frame. */
+  0% {
+    background-position: 0% 0%;
+  }
+  35% {
+    background-position: 50% 0%;
+  }
+  36.666667% {
+    background-position: 100% 0%;
+  }
+  38.333333% {
+    background-position: 0% 50%;
+  }
+  40% {
+    background-position: 50% 50%;
+  }
+  41.666667% {
+    background-position: 100% 50%;
+  }
+  43.333333% {
+    background-position: 0% 100%;
+  }
+  45% {
+    background-position: 50% 100%;
+  }
+  46.666667% {
+    background-position: 100% 100%;
+  }
+  48.333333% {
+    background-position: 50% 100%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  51.666667% {
+    background-position: 100% 50%;
+  }
+  53.333333% {
+    background-position: 0% 100%;
+  }
+  55% {
+    background-position: 50% 100%;
+  }
+  56.666667% {
+    background-position: 100% 100%;
+  }
+  58.333333% {
+    background-position: 50% 100%;
+  }
+  60% {
+    background-position: 0% 100%;
+  }
+  61.666667% {
+    background-position: 100% 50%;
+  }
+  63.333333% {
+    background-position: 0% 100%;
+  }
+  65% {
+    background-position: 50% 100%;
+  }
+  66.666667% {
+    background-position: 100% 100%;
+  }
+  68.333333% {
+    background-position: 50% 100%;
+  }
+  70% {
+    background-position: 0% 100%;
+  }
+  71.666667% {
+    background-position: 100% 50%;
+  }
+  73.333333% {
+    background-position: 0% 100%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  76.666667% {
+    background-position: 100% 100%;
+  }
+  78.333333% {
+    background-position: 50% 100%;
+  }
+  80% {
+    background-position: 0% 100%;
+  }
+  81.666667% {
+    background-position: 100% 50%;
+  }
+  83.333333% {
+    background-position: 0% 100%;
+  }
+  85% {
+    background-position: 50% 100%;
+  }
+  86.666667% {
+    background-position: 100% 100%;
+  }
+  88.333333% {
+    background-position: 50% 100%;
+  }
+  90% {
+    background-position: 0% 100%;
+  }
+  91.666667% {
+    background-position: 100% 50%;
+  }
+  93.333333% {
+    background-position: 50% 50%;
+  }
+  95% {
+    background-position: 0% 50%;
+  }
+  96.666667% {
+    background-position: 100% 0%;
+  }
+  98.333333% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .illustration[data-animating] > img {
-        opacity: 1;
-    }
+  .illustration[data-animating] > img {
+    opacity: 1;
+  }
 
-    .illustration[data-animating] .activity {
-        visibility: hidden;
-        animation: none;
-    }
+  .illustration[data-animating] .activity {
+    visibility: hidden;
+    animation: none;
+  }
 }

@@ -1,43 +1,54 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Experience from '../components/Experience'
-import ExperienceSeparator from '../components/ExperienceSeparator'
-import Button from '../components/Button'
-import styles from '../styles/Home.module.css'
 import { getExperience } from '../services/experience.ts'
+import styles from '../styles/ExperienceSection.module.css'
 
 const ExperienceSection = () => {
-  const [experiences, setExperiences] = useState(getExperience(3))
-  const [showAllExperiences, setShowAllExperiences] = useState(false)
+  const [expanded, setExpanded] = useState(false)
+  const history = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    // Native details can be opened before this island hydrates.
+    setExpanded(Boolean(history.current?.open))
+  }, [])
+  const featured = getExperience(3)
+  const previous = getExperience().slice(featured.length)
 
-  const fetchAllExperiences = () => {
-    setExperiences(getExperience())
-    setShowAllExperiences(true)
-  }
   return (
     <section
       id="experience"
-      className={`${styles.experience} ${styles.section}`}>
-      <h2>Experience</h2>
-      <img
-        src="/images/experience-aleix.webp"
-        alt="Illustration of Aleix working at a desk with a computer"
-        className={styles.imageExperience}
-        width={1254}
-        height={1254}
-        loading="lazy"
-      />
-      <div className={styles.infoExperience}>
-        {experiences.map((experience, index) => (
-          <div key={index} style={{ display: 'flex', flexDirection: 'column' }}>
-            <Experience experience={experience} />
-            {index < experiences.length - 1 && <ExperienceSeparator />}
-          </div>
-        ))}
+      tabIndex={-1}
+      aria-labelledby="experience-heading"
+      className={`portfolio-section content-container ${styles.section}`}
+    >
+      <div className={styles.heading}>
+        <p className={styles.eyebrow}>THE JOURNEY</p>
+        <h2 id="experience-heading">Experience</h2>
+        <p className={styles.introduction}>
+          Building products with teams, from interfaces to the services behind
+          them.
+        </p>
       </div>
-
-      {!showAllExperiences && (
-        <Button onClick={fetchAllExperiences}>Show all</Button>
-      )}
+      <div className={styles.timeline}>
+        {featured.map(experience => (
+          <Experience key={experience.id} experience={experience} />
+        ))}
+        {previous.length > 0 && (
+          <details
+            ref={history}
+            className={styles.history}
+            onToggle={event => setExpanded(event.currentTarget.open)}
+          >
+            <summary className={styles.summary}>
+              {expanded ? 'Show less experience' : 'View full experience'}
+            </summary>
+            <div className={styles.previous}>
+              {previous.map(experience => (
+                <Experience key={experience.id} experience={experience} />
+              ))}
+            </div>
+          </details>
+        )}
+      </div>
     </section>
   )
 }

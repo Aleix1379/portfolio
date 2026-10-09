@@ -1,15 +1,19 @@
 import type { Theme } from '../types/Theme'
-
-const keys = {
-	DATA_THEME: 'data-theme'
+export const themeStorageKey = 'portfolio-theme'
+export const getTheme = (): Theme | null => {
+  try {
+    const saved =
+      localStorage.getItem(themeStorageKey) ??
+      localStorage.getItem('data-theme')
+    return saved === 'dark' || saved === 'light' ? saved : null
+  } catch {
+    return null
+  }
 }
-
-
-export const getTheme = (): Theme => {
-	const data = localStorage.getItem(keys.DATA_THEME)
-	return !data || data === 'dark' ? 'dark' : 'light'
-}
-
-export const setTheme = (newTheme: string) => {
-	localStorage.setItem(keys.DATA_THEME, newTheme)
+export const setTheme = (theme: Theme) => {
+  try {
+    localStorage.setItem(themeStorageKey, theme)
+  } catch {
+    // The current page still changes theme when browser storage is unavailable.
+  }
 }

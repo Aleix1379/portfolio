@@ -1,5 +1,4 @@
 ---
-import Header from '../components/Header.tsx';
 import Nav from '../components/Nav.tsx';
 import Footer from '../components/Footer.tsx';
 import '../styles/globals.css';
@@ -12,7 +11,7 @@ interface Props {
 
 const {
 	title,
-	description = "Aleix's portfolio - Web developer specializing in Vue.js, React, Node.js, and TypeScript",
+	description = "Aleix Martínez Pena — Full-stack developer building web and mobile products, backend services and applications from development to deployment.",
 	image = "/images/about-aleix.webp",
 	canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props;
@@ -20,8 +19,8 @@ const {
 const personSchema = {
 	"@context": "https://schema.org",
 	"@type": "Person",
-	"name": "Aleix",
-	"jobTitle": "Web Developer",
+	"name": "Aleix Martínez Pena",
+	"jobTitle": "Full-stack Developer",
 	"url": Astro.site,
 	"sameAs": [
 		"https://github.com/Aleix1379",
@@ -31,14 +30,22 @@ const personSchema = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
+		<script is:inline>
+			try {
+				const saved = localStorage.getItem('portfolio-theme') ?? localStorage.getItem('data-theme');
+				if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+			} catch { /* The server-rendered dark theme remains usable without storage. */ }
+		</script>
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Web Developer Portfolio</title>
+		<meta name="color-scheme" content="dark light" />
+		<link rel="preload" href="/fonts/Geist/Geist.woff2" as="font" type="font/woff2" crossorigin />
+		<title>{title}</title>
 
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
@@ -63,12 +70,10 @@ const personSchema = {
 		<!-- Robots -->
 		<meta name="robots" content="index, follow" />
 	</head>
-	<body>
-	<div class="container">
-		<Header />
+	<body data-theme="dark">
+		<a href="#main-content" class="skip-link">Skip to content</a>
 		<Nav client:load />
 		<slot />
-		<Footer client:visible />
-	</div>
+		<Footer />
 	</body>
 </html>

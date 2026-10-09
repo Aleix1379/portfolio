@@ -1,79 +1,58 @@
 import React from 'react'
 import styles from '../styles/Experience.module.css'
 import type { JobExperience } from '../types/JobExperience'
-import Chip from './Chip'
-import { useCardTilt } from '../hooks/useCardTilt'
-import tiltStyles from '../styles/CardTilt.module.css'
 import { formatDateWithMonthName, getDifference } from '../utils/time'
 
 interface ExperienceProps {
   experience: JobExperience
 }
 
-const Experience: React.FC<ExperienceProps> = ({ experience }) => {
-  const tiltProps = useCardTilt()
+const monthAndYear = (date: string) =>
+  formatDateWithMonthName(date, { month: true, year: true, short: true }).trim()
 
-  return (
-    <div {...tiltProps} className={`${styles.experience} ${tiltStyles.card}`}>
-      <div className={styles.header}>
-        <div>
-          <h2>{experience.title}</h2>
-          <span className={styles.company}>{experience.company}</span>
-        </div>
-
-        <div className={styles.info}>
-          <div className={styles.infoDetails}>
-            <span className={styles.location}>{experience.location}</span>
-            <span className={styles.jobType}>{experience.type}</span>
-          </div>
-
-          <div className={styles.time}>
-            <span className={styles.timeCapitalize}>
-              {formatDateWithMonthName(experience.start, {
-                month: true,
-                year: true,
-                short: true
-              })}
-            </span>
-            <span> - </span>
-            {experience.end ? (
-              <span className={styles.timeCapitalize}>
-                {' '}
-                {formatDateWithMonthName(experience.end, {
-                  month: true,
-                  year: true,
-                  short: true
-                })}
-              </span>
-            ) : (
-              <span className={styles.timeCapitalize}> present</span>
-            )}
-            <span className={styles.duration}>
-              {' '}
-              {getDifference(experience.start, experience.end)}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.details}>
-        <div>
-          {experience.technologies.map((technology, index) => (
-            <Chip key={index} className={styles.technology}>
-              {technology}
-            </Chip>
-          ))}
-        </div>
-      </div>
+const Experience: React.FC<ExperienceProps> = ({ experience }) => (
+  <article
+    className={styles.experience}
+    aria-labelledby={`job-${experience.id}`}
+  >
+    <div className={styles.dates}>
+      <p className={styles.dateRange}>
+        <time dateTime={experience.start}>
+          {monthAndYear(experience.start)}
+        </time>
+        <span aria-hidden="true"> — </span>
+        <span className={styles.dateSeparator}> to </span>
+        {experience.end ? (
+          <time dateTime={experience.end}>{monthAndYear(experience.end)}</time>
+        ) : (
+          <span>Present</span>
+        )}
+      </p>
+      <p className={styles.duration}>
+        {getDifference(experience.start, experience.end)}
+      </p>
+    </div>
+    <div className={styles.content}>
+      <p className={styles.company}>{experience.company}</p>
+      <h3 id={`job-${experience.id}`} className={styles.title}>
+        {experience.title}
+      </h3>
+      <p className={styles.metadata}>
+        <span>{experience.location}</span>
+        <span className={styles.jobType}>{experience.type}</span>
+      </p>
       <ul className={styles.responsibilities}>
-        {experience.responsibilities.map((word, index) => (
-          <li key={index}>
-            <p className={styles.description}>{word}</p>
-          </li>
+        {experience.responsibilities.map(responsibility => (
+          <li key={responsibility}>{responsibility}</li>
+        ))}
+      </ul>
+      <ul className={styles.technologies} aria-label="Technologies used">
+        {experience.technologies.map(technology => (
+          <li key={technology}>{technology}</li>
         ))}
       </ul>
     </div>
-  )
-}
+  </article>
+)
 
 export default Experience

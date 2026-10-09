@@ -1,18 +1,39 @@
-import type { ProjectInfo } from '../types/ProjectInfo'
+import type {
+  FeaturedProjectInfo,
+  ProjectInfo,
+  ProjectPreview
+} from '../types/ProjectInfo'
 
-export const getProjects = (limit = -1): Array<ProjectInfo> => {
+const getPreview = (slug: string, alt: string): ProjectPreview => ({
+  src: `/images/projects/previews/${slug}-800.webp`,
+  srcSet: [480, 800, 1600]
+    .map(width => `/images/projects/previews/${slug}-${width}.webp ${width}w`)
+    .join(', '),
+  alt,
+  width: 1600,
+  height: 1000
+})
+
+export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
   const data: Array<ProjectInfo> = [
     {
       id: '7',
       name: 'Arcblink',
       description:
-        'A precision arcade game where players line up shots, use rebounds and compete in local, online and campaign modes.',
+        'A precision arcade game for local, online and campaign play.',
       image: '/images/projects/arcblink.png',
+      preview: getPreview(
+        'arcblink',
+        'Arcblink gameplay showing a player aiming a rebound shot across a snowy arena.'
+      ),
+      contribution:
+        'Built the mobile and web game, with services for accounts and online play.',
+      featuredTechnologies: ['Flutter', 'TypeScript', 'Cloudflare'],
       active: true,
       links: [
         {
           url: 'https://arcblink.com/',
-          text: 'Web',
+          text: 'Play game',
           icon: 'web'
         },
         {
@@ -364,12 +385,12 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
               icon: 'kotlin'
             },
             {
-              url: 'https://www.mysql.com/',
+              url: 'https://spring.io/projects/spring-boot',
               text: 'Spring Boot',
               icon: 'springBoot'
             },
             {
-              url: 'https://spring.io/projects/spring-boot',
+              url: 'https://www.mysql.com/',
               text: 'MySQL',
               icon: 'mysql'
             },
@@ -386,13 +407,20 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       id: '5',
       name: 'Race Tracker',
       description:
-        'Follow Formula 1, MotoGP and WRC with calendars, local session times, results, standings and custom alerts.',
+        'Follow F1, MotoGP and WRC with local schedules, results and alerts.',
       image: '/images/projects/race-tracker.png',
+      preview: getPreview(
+        'race-tracker',
+        'Race Tracker Android calendar and race results screens in English.'
+      ),
+      contribution:
+        'Built the mobile and web apps and the API powering racing calendars and results.',
+      featuredTechnologies: ['React Native', 'TypeScript', 'Hono'],
       active: true,
       links: [
         {
           url: 'https://motorsport.aleixmp.dev/marketing',
-          text: 'Web',
+          text: 'View product',
           icon: 'web'
         },
         {
@@ -470,13 +498,20 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       id: '6',
       name: 'WishFetch',
       description:
-        'Share gift wish lists so friends and family can reserve ideas, avoid duplicate gifts and keep the surprise for the recipient.',
+        'Shared wish lists that keep gifts a surprise and prevent duplicates.',
       image: '/images/projects/wishfetch.png',
+      preview: getPreview(
+        'wishfetch',
+        'WishFetch Android QA screens showing a shared wish list and a reserved gift in June 2026.'
+      ),
+      contribution:
+        'Built the mobile and web apps, backend and gift reservation flow.',
+      featuredTechnologies: ['React Native', 'Nuxt', 'PostgreSQL'],
       active: true,
       links: [
         {
           url: 'https://wishfetch.com/',
-          text: 'Web',
+          text: 'View product',
           icon: 'web'
         }
       ],
@@ -566,9 +601,8 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
     }
   ]
 
-  if (limit === -1) {
-    return data.filter(project => project.active)
-  }
-
-  return data.filter(project => project.active).slice(0, limit)
+  const featuredProjects = data.filter(
+    (project): project is FeaturedProjectInfo => project.active
+  )
+  return limit === -1 ? featuredProjects : featuredProjects.slice(0, limit)
 }

@@ -1,15 +1,20 @@
 :root {
-    --header-height: 92px;
-    --header-dot-size: 15px;
-    --content-width: 1400px;
-    --nav-scale: 1;
-    --nav-width: 100%;
+  --nav-height: 4rem;
+  --content-width: 1200px;
+  --section-space: 4rem;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+  --radius-card: 12px;
+  --radius-control: 8px;
 }
-
-
-@media (min-width: 768px) {
-    :root {
-        --nav-scale: 1;
-        --nav-width: 1450px;
-    }
+@media (min-width: 1024px) {
+  :root {
+    --nav-height: 4.5rem;
+    --section-space: 6rem;
+  }
 }

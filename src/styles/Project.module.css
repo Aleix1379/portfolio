@@ -1,179 +1,194 @@
 .project {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 25px 5px;
-    background-color: var(--bg-project);
-    border-radius: 8px;
-    box-shadow: 5px 5px 20px -5px var(--sh-project);
-    width: calc(100% - 5px);
-    animation: projectEnter 1.5s forwards;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
 }
 
-.project > p {
-    min-height: 40px;
-    margin-bottom: 20px;
+.preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
-.tabsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-bottom: 10px;
-    margin-top: 10px;
+.logo {
+  border-radius: 12px;
+  margin: 12px 4px;
 }
 
-.tabItem {
-    flex: 0 0 auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    padding: 0 12px;
-    border: 1px solid var(--border-platform-tab);
-    border-radius: 999px;
-    background: var(--bg-platform-tab);
-    color: var(--text-platform-tab);
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1;
-    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
-}
-
-.tabItem:hover {
-    background: var(--bg-platform-tab-hover);
-}
-
-.tabItem[aria-selected="true"] {
-    background: var(--bg-platform-tab-selected);
-    color: var(--text-platform-tab-selected);
-    border-color: var(--accent-platform-tab);
-}
-
-.tabItem[aria-selected="true"]:hover {
-    background: var(--bg-platform-tab-selected-hover);
-}
-
-.tabItem:focus-visible,
-.appContent:focus-visible {
-    outline: 2px solid var(--accent-platform-tab);
-    outline-offset: 3px;
-}
-
-.appContent {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-.appContent:not([hidden]) {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.appContent > p {
-    margin-bottom: 20px;
-}
-
-.appContent > .subtitle {
-    margin-top: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .tabItem {
-        transition: none;
-    }
-
-    .appContent {
-        animation: none;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes projectEnter {
-    0% {
-        scale: 0;
-    }
-    50% {
-        scale: 1.05;
-    }
-    100% {
-        scale: 1;
-    }
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+  padding: 16px 0 0;
 }
 
 .title {
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
 }
 
-.title > h2 {
-    font-size: 40px;
-    margin-top: 0;
-    margin-bottom: 10px;
+.description,
+.contribution {
+  margin: 0;
+  font-size: inherit;
+  line-height: 1.6;
 }
 
-.image {
-    align-self: center;
-    margin-bottom: 15px;
+.contribution {
+  color: var(--muted);
 }
 
-.image img {
-    border-radius: 15%;
+.featuredTechnologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 4px 0 0;
+  list-style: none;
 }
 
-.links {
-    display: flex;
-    align-self: flex-start;
-    flex-wrap: wrap;
+.featuredTechnologies li {
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--chip);
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
-.subtitle {
-    color: var(--tc-project-title);
-    text-shadow: 4px 4px 10px var(--tsh-project);
-    transition: color, text-shadow .5s;
-    font-family: "Dancing Script", sans-serif;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 26px;
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
-.link {
-    margin-bottom: 15px;
-    margin-right: 15px;
+.actions a {
+  min-height: 40px;
+  padding: 8px 14px;
+  font-size: 0.8125rem;
 }
 
-.link:first-child {
-    margin-left: 0;
+.details {
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
 }
 
-.noLinksAvailable {
-    margin-bottom: 30px;
-    color: #696969;
+.details summary {
+  padding: 12px 0 4px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 150ms ease;
 }
 
-@media (min-width: 768px) {
-    .project {
-        width: 315px;
-        right: 0;
-        position: unset;
-    }
+.details summary:hover {
+  color: var(--text);
 }
 
-@media (min-width: 1250px) {
-    .project {
-        width: 350px;
-        right: 0;
-        position: unset;
-    }
+.details summary:focus-visible,
+.tabItem:focus-visible,
+.appContent:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.tabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.tabsContainer[hidden],
+.appContent[hidden] {
+  display: none;
+}
+
+.tabItem {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.tabItem:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.tabItem[aria-selected='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tabItem[aria-selected='true']:hover {
+  background: var(--surface);
+}
+
+.appContent {
+  padding: 12px 0 4px;
+}
+
+.appContent h4 {
+  margin: 0 0 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.appContent p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.technologyLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.technologyLink {
+  min-height: 36px;
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 1.375rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details summary,
+  .tabItem {
+    transition: none;
+  }
 }
