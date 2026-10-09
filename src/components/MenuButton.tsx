@@ -8,14 +8,17 @@ interface MenuButtonProps {
 
 const MenuButton: React.FC<MenuButtonProps> = ({ onClick, isActive }) => {
 	return (
-		<div
+		<button
+			type="button"
+			aria-label={isActive ? 'Close menu' : 'Open menu'}
+			aria-expanded={isActive}
 			className={styles.menu}
 			onClick={onClick}
 		>
 			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
 			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
 			<div style={{ backgroundColor: isActive ? '#38c188' : '#9a9a9a' }}></div>
-		</div>
+		</button>
 	)
 }
 

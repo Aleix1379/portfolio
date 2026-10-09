@@ -2,6 +2,7 @@
 import Header from '../components/Header.tsx';
 import Nav from '../components/Nav.tsx';
 import Footer from '../components/Footer.tsx';
+import '../styles/globals.css';
 interface Props {
 	title: string;
 	description?: string;
@@ -12,7 +13,7 @@ interface Props {
 const {
 	title,
 	description = "Aleix's portfolio - Web developer specializing in Vue.js, React, Node.js, and TypeScript",
-	image = "/images/about.svg",
+	image = "/images/about-aleix.webp",
 	canonicalURL = new URL(Astro.url.pathname, Astro.site).href
 } = Astro.props;
 
@@ -67,70 +68,7 @@ const personSchema = {
 		<Header />
 		<Nav client:load />
 		<slot />
-		<Footer />
+		<Footer client:visible />
 	</div>
 	</body>
 </html>
-<style is:global>
-	@import "../styles/colors.css";
-	@import "../styles/variables.css";
-
-	@font-face {
-		font-family: 'Catamaran bold';
-		src: url('/fonts/Catamaran/Catamaran-VariableFont_wght.ttf');
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: 'Dancing Script';
-		src: url('/fonts/DancingScript/DancingScript-VariableFont_wght.ttf');
-		font-display: swap;
-	}
-
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	* {
-		box-sizing: border-box;
-	}
-
-	html,
-	body {
-		padding: 0;
-		margin: 0;
-		font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-		background-color: #333;
-	}
-
-	html {
-		scroll-behavior: smooth;
-		scroll-padding: 80px;
-	}
-
-	body::-webkit-scrollbar {
-		width: 15px;
-	}
-
-	body::-webkit-scrollbar-track {
-		box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-		background-color: #282828;
-	}
-
-	body::-webkit-scrollbar-thumb {
-		background-color: var(--green);
-		outline: 1px solid slategrey;
-	}
-
-	.container {
-		transition: background-color .5s;
-		background-color: var(--background);
-		color: var(--text-color);
-		display: flex;
-		flex-direction: column;
-
-		background-image: var(--main-background);
-	}
-</style>

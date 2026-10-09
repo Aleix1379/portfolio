@@ -1,43 +1,125 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: minmax(0, 11fr) minmax(0, 7fr);
+    gap: 24px;
     align-items: center;
+    justify-items: center;
     color: var(--text-color);
+    background-color: var(--bg-project);
     text-align: center;
     font-family: 'Dancing Script', serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
     margin-top: 10px;
-    padding: 10px 10px;
+    /* Leave room for the existing floating Download CV button. */
+    padding: 32px 24px 96px;
 }
 
-.footer > div {
+.reactIllustration,
+.astroIllustration {
     position: relative;
-    top: 45px;
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+    grid-row: 1;
 }
 
-.logoNextJs {
-    width: calc(100% - 20px);
+.reactIllustration {
+    grid-column: 1;
+    width: 220px;
+    aspect-ratio: 4 / 3;
+}
+
+.astroIllustration {
+    grid-column: 2;
+    width: 140px;
+    aspect-ratio: 4 / 5;
+}
+
+.credit {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-width: 0;
+    line-height: 1.35;
+    text-wrap: balance;
+}
+
+.base {
+    display: block;
+    width: 100%;
     height: auto;
-    object-fit: scale-down;
+    object-fit: contain;
+}
+
+.layers {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.layers > img,
+.orbits {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.orbitMotion {
+    transform-box: view-box;
+    animation: orbit 24s linear infinite;
+    animation-play-state: paused;
+}
+
+.flame {
+    /* Top of the isolated flame in its complete 540x675 canvas. */
+    transform-origin: 50% 63.7%;
+    animation: flame 3s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
+.footer[data-animating='true'] .base {
+    opacity: 0;
+}
+
+.footer[data-animating='true'] .layers {
+    visibility: visible;
+}
+
+.footer[data-animating='true'] .orbitMotion,
+.footer[data-animating='true'] .flame {
+    animation-play-state: running;
+}
+
+@keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes flame {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    50% { transform: translateY(2px) scaleY(1.06); }
 }
 
 @media (min-width: 768px) {
+    .footer { margin-top: 80px; }
+}
+
+@media (min-width: 1024px) {
     .footer {
-        margin-top: 80px;
-        background-color: var(--bg-project);
-        flex-direction: row;
-        padding: 50px 100px;
+        grid-template-columns: 300px minmax(0, 1fr) 180px;
+        gap: 32px;
+        padding: 48px clamp(24px, 4vw, 64px) 96px;
     }
+    .reactIllustration { width: 300px; }
+    .astroIllustration { grid-column: 3; width: 180px; }
+    .credit { grid-column: 2; grid-row: 1; }
+}
 
-    .footer > div {
-        margin-top: 0;
-    }
-
-    .logoNextJs {
-        width: 300px;
-        height: 349px;
-        object-fit: scale-down;
-    }
-
+@media (prefers-reduced-motion: reduce) {
+    .footer[data-animating] .base { opacity: 1; }
+    .footer[data-animating] .layers { visibility: hidden; }
+    .footer[data-animating] .orbitMotion,
+    .footer[data-animating] .flame { animation-play-state: paused; }
 }

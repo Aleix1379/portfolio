@@ -1,6 +1,7 @@
 import React from 'react'
 import { getYearsOfExperience } from '../utils/time'
 import Button from '../components/Button.tsx'
+import AboutIllustration from '../components/AboutIllustration.tsx'
 import styles from '../styles/Home.module.css'
 
 const AboutSection = () => {
@@ -33,35 +34,26 @@ const AboutSection = () => {
 
       <h2>About me</h2>
       <div className={styles.infoAbout}>
-        <img
-          src="/images/about.svg"
-          alt="About"
-          className={styles.image}
-          width={800}
-          height={300}
-          loading={'eager'}
-        />
+        <AboutIllustration className={styles.aboutIllustration} />
         <div>
           <div className={styles.paragraph}>
-            <span className={styles.important}>+ </span>
-            <span className={styles.important}>{yearsOfExperience}</span>
-            <span className={styles.important}> years</span>
-            <span> of experience as a web developer</span>
+            <span>Full-stack developer with </span>
+            <span className={styles.important}>{yearsOfExperience}+ years</span>
+            <span> of experience</span>
           </div>
 
           <p>
-            <span>
-              Currently at TALKUAL developing eCommerce solutions with{' '}
+            <span>I build web applications and backend services with </span>
+            <span className={styles.important}>
+              Vue.js, Nuxt.js, Node.js, TypeScript and PostgreSQL
             </span>
-            <span className={styles.important}>Vue.js/Nuxt.js</span>
-            <span> and </span>
-            <span className={styles.important}>Strapi/Node.js</span>
+            <span>.</span>
           </p>
 
           <p>
-            <span>
-              Building web applications with Vue/React and Node.js
-            </span>
+            <span>I also build my own </span>
+            <span className={styles.important}>web and mobile products</span>
+            <span>, from development to deployment.</span>
           </p>
         </div>
       </div>

@@ -1,10 +1,10 @@
-import React, { type CSSProperties, useState, useEffect, useRef } from 'react'
+import React, { type KeyboardEvent, useId, useRef, useState } from 'react'
 import styles from '../styles/Project.module.css'
 import type { Link } from '../types/Link'
 import IconLink from './IconLink'
-import type { Platform } from '../types/Platform'
-import Chip from './Chip'
 import type { AppInfo } from '../types/ProjectInfo'
+import { useCardTilt } from '../hooks/useCardTilt'
+import tiltStyles from '../styles/CardTilt.module.css'
 
 interface ProjectProps {
   name: string
@@ -22,99 +22,39 @@ const Project: React.FC<ProjectProps> = ({
   apps
 }) => {
   const [activeAppIndex, setActiveAppIndex] = useState<number>(0)
-  const [activeApp, setActiveApp] = useState<AppInfo | null>(null)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  const projectRef = useRef<HTMLDivElement>(null)
+  const selectedIndex = activeAppIndex < apps.length ? activeAppIndex : 0
+  const tabsId = useId()
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([])
+  const tiltProps = useCardTilt()
 
-  useEffect(() => {
-    if (apps && apps.length > 0) {
-      setActiveApp(apps[activeAppIndex])
+  const handleTabKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    let nextIndex: number
+    switch (event.key) {
+      case 'ArrowRight':
+        nextIndex = (index + 1) % apps.length
+        break
+      case 'ArrowLeft':
+        nextIndex = (index - 1 + apps.length) % apps.length
+        break
+      case 'Home':
+        nextIndex = 0
+        break
+      case 'End':
+        nextIndex = apps.length - 1
+        break
+      default:
+        return
     }
-  }, [apps, activeAppIndex])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!projectRef.current) return
-
-    const card = projectRef.current
-    const rect = card.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-
-    // Calculate tilt values based on mouse position relative to card center
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-
-    // Calculate normalized position (-1 to 1)
-    const normalizedX = (x - centerX) / centerX
-    const normalizedY = (y - centerY) / centerY
-
-    // Calculate distance from center (0 to 1)
-    const distanceFromCenter = Math.min(
-      1,
-      Math.sqrt(normalizedX * normalizedX + normalizedY * normalizedY)
-    )
-
-    // Apply non-linear scaling to enhance corner effect
-    const cornerFactor = 1 + distanceFromCenter * 0.5
-
-    // Calculate tilt (max 15 degrees)
-    const tiltX = -normalizedY * 15 * cornerFactor
-    const tiltY = normalizedX * 15 * cornerFactor
-
-    setTilt({ x: tiltX, y: tiltY })
-  }
-
-  const handleMouseEnter = () => {
-    setIsHovering(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovering(false)
-    setTilt({ x: 0, y: 0 })
-  }
-
-  const getChipStyle = (platform: Platform): CSSProperties => {
-    const style = {
-      marginTop: 10,
-      backgroundColor: 'rgb(43,64,157)',
-      marginRight: 10
-    }
-    if (platform === 'mobile') {
-      style.backgroundColor = 'rgb(23,114,25)'
-    } else if (platform === 'web' || platform === 'landing') {
-      style.backgroundColor = 'rgb(123,36,123)'
-    }
-    return style
-  }
-
-  const handleTabClick = (index: number) => {
-    setActiveAppIndex(index)
-  }
-
-  const getCardStyle = (): CSSProperties => {
-    return {
-      transform: isHovering
-        ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.05, 1.05, 1.05)`
-        : 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)',
-      transition: isHovering
-        ? 'transform 0.25s ease-out'
-        : 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-      boxShadow: isHovering
-        ? '0 10px 15px -8px rgba(0, 0, 0, 0.2)'
-        : '5px 5px 20px -5px var(--sh-project)',
-      border: 'none'
-    }
+    event.preventDefault()
+    setActiveAppIndex(nextIndex)
+    tabRefs.current[nextIndex]?.focus()
   }
 
   return (
-    <div
-      ref={projectRef}
-      className={styles.project}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={getCardStyle()}>
+    <div {...tiltProps} className={`${styles.project} ${tiltStyles.card}`}>
       <div className={styles.title}>
         <h2 className={styles.subtitle}>{name}</h2>
       </div>
@@ -149,28 +89,47 @@ const Project: React.FC<ProjectProps> = ({
 
       {apps && apps.length > 0 && (
         <>
-          <div className={styles.tabsContainer}>
+          <div
+            className={styles.tabsContainer}
+            role="tablist"
+            aria-label={`${name} platforms`}
+          >
             {apps.map((app, index) => (
-              <div
-                key={index}
-                onClick={() => handleTabClick(index)}
-                className={styles.tabItem}>
-                <Chip
-                  style={getChipStyle(app.platform)}
-                  active={index === activeAppIndex}>
-                  {app.platform}
-                </Chip>
-              </div>
+              <button
+                type="button"
+                key={app.id}
+                ref={element => {
+                  tabRefs.current[index] = element
+                }}
+                id={`${tabsId}-tab-${app.id}`}
+                role="tab"
+                aria-selected={index === selectedIndex}
+                aria-controls={`${tabsId}-panel-${app.id}`}
+                tabIndex={index === selectedIndex ? 0 : -1}
+                onClick={() => setActiveAppIndex(index)}
+                onKeyDown={event => handleTabKeyDown(event, index)}
+                className={styles.tabItem}
+              >
+                {app.platform.charAt(0).toUpperCase() + app.platform.slice(1)}
+              </button>
             ))}
           </div>
 
-          {activeApp && (
-            <div className={styles.appContent}>
-              <p>{activeApp.description}</p>
+          {apps.map((app, index) => (
+            <div
+              key={app.id}
+              className={styles.appContent}
+              id={`${tabsId}-panel-${app.id}`}
+              role="tabpanel"
+              aria-labelledby={`${tabsId}-tab-${app.id}`}
+              hidden={index !== selectedIndex}
+              tabIndex={0}
+            >
+              <p>{app.description}</p>
 
               <h3 className={styles.subtitle}>Technologies</h3>
               <div className={styles.links}>
-                {activeApp.technologies.map((technology, index) => (
+                {app.technologies.map((technology, index) => (
                   <IconLink
                     key={index}
                     link={technology}
@@ -180,7 +139,7 @@ const Project: React.FC<ProjectProps> = ({
                 ))}
               </div>
             </div>
-          )}
+          ))}
         </>
       )}
     </div>

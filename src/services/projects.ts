@@ -12,8 +12,13 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       links: [
         {
           url: 'https://arcblink.com/',
-          text: 'Website',
+          text: 'Web',
           icon: 'web'
+        },
+        {
+          url: 'https://play.google.com/store/apps/details?id=com.arcblink.game',
+          text: 'Android',
+          icon: 'googlePlay'
         }
       ],
       apps: [
@@ -132,7 +137,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       links: [
         {
           url: 'https://www.mysetuppi.com/',
-          text: 'Website',
+          text: 'Web',
           icon: 'web'
         }
       ],
@@ -217,17 +222,17 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       links: [
         {
           url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
-          text: 'App store',
+          text: 'iOS',
           icon: 'appStore'
         },
         {
           url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
-          text: 'Google play',
+          text: 'Android',
           icon: 'googlePlay'
         },
         {
           url: 'https://enirve.web.app/',
-          text: 'Website',
+          text: 'Web',
           icon: 'web'
         }
       ],
@@ -387,17 +392,17 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       links: [
         {
           url: 'https://motorsport.aleixmp.dev/marketing',
-          text: 'Website',
+          text: 'Web',
           icon: 'web'
         },
         {
           url: 'https://apps.apple.com/us/app/race-tracker-motorsport/id6791225595',
-          text: 'App Store',
+          text: 'iOS',
           icon: 'appStore'
         },
         {
           url: 'https://play.google.com/store/apps/details?id=dev.aleixmp.motorsport',
-          text: 'Google Play',
+          text: 'Android',
           icon: 'googlePlay'
         }
       ],
@@ -471,7 +476,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       links: [
         {
           url: 'https://wishfetch.com/',
-          text: 'Website',
+          text: 'Web',
           icon: 'web'
         }
       ],

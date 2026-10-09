@@ -9,7 +9,7 @@ export interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
-    <button onClick={onClick} className={`${styles.button} ${className}`}>
+    <button type="button" onClick={onClick} className={`${styles.button} ${className}`}>
       {children}
     </button>
   );

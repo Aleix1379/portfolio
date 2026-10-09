@@ -84,7 +84,9 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 
 	return (
 		<div className={styles.switch} style={getWrapperStyle()}>
-			<div
+			<button
+				type="button"
+				aria-label="Toggle color theme"
 				id='switch'
 				className={`${styles.wrapper} ${className}`}
 				style={getContainerStyle()}
@@ -113,7 +115,7 @@ const SwitchTheme: React.FC<SwitchProps> = ({ value, onChange, size = 35, classN
 					height={size}
 					alt='sun'
 				/>
-			</div>
+			</button>
 		</div>
 	)
 }

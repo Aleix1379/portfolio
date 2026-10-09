@@ -4,17 +4,19 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
 	let data: Array<JobExperience> = [
 		{
 			id: '1',
-			title: 'Web developer developer',
+			title: 'Full-stack Developer',
 			company: 'TALKUAL',
 			type: 'full-time',
 			location: 'Bellpuig, Catalonia, Spain',
 			start: '2021-12-01',
-			end: null,
+			end: '2026-04',
 			technologies: [
 				'Nuxt.js',
 				'Vue.js',
-				'Node JS',
-				'Strapi'
+				'Node.js',
+				'TypeScript',
+				'Strapi',
+				'PostgreSQL'
 			],
 			responsibilities: [
 				'Develop an eCommerce using Nuxt for the front-end and Strapi for the back-end',

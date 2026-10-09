@@ -5,16 +5,9 @@
     background-color: var(--bg-project);
     border-radius: 8px;
     box-shadow: 5px 5px 20px -5px var(--sh-project);
-    transition: background-color .5s, transform .5s ease;
     width: calc(100% - 5px);
     animation: projectEnter 1.5s forwards;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    backface-visibility: hidden;
-    will-change: transform;
-    cursor: pointer;
     position: relative;
-    overflow: hidden;
 }
 
 .project > p {
@@ -24,23 +17,75 @@
 
 .tabsContainer {
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 8px;
     padding-bottom: 10px;
     margin-top: 10px;
-    scrollbar-width: thin;
 }
 
 .tabItem {
     flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--border-platform-tab);
+    border-radius: 999px;
+    background: var(--bg-platform-tab);
+    color: var(--text-platform-tab);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.tabItem:hover {
+    background: var(--bg-platform-tab-hover);
+}
+
+.tabItem[aria-selected="true"] {
+    background: var(--bg-platform-tab-selected);
+    color: var(--text-platform-tab-selected);
+    border-color: var(--accent-platform-tab);
+}
+
+.tabItem[aria-selected="true"]:hover {
+    background: var(--bg-platform-tab-selected-hover);
+}
+
+.tabItem:focus-visible,
+.appContent:focus-visible {
+    outline: 2px solid var(--accent-platform-tab);
+    outline-offset: 3px;
 }
 
 .appContent {
     animation: fadeIn 0.5s ease-in-out;
 }
 
+.appContent:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .appContent > p {
     margin-bottom: 20px;
+}
+
+.appContent > .subtitle {
+    margin-top: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tabItem {
+        transition: none;
+    }
+
+    .appContent {
+        animation: none;
+    }
 }
 
 @keyframes fadeIn {
@@ -56,36 +101,14 @@
 
 @keyframes projectEnter {
     0% {
-        transform: perspective(1000px) scale(0);
+        scale: 0;
     }
     50% {
-        transform: perspective(1000px) scale(1.05);
+        scale: 1.05;
     }
     100% {
-        transform: perspective(1000px) scale(1);
+        scale: 1;
     }
-}
-
-.project::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.03) 40%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.03) 60%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: rotate(30deg);
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
 }
 
 .title {

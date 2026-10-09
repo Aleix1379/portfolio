@@ -8,41 +8,36 @@ const Nav = () => {
   const [isMenuOpened, setIsMenuOpened] = useState(false)
   const [theme, setTheme] = useTheme()
   const [animationDuration, setAnimationDuration] = useState('0s')
+  const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 
   useEffect(() => {
-    document.addEventListener('scroll', onScroll)
+    const updateNavigation = () => {
+      const header = document.getElementById('header')
+      if (!header) return
 
-    setTimeout(() => {
+      const headerBottom = header.getBoundingClientRect().bottom + window.scrollY
+      setIsHeaderScrolled(window.scrollY >= headerBottom)
+    }
+
+    const onScroll = () => {
+      setIsMenuOpened(false)
+      updateNavigation()
+    }
+
+    document.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', updateNavigation)
+    updateNavigation()
+
+    const animationTimer = window.setTimeout(() => {
       setAnimationDuration('0.35s')
     }, 1000)
 
     return () => {
       document.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', updateNavigation)
+      window.clearTimeout(animationTimer)
     }
   }, [])
-
-  const onScroll = () => {
-    setIsMenuOpened(false)
-    const limit = window.innerWidth < 500 ? 380 : 330
-    const element = document.getElementById('navContainer')
-
-    if (!element) {
-      return
-    }
-
-    let classToRemove = styles.navContainerHide
-    let classToAdd = styles.navContainerShow
-
-    if (document.documentElement.scrollTop >= limit) {
-      classToRemove = styles.navContainerShow
-      classToAdd = styles.navContainerHide
-    }
-
-    if (classToAdd && classToRemove) {
-      element.classList.remove(classToRemove)
-      element.classList.add(classToAdd)
-    }
-  }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -56,10 +51,10 @@ const Nav = () => {
     <div
       id="navContainer"
       style={{ animationDuration: animationDuration }}
-      className={`${styles.navContainer} ${styles.navContainerShow}`}>
+      className={`${styles.navContainer} ${isHeaderScrolled ? styles.navContainerHide : styles.navContainerShow}`}>
       <nav className={styles.nav}>
         <div>
-          <div className={styles.logo} onClick={scrollToTop}>
+          <button className={styles.logo} onClick={scrollToTop} type="button" aria-label="Scroll to top">
             <div>
               <img
                 src={'/images/aleix.webp'}
@@ -70,7 +65,7 @@ const Nav = () => {
               />
             </div>
             <h2 className={styles.name}>Aleix</h2>
-          </div>
+          </button>
         </div>
 
         <SwitchTheme
@@ -86,16 +81,16 @@ const Nav = () => {
         <ul
           className={`${styles.ul} ${isMenuOpened ? styles.menuOpened : null}`}>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('about')}>About</div>
+            <button type="button" onClick={() => scrollTo('about')}>About</button>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('experience')}>Experience</div>
+            <button type="button" onClick={() => scrollTo('experience')}>Experience</button>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('projects')}>Projects</div>
+            <button type="button" onClick={() => scrollTo('projects')}>Projects</button>
           </li>
           <li className={styles.li}>
-            <div onClick={() => scrollTo('contact')}>Contact</div>
+            <button type="button" onClick={() => scrollTo('contact')}>Contact</button>
           </li>
         </ul>
 

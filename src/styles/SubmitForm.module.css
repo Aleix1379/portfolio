@@ -4,7 +4,6 @@
     color: #fafafa;
     border: 1px solid #38c188;
     font-size: 20px;
-    cursor: pointer;
     position: relative;
     overflow: hidden;
 }
@@ -36,10 +35,6 @@
 
 .buttonActive:hover > .background {
     animation: backgroundAnimationIn .4s linear forwards;
-}
-
-.buttonDisabled {
-    cursor: not-allowed;
 }
 
 @keyframes backgroundAnimationIn {

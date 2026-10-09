@@ -2,7 +2,6 @@
     display: inline-block;
     transform: translateY(-300px);
     animation: inputFocusAnimation 1s ease-in forwards;
-    cursor: default;
     transition: .5s;
     color: var(--text-color);
 }

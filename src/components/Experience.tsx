@@ -1,16 +1,20 @@
-import React from "react";
-import styles from "../styles/Experience.module.css";
-import type { JobExperience } from "../types/JobExperience";
-import Chip from "./Chip";
-import { formatDateWithMonthName, getDifference } from "../utils/time";
+import React from 'react'
+import styles from '../styles/Experience.module.css'
+import type { JobExperience } from '../types/JobExperience'
+import Chip from './Chip'
+import { useCardTilt } from '../hooks/useCardTilt'
+import tiltStyles from '../styles/CardTilt.module.css'
+import { formatDateWithMonthName, getDifference } from '../utils/time'
 
 interface ExperienceProps {
-  experience: JobExperience;
+  experience: JobExperience
 }
 
 const Experience: React.FC<ExperienceProps> = ({ experience }) => {
+  const tiltProps = useCardTilt()
+
   return (
-    <div className={styles.experience}>
+    <div {...tiltProps} className={`${styles.experience} ${tiltStyles.card}`}>
       <div className={styles.header}>
         <div>
           <h2>{experience.title}</h2>
@@ -28,24 +32,24 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
               {formatDateWithMonthName(experience.start, {
                 month: true,
                 year: true,
-                short: true,
+                short: true
               })}
             </span>
             <span> - </span>
             {experience.end ? (
               <span className={styles.timeCapitalize}>
-                {" "}
+                {' '}
                 {formatDateWithMonthName(experience.end, {
                   month: true,
                   year: true,
-                  short: true,
+                  short: true
                 })}
               </span>
             ) : (
               <span className={styles.timeCapitalize}> present</span>
             )}
             <span className={styles.duration}>
-              {" "}
+              {' '}
               {getDifference(experience.start, experience.end)}
             </span>
           </div>
@@ -69,7 +73,7 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Experience;
+export default Experience

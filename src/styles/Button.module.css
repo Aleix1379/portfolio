@@ -4,7 +4,6 @@
     border-radius: 30px;
     box-shadow: var(--sh-button) 4px 4px 0 0;
     color: var(--sh-button);
-    cursor: pointer;
     display: inline-block;
     font-weight: 600;
     font-size: 18px;

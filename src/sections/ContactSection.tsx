@@ -99,11 +99,12 @@ const ContactSection = () => {
       <h2 className={styles.formTitle}>Contact me</h2>
       <div className={styles.infoContact}>
         <img
-          src="/images/contact.svg"
-          alt="Contact"
+          src="/images/contact-aleix.webp"
+          alt="Illustration of Aleix waving and holding an open envelope"
           className={styles.imageContact}
-          width={500}
-          height={620}
+          width={1122}
+          height={1402}
+          loading="lazy"
         />
         <div>
           <div className={styles.socialNetworks}>

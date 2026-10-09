@@ -19,11 +19,12 @@ const ExperienceSection = () => {
       className={`${styles.experience} ${styles.section}`}>
       <h2>Experience</h2>
       <img
-        src="/images/experience.svg"
-        alt="Experience"
+        src="/images/experience-aleix.webp"
+        alt="Illustration of Aleix working at a desk with a computer"
         className={styles.imageExperience}
-        width={300}
-        height={300}
+        width={1254}
+        height={1254}
+        loading="lazy"
       />
       <div className={styles.infoExperience}>
         {experiences.map((experience, index) => (

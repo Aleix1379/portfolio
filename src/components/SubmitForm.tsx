@@ -10,7 +10,7 @@ interface SubmitFormProps {
 
 const SubmitForm: React.FC<SubmitFormProps> = ({ label, onClick, className, disabled = false }) => {
 	return (
-		<button className={`${styles.button} ${!disabled ? styles.buttonActive : styles.buttonDisabled} ${className}`}
+		<button className={`${styles.button} ${!disabled ? styles.buttonActive : ''} ${className}`}
 			onClick={onClick}
 			disabled={disabled}
 		>

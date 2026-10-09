@@ -11,11 +11,12 @@ const ProjectsSection = () => {
       <h2>Projects</h2>
       <div className={styles.infoProjects}>
         <img
-          src="/images/projects.svg"
-          alt="Projects"
+          src="/images/projects-aleix.webp"
+          alt="Illustration of Aleix assembling cards representing his apps"
           className={styles.imageProjects}
-          width={635}
-          height={300}
+          width={1536}
+          height={1024}
+          loading="lazy"
         />
         <div>
           <span>
