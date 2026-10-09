@@ -82,7 +82,7 @@ const Project: React.FC<ProjectProps> = ({
     }
     if (platform === 'mobile') {
       style.backgroundColor = 'rgb(23,114,25)'
-    } else if (platform === 'web') {
+    } else if (platform === 'web' || platform === 'landing') {
       style.backgroundColor = 'rgb(123,36,123)'
     }
     return style

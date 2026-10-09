@@ -60,16 +60,8 @@ const AboutSection = () => {
 
           <p>
             <span>
-              Working with Vue/React, Node.js, and implementing SOLID principles
-              and Domain-Driven Design methodologies
+              Building web applications with Vue/React and Node.js
             </span>
-          </p>
-
-          <p>
-            <span>
-              I am currently learning </span>
-            <span className={styles.important}>Python</span>
-            <span> to expand my programming skills</span>
           </p>
         </div>
       </div>

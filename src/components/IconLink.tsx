@@ -27,6 +27,8 @@ import {
   Vuedotjs,
   Nuxtdotjs,
   Nestjs,
+  Flutter,
+  Dart,
 } from '@icons-pack/react-simple-icons'
 import type { BrandIcon, Link } from '../types/Link'
 
@@ -100,6 +102,10 @@ const IconLink: React.FC<IconLinkProps> = ({
     nuxt: <Nuxtdotjs title={'Nuxt'} color={color} size={size} />,
     // @ts-ignore
     nestjs: <Nestjs title={'Nest'} color={color} size={size} />,
+    // @ts-ignore
+    flutter: <Flutter title={'Flutter'} color={color} size={size} />,
+    // @ts-ignore
+    dart: <Dart title={'Dart'} color={color} size={size} />,
   }
   const getIcon = (name: BrandIcon) => {
     return icons[name]

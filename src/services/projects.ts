@@ -3,6 +3,75 @@ import type { ProjectInfo } from '../types/ProjectInfo'
 export const getProjects = (limit = -1): Array<ProjectInfo> => {
   const data: Array<ProjectInfo> = [
     {
+      id: '7',
+      name: 'Arcblink',
+      description:
+        'A precision arcade game where players line up shots, use rebounds and compete in local, online and campaign modes.',
+      image: '/images/projects/arcblink.png',
+      active: true,
+      links: [
+        {
+          url: 'https://arcblink.com/',
+          text: 'Website',
+          icon: 'web'
+        }
+      ],
+      apps: [
+        {
+          id: '18',
+          name: 'Arcblink Mobile',
+          description:
+            'Native iOS and Android game with local play, CPU matches, online multiplayer and campaign progression.',
+          platform: 'mobile',
+          technologies: [
+            {
+              text: 'Flutter',
+              url: 'https://flutter.dev/',
+              icon: 'flutter'
+            },
+            {
+              text: 'Dart',
+              url: 'https://dart.dev/',
+              icon: 'dart'
+            }
+          ]
+        },
+        {
+          id: '19',
+          name: 'Arcblink Web',
+          description:
+            'Browser game built with React and Phaser, with local, CPU, campaign and online multiplayer modes.',
+          platform: 'web',
+          technologies: [
+            {
+              text: 'React',
+              url: 'https://react.dev/',
+              icon: 'react'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '20',
+          name: 'Arcblink API',
+          description:
+            'Cloudflare Worker API using Hono, D1 and Better Auth for accounts, matchmaking and synchronized online games.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        }
+      ]
+    },
+    {
       id: '1',
       name: 'Vacation Flow',
       description:
@@ -59,7 +128,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
       image: '/images/projects/my-setuppi.webp',
-      active: true,
+      active: false,
       links: [
         {
           url: 'https://www.mysetuppi.com/',
@@ -144,7 +213,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
       image: '/images/projects/enirve.webp',
-      active: true,
+      active: false,
       links: [
         {
           url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
@@ -244,7 +313,7 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
       description:
         'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
       image: '/images/projects/talkandplay.webp',
-      active: true,
+      active: false,
       links: [
         {
           url: 'https://github.com/Aleix1379/TalkAndPlayApp',
@@ -303,6 +372,188 @@ export const getProjects = (limit = -1): Array<ProjectInfo> => {
               url: 'https://hibernate.org/',
               text: 'Hibernate',
               icon: 'hibernate'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: '5',
+      name: 'Race Tracker',
+      description:
+        'Follow Formula 1, MotoGP and WRC with calendars, local session times, results, standings and custom alerts.',
+      image: '/images/projects/race-tracker.png',
+      active: true,
+      links: [
+        {
+          url: 'https://motorsport.aleixmp.dev/marketing',
+          text: 'Website',
+          icon: 'web'
+        },
+        {
+          url: 'https://apps.apple.com/us/app/race-tracker-motorsport/id6791225595',
+          text: 'App Store',
+          icon: 'appStore'
+        },
+        {
+          url: 'https://play.google.com/store/apps/details?id=dev.aleixmp.motorsport',
+          text: 'Google Play',
+          icon: 'googlePlay'
+        }
+      ],
+      apps: [
+        {
+          id: '12',
+          name: 'Race Tracker Mobile',
+          description:
+            'iOS and Android app for following racing calendars, session results, championship standings and reminders.',
+          platform: 'mobile',
+          technologies: [
+            {
+              text: 'React Native',
+              url: 'https://reactnative.dev/',
+              icon: 'react'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '13',
+          name: 'Race Tracker API',
+          description:
+            'Node.js and Hono API backed by SQLite and Drizzle ORM for calendars, results, standings and account features.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'Node.js',
+              url: 'https://nodejs.org/',
+              icon: 'nodejs'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '14',
+          name: 'Race Tracker Web',
+          description:
+            'Web app built with React and TanStack Start for following motorsport calendars and championship information.',
+          platform: 'web',
+          technologies: [
+            {
+              text: 'React',
+              url: 'https://react.dev/',
+              icon: 'react'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: '6',
+      name: 'WishFetch',
+      description:
+        'Share gift wish lists so friends and family can reserve ideas, avoid duplicate gifts and keep the surprise for the recipient.',
+      image: '/images/projects/wishfetch.png',
+      active: true,
+      links: [
+        {
+          url: 'https://wishfetch.com/',
+          text: 'Website',
+          icon: 'web'
+        }
+      ],
+      apps: [
+        {
+          id: '15',
+          name: 'WishFetch Mobile',
+          description:
+            'iOS and Android app for creating and sharing wish lists and privately reserving gifts.',
+          platform: 'mobile',
+          technologies: [
+            {
+              text: 'React Native',
+              url: 'https://reactnative.dev/',
+              icon: 'react'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '16',
+          name: 'WishFetch API',
+          description:
+            'Bun and Hono backend with PostgreSQL and Drizzle ORM for accounts, wish lists and gift reservations.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            },
+            {
+              text: 'PostgreSQL',
+              url: 'https://www.postgresql.org/',
+              icon: 'postgres'
+            }
+          ]
+        },
+        {
+          id: '17',
+          name: 'WishFetch Web App',
+          description:
+            'Nuxt and Vue web app for creating, sharing and managing wish lists.',
+          platform: 'web',
+          technologies: [
+            {
+              text: 'Vue',
+              url: 'https://vuejs.org/',
+              icon: 'vue'
+            },
+            {
+              text: 'Nuxt',
+              url: 'https://nuxt.com/',
+              icon: 'nuxt'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '21',
+          name: 'WishFetch Landing',
+          description:
+            'Landing page introducing WishFetch and showing how shared wish lists help friends and family choose gifts without duplicates or spoilers.',
+          platform: 'landing',
+          technologies: [
+            {
+              text: 'Astro',
+              url: 'https://astro.build/',
+              icon: 'astro'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
             }
           ]
         }

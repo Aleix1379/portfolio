@@ -1,17 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Project from '../components/Project'
-import Button from '../components/Button'
 import styles from '../styles/Home.module.css'
 import { getProjects } from '../services/projects'
 
 const ProjectsSection = () => {
-  const [projects, setProjects] = useState(getProjects(3))
-  const [showAllProjects, setShowAllProjects] = useState(false)
-
-  const fetchAllProjects = () => {
-    setProjects(getProjects())
-    setShowAllProjects(true)
-  }
+  const projects = getProjects()
 
   return (
     <section id="projects" className={styles.section}>
@@ -50,7 +43,6 @@ const ProjectsSection = () => {
           />
         ))}
       </div>
-      {!showAllProjects && <Button onClick={fetchAllProjects}>Show All</Button>}
     </section>
   )
 }

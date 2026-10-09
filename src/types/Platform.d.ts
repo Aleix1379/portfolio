@@ -1,1 +1,1 @@
-export type Platform = 'mobile' | 'web' | 'backend'
+export type Platform = 'mobile' | 'web' | 'landing' | 'backend'
