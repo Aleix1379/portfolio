@@ -1,0 +1,1 @@
+import{t as e}from"./react.DtVlZneD.js";import{t}from"./jsx-runtime.DBXKk8Sx.js";e();var n={action:`_action_1hnk2_1`,primary:`_primary_1hnk2_19`,secondary:`_secondary_1hnk2_26`,text:`_text_1hnk2_35`},r=t(),i=({variant:e=`primary`,className:t=``,...i})=>(0,r.jsx)(`a`,{className:`${n.action} ${n[e]} ${t}`,...i});export{n,i as t};
