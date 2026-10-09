@@ -1,0 +1,117 @@
+name: CI and VPS deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  verify:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Run Jest
+        run: npm test -- --runInBand
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run end-to-end tests
+        run: npx playwright test
+
+      - name: Upload production site
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    name: Deploy to VPS
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: production
+    steps:
+      - name: Download production site
+        uses: actions/download-artifact@v4
+        with:
+          name: portfolio-dist
+          path: dist
+
+      - name: Validate VPS configuration
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          set -eu
+          for name in VPS_HOST VPS_USER VPS_DEPLOY_PATH VPS_SSH_KEY VPS_KNOWN_HOSTS; do
+            if [ -z "${!name}" ]; then
+              echo "Required GitHub Actions secret is missing: ${name}" >&2
+              exit 1
+            fi
+          done
+          case "$VPS_DEPLOY_PATH" in
+            /*) ;;
+            *) echo "VPS_DEPLOY_PATH must be an absolute path." >&2; exit 1 ;;
+          esac
+          if [ "$VPS_DEPLOY_PATH" = "/" ]; then
+            echo "VPS_DEPLOY_PATH must be a dedicated site directory, not /." >&2
+            exit 1
+          fi
+
+      - name: Configure SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$VPS_SSH_KEY" > "$HOME/.ssh/vps_deploy_key"
+          chmod 600 "$HOME/.ssh/vps_deploy_key"
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+
+      - name: Sync site to VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_DEPLOY_PATH: ${{ secrets.VPS_DEPLOY_PATH }}
+        run: |
+          set -eu
+          port="${VPS_PORT:-22}"
+          case "$port" in
+            ''|*[!0-9]*) echo "VPS_PORT must be a number." >&2; exit 1 ;;
+          esac
+          rsync --archive --compress --delete --delay-updates \
+            --rsh="ssh -i $HOME/.ssh/vps_deploy_key -p $port -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts" \
+            dist/ "${VPS_USER}@${VPS_HOST}:${VPS_DEPLOY_PATH%/}/"

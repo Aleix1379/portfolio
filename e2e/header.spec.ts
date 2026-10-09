@@ -170,29 +170,24 @@ test.describe('Portfolio presentation', () => {
     await expectProjectsBelowNavigation(page)
   })
 
-  test('lets the visitor pause and resume the infinite avatar animation', async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'no-preference' })
-    await page.setViewportSize({ width: 1440, height: 900 })
-    await openHeader(page)
-    const pause = page.getByRole('button', { name: 'Pause animation' })
-    const sprite = page.locator('#header [data-animating] > span[aria-hidden="true"]')
-    await expect(pause).toBeEnabled()
-    await expect(sprite).toHaveCSS('animation-iteration-count', 'infinite')
-    await expect(sprite).toHaveCSS('animation-play-state', 'running')
-    await pause.focus()
-    await page.keyboard.press('Enter')
-    await expect(sprite).toHaveCSS('animation-play-state', 'paused')
-    const pausedPosition = await sprite.evaluate(element => getComputedStyle(element).backgroundPosition)
-    await page.waitForTimeout(250)
-    await expect(sprite).toHaveCSS('background-position', pausedPosition)
-    const resume = page.getByRole('button', { name: 'Resume animation' })
-    await expect(resume).toBeFocused()
-    await page.keyboard.press('Enter')
-    await expect(sprite).toHaveCSS('animation-play-state', 'running')
-    await page.emulateMedia({ reducedMotion: 'reduce' })
-    await expect(sprite).toHaveCSS('animation-name', 'none')
-    await expect(page.locator('#header img')).toHaveCSS('opacity', '1')
-  })
+  test(
+    'keeps the avatar accessible without manual animation controls',
+    async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: 'reduce' })
+      await page.setViewportSize({ width: 1440, height: 900 })
+      await openHeader(page)
+      const illustration = page.locator('#header [data-animating]')
+      await expect(
+        page.getByRole('img', {
+          name: 'Illustration of Aleix sitting with a laptop'
+        })
+      ).toBeVisible()
+      await expect(illustration).toHaveAttribute('data-animating', 'false')
+      await expect(
+        page.getByRole('button', { name: /animation/i })
+      ).toHaveCount(0)
+    }
+  )
 
   for (const theme of ['dark', 'light']) {
     test(`reflows across viewports in ${theme} theme`, async ({ page }) => {

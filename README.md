@@ -52,3 +52,22 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## GitHub Actions and VPS deployment
+
+Pull requests to `main` and pushes to `main` run the Astro build, Jest tests, and Playwright tests in Chromium, Firefox, and WebKit. A successful push to `main` uploads the generated `dist/` site to the VPS over SSH. The VPS must serve the configured deployment directory as the website document root.
+
+Add these repository secrets under **Settings → Secrets and variables → Actions**:
+
+| Secret | Value |
+| --- | --- |
+| `VPS_HOST` | VPS hostname or IP address |
+| `VPS_USER` | SSH user that can write to the website directory |
+| `VPS_SSH_KEY` | Private SSH key for that user (OpenSSH format) |
+| `VPS_KNOWN_HOSTS` | Verified SSH host key line for the VPS, including the hostname/IP |
+| `VPS_DEPLOY_PATH` | Absolute path to the dedicated website directory, for example `/var/www/aleixmp.dev` |
+| `VPS_PORT` | SSH port; optional, defaults to `22` |
+
+Create the deployment directory on the VPS first and grant the SSH user write access. Configure Nginx, Caddy, or the existing web server to serve that directory. The workflow mirrors `dist/` into it and removes stale files, so use a dedicated directory for this site.
+
+Create a deploy key on a trusted machine and add its public key to the VPS user's `~/.ssh/authorized_keys`. Obtain the server fingerprint through a trusted channel before adding its host key to `VPS_KNOWN_HOSTS`; the workflow enforces strict host key checking.
