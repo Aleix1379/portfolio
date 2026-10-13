@@ -7,10 +7,21 @@ const { renderToStaticMarkup } =
   require('react-dom/server.node') as typeof import('react-dom/server')
 
 describe('ExperienceSection', () => {
-  it('keeps the first three roles visible and allows the rest to be expanded and collapsed', () => {
+  it('features the three full-time roles and keeps the remaining history without duplicates', () => {
     const { container } = render(<ExperienceSection />)
     const articles = screen.getAllByRole('article', { hidden: true })
     expect(articles).toHaveLength(getExperience().length)
+    expect(articles[0]).toHaveTextContent('TALKUAL')
+    const talkual = getExperience().find(job => job.company === 'TALKUAL')!
+    expect(talkual.responsibilities).toHaveLength(3)
+    expect(talkual.responsibilities.every(point => point.length < 100)).toBe(true)
+    expect(articles[0]).not.toHaveTextContent(/Notion|weekly prioritisation|marketing|customer support/)
+    expect(articles[1]).toHaveTextContent('Movetia')
+    expect(articles[2]).toHaveTextContent('Ubiquat Technologies')
+    expect(articles[2]).toHaveTextContent('AngularJS')
+    expect(articles[3]).toHaveTextContent('Coach4Pro')
+    const companies = articles.map(article => article.textContent)
+    expect(new Set(companies).size).toBe(articles.length)
     for (const article of articles.slice(0, 3)) expect(article).toBeVisible()
     for (const article of articles.slice(3)) expect(article).not.toBeVisible()
     const details = container.querySelector('details')!

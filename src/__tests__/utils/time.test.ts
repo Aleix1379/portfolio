@@ -48,16 +48,36 @@ describe('Time Utility Functions', () => {
       const result = getDifference(start, end);
 
       expect(result).toContain('1 year');
-      expect(result).toContain('2 months');
+      expect(result).toBe('1 year and 3 months');
     });
 
     it('should use current date if end date is null', () => {
-      const start = new Date();
-      start.setFullYear(start.getFullYear() - 1); // 1 year ago
+      jest.useFakeTimers().setSystemTime(new Date('2026-10-13T12:00:00Z'));
+      try {
+        expect(getDifference('2025-10', null)).toBe('1 year and 1 month');
+      } finally {
+        jest.useRealTimers();
+      }
+    });
 
-      const result = getDifference(start.toISOString(), null);
+    it.each([
+      ['2021-12-01', '2026-04', '4 years and 5 months'],
+      ['2020-05-01', '2021-12-22', '1 year and 8 months'],
+      ['2016-08-01', '2019-09-15', '3 years and 2 months'],
+      ['2018-03-01', '2019-04-30', '1 year and 2 months'],
+      ['2026-01-01', '2026-01-31', '1 month'],
+      ['2025-01', '2025-12', '1 year'],
+      ['2026-02-28', '2026-03-01', '2 months'],
+      ['2026-04', '2021-12-01', '4 years and 5 months'],
+      ['2024-02-01', '2024-02-29', '1 month'],
+      ['2021-12-01T23:00:00-08:00', '2026-04', '4 years and 5 months']
+    ])('counts calendar months for %s to %s', (start, end, expected) => {
+      expect(getDifference(start, end)).toBe(expected);
+    });
 
-      expect(result).toContain('1 year');
+    it('rejects dates without a valid month', () => {
+      expect(() => getDifference('2026-13', '2026-04')).toThrow(RangeError);
+      expect(() => getDifference('unknown', '2026-04')).toThrow(RangeError);
     });
   });
 

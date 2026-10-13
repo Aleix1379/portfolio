@@ -18,16 +18,23 @@ const AboutSection = () => (
     </div>
     <div className={styles.copy}>
       <p>
-        I enjoy connecting the different parts of a product: the interface
-        people use, the data it depends on and the services that keep it
-        running. My work has included commerce, subscriptions, logistics
-        integrations and mobile applications.
+        I enjoy working across a product, from the interface people use to the
+        services behind it.
       </p>
       <p>
-        Building my own products gives me room to explore ideas and work through
-        the whole process, from development to deployment. I bring that
-        practical perspective to teams, collaborating on design and turning
-        requirements into working software.
+        At Talkual, I worked on an eCommerce platform with
+        Vue.js and Nuxt.js, backed by Node.js, Strapi and PostgreSQL. This included
+        recurring payments, automatic subscription renewals and delivery
+        integrations.
+      </p>
+      <p>
+        My personal projects give me room to explore web and mobile development
+        and take an idea through to deployment.
+      </p>
+      <p>
+        In teams, I enjoy turning
+        requests into working features, collaborating on design and checking
+        changes with tests.
       </p>
     </div>
   </section>

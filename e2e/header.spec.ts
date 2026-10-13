@@ -54,6 +54,23 @@ async function expectNoOverflow(page: Page) {
 }
 
 test.describe('Portfolio presentation', () => {
+  test('separates the introduction and about copy into readable paragraphs', async ({ page }) => {
+    await openHeader(page)
+    const personalProjects = page.locator('#header p').filter({
+      hasText: 'I also build my own web and mobile products.'
+    })
+    await expect(personalProjects).toHaveText('I also build my own web and mobile products.')
+    const aboutParagraphs = page.locator('#about > div:last-child p')
+    await expect(aboutParagraphs).toHaveCount(4)
+    await expect(aboutParagraphs.nth(1)).toContainText('At Talkual')
+    const spacing = await personalProjects.evaluate(paragraph => {
+      const previous = paragraph.previousElementSibling!.getBoundingClientRect()
+      return paragraph.getBoundingClientRect().top - previous.bottom
+    })
+    // Firefox can round the 12px grid gap to 11.99997px.
+    expect(spacing).toBeGreaterThanOrEqual(12 - 0.01)
+  })
+
   test('opens projects and contact through native links', async ({ page }) => {
     await openHeader(page)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(

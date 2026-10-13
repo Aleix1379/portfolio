@@ -2,7 +2,6 @@ import React from 'react'
 import styles from '../styles/Header.module.css'
 import AboutIllustration from './AboutIllustration'
 import ActionLink from './ActionLink'
-import { getYearsOfExperience } from '../utils/time'
 const Header = () => (
   <header id="header" className={styles.header} tabIndex={-1}>
     <div className={`${styles.content} content-container`}>
@@ -11,11 +10,13 @@ const Header = () => (
         <p className={styles.profession}>
           Full-stack developer building web and mobile products.
         </p>
-        <p className={styles.description}>
-          {getYearsOfExperience({ filter: { fullTime: true } })}+ years of
-          experience in web development. I build applications, backend services
-          and my own products—from development to deployment.
-        </p>
+        <div className={styles.description}>
+          <p>
+            About nine years of professional experience. My most recent work
+            focused on eCommerce with Vue.js, Nuxt.js, Node.js and PostgreSQL.
+          </p>
+          <p>I also build my own web and mobile products.</p>
+        </div>
         <div className={styles.actions}>
           <ActionLink href="#projects">View projects</ActionLink>
           <ActionLink href="#contact" variant="secondary">

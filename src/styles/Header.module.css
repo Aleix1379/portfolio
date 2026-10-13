@@ -24,6 +24,8 @@
   letter-spacing: -0.03em;
 }
 .description {
+  display: grid;
+  gap: 12px;
   margin-top: 16px;
   color: var(--muted);
   max-width: 60ch;

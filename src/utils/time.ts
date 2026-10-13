@@ -26,31 +26,26 @@ export const milliSecondsToTime = (t: number) => {
 }
 
 export const getDifference = (start: string, end: string | null): string => {
-  const startDate: Date = new Date(start)
-  let endDate: Date = new Date()
-  if (end) {
-    endDate = new Date(end)
+  // Employment ranges count both calendar months, as on LinkedIn. Parse the
+  // written month directly so time zones and month length cannot shift it.
+  const monthIndex = (value: string) => {
+    const match = /^(\d{4})-(\d{2})(?:-|$)/.exec(value)
+    if (!match || Number(match[2]) < 1 || Number(match[2]) > 12) {
+      throw new RangeError('Employment dates must include a valid year and month')
+    }
+    return Number(match[1]) * 12 + Number(match[2]) - 1
   }
-
-  let diff: number = endDate.getTime() - startDate.getTime()
-  if (endDate < startDate) {
-    diff = startDate.getTime() - endDate.getTime()
-  }
-
-  const time = milliSecondsToTime(diff)
-
-  let years = ''
-  let months = ''
-
-  if (time.year > 0) {
-    years = `${time.year} year${time.year > 1 ? 's' : ''}`
-  }
-
-  if (time.month > 0) {
-    months = `${time.year > 0 ? ' and ' : ''}${time.month} months`
-  }
-
-  return `${years} ${months}`
+  const now = new Date()
+  const endMonth = end
+    ? monthIndex(end)
+    : now.getFullYear() * 12 + now.getMonth()
+  const totalMonths = Math.abs(endMonth - monthIndex(start)) + 1
+  const years = Math.floor(totalMonths / 12)
+  const months = totalMonths % 12
+  const parts = []
+  if (years) parts.push(`${years} year${years === 1 ? '' : 's'}`)
+  if (months) parts.push(`${months} month${months === 1 ? '' : 's'}`)
+  return parts.join(' and ')
 }
 
 export const formatDateWithMonthName = (

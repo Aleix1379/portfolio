@@ -10,8 +10,10 @@ const ExperienceSection = () => {
     // Native details can be opened before this island hydrates.
     setExpanded(Boolean(history.current?.open))
   }, [])
-  const featured = getExperience(3)
-  const previous = getExperience().slice(featured.length)
+  const experience = getExperience()
+  const featured = experience.filter(job => job.type === 'full-time').slice(0, 3)
+  const featuredIds = new Set(featured.map(job => job.id))
+  const previous = experience.filter(job => !featuredIds.has(job.id))
 
   return (
     <section

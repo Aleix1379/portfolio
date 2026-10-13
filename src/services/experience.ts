@@ -11,17 +11,19 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
       start: '2021-12-01',
       end: '2026-04',
       technologies: [
-        'Nuxt.js',
-        'Vue.js',
+        'Vue.js 2 & 3',
+        'Nuxt.js 2 & 3',
         'Node.js',
-        'TypeScript',
         'Strapi',
-        'PostgreSQL'
+        'PostgreSQL',
+        'REST APIs',
+        'Jest',
+        'Redsys'
       ],
       responsibilities: [
-        'Built commerce features with Nuxt and Strapi, including discounts, orders and subscription management.',
-        'Connected the commerce platform to the delivery company API.',
-        'Collaborated with the designer to implement the new website design.'
+        'Developed the eCommerce platform and its subscription, payment and delivery flows.',
+        'Contributed to the migration from Vue/Nuxt 2 to 3.',
+        'Wrote unit tests with Jest and helped implement the website redesign.'
       ]
     },
     {
@@ -32,26 +34,25 @@ export const getExperience = (limit = -1): Array<JobExperience> => {
       location: 'Barcelona, Catalonia, Spain',
       start: '2020-05-01',
       end: '2021-12-22',
-      technologies: ['React JS'],
+      technologies: ['React', 'JavaScript'],
       responsibilities: [
-        'Maintained a React web application and developed its interface.',
-        'Tested application functionality to verify changes.',
-        'Converted HTML interfaces into JSX components.'
+        'Maintained an existing web application built with React and JavaScript.',
+        'Performed functional testing to check application behaviour.'
       ]
     },
     {
       id: '3',
-      title: 'Web Developer',
+      title: 'Full-stack Developer',
       company: 'Ubiquat Technologies',
       type: 'full-time',
       location: 'Igualada, Catalonia, Spain',
       start: '2016-08-01',
       end: '2019-09-15',
-      technologies: ['Angular', 'Node JS'],
+      technologies: ['AngularJS', 'Ionic 4', 'Node.js', 'TypeScript', 'FluidUI'],
       responsibilities: [
-        'Developed Angular web applications and backend services with Node.js and TypeScript.',
+        'Developed AngularJS web applications and backend services with Node.js and TypeScript.',
         'Built Ionic 4 applications for Android and iOS and published them on Google Play and the App Store.',
-        'Created application prototypes with Fluid UI.'
+        'Created application prototypes with FluidUI.'
       ]
     },
     {

@@ -50,16 +50,38 @@ test.describe('Product and experience details', () => {
     await page.goto('/#experience')
     const section = page.locator('#experience')
     await expect(section.locator('article:visible')).toHaveCount(3)
+    const visible = section.locator('article:visible')
+    await expect(visible.nth(0)).toContainText('TALKUAL')
+    await expect(visible.nth(0)).toContainText('4 years and 5 months')
+    await expect(visible.nth(0)).toContainText('Redsys')
+    await expect(visible.nth(0)).not.toContainText('TypeScript')
+    await expect(visible.nth(0).locator('ul').first().locator('li')).toHaveCount(3)
+    await expect(visible.nth(0)).not.toContainText('Notion')
+    await expect(visible.nth(1)).toContainText('Movetia')
+    await expect(visible.nth(1)).toContainText('1 year and 8 months')
+    await expect(visible.nth(2)).toContainText('Ubiquat Technologies')
+    await expect(visible.nth(2)).toContainText('AngularJS')
+    await expect(visible.nth(2)).toContainText('3 years and 2 months')
     const history = section.locator('details')
     await history.locator('summary').click()
     await expect(history).toHaveAttribute('open', '')
     await expect(section.locator('article:visible')).toHaveCount(6)
+    await expect(history.locator('article').first()).toContainText('Coach4Pro')
     await expect(history.locator('summary')).toContainText(
       'Show less experience'
     )
     await history.locator('summary').click()
     await expect(history).not.toHaveAttribute('open')
     await expect(section.locator('article:visible')).toHaveCount(3)
+  })
+
+  test('serves the updated English CV from the existing download link', async ({ page }) => {
+    await page.goto('/')
+    await expect(page.locator('#navContainer a[href="/cv.pdf"]:visible')).toHaveAttribute('download', /.*/)
+    const response = await page.request.get('/cv.pdf')
+    expect(response.ok()).toBe(true)
+    expect(response.headers()['content-type']).toContain('application/pdf')
+    expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-')
   })
 
   test('shows native email actions before the contact illustration on mobile', async ({
