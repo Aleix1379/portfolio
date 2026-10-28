@@ -40,6 +40,11 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
           url: 'https://play.google.com/store/apps/details?id=com.arcblink.game',
           text: 'Android',
           icon: 'googlePlay'
+        },
+        {
+          url: 'https://apps.apple.com/gb/app/arcblink/id6814518294',
+          text: 'iOS',
+          icon: 'appStore'
         }
       ],
       apps: [
