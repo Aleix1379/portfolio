@@ -112,33 +112,20 @@ test.describe('Product and experience details', () => {
     await expect(contact.locator('form')).toHaveCount(0)
   })
 
-  test('rejects an invalid persisted theme', async ({ page }) => {
+  test('keeps the dark theme despite saved light preferences', async ({ page }) => {
     await page.addInitScript(() => {
-      localStorage.setItem('portfolio-theme', 'invalid-theme')
-      localStorage.removeItem('data-theme')
+      localStorage.setItem('portfolio-theme', 'light')
+      localStorage.setItem('data-theme', 'light')
     })
+    await page.emulateMedia({ colorScheme: 'light' })
     await page.goto('/')
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
+    await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark')
+    await expect(page.getByRole('button', { name: 'Dark theme' })).toHaveCount(0)
+    await page.reload()
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   })
 
-  test('keeps an existing saved light theme when migrating its storage key', async ({
-    page
-  }) => {
-    await page.addInitScript(() => {
-      localStorage.removeItem('portfolio-theme')
-      localStorage.setItem('data-theme', 'light')
-    })
-    await page.goto('/')
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
-    await expect(
-      page.getByRole('button', { name: 'Dark theme', exact: true })
-    ).toHaveAttribute('aria-pressed', 'false')
-    await page.getByRole('button', { name: 'Dark theme', exact: true }).click()
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    expect(
-      await page.evaluate(() => localStorage.getItem('portfolio-theme'))
-    ).toBe('dark')
-  })
 })
 
 test.describe('Content without JavaScript', () => {

@@ -4,7 +4,7 @@ const viewports = [320, 390, 768, 1024, 1440, 1701]
 
 async function openHeader(page: Page) {
   await page.goto('/')
-  await expect(page.locator('html')).toHaveAttribute('data-theme', /dark|light/)
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
   await page.evaluate(() => document.fonts.ready)
 }
 
@@ -100,29 +100,6 @@ test.describe('Portfolio presentation', () => {
     await expectProjectsBelowNavigation(page)
   })
 
-  test('preserves visible focus when switching themes and reloading', async ({
-    page
-  }) => {
-    await openHeader(page)
-    const toggle = page.getByRole('button', { name: 'Dark theme', exact: true })
-    for (const theme of ['light', 'dark']) {
-      await toggle.focus()
-      await page.keyboard.press('Enter')
-      await expect(page.locator('html')).toHaveAttribute('data-theme', theme)
-      await expect(toggle).toHaveAttribute(
-        'aria-pressed',
-        String(theme === 'dark')
-      )
-      const cta = page.getByRole('link', { name: 'View projects', exact: true })
-      await cta.focus()
-      await expect(cta).toBeFocused()
-      await expect(cta).toHaveCSS('outline-style', 'solid')
-      await expect(cta).toHaveCSS('outline-width', '2px')
-      await page.reload()
-      await expect(page.locator('html')).toHaveAttribute('data-theme', theme)
-    }
-  })
-
   test('keeps navigation height and position stable on scroll', async ({
     page
   }) => {
@@ -206,27 +183,18 @@ test.describe('Portfolio presentation', () => {
     }
   )
 
-  for (const theme of ['dark', 'light']) {
-    test(`reflows across viewports in ${theme} theme`, async ({ page }) => {
-      await page.addInitScript(
-        theme => localStorage.setItem('portfolio-theme', theme),
-        theme
-      )
-      for (const width of viewports) {
-        await page.setViewportSize({ width, height: 1000 })
-        await openHeader(page)
-        await expect(page.locator('html')).toHaveAttribute('data-theme', theme)
-        await expectNoOverflow(page)
-        for (const element of await page
-          .locator('#header h1, #header p, #header a, #header img')
-          .all()) {
-          const bounds = await element.boundingBox()
-          expect(bounds!.x).toBeGreaterThanOrEqual(0)
-          expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width + 1)
-        }
+  test('reflows across viewports in dark theme', async ({ page }) => {
+    for (const width of viewports) {
+      await page.setViewportSize({ width, height: 1000 })
+      await openHeader(page)
+      await expectNoOverflow(page)
+      for (const element of await page.locator('#header h1, #header p, #header a, #header img').all()) {
+        const bounds = await element.boundingBox()
+        expect(bounds!.x).toBeGreaterThanOrEqual(0)
+        expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width + 1)
       }
-    })
-  }
+    }
+  })
 
   test('reflows at 320px with text enlarged to 200 percent', async ({
     page
@@ -241,17 +209,11 @@ test.describe('Portfolio presentation', () => {
     await expect(page).toHaveURL(/#projects$/)
   })
 
-  test('keeps navigation, its mobile panel and the project link operable at 200 percent CSS zoom in both themes', async ({
+  test('keeps navigation, its mobile panel and the project link operable at 200 percent CSS zoom', async ({
     page
   }) => {
     await page.setViewportSize({ width: 320, height: 1000 })
-    for (const theme of ['dark', 'light']) {
-      await openHeader(page)
-      if (theme === 'light')
-        await page
-          .getByRole('button', { name: 'Dark theme', exact: true })
-          .click()
-      await expect(page.locator('html')).toHaveAttribute('data-theme', theme)
+    await openHeader(page)
       await page.evaluate(() => {
         document.body.style.zoom = '2'
       })
@@ -270,7 +232,6 @@ test.describe('Portfolio presentation', () => {
         .getByRole('link', { name: 'View projects', exact: true })
         .click()
       await expect(page).toHaveURL(/#projects$/)
-    }
   })
 })
 

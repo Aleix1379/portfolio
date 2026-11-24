@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState, type MouseEvent } from 'react'
+import React, { useEffect, useRef, type MouseEvent } from 'react'
 import styles from '../styles/Nav.module.css'
-import useTheme from '../hooks/useTheme'
-import SwitchTheme from './SwitchTheme'
 const destinations = [
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
@@ -9,13 +7,10 @@ const destinations = [
   { href: '#contact', label: 'Contact' }
 ]
 const Nav = () => {
-  const [theme, setTheme] = useTheme()
-  const [enhanced, setEnhanced] = useState(false)
   const menu = useRef<HTMLDetailsElement>(null)
   const trigger = useRef<HTMLElement>(null)
   const home = useRef<HTMLAnchorElement>(null)
   useEffect(() => {
-    setEnhanced(true)
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && menu.current?.open) {
         event.preventDefault()
@@ -100,12 +95,6 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-        <span hidden={!enhanced} className={styles.themeControl}>
-          <SwitchTheme
-            value={theme === 'dark'}
-            onChange={dark => setTheme(dark ? 'dark' : 'light')}
-          />
-        </span>
         <details ref={menu} className={styles.mobileMenu}>
           <summary ref={trigger} className={styles.menuTrigger}>
             Menu

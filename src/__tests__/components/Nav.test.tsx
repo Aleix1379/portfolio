@@ -2,11 +2,6 @@ import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import Nav from '../../components/Nav'
 
-jest.mock('../../hooks/useTheme', () => ({
-  __esModule: true,
-  default: () => ['dark', jest.fn()]
-}))
-
 beforeEach(() => {
   Object.defineProperty(window, 'matchMedia', {
     configurable: true,

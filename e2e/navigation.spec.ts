@@ -53,6 +53,7 @@ test.describe('Portfolio navigation', () => {
   }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
+    await expect(page.locator('astro-island[component-url*="Nav"]')).not.toHaveAttribute('ssr')
     const menu = page.locator('#navContainer details')
     await menu.locator('summary').click()
     await expect(menu).toHaveAttribute('open', '')
@@ -73,26 +74,6 @@ test.describe('Portfolio navigation', () => {
     await expect(page).toHaveURL(/#projects$/)
     await expect(menu).not.toHaveAttribute('open')
     await expect(page.locator('#projects')).toBeFocused()
-  })
-
-  test('switches theme even when persistent storage is blocked', async ({
-    page
-  }) => {
-    await page.addInitScript(() => {
-      Storage.prototype.getItem = () => {
-        throw new DOMException('Blocked', 'SecurityError')
-      }
-      Storage.prototype.setItem = () => {
-        throw new DOMException('Blocked', 'SecurityError')
-      }
-    })
-    const errors: string[] = []
-    page.on('pageerror', error => errors.push(error.message))
-    await page.goto('/')
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-    await page.getByRole('button', { name: 'Dark theme', exact: true }).click()
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
-    expect(errors).toEqual([])
   })
 
   test('downloads the CV from the mobile menu and restores visible focus', async ({ page }) => {

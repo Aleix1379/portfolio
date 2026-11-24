@@ -37,10 +37,6 @@
 .desktopLinks {
   display: none;
 }
-.themeControl {
-  display: flex;
-  flex-shrink: 0;
-}
 .mobileMenu {
   flex-shrink: 0;
 }
