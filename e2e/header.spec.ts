@@ -27,7 +27,7 @@ test('keeps the compact navigation visible while reading experience', async ({ p
 test('reveals the focused poster with enough space beside its category', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await openIndex(page)
-  const row = page.locator('[data-project-row]').first()
+  const row = page.locator('[data-project-row]').filter({ has: page.locator('summary', { hasText: 'Arcblink' }) })
   const trigger = row.locator(':scope > details > summary')
   await trigger.focus()
   await expect(row).toHaveAttribute('data-active', 'true')
@@ -46,7 +46,7 @@ test('reveals the focused poster with enough space beside its category', async (
 test('places the mobile technical disclosure below the cover and keeps the stores together', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 })
   await openIndex(page)
-  const row = page.locator('[data-project-row]').first()
+  const row = page.locator('[data-project-row]').filter({ has: page.locator('summary', { hasText: 'Arcblink' }) })
   await row.locator('summary').first().click()
   const cover = row.locator('article [data-motif]')
   const details = row.getByText('Technical details', { exact: true })
@@ -93,7 +93,7 @@ test('respects reduced motion for the project entrance and hover', async ({ page
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await openIndex(page)
   await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto')
-  const row = page.locator('[data-project-row]').first()
+  const row = page.locator('[data-project-row]').filter({ has: page.locator('summary', { hasText: 'Arcblink' }) })
   await row.locator('summary').first().hover()
   await expect(row.locator('summary').first().locator('span').first()).toHaveCSS('animation-name', 'none')
   await expect(row.locator(':scope > div')).toHaveCSS('transition-duration', '0s')
