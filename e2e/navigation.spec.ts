@@ -8,11 +8,11 @@ test.describe('Portfolio navigation', () => {
     await page.goto('/')
     await expect(page).toHaveTitle(/Aleix/)
     for (const id of ['projects', 'experience', 'about', 'contact']) {
-      await page.locator(`#navContainer a[href="#${id}"]:visible`).click()
+      await page.locator(`nav a[href="#${id}"]:visible`).click()
       await expect(page).toHaveURL(new RegExp(`#${id}$`))
-      await expect(page.locator(`#${id} h2`).first()).toBeVisible()
+      await expect(page.locator(`#${id} :is(h1,h2)`).first()).toBeVisible()
     }
-    const cv = page.locator('#navContainer a[href="/cv.pdf"]:visible')
+    const cv = page.locator('#projects a[href="/cv.pdf"]')
     await expect(cv).toHaveAttribute('download', /.*/)
     const response = await page.request.get('/cv.pdf')
     expect(response.ok()).toBe(true)
@@ -25,7 +25,7 @@ test.describe('Portfolio navigation', () => {
     await page.setViewportSize({ width: 1440, height: 900 })
     await page.goto('/#experience')
     await expect(page.locator('#experience h2')).toBeVisible()
-    await page.locator('#navContainer a[href="#projects"]:visible').click()
+    await page.locator('nav a[href="#projects"]:visible').click()
     await expect(page).toHaveURL(/#projects$/)
     await page.goBack()
     await expect(page).toHaveURL(/#experience$/)
@@ -36,7 +36,7 @@ test.describe('Portfolio navigation', () => {
   }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
-    const menu = page.locator('#navContainer details')
+    const menu = page.locator('nav details')
     const summary = menu.locator('summary')
     await expect(summary).toHaveText('Menu')
     await expect(menu).not.toHaveAttribute('open')
@@ -54,7 +54,7 @@ test.describe('Portfolio navigation', () => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
     await expect(page.locator('astro-island[component-url*="Nav"]')).not.toHaveAttribute('ssr')
-    const menu = page.locator('#navContainer details')
+    const menu = page.locator('nav details')
     await menu.locator('summary').click()
     await expect(menu).toHaveAttribute('open', '')
     await menu.locator('a[href="#about"]').focus()
@@ -68,7 +68,7 @@ test.describe('Portfolio navigation', () => {
   }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
-    const menu = page.locator('#navContainer details')
+    const menu = page.locator('nav details')
     await menu.locator('summary').click()
     await menu.locator('a[href="#projects"]').click()
     await expect(page).toHaveURL(/#projects$/)
@@ -79,7 +79,7 @@ test.describe('Portfolio navigation', () => {
   test('downloads the CV from the mobile menu and restores visible focus', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
-    const menu = page.locator('#navContainer details')
+    const menu = page.locator('nav details')
     await menu.locator('summary').click()
     const downloadEvent = page.waitForEvent('download')
     await menu.locator('a[href="/cv.pdf"]').click()
@@ -99,7 +99,7 @@ test.describe('Native navigation without JavaScript', () => {
   }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('/')
-    const menu = page.locator('#navContainer details')
+    const menu = page.locator('nav details')
     await menu.locator('summary').click()
     await menu.locator('a[href="#contact"]').click()
     await expect(page).toHaveURL(/#contact$/)

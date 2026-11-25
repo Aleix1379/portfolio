@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, type MouseEvent } from 'react'
+import React, { useEffect, useRef, useState, type MouseEvent } from 'react'
 import styles from '../styles/Nav.module.css'
 const destinations = [
   { href: '#projects', label: 'Projects' },
@@ -7,6 +7,43 @@ const destinations = [
   { href: '#contact', label: 'Contact' }
 ]
 const Nav = () => {
+  const [compact, setCompact] = useState(false)
+  const [current, setCurrent] = useState('#projects')
+  useEffect(() => {
+    const sections = destinations.map(({ href }) =>
+      document.getElementById(href.slice(1))
+    )
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const { scrollY, innerHeight } = window
+      setCompact(scrollY > 12)
+      const atEnd =
+        scrollY > 0 &&
+        scrollY + innerHeight >= document.documentElement.scrollHeight - 2
+      const readingLine = Math.max(100, innerHeight * 0.24)
+      const section = sections
+        .filter(
+          element =>
+            element && element.getBoundingClientRect().top <= readingLine
+        )
+        .pop()
+      setCurrent(atEnd ? '#contact' : section ? `#${section.id}` : '#projects')
+    }
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    document.addEventListener('toggle', schedule, true)
+    return () => {
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      document.removeEventListener('toggle', schedule, true)
+      window.cancelAnimationFrame(frame)
+    }
+  }, [])
   const menu = useRef<HTMLDetailsElement>(null)
   const trigger = useRef<HTMLElement>(null)
   const home = useRef<HTMLAnchorElement>(null)
@@ -53,47 +90,32 @@ const Nav = () => {
     }
   }
   return (
-    <div id="navContainer" className={styles.navContainer}>
-      <nav
-        className={`${styles.nav} content-container`}
-        aria-label="Main navigation"
-      >
+    <div className={styles.navContainer} data-compact={compact}>
+      <nav className={styles.nav} aria-label="Main navigation">
         <a
           ref={home}
           href="#header"
           className={styles.logo}
           aria-label="Aleix — home"
         >
-          <img
-            src="/images/aleix.webp"
-            alt=""
-            width={40}
-            height={40}
-            className={styles.avatar}
-          />
-          <span>Aleix</span>
+          <span aria-hidden="true" className={styles.monogram}>
+            am.
+          </span>
+          <span className={styles.identity}>
+            <strong>Aleix Martínez Pena</strong>Full-stack developer
+          </span>
         </a>
         <ul className={styles.desktopLinks}>
           {destinations.map(({ href, label }) => (
             <li key={href}>
-              <a href={href}>{label}</a>
+              <a
+                href={href}
+                aria-current={current === href ? 'location' : undefined}
+              >
+                {label}
+              </a>
             </li>
           ))}
-          <li>
-            <a href="/cv.pdf" download className={styles.cv}>
-              <img
-                src="/images/icons/download-cv-low-poly-v1-80.webp"
-                srcSet="/images/icons/download-cv-low-poly-v1-160.webp 2x"
-                alt=""
-                aria-hidden="true"
-                width={32}
-                height={32}
-                className={styles.cvIcon}
-                decoding="async"
-              />
-              <span className={styles.cvLabel}>Download CV</span>
-            </a>
-          </li>
         </ul>
         <details ref={menu} className={styles.mobileMenu}>
           <summary ref={trigger} className={styles.menuTrigger}>
@@ -102,7 +124,11 @@ const Nav = () => {
           <ul className={styles.mobileLinks}>
             {destinations.map(({ href, label }) => (
               <li key={href}>
-                <a href={href} onClick={navigateFromMenu}>
+                <a
+                  href={href}
+                  aria-current={current === href ? 'location' : undefined}
+                  onClick={navigateFromMenu}
+                >
                   {label}
                 </a>
               </li>
@@ -114,16 +140,6 @@ const Nav = () => {
                 onClick={navigateFromMenu}
                 className={styles.cv}
               >
-                <img
-                  src="/images/icons/download-cv-low-poly-v1-80.webp"
-                  srcSet="/images/icons/download-cv-low-poly-v1-160.webp 2x"
-                  alt=""
-                  aria-hidden="true"
-                  width={32}
-                  height={32}
-                  className={styles.cvIcon}
-                  decoding="async"
-                />
                 <span className={styles.cvLabel}>Download CV</span>
               </a>
             </li>

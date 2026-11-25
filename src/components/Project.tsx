@@ -13,6 +13,8 @@ import ActionLink from './ActionLink'
 import IconLink from './IconLink'
 
 interface ProjectProps {
+  children?: React.ReactNode
+  embedded?: boolean
   name: string
   description: string
   image: string
@@ -24,6 +26,8 @@ interface ProjectProps {
 }
 
 const Project: React.FC<ProjectProps> = ({
+  children,
+  embedded = false,
   name,
   description,
   image,
@@ -69,91 +73,119 @@ const Project: React.FC<ProjectProps> = ({
     tabRefs.current[nextIndex]?.focus()
   }
 
-  return (
-    <article className={styles.project} aria-labelledby={`${projectId}-title`}>
-      {preview ? (
-        <img
-          className={styles.preview}
-          src={preview.src}
-          srcSet={preview.srcSet}
-          sizes="(min-width: 1248px) 350px, (min-width: 1200px) calc((100vw - 96px) / 3 - 34px), (min-width: 768px) calc((100vw - 72px) / 2 - 34px), calc(100vw - 74px)"
-          width={preview.width}
-          height={preview.height}
-          alt={preview.alt}
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <img
-          className={styles.logo}
-          src={image}
-          width={70}
-          height={70}
-          alt={`${name} logo`}
-          loading="lazy"
+  const actionLinks = links.map((link, index) => (
+    <ActionLink
+      key={link.url}
+      href={link.url}
+      variant={index === 0 ? 'primary' : 'secondary'}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${link.text} — ${name} (opens in a new tab)`}
+    >
+      {link.icon === 'appStore' && (
+        <Appstore
+          aria-hidden="true"
+          focusable="false"
+          size={16}
+          color="currentColor"
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         />
       )}
+      {link.icon === 'googlePlay' && (
+        <Googleplay
+          aria-hidden="true"
+          focusable="false"
+          size={16}
+          color="currentColor"
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        />
+      )}
+      {link.text}
+      {index === 0 && (
+        <span aria-hidden="true" className={styles.actionArrow}>
+          ↗
+        </span>
+      )}
+    </ActionLink>
+  ))
+
+  const overview = (
+    <>
+      {contribution && <p className={styles.contribution}>{contribution}</p>}
+
+      {featuredTechnologies.length > 0 && (
+        <ul
+          className={styles.featuredTechnologies}
+          aria-label={`${name} main technologies`}
+        >
+          {featuredTechnologies.map(technology => (
+            <li key={technology}>{technology}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  )
+
+  return (
+    <article
+      className={embedded ? styles.embedded : styles.project}
+      aria-labelledby={`${projectId}-title`}
+    >
+      {!embedded &&
+        (preview ? (
+          <div className={styles.artwork}>
+            <img
+              className={styles.preview}
+              src={preview.src}
+              srcSet={preview.srcSet}
+              sizes="(min-width: 1280px) 390px, (min-width: 1050px) 31vw, (min-width: 700px) 46vw, calc(100vw - 40px)"
+              width={preview.width}
+              height={preview.height}
+              alt={preview.alt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ) : (
+          <img
+            className={styles.logo}
+            src={image}
+            width={70}
+            height={70}
+            alt={`${name} logo`}
+            loading="lazy"
+          />
+        ))}
 
       <div className={styles.content}>
-        <h3 id={`${projectId}-title`} className={styles.title}>
+        <h3
+          id={`${projectId}-title`}
+          className={embedded ? 'visually-hidden' : styles.title}
+        >
           {name}
         </h3>
         <p className={styles.description}>{description}</p>
-        {contribution && <p className={styles.contribution}>{contribution}</p>}
-
-        {featuredTechnologies.length > 0 && (
-          <ul
-            className={styles.featuredTechnologies}
-            aria-label={`${name} main technologies`}
-          >
-            {featuredTechnologies.map(technology => (
-              <li key={technology}>{technology}</li>
-            ))}
-          </ul>
-        )}
-
         {links.length > 0 ? (
           <div className={styles.actions}>
-            {links.map((link, index) => (
-              <ActionLink
-                key={link.url}
-                href={link.url}
-                variant={index === 0 ? 'primary' : 'secondary'}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${link.text} — ${name} (opens in a new tab)`}
-              >
-                {link.icon === 'appStore' && (
-                  <Appstore
-                    aria-hidden="true"
-                    focusable="false"
-                    size={16}
-                    color="currentColor"
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  />
-                )}
-                {link.icon === 'googlePlay' && (
-                  <Googleplay
-                    aria-hidden="true"
-                    focusable="false"
-                    size={16}
-                    color="currentColor"
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  />
-                )}
-                {link.text}
-              </ActionLink>
-            ))}
+            {actionLinks[0]}
+            {actionLinks.length > 1 && (
+              <div className={styles.secondaryLinks}>
+                {actionLinks.slice(1)}
+              </div>
+            )}
           </div>
         ) : (
           <p className={styles.contribution}>No public links available.</p>
         )}
 
+        {children}
+        {apps.length === 0 && overview}
         {apps.length > 0 && (
           <details className={styles.details}>
             <summary>Technical details</summary>
+            {overview}
             <div
               className={styles.tabsContainer}
               role="tablist"

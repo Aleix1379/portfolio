@@ -1,92 +1,160 @@
 {
-  "preparedOn": "2026-10-09",
-  "composition": "Original unaltered application screenshots arranged using containment on a 1600 by 1000 canvas. No generated application UI.",
-  "responsiveVariants": "Original composition resized and encoded as WebP. No screenshot text, interface, or content altered.",
+  "preparedOn": "2026-11-25",
+  "composition": "Editorial covers in Spanish and English on a navy background.",
+  "responsiveVariants": "Each composition is encoded as 480, 800 and 1600 pixel wide WebP images.",
   "projects": [
     {
       "product": "Arcblink",
       "productUrl": "https://arcblink.com/",
-      "source": "Android tablet gameplay screenshot, English, store asset refresh October 2026",
-      "screen": "gameplay-cpu.png",
       "slug": "arcblink",
-      "originalCompositionSha256": "6e1cea3a520b9f85e0c94cd6a6cddfc567745bcef51a2a885b610e6d94728e8a",
+      "prompt": "Arcblink campaign mode: aim and bank a shot toward the target on your turn. Spanish typographic portfolio cover in the approved Race Tracker style.",
+      "originalCompositionSha256": "6e116910c81946e411b137582216f9bc09143f1f49033741abe03d64892dc330",
       "variants": [
         {
           "src": "/images/projects/previews/arcblink-480.webp",
           "width": 480,
           "height": 300,
-          "bytes": 33382
+          "bytes": 23162
         },
         {
           "src": "/images/projects/previews/arcblink-800.webp",
           "width": 800,
           "height": 500,
-          "bytes": 76630
+          "bytes": 39762
         },
         {
           "src": "/images/projects/previews/arcblink-1600.webp",
           "width": 1600,
           "height": 1000,
-          "bytes": 191630
+          "bytes": 84600
         }
-      ]
+      ],
+      "language": "es",
+      "english": {
+        "originalCompositionSha256": "d0f1d1c5cd931f46e7b2d0450aa6232ba5574fe863d02387f9c7fe6019bcc401",
+        "variants": [
+          {
+            "src": "/images/projects/previews/arcblink-en-480.webp",
+            "width": 480,
+            "height": 300,
+            "bytes": 23214
+          },
+          {
+            "src": "/images/projects/previews/arcblink-en-800.webp",
+            "width": 800,
+            "height": 500,
+            "bytes": 40250
+          },
+          {
+            "src": "/images/projects/previews/arcblink-en-1600.webp",
+            "width": 1600,
+            "height": 1000,
+            "bytes": 85450
+          }
+        ]
+      }
     },
     {
       "product": "Race Tracker",
       "productUrl": "https://motorsport.aleixmp.dev/marketing",
-      "source": "Genuine Android Google Play screenshots, English",
-      "screens": ["02-calendar.png", "04-results.png"],
       "slug": "race-tracker",
-      "originalCompositionSha256": "0e1ec01455789958e69d6b7de9ceb615dbdd65b1e6ab3a33f37a8ef60e233812",
+      "prompt": "Sample F1 session: Belgian Grand Prix qualifying, Saturday at 16:00 local time, starting in 2 hours and 34 minutes. Spanish typographic portfolio cover in the approved Race Tracker style.",
+      "originalCompositionSha256": "a8b41eb5c6e6e49428e8a6f858c6b55944202471e60291be71b21132295d34d5",
       "variants": [
         {
           "src": "/images/projects/previews/race-tracker-480.webp",
           "width": 480,
           "height": 300,
-          "bytes": 9280
+          "bytes": 28068
         },
         {
           "src": "/images/projects/previews/race-tracker-800.webp",
           "width": 800,
           "height": 500,
-          "bytes": 20632
+          "bytes": 52430
         },
         {
           "src": "/images/projects/previews/race-tracker-1600.webp",
           "width": 1600,
           "height": 1000,
-          "bytes": 57816
+          "bytes": 113832
         }
-      ]
+      ],
+      "language": "es",
+      "english": {
+        "originalCompositionSha256": "59081c87a9f13f42b91eb936f0cf072072f36a057bfb1eab6d04b0bebfa7e716",
+        "variants": [
+          {
+            "src": "/images/projects/previews/race-tracker-en-480.webp",
+            "width": 480,
+            "height": 300,
+            "bytes": 26086
+          },
+          {
+            "src": "/images/projects/previews/race-tracker-en-800.webp",
+            "width": 800,
+            "height": 500,
+            "bytes": 48520
+          },
+          {
+            "src": "/images/projects/previews/race-tracker-en-1600.webp",
+            "width": 1600,
+            "height": 1000,
+            "bytes": 106830
+          }
+        ]
+      }
     },
     {
       "product": "WishFetch",
       "productUrl": "https://wishfetch.com/",
-      "source": "Genuine Android end-to-end QA shared-list and reservation screenshots, June 2026",
-      "screens": ["11-collab-shared-list.png", "13-collab-reserved-detail.png"],
-      "limitation": "Earlier UI and technical QA list and gift names are preserved. These are June 2026 QA screens, not current production screenshots.",
       "slug": "wishfetch",
-      "originalCompositionSha256": "4253ac96f57bc6da3b53e74f9889e7519cfd59e77083bc34059fd158d930772e",
+      "prompt": "Shared birthday wish list with headphones marked as reserved. Spanish typographic portfolio cover in the approved Race Tracker style.",
+      "originalCompositionSha256": "e57be88ff1c76a89c096839a52a29612793d909addf5148c71b26b62901ede79",
       "variants": [
         {
           "src": "/images/projects/previews/wishfetch-480.webp",
           "width": 480,
           "height": 300,
-          "bytes": 7386
+          "bytes": 26306
         },
         {
           "src": "/images/projects/previews/wishfetch-800.webp",
           "width": 800,
           "height": 500,
-          "bytes": 15372
+          "bytes": 47146
         },
         {
           "src": "/images/projects/previews/wishfetch-1600.webp",
           "width": 1600,
           "height": 1000,
-          "bytes": 42270
+          "bytes": 97662
         }
-      ]
+      ],
+      "language": "es",
+      "english": {
+        "originalCompositionSha256": "d88d4f37a09953370ee06febfcb5541a4d5130ad54b05d3d656b76976fa6bd49",
+        "variants": [
+          {
+            "src": "/images/projects/previews/wishfetch-en-480.webp",
+            "width": 480,
+            "height": 300,
+            "bytes": 25174
+          },
+          {
+            "src": "/images/projects/previews/wishfetch-en-800.webp",
+            "width": 800,
+            "height": 500,
+            "bytes": 44378
+          },
+          {
+            "src": "/images/projects/previews/wishfetch-en-1600.webp",
+            "width": 1600,
+            "height": 1000,
+            "bytes": 96246
+          }
+        ]
+      }
     }
   ]
 }

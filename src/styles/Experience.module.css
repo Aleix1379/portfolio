@@ -1,103 +1,15 @@
-.experience {
-  display: grid;
-  gap: 16px;
-  padding: 32px 0;
-  border-top: 1px solid var(--border);
-  min-width: 0;
-}
-
-.dates p {
-  margin: 0;
-}
-.dateRange {
-  color: var(--muted);
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-transform: capitalize;
-}
-.dateSeparator {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-.duration {
-  color: var(--muted);
-  font-size: 0.8125rem;
-  padding-top: 4px;
-}
-.content {
-  min-width: 0;
-}
-.company {
-  margin: 0 0 8px;
-  color: var(--accent);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-.title {
-  margin: 0 0 8px;
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-}
-.metadata {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-.jobType {
-  text-transform: capitalize;
-}
-.responsibilities {
-  display: grid;
-  gap: 8px;
-  max-width: 65ch;
-  margin: 24px 0;
-  padding-left: 20px;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-.responsibilities li {
-  padding-left: 4px;
-}
-.responsibilities li::marker {
-  color: var(--accent);
-}
-.technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.technologies li {
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--muted);
-  background: var(--chip);
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-@media (min-width: 768px) {
-  .experience {
-    grid-template-columns: 192px minmax(0, 1fr);
-    gap: 48px;
-  }
-  .dates {
-    padding-top: 4px;
-  }
-  .title {
-    font-size: 1.5rem;
-  }
-}
+.experience { position: relative; display: grid; gap: 15px; min-width: 0; padding: clamp(28px, 3.7vw, 64px) 0; border-top: 1px solid var(--border); }
+.experience:first-child { padding-top: 0; border: 0; }
+.dates { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.dateRange { padding-inline-start: 18px; text-transform: capitalize; color: var(--text); }
+.duration::before { content: '/'; color: var(--border-strong); margin-right: 10px; }
+.dateSeparator { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.company { font-size: clamp(1.75rem, 3vw, 3.3rem); letter-spacing: -.05em; line-height: 1.12; font-weight: 700; }
+.title { margin-top: 8px; font-size: clamp(1rem, 1.45vw, 1.45rem); font-weight: 500; letter-spacing: -.025em; }
+.metadata { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 4px; font-size: .82rem; color: var(--muted); }
+.jobType { text-transform: capitalize; }
+.responsibilities { max-width: 65ch; padding: 0; margin: 18px 0; list-style: none; display: grid; gap: 6px; font-size: 1rem; color: var(--muted); }
+.responsibilities li { position: relative; padding-left: 15px; }
+.responsibilities li::before { content: ''; position: absolute; left: 0; top: .78em; width: 5px; height: 2px; background: var(--accent); }
+.technologies { display: flex; flex-wrap: wrap; gap: .25em .7em; margin: 0; padding: 0; list-style: none; font-size: .76rem; font-weight: 550; }
+.technologies li:not(:last-child)::after { content: '/'; margin-left: .7em; color: var(--border-strong); }

@@ -9,14 +9,14 @@ const AboutSection = () => (
     className={`portfolio-section content-container ${styles.section}`}
   >
     <div className={styles.heading}>
-      <p className={styles.eyebrow}>A LITTLE ABOUT ME</p>
-      <h2 id="about-heading">
+      <p className="section-label">About</p>
+      <h2 id="about-heading" className="section-display" data-reveal>
         From an idea
         <br />
         to a working product.
       </h2>
     </div>
-    <div className={styles.copy}>
+    <div className={styles.copy} data-reveal>
       <p>
         I enjoy working across a product, from the interface people use to the
         services behind it.

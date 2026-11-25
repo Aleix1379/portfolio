@@ -1,17 +1,17 @@
 :root {
   color-scheme: dark;
-  --background: #141414;
+  --background: #090909;
   --surface: #1e1e1e;
   --surface-hover: #292929;
-  --text: #f5f5f5;
+  --text: #faf6e9;
   --muted: #b3b3b3;
-  --accent: #38c188;
+  --accent: #ff493e;
   --social-linkedin: #2d98d4;
   --social-github: #e0e0d0;
-  --on-accent: #10271b;
+  --on-accent: #110605;
   --border: #383838;
   --border-strong: #858585;
-  --focus: #f5f5f5;
+  --focus: #faf6e9;
   --chip: #292929;
   --shadow: 0 4px 16px rgb(0 0 0 / 12%);
 }

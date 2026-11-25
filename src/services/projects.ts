@@ -1,18 +1,7 @@
 import type {
   FeaturedProjectInfo,
-  ProjectInfo,
-  ProjectPreview
+  ProjectInfo
 } from '../types/ProjectInfo'
-
-const getPreview = (slug: string, alt: string): ProjectPreview => ({
-  src: `/images/projects/previews/${slug}-800.webp`,
-  srcSet: [480, 800, 1600]
-    .map(width => `/images/projects/previews/${slug}-${width}.webp ${width}w`)
-    .join(', '),
-  alt,
-  width: 1600,
-  height: 1000
-})
 
 export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
   const data: Array<ProjectInfo> = [
@@ -22,10 +11,13 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
       description:
         'A precision arcade game for local, online and campaign play.',
       image: '/images/projects/arcblink.png',
-      preview: getPreview(
-        'arcblink',
-        'Arcblink gameplay showing a player aiming a rebound shot across a snowy arena.'
-      ),
+      category: 'Online arcade',
+      poster: {
+        motif: 'target',
+        kicker: 'Precision arcade',
+        headline: 'Aim and ricochet',
+        facts: [['Mode', 'Online'], ['Turn', 'Your shot']]
+      },
       contribution:
         'Built the mobile and web game, with services for accounts and online play.',
       featuredTechnologies: ['Flutter', 'TypeScript', 'Cloudflare'],
@@ -414,10 +406,14 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
       description:
         'Follow F1, MotoGP and WRC with local schedules, results and alerts.',
       image: '/images/projects/race-tracker.png',
-      preview: getPreview(
-        'race-tracker',
-        'Race Tracker Android calendar and race results screens in English.'
-      ),
+      category: 'Motorsport calendar',
+      poster: {
+        motif: 'dial',
+        kicker: 'Next session · F1',
+        headline: 'Belgian GP',
+        subtitle: 'Qualifying',
+        facts: [['Local time', 'Sat 16:00'], ['Starts in', '2 h 34 min']]
+      },
       contribution:
         'Built the mobile and web apps and the API powering racing calendars and results.',
       featuredTechnologies: ['React Native', 'TypeScript', 'Hono'],
@@ -505,10 +501,13 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
       description:
         'Shared wish lists that keep gifts a surprise and prevent duplicates.',
       image: '/images/projects/wishfetch.png',
-      preview: getPreview(
-        'wishfetch',
-        'WishFetch Android QA screens showing a shared wish list and a reserved gift in June 2026.'
-      ),
+      category: 'Shared wish lists',
+      poster: {
+        motif: 'gift',
+        kicker: 'Shared wish list',
+        headline: 'Birthday wish list',
+        facts: [['Gift', 'Headphones'], ['Status', 'Reserved']]
+      },
       contribution:
         'Built the mobile and web apps, backend and gift reservation flow.',
       featuredTechnologies: ['React Native', 'Nuxt', 'PostgreSQL'],
@@ -600,6 +599,50 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
               url: 'https://www.typescriptlang.org/',
               icon: 'typescript'
             }
+          ]
+        }
+      ]
+    },
+    {
+      id: '8',
+      name: 'Skenium',
+      description:
+        'Explore debates between AI models. Read the transcript, listen to the speakers or watch the conversation in a 3D studio.',
+      image: '/images/projects/skenium.png',
+      category: 'AI debates',
+      poster: {
+        motif: 'dialogue',
+        kicker: 'AI debate studio',
+        headline: 'One question',
+        facts: [['Watch', '3D studio'], ['Read', 'Transcript']]
+      },
+      contribution:
+        'Built the debate catalog, the 3D playback experience and the services that publish each episode.',
+      featuredTechnologies: ['Nuxt', 'Three.js', 'Go', 'PostgreSQL'],
+      active: true,
+      links: [
+        { url: 'https://skenium.com/', text: 'Explore debates', icon: 'web' }
+      ],
+      apps: [
+        {
+          id: '22',
+          name: 'Skenium Web',
+          platform: 'web',
+          description:
+            'A Nuxt catalog for browsing series and speakers, with a Three.js studio for watching debates.',
+          technologies: [
+            { text: 'Nuxt', url: 'https://nuxt.com/', icon: 'nuxt' },
+            { text: 'Vue', url: 'https://vuejs.org/', icon: 'vue' }
+          ]
+        },
+        {
+          id: '23',
+          name: 'Skenium API',
+          platform: 'backend',
+          description:
+            'A Go API and background workers manage episodes, production jobs and publication with PostgreSQL.',
+          technologies: [
+            { text: 'PostgreSQL', url: 'https://www.postgresql.org/', icon: 'postgres' }
           ]
         }
       ]

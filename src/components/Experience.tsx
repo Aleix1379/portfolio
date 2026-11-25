@@ -12,11 +12,12 @@ const monthAndYear = (date: string) =>
 
 const Experience: React.FC<ExperienceProps> = ({ experience }) => (
   <article
+    data-reveal
     className={styles.experience}
     aria-labelledby={`job-${experience.id}`}
   >
     <div className={styles.dates}>
-      <p className={styles.dateRange}>
+      <p className={styles.dateRange} data-job-date>
         <time dateTime={experience.start}>
           {monthAndYear(experience.start)}
         </time>

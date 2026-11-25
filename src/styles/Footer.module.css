@@ -1,59 +1,9 @@
-.footer {
-  margin-top: 64px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-}
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 32px;
-  padding-bottom: 32px;
-}
-.name {
-  color: var(--text);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-}
-.credit {
-  margin: 0;
-  font-size: 0.8125rem;
-  line-height: 1.8;
-}
-.signature {
-  margin-left: 4px;
-  color: var(--text);
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.375rem;
-}
-.backToTop {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  font-size: 0.8125rem;
-}
-.backToTop:hover {
-  color: var(--accent);
-}
-@media (min-width: 768px) {
-  .footer {
-    margin-top: 96px;
-  }
-  .content {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-@media (max-width: 767px) {
-  .content {
-    gap: 16px;
-  }
-  .credit {
-    flex-basis: 100%;
-    order: 3;
-  }
+.content { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-block: 24px; }
+.name { font-size: 2.75rem; font-weight: 900; letter-spacing: -.095em; line-height: 1; }
+.credit { font-size: .85rem; color: var(--muted); }
+.signature { color: var(--text); }
+.backToTop { display: inline-flex; gap: .5em; align-items: center; min-height: 44px; font-size: .9rem; }
+.backToTop:hover { color: var(--accent); }
+@media (max-width: 560px) {
+  .credit { order: 3; flex-basis: 100%; }
 }

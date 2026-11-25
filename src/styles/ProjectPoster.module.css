@@ -1,0 +1,77 @@
+.frame {
+  --ink: #fff5dc;
+  --signal: #dbfc08;
+  --paper: #070f23;
+  container-type: inline-size;
+  border: 4px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 10px 30px #0008;
+}
+.frame[data-motif='dial'] { --signal: #ff372b; }
+.frame[data-motif='gift'] { --signal: #ffc519; }
+.sheet {
+  position: relative; isolation: isolate; overflow: hidden;
+  aspect-ratio: 1.6;
+  padding: 3.2cqw 4.4cqw;
+  display: flex; flex-direction: column; align-items: flex-start;
+  line-height: 1;
+}
+.brand { font-weight: 820; font-style: italic; font-size: 5.1cqw; letter-spacing: -.045em; }
+.brand::before {
+  content: ''; display: inline-block; margin-right: 1cqw; transform: skewX(-22deg);
+  width: 6.5cqw; height: 3.7cqw;
+  background: repeating-linear-gradient(to right, var(--signal) 0 1.55cqw, transparent 1.55cqw 2.35cqw);
+}
+.kicker, .facts dt { text-transform: uppercase; font-weight: 820; }
+.kicker { margin: 2.5cqw 0 1.7cqw; font-size: 4cqw; color: var(--signal); }
+.headline, .subtitle, .facts dd { font-family: Anton, Impact, sans-serif; font-weight: 400; letter-spacing: -.025em; }
+.headline { font-size: 12.5cqw; line-height: .99; max-width: 65%; text-wrap: balance; }
+[data-motif='dial'] .headline { font-size: 15cqw; }
+.subtitle { font-size: 8.5cqw; }
+.facts {
+  width: 71%; margin: auto 0 0; padding: 2cqw 0 0; border-top: .35cqw solid;
+  display: flex; justify-content: space-between; gap: 2cqw;
+}
+.facts dt { font-size: 2.5cqw; }
+.facts dd { margin: 1cqw 0 0; font-size: 7.4cqw; white-space: nowrap; }
+.facts > :last-child dd { color: var(--signal); }
+.mark { position: absolute; z-index: -1; color: var(--signal); }
+[data-motif='dial'] .mark {
+  width: 95%; aspect-ratio: 1; right: -70%; top: -20%;
+  border-radius: 50%; border: .45cqw solid currentColor;
+  background: repeating-conic-gradient(currentColor 0deg .8deg, transparent .8deg 5deg);
+  mask-image: radial-gradient(circle, transparent 58%, black 58.2% 62%, transparent 62.2% 65%, black 65.2%);
+}
+[data-motif='target'] .mark {
+  right: 2%; bottom: 8%; width: 19%; aspect-ratio: 1; border-radius: 50%;
+  background: repeating-radial-gradient(circle, currentColor 0 10%, transparent 12% 24%);
+  border: .9cqw solid currentColor;
+}
+[data-motif='target'] .mark::before {
+  content: ''; position: absolute; width: 95%; height: 120%; bottom: 135%; right: 0;
+  border: solid currentColor; border-width: 0 .9cqw .9cqw 0; transform: rotate(35deg);
+}
+[data-motif='gift'] .mark {
+  right: -4%; bottom: 10%; width: 27%; height: 48%; transform: rotate(19deg);
+  background: currentColor; clip-path: polygon(27% 0, 73% 0, 100% 24%, 100% 100%, 0 100%, 0 24%);
+  border-radius: 12%; display: grid; place-items: center;
+}
+[data-motif='gift'] .mark::before { content: ''; width: 9%; aspect-ratio: 1; background: var(--paper); border-radius: 50%; position: absolute; top: 9%; }
+[data-motif='gift'] .mark::after { content: '♥'; color: var(--paper); font-size: 16cqw; }
+
+.frame[data-motif='dialogue'] { --signal: #aa94ff; }
+[data-motif='dialogue'] .mark {
+  right: 2%; top: 19%; width: 26%; height: 43%;
+}
+[data-motif='dialogue'] .mark::before,
+[data-motif='dialogue'] .mark::after {
+  content: '';
+  position: absolute;
+  width: 77%; height: 56%;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 100% 73%, 33% 73%, 8% 100%, 8% 73%, 0 73%);
+}
+[data-motif='dialogue'] .mark::after {
+  right: 0; bottom: 0; transform: scaleX(-1); opacity: .72;
+}

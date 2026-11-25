@@ -1,57 +1,35 @@
 .section {
-  max-width: 1200px;
+  border-top: 2px solid var(--text);
+  padding-top: clamp(28px, 4vw, 72px);
+  display: grid; gap: 40px;
 }
-.heading {
-  margin-bottom: 40px;
+.heading { align-self: start; }
+.introduction { margin-top: 24px; max-width: 28ch; color: var(--muted); }
+.timeline { position: relative; min-width: 0; }
+.marker {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 10px;
+  height: 4px;
+  background: var(--accent);
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateY(calc(var(--marker-y, 0px) - 50%));
 }
-.eyebrow {
-  margin: 0 0 12px;
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.timeline[data-marker-ready] .marker { visibility: visible; }
+@media (prefers-reduced-motion: no-preference) {
+  .marker { transition: transform 280ms cubic-bezier(.22, 1, .36, 1); }
 }
-.heading h2 {
-  margin: 0 0 16px;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.04em;
-}
-.introduction {
-  max-width: 65ch;
-  margin: 0;
-  color: var(--muted);
-}
-.timeline {
-  max-width: 1040px;
-}
-.history {
-  border-top: 1px solid var(--border);
-}
+.history { border-top: 1px solid var(--border-strong); }
 .summary {
-  display: list-item;
-  width: fit-content;
-  min-height: 48px;
-  padding-block: 12px;
-  margin-top: 16px;
-  color: var(--text);
-  font-size: 0.875rem;
-  font-weight: 500;
-  list-style-position: inside;
-  cursor: pointer;
+  padding: 16px 0; width: fit-content; list-style: none;
+  font-size: .95rem; font-weight: 650;
 }
-.summary:hover {
-  color: var(--accent);
-}
-.previous {
-  padding-top: 16px;
-}
-@media (min-width: 768px) {
-  .heading h2 {
-    font-size: 3rem;
-  }
-  .heading {
-    margin-bottom: 48px;
-  }
+.summary::-webkit-details-marker { display: none; }
+.summary::after { content: '＋'; color: var(--accent); margin-left: .8em; }
+.history[open] > .summary::after { content: '−'; }
+.summary:hover { color: var(--accent); }
+@media (min-width: 980px) {
+  .section { grid-template-columns: minmax(0, .85fr) minmax(0, 1.65fr); gap: 5vw; }
+  .heading { position: sticky; top: calc(var(--nav-height) + 24px); }
 }

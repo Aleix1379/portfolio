@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.tsx'
 import AboutSection from '../sections/AboutSection.tsx'
 import ExperienceSection from '../sections/ExperienceSection.tsx'
 import ProjectsSection from '../sections/ProjectsSection.tsx'
@@ -13,11 +12,23 @@ import ContactSection from '../sections/ContactSection.tsx'
   image="/images/about-aleix.webp"
 >
   <main id="main-content" tabindex="-1">
-    <Header client:load />
-    <ProjectsSection client:visible />
+    <ProjectsSection client:load />
     <ExperienceSection client:visible />
     <AboutSection />
     <ContactSection client:visible />
   </main>
 
 </Layout>
+
+<script>
+  if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue
+        entry.target.classList.add('entered')
+        observer.unobserve(entry.target)
+      }
+    }, { threshold: 0.08 })
+    document.querySelectorAll('[data-reveal], [data-project-row]').forEach(element => observer.observe(element))
+  }
+</script>

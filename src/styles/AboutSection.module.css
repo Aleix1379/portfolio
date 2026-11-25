@@ -1,40 +1,8 @@
-.section {
-  display: grid;
-  gap: 32px;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
-}
-.eyebrow {
-  margin: 0 0 16px;
-  color: var(--accent);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-}
-.heading h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.04em;
-}
-.copy {
-  max-width: 65ch;
-  color: var(--muted);
-}
-.copy p {
-  margin: 0;
-}
-.copy p + p {
-  margin-top: 24px;
-}
-@media (min-width: 1024px) {
-  .section {
-    grid-template-columns: 1fr 1.5fr;
-    gap: 96px;
-    padding-top: 64px;
-  }
-  .heading h2 {
-    font-size: 3rem;
-  }
+.section { border-top: 2px solid var(--text); padding: clamp(30px, 4.2vw, 78px) 0 0; display: grid; gap: 32px; }
+.heading h2 { max-width: 11ch; }
+.copy { color: var(--muted); max-width: 53ch; align-self: end; }
+.copy p + p { margin-top: 1.2em; }
+.copy p:first-child { max-width: 27ch; color: var(--text); font-size: clamp(1.6rem, 2.5vw, 3rem); line-height: 1.16; letter-spacing: -.045em; font-weight: 500; }
+@media (min-width: 900px) {
+  .section { grid-template-columns: 1fr 1fr; gap: 6vw; padding-bottom: 2vw; }
 }

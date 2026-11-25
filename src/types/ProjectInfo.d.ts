@@ -28,7 +28,9 @@ interface ProjectBaseInfo {
 
 export interface FeaturedProjectInfo extends ProjectBaseInfo {
   active: true
-  preview: ProjectPreview
+  poster?: ProjectPoster
+  category?: string
+  preview?: ProjectPreview
   contribution: string
   featuredTechnologies: Array<string>
 }
@@ -41,3 +43,11 @@ export interface HistoricalProjectInfo extends ProjectBaseInfo {
 }
 
 export type ProjectInfo = FeaturedProjectInfo | HistoricalProjectInfo
+
+export interface ProjectPoster {
+  motif: 'target' | 'dial' | 'gift' | 'dialogue'
+  kicker: string
+  headline: string
+  subtitle?: string
+  facts: [string, string][]
+}

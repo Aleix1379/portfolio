@@ -20,7 +20,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 24px);
+  scroll-padding-top: calc(var(--nav-height) + 16px);
   background: var(--background);
 }
 body {
@@ -99,7 +99,7 @@ img {
   outline-offset: 4px;
 }
 .content-container {
-  width: min(var(--content-width), calc(100% - 40px));
+  width: min(92%, 1800px);
   margin-inline: auto;
 }
 .portfolio-section {
@@ -151,7 +151,7 @@ img {
     font-size: 1.5rem;
   }
   .content-container {
-    width: min(var(--content-width), calc(100% - 48px));
+    width: min(95%, 1800px);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -163,5 +163,31 @@ img {
   *::after {
     animation: none !important;
     transition-duration: 0s !important;
+  }
+}
+
+@font-face {
+  font-family: Anton;
+  src: url('/fonts/Anton/Anton-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.section-display {
+  font: 400 clamp(3.75rem, 6.8vw, 8rem)/1 Anton, Impact, sans-serif;
+  letter-spacing: -.035em;
+}
+.section-label {
+  margin: 0 0 24px;
+  font-weight: 650;
+  font-size: .875rem;
+}
+::selection { color: var(--background); background: var(--text); }
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal].entered { animation: section-enter 650ms cubic-bezier(.16,1,.3,1) both; }
+  @keyframes section-enter {
+    from { opacity: .35; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }

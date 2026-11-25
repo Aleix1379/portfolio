@@ -8,12 +8,12 @@ const Header = () => (
       <div className={styles.introduction}>
         <h1 className={styles.name}>I'm Aleix.</h1>
         <p className={styles.profession}>
-          Full-stack developer building web and mobile products.
+          Full-stack developer building <em>web and mobile</em> products.
         </p>
         <div className={styles.description}>
           <p>
-            About nine years of professional experience. My most recent work
-            focused on eCommerce with Vue.js, Nuxt.js, Node.js and PostgreSQL.
+            I’ve spent about nine years in software, most recently building
+            eCommerce features at TALKUAL.
           </p>
           <p>I also build my own web and mobile products.</p>
         </div>

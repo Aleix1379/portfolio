@@ -1,28 +1,29 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Product and experience details', () => {
-  test('loads each featured product preview with a descriptive alternative', async ({
-    page
-  }) => {
+  test('lists the featured projects and opens the Skenium debate studio', async ({ page }) => {
     await page.goto('/#projects')
-    const images = page.locator('#projects article > img')
-    await expect(images).toHaveCount(3)
-    for (const image of await images.all()) {
-      await image.scrollIntoViewIfNeeded()
-      await expect(image).toHaveAttribute('alt', /\S.+/)
-      await expect
-        .poll(() =>
-          image.evaluate(element => (element as HTMLImageElement).naturalWidth)
-        )
-        .toBeGreaterThan(0)
-    }
+    const rows = page.locator('[data-project-row]')
+    await expect(rows.locator(':scope > details > summary')).toHaveText([
+      /Arcblink/, /Race Tracker/, /WishFetch/, /Skenium/
+    ])
+    const skenium = rows.filter({ has: page.locator('summary', { hasText: 'Skenium' }) })
+    await expect(page.locator('astro-island[ssr]').filter({ has: skenium })).toHaveCount(0)
+    await skenium.locator('summary').first().hover()
+    await skenium.locator('summary').first().click()
+    await expect(skenium.getByRole('link', { name: /Explore debates/ })).toHaveAttribute('href', 'https://skenium.com/')
+    await expect(skenium.locator('[data-motif="dialogue"]:visible')).toHaveCount(1)
+    await skenium.getByText('Technical details', { exact: true }).click()
+    await expect(skenium.getByRole('tab', { name: 'Backend' })).toBeVisible()
   })
 
   test('reveals technical details and navigates platforms using the keyboard', async ({
     page
   }) => {
     await page.goto('/#projects')
-    const project = page.locator('#projects article').first()
+    const row = page.locator('[data-project-row]').first()
+    await row.locator(':scope > details > summary').click()
+    const project = row.locator('article')
     const details = project.locator('details')
     await expect(details).not.toHaveAttribute('open')
     await details.locator('summary').click()
@@ -77,14 +78,14 @@ test.describe('Product and experience details', () => {
 
   test('serves the updated English CV from the existing download link', async ({ page }) => {
     await page.goto('/')
-    await expect(page.locator('#navContainer a[href="/cv.pdf"]:visible')).toHaveAttribute('download', /.*/)
+    await expect(page.locator('#projects a[href="/cv.pdf"]')).toHaveAttribute('download', /.*/)
     const response = await page.request.get('/cv.pdf')
     expect(response.ok()).toBe(true)
     expect(response.headers()['content-type']).toContain('application/pdf')
     expect((await response.body()).subarray(0, 5).toString()).toBe('%PDF-')
   })
 
-  test('shows native email actions before the contact illustration on mobile', async ({
+  test('shows email actions and social links on mobile', async ({
     page
   }) => {
     await page.setViewportSize({ width: 390, height: 844 })
@@ -95,17 +96,8 @@ test.describe('Product and experience details', () => {
       exact: true
     })
     await expect(email).toHaveAttribute('href', 'mailto:aleixmp1379@gmail.com')
-    // Read both rectangles in one frame: native hash scrolling can still be moving.
-    const position = await contact.evaluate(section => {
-      const email = section
-        .querySelector('a[href^="mailto:"]')!
-        .getBoundingClientRect()
-      const image = section
-        .querySelector('img:not([aria-hidden="true"])')!
-        .getBoundingClientRect()
-      return { emailBottom: email.bottom, imageTop: image.top }
-    })
-    expect(position.emailBottom).toBeLessThanOrEqual(position.imageTop)
+    await expect(contact.getByRole('link', { name: 'LinkedIn' })).toBeVisible()
+    await expect(contact.getByRole('link', { name: 'GitHub' })).toBeVisible()
     await expect(
       contact.getByRole('button', { name: 'Copy email', exact: true })
     ).toBeVisible()
@@ -135,7 +127,9 @@ test.describe('Content without JavaScript', () => {
     page
   }) => {
     await page.goto('/#projects')
-    const project = page.locator('#projects article').first()
+    const row = page.locator('[data-project-row]').first()
+    await row.locator(':scope > details > summary').click()
+    const project = row.locator('article')
     await project.locator('summary').click()
     await expect(
       project.getByRole('heading', { name: 'Arcblink Mobile' })
@@ -157,7 +151,7 @@ test.describe('Content without JavaScript', () => {
     await page.locator('#experience details summary').click()
     await expect(page.locator('#experience article:visible')).toHaveCount(6)
     await expect(
-      page.locator('#navContainer a[href="/cv.pdf"]:visible')
+      page.locator('#projects a[href="/cv.pdf"]')
     ).toHaveAttribute('download', /.*/)
     await expect(
       page.locator('#contact a[href^="mailto:"]').first()
