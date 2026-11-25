@@ -6,396 +6,45 @@ import type {
 export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
   const data: Array<ProjectInfo> = [
     {
-      id: '7',
-      name: 'Arcblink',
+      id: '8',
+      name: 'Skenium',
       description:
-        'A precision arcade game for local, online and campaign play.',
-      image: '/images/projects/arcblink.png',
-      category: 'Online arcade',
+        'Explore debates between AI models. Read the transcript, listen to the speakers or watch the conversation in a 3D studio.',
+      image: '/images/projects/skenium.png',
+      category: 'AI debates',
       poster: {
-        motif: 'target',
-        kicker: 'Precision arcade',
-        headline: 'Aim and ricochet',
-        facts: [['Mode', 'Online'], ['Turn', 'Your shot']]
+        motif: 'dialogue',
+        kicker: 'AI debate studio',
+        headline: 'One question',
+        facts: [['Watch', '3D studio'], ['Read', 'Transcript']]
       },
       contribution:
-        'Built the mobile and web game, with services for accounts and online play.',
-      featuredTechnologies: ['Flutter', 'TypeScript', 'Cloudflare'],
+        'Built the debate catalog, the 3D playback experience and the services that publish each episode.',
+      featuredTechnologies: ['Nuxt', 'Three.js', 'Go', 'PostgreSQL'],
       active: true,
       links: [
-        {
-          url: 'https://arcblink.com/',
-          text: 'Play game',
-          icon: 'web'
-        },
-        {
-          url: 'https://play.google.com/store/apps/details?id=com.arcblink.game',
-          text: 'Android',
-          icon: 'googlePlay'
-        },
-        {
-          url: 'https://apps.apple.com/gb/app/arcblink/id6814518294',
-          text: 'iOS',
-          icon: 'appStore'
-        }
+        { url: 'https://skenium.com/', text: 'Explore debates', icon: 'web' }
       ],
       apps: [
         {
-          id: '18',
-          name: 'Arcblink Mobile',
-          description:
-            'Native iOS and Android game with local play, CPU matches, online multiplayer and campaign progression.',
-          platform: 'mobile',
-          technologies: [
-            {
-              text: 'Flutter',
-              url: 'https://flutter.dev/',
-              icon: 'flutter'
-            },
-            {
-              text: 'Dart',
-              url: 'https://dart.dev/',
-              icon: 'dart'
-            }
-          ]
-        },
-        {
-          id: '19',
-          name: 'Arcblink Web',
-          description:
-            'Browser game built with React and Phaser, with local, CPU, campaign and online multiplayer modes.',
+          id: '22',
+          name: 'Skenium Web',
           platform: 'web',
+          description:
+            'A Nuxt catalog for browsing series and speakers, with a Three.js studio for watching debates.',
           technologies: [
-            {
-              text: 'React',
-              url: 'https://react.dev/',
-              icon: 'react'
-            },
-            {
-              text: 'TypeScript',
-              url: 'https://www.typescriptlang.org/',
-              icon: 'typescript'
-            }
+            { text: 'Nuxt', url: 'https://nuxt.com/', icon: 'nuxt' },
+            { text: 'Vue', url: 'https://vuejs.org/', icon: 'vue' }
           ]
         },
         {
-          id: '20',
-          name: 'Arcblink API',
-          description:
-            'Cloudflare Worker API using Hono, D1 and Better Auth for accounts, matchmaking and synchronized online games.',
+          id: '23',
+          name: 'Skenium API',
           platform: 'backend',
-          technologies: [
-            {
-              text: 'TypeScript',
-              url: 'https://www.typescriptlang.org/',
-              icon: 'typescript'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: '1',
-      name: 'Vacation Flow',
-      description:
-        'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
-      image: '/images/projects/vacation-flow.png',
-      active: false,
-      links: [
-        {
-          url: 'https://github.com/Aleix1379/vacation-flow-backend',
-          text: 'Github',
-          icon: 'github'
-        }
-      ],
-      apps: [
-        {
-          id: '10',
-          name: 'Vacation Flow',
           description:
-            'NestJS backend API for user authentication, leave requests, and calendar integration.',
-          platform: 'backend',
+            'A Go API and background workers manage episodes, production jobs and publication with PostgreSQL.',
           technologies: [
-            {
-              text: 'TypeScript',
-              url: 'https://www.typescriptlang.org/',
-              icon: 'typescript'
-            },
-            {
-              text: 'NestJS',
-              url: 'https://nestjs.com/',
-              icon: 'nestjs'
-            },
-            {
-              text: 'PostgreSQL',
-              url: 'https://www.postgresql.org/',
-              icon: 'postgres'
-            },
-            {
-              text: 'Jest',
-              url: 'https://jestjs.io/',
-              icon: 'jest'
-            },
-            {
-              text: 'Node.js',
-              url: 'https://nodejs.org/',
-              icon: 'nodejs'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: '2',
-      name: 'My Setuppi',
-      description:
-        'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
-      image: '/images/projects/my-setuppi.webp',
-      active: false,
-      links: [
-        {
-          url: 'https://www.mysetuppi.com/',
-          text: 'Web',
-          icon: 'web'
-        }
-      ],
-      apps: [
-        {
-          id: '9',
-          name: 'My Setuppi',
-          description:
-            'Vue.js web app for browsing, uploading, and rating PC setups with user profiles and social features.',
-          platform: 'web',
-          technologies: [
-            {
-              text: 'Vue JS',
-              url: 'https://vuejs.org/',
-              icon: 'vue'
-            },
-            {
-              text: 'Nuxt JS',
-              url: 'https://nuxtjs.org/',
-              icon: 'nuxt'
-            },
-            {
-              text: 'TypeScript',
-              url: 'https://www.typescriptlang.org/',
-              icon: 'typescript'
-            },
-            {
-              text: 'CSS',
-              url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-              icon: 'css'
-            }
-          ]
-        },
-        {
-          id: '11',
-          name: 'My Setuppi Backend',
-          description:
-            'Node.js backend with GraphQL API for managing user profiles, setup posts, comments, and ratings.',
-          platform: 'backend',
-          technologies: [
-            {
-              text: 'TypeScript',
-              url: 'https://www.typescriptlang.org/',
-              icon: 'typescript'
-            },
-            {
-              text: 'Node.js',
-              url: 'https://nodejs.org/',
-              icon: 'nodejs'
-            },
-            {
-              text: 'GraphQL',
-              url: 'https://graphql.org/',
-              icon: 'graphql'
-            },
-            {
-              text: 'Apollo',
-              url: 'https://www.apollographql.com/',
-              icon: 'apollographql'
-            },
-            {
-              text: 'PostgreSQL',
-              url: 'https://www.postgresql.org/',
-              icon: 'postgres'
-            },
-            {
-              text: 'Sequelize',
-              url: 'https://sequelize.org/',
-              icon: 'sequelize'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: '3',
-      name: 'Enirve',
-      description:
-        'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
-      image: '/images/projects/enirve.webp',
-      active: false,
-      links: [
-        {
-          url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
-          text: 'iOS',
-          icon: 'appStore'
-        },
-        {
-          url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
-          text: 'Android',
-          icon: 'googlePlay'
-        },
-        {
-          url: 'https://enirve.web.app/',
-          text: 'Web',
-          icon: 'web'
-        }
-      ],
-      apps: [
-        {
-          id: '3',
-          name: 'Enirve App',
-          description:
-            'React Native mobile app for learning irregular verbs with exercises, quizzes, and offline mode.',
-          platform: 'mobile',
-          technologies: [
-            {
-              url: 'https://www.typescriptlang.org/',
-              text: 'TypeScript',
-              icon: 'typescript'
-            },
-            {
-              url: 'https://reactnative.dev/',
-              text: 'React Native',
-              icon: 'react'
-            },
-            {
-              url: 'https://redux.js.org/',
-              text: 'Redux',
-              icon: 'redux'
-            },
-            {
-              url: 'https://graphql.org/',
-              text: 'GraphQL',
-              icon: 'graphql'
-            },
-            {
-              url: 'https://www.apollographql.com/',
-              text: 'Apollo GraphQL',
-              icon: 'apollographql'
-            }
-          ]
-        },
-        {
-          id: '4',
-          name: 'Enirve Backend',
-          description:
-            'Node.js backend with GraphQL API for user data, learning progress, and verb database management.',
-          platform: 'backend',
-          technologies: [
-            {
-              url: 'https://www.typescriptlang.org/',
-              text: 'TypeScript',
-              icon: 'typescript'
-            },
-            {
-              url: 'https://nodejs.org/',
-              text: 'Node JS',
-              icon: 'nodejs'
-            },
-            {
-              url: 'https://www.postgresql.org/',
-              text: 'PostgreSQL',
-              icon: 'postgres'
-            },
-            {
-              url: 'https://sequelize.org/',
-              text: 'Sequelize',
-              icon: 'sequelize'
-            },
-            {
-              url: 'https://graphql.org/',
-              text: 'GraphQL',
-              icon: 'graphql'
-            },
-            {
-              url: 'https://www.apollographql.com/',
-              text: 'Apollo GraphQL',
-              icon: 'apollographql'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: '4',
-      name: 'Talk And Play',
-      description:
-        'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
-      image: '/images/projects/talkandplay.webp',
-      active: false,
-      links: [
-        {
-          url: 'https://github.com/Aleix1379/TalkAndPlayApp',
-          text: 'Github',
-          icon: 'github'
-        }
-      ],
-      apps: [
-        {
-          id: '1',
-          name: 'Talk And Play',
-          description:
-            'React Native mobile app for gamers to create profiles, track activity, and participate in discussions about games.',
-          platform: 'mobile',
-          technologies: [
-            {
-              url: 'https://www.typescriptlang.org/',
-              text: 'TypeScript',
-              icon: 'typescript'
-            },
-            {
-              url: 'https://reactnative.dev/',
-              text: 'React Native',
-              icon: 'react'
-            },
-            {
-              url: 'https://redux.js.org/',
-              text: 'Redux',
-              icon: 'redux'
-            }
-          ]
-        },
-        {
-          id: '2',
-          name: 'Talk And Play',
-          description:
-            'Kotlin and Spring Boot backend for user authentication, game data, and social interactions with RESTful API.',
-          platform: 'backend',
-          technologies: [
-            {
-              url: 'https://kotlinlang.org/',
-              text: 'Kotlin',
-              icon: 'kotlin'
-            },
-            {
-              url: 'https://spring.io/projects/spring-boot',
-              text: 'Spring Boot',
-              icon: 'springBoot'
-            },
-            {
-              url: 'https://www.mysql.com/',
-              text: 'MySQL',
-              icon: 'mysql'
-            },
-            {
-              url: 'https://hibernate.org/',
-              text: 'Hibernate',
-              icon: 'hibernate'
-            }
+            { text: 'PostgreSQL', url: 'https://www.postgresql.org/', icon: 'postgres' }
           ]
         }
       ]
@@ -494,6 +143,7 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
           ]
         }
       ]
+
     },
     {
       id: '6',
@@ -602,50 +252,407 @@ export const getProjects = (limit = -1): Array<FeaturedProjectInfo> => {
           ]
         }
       ]
+
     },
     {
-      id: '8',
-      name: 'Skenium',
+      id: '7',
+      name: 'Arcblink',
       description:
-        'Explore debates between AI models. Read the transcript, listen to the speakers or watch the conversation in a 3D studio.',
-      image: '/images/projects/skenium.png',
-      category: 'AI debates',
+        'A precision arcade game for local, online and campaign play.',
+      image: '/images/projects/arcblink.png',
+      category: 'Online arcade',
       poster: {
-        motif: 'dialogue',
-        kicker: 'AI debate studio',
-        headline: 'One question',
-        facts: [['Watch', '3D studio'], ['Read', 'Transcript']]
+        motif: 'target',
+        kicker: 'Precision arcade',
+        headline: 'Aim and ricochet',
+        facts: [['Mode', 'Online'], ['Turn', 'Your shot']]
       },
       contribution:
-        'Built the debate catalog, the 3D playback experience and the services that publish each episode.',
-      featuredTechnologies: ['Nuxt', 'Three.js', 'Go', 'PostgreSQL'],
+        'Built the mobile and web game, with services for accounts and online play.',
+      featuredTechnologies: ['Flutter', 'TypeScript', 'Cloudflare'],
       active: true,
       links: [
-        { url: 'https://skenium.com/', text: 'Explore debates', icon: 'web' }
+        {
+          url: 'https://arcblink.com/',
+          text: 'Play game',
+          icon: 'web'
+        },
+        {
+          url: 'https://play.google.com/store/apps/details?id=com.arcblink.game',
+          text: 'Android',
+          icon: 'googlePlay'
+        },
+        {
+          url: 'https://apps.apple.com/gb/app/arcblink/id6814518294',
+          text: 'iOS',
+          icon: 'appStore'
+        }
       ],
       apps: [
         {
-          id: '22',
-          name: 'Skenium Web',
-          platform: 'web',
+          id: '18',
+          name: 'Arcblink Mobile',
           description:
-            'A Nuxt catalog for browsing series and speakers, with a Three.js studio for watching debates.',
+            'Native iOS and Android game with local play, CPU matches, online multiplayer and campaign progression.',
+          platform: 'mobile',
           technologies: [
-            { text: 'Nuxt', url: 'https://nuxt.com/', icon: 'nuxt' },
-            { text: 'Vue', url: 'https://vuejs.org/', icon: 'vue' }
+            {
+              text: 'Flutter',
+              url: 'https://flutter.dev/',
+              icon: 'flutter'
+            },
+            {
+              text: 'Dart',
+              url: 'https://dart.dev/',
+              icon: 'dart'
+            }
           ]
         },
         {
-          id: '23',
-          name: 'Skenium API',
-          platform: 'backend',
+          id: '19',
+          name: 'Arcblink Web',
           description:
-            'A Go API and background workers manage episodes, production jobs and publication with PostgreSQL.',
+            'Browser game built with React and Phaser, with local, CPU, campaign and online multiplayer modes.',
+          platform: 'web',
           technologies: [
-            { text: 'PostgreSQL', url: 'https://www.postgresql.org/', icon: 'postgres' }
+            {
+              text: 'React',
+              url: 'https://react.dev/',
+              icon: 'react'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
+          ]
+        },
+        {
+          id: '20',
+          name: 'Arcblink API',
+          description:
+            'Cloudflare Worker API using Hono, D1 and Better Auth for accounts, matchmaking and synchronized online games.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            }
           ]
         }
       ]
+
+    },
+    {
+      id: '1',
+      name: 'Vacation Flow',
+      description:
+        'Vacation management system for streamlining time-off requests and approvals with automated workflows.',
+      image: '/images/projects/vacation-flow.png',
+      active: false,
+      links: [
+        {
+          url: 'https://github.com/Aleix1379/vacation-flow-backend',
+          text: 'Github',
+          icon: 'github'
+        }
+      ],
+      apps: [
+        {
+          id: '10',
+          name: 'Vacation Flow',
+          description:
+            'NestJS backend API for user authentication, leave requests, and calendar integration.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            },
+            {
+              text: 'NestJS',
+              url: 'https://nestjs.com/',
+              icon: 'nestjs'
+            },
+            {
+              text: 'PostgreSQL',
+              url: 'https://www.postgresql.org/',
+              icon: 'postgres'
+            },
+            {
+              text: 'Jest',
+              url: 'https://jestjs.io/',
+              icon: 'jest'
+            },
+            {
+              text: 'Node.js',
+              url: 'https://nodejs.org/',
+              icon: 'nodejs'
+            }
+          ]
+        }
+      ]
+
+    },
+    {
+      id: '2',
+      name: 'My Setuppi',
+      description:
+        'Social platform for gamers to showcase and discover PC setups and hardware configurations.',
+      image: '/images/projects/my-setuppi.webp',
+      active: false,
+      links: [
+        {
+          url: 'https://www.mysetuppi.com/',
+          text: 'Web',
+          icon: 'web'
+        }
+      ],
+      apps: [
+        {
+          id: '9',
+          name: 'My Setuppi',
+          description:
+            'Vue.js web app for browsing, uploading, and rating PC setups with user profiles and social features.',
+          platform: 'web',
+          technologies: [
+            {
+              text: 'Vue JS',
+              url: 'https://vuejs.org/',
+              icon: 'vue'
+            },
+            {
+              text: 'Nuxt JS',
+              url: 'https://nuxtjs.org/',
+              icon: 'nuxt'
+            },
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            },
+            {
+              text: 'CSS',
+              url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+              icon: 'css'
+            }
+          ]
+        },
+        {
+          id: '11',
+          name: 'My Setuppi Backend',
+          description:
+            'Node.js backend with GraphQL API for managing user profiles, setup posts, comments, and ratings.',
+          platform: 'backend',
+          technologies: [
+            {
+              text: 'TypeScript',
+              url: 'https://www.typescriptlang.org/',
+              icon: 'typescript'
+            },
+            {
+              text: 'Node.js',
+              url: 'https://nodejs.org/',
+              icon: 'nodejs'
+            },
+            {
+              text: 'GraphQL',
+              url: 'https://graphql.org/',
+              icon: 'graphql'
+            },
+            {
+              text: 'Apollo',
+              url: 'https://www.apollographql.com/',
+              icon: 'apollographql'
+            },
+            {
+              text: 'PostgreSQL',
+              url: 'https://www.postgresql.org/',
+              icon: 'postgres'
+            },
+            {
+              text: 'Sequelize',
+              url: 'https://sequelize.org/',
+              icon: 'sequelize'
+            }
+          ]
+        }
+      ]
+
+    },
+    {
+      id: '3',
+      name: 'Enirve',
+      description:
+        'Educational app for learning English irregular verbs with interactive exercises and progress tracking.',
+      image: '/images/projects/enirve.webp',
+      active: false,
+      links: [
+        {
+          url: 'https://apps.apple.com/es/app/enirve/id6447982551?l=en',
+          text: 'iOS',
+          icon: 'appStore'
+        },
+        {
+          url: 'https://play.google.com/store/apps/details?id=com.enirvemobile',
+          text: 'Android',
+          icon: 'googlePlay'
+        },
+        {
+          url: 'https://enirve.web.app/',
+          text: 'Web',
+          icon: 'web'
+        }
+      ],
+      apps: [
+        {
+          id: '3',
+          name: 'Enirve App',
+          description:
+            'React Native mobile app for learning irregular verbs with exercises, quizzes, and offline mode.',
+          platform: 'mobile',
+          technologies: [
+            {
+              url: 'https://www.typescriptlang.org/',
+              text: 'TypeScript',
+              icon: 'typescript'
+            },
+            {
+              url: 'https://reactnative.dev/',
+              text: 'React Native',
+              icon: 'react'
+            },
+            {
+              url: 'https://redux.js.org/',
+              text: 'Redux',
+              icon: 'redux'
+            },
+            {
+              url: 'https://graphql.org/',
+              text: 'GraphQL',
+              icon: 'graphql'
+            },
+            {
+              url: 'https://www.apollographql.com/',
+              text: 'Apollo GraphQL',
+              icon: 'apollographql'
+            }
+          ]
+        },
+        {
+          id: '4',
+          name: 'Enirve Backend',
+          description:
+            'Node.js backend with GraphQL API for user data, learning progress, and verb database management.',
+          platform: 'backend',
+          technologies: [
+            {
+              url: 'https://www.typescriptlang.org/',
+              text: 'TypeScript',
+              icon: 'typescript'
+            },
+            {
+              url: 'https://nodejs.org/',
+              text: 'Node JS',
+              icon: 'nodejs'
+            },
+            {
+              url: 'https://www.postgresql.org/',
+              text: 'PostgreSQL',
+              icon: 'postgres'
+            },
+            {
+              url: 'https://sequelize.org/',
+              text: 'Sequelize',
+              icon: 'sequelize'
+            },
+            {
+              url: 'https://graphql.org/',
+              text: 'GraphQL',
+              icon: 'graphql'
+            },
+            {
+              url: 'https://www.apollographql.com/',
+              text: 'Apollo GraphQL',
+              icon: 'apollographql'
+            }
+          ]
+        }
+      ]
+
+    },
+    {
+      id: '4',
+      name: 'Talk And Play',
+      description:
+        'Community platform for gamers to discuss, review, and discover video games with personalized recommendations.',
+      image: '/images/projects/talkandplay.webp',
+      active: false,
+      links: [
+        {
+          url: 'https://github.com/Aleix1379/TalkAndPlayApp',
+          text: 'Github',
+          icon: 'github'
+        }
+      ],
+      apps: [
+        {
+          id: '1',
+          name: 'Talk And Play',
+          description:
+            'React Native mobile app for gamers to create profiles, track activity, and participate in discussions about games.',
+          platform: 'mobile',
+          technologies: [
+            {
+              url: 'https://www.typescriptlang.org/',
+              text: 'TypeScript',
+              icon: 'typescript'
+            },
+            {
+              url: 'https://reactnative.dev/',
+              text: 'React Native',
+              icon: 'react'
+            },
+            {
+              url: 'https://redux.js.org/',
+              text: 'Redux',
+              icon: 'redux'
+            }
+          ]
+        },
+        {
+          id: '2',
+          name: 'Talk And Play',
+          description:
+            'Kotlin and Spring Boot backend for user authentication, game data, and social interactions with RESTful API.',
+          platform: 'backend',
+          technologies: [
+            {
+              url: 'https://kotlinlang.org/',
+              text: 'Kotlin',
+              icon: 'kotlin'
+            },
+            {
+              url: 'https://spring.io/projects/spring-boot',
+              text: 'Spring Boot',
+              icon: 'springBoot'
+            },
+            {
+              url: 'https://www.mysql.com/',
+              text: 'MySQL',
+              icon: 'mysql'
+            },
+            {
+              url: 'https://hibernate.org/',
+              text: 'Hibernate',
+              icon: 'hibernate'
+            }
+          ]
+        }
+      ]
+
     }
   ]
 

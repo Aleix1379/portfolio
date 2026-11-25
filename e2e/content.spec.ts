@@ -5,7 +5,7 @@ test.describe('Product and experience details', () => {
     await page.goto('/#projects')
     const rows = page.locator('[data-project-row]')
     await expect(rows.locator(':scope > details > summary')).toHaveText([
-      /Arcblink/, /Race Tracker/, /WishFetch/, /Skenium/
+      /Skenium/, /Race Tracker/, /WishFetch/, /Arcblink/
     ])
     const skenium = rows.filter({ has: page.locator('summary', { hasText: 'Skenium' }) })
     await expect(page.locator('astro-island[ssr]').filter({ has: skenium })).toHaveCount(0)
@@ -21,7 +21,7 @@ test.describe('Product and experience details', () => {
     page
   }) => {
     await page.goto('/#projects')
-    const row = page.locator('[data-project-row]').first()
+    const row = page.locator('[data-project-row]').filter({ has: page.locator('summary', { hasText: 'Arcblink' }) })
     await row.locator(':scope > details > summary').click()
     const project = row.locator('article')
     const details = project.locator('details')
@@ -127,7 +127,7 @@ test.describe('Content without JavaScript', () => {
     page
   }) => {
     await page.goto('/#projects')
-    const row = page.locator('[data-project-row]').first()
+    const row = page.locator('[data-project-row]').filter({ has: page.locator('summary', { hasText: 'Arcblink' }) })
     await row.locator(':scope > details > summary').click()
     const project = row.locator('article')
     await project.locator('summary').click()
