@@ -57,6 +57,8 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 Pull requests to `main` and pushes to `main` run the Astro build, Jest tests, and Playwright tests in Chromium, Firefox, and WebKit. A successful push to `main` uploads the generated `dist/` site to the VPS over SSH. The VPS must serve the configured deployment directory as the website document root.
 
+To run the browser tests locally against a fresh production build, use `npm run build` followed by `npx playwright test`. If port 4322 is occupied, choose another one with `PORTFOLIO_TEST_PORT=54322 npx playwright test`.
+
 Add these repository secrets under **Settings → Secrets and variables → Actions**:
 
 | Secret | Value |

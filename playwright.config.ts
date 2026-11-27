@@ -2,7 +2,10 @@ import { defineConfig, devices } from '@playwright/test'
 import path from 'node:path'
 
 const artifacts = process.env.PORTFOLIO_ARTIFACT_DIR || 'test-results'
-const port = 4322
+const port = Number(process.env.PORTFOLIO_TEST_PORT ?? 4322)
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  throw new Error('PORTFOLIO_TEST_PORT must be a valid TCP port')
+}
 
 export default defineConfig({
   testDir: './e2e',
@@ -32,7 +35,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npm run preview -- --host 127.0.0.1 --port ${port}`,
+    command: `npm run preview -- --host 127.0.0.1 --port ${port} --ignore-lock`,
     port,
     reuseExistingServer: !process.env.CI,
   },
